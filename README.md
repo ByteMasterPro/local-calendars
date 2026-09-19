@@ -6,9 +6,10 @@ publishes them via GitHub Pages.
 
 **Feeds:** https://bytemasterpro.github.io/brewery-calendars/
 
-| Brewery | Subscribe URL |
-|---|---|
-| Honor Brewing - Loudoun | `https://bytemasterpro.github.io/brewery-calendars/honor-brewing-loudoun.ics` |
+| Brewery | Subscribe URL | Kind |
+|---|---|---|
+| Honor Brewing - Loudoun | `https://bytemasterpro.github.io/brewery-calendars/honor-brewing-loudoun.ics` | rebuilt weekly from their Elfsight widget |
+| Chilly Hollow Brewing Co. | `https://calendar.google.com/calendar/ical/7a36777b804e9b9d04d70c58670135065f60a7e350d7b860f9e9c7686a9a7131%40group.calendar.google.com/public/basic.ics` | their own public Google Calendar (live) |
 
 ## Subscribing
 
@@ -51,10 +52,14 @@ uv run pytest
 ## Adding a brewery
 
 1. Look at the brewery's events page source and identify the widget/platform.
-2. If it is Elfsight: add an entry to `config/breweries.yaml` with the `widget_id`. Done.
-3. Otherwise: write `brewcal/sources/<name>.py` exposing `fetch(brewery) -> list[Event]`, register
+2. If the brewery already publishes a feed, do not mirror it: add an entry with `feed_url`
+   (and `google_calendar_id` if it is a Google Calendar) so the index page links to it directly.
+   Tell-tale: an Elfsight widget whose boot JSON has `selectedEventsProvider: "google"` is fed by
+   a Google Calendar; try `https://calendar.google.com/calendar/ical/<id>/public/basic.ics`.
+3. If it is Elfsight with its own events: add an entry with `source: {type: elfsight, widget_id}`.
+4. Otherwise: write `brewcal/sources/<name>.py` exposing `fetch(brewery) -> list[Event]`, register
    it in `brewcal/sources/__init__.py`, and use that key as `source.type`.
-4. `uv run brewcal list --brewery <slug>` to verify, commit, push. The workflow publishes the feed
+5. `uv run brewcal list --brewery <slug>` to verify, commit, push. The workflow publishes the feed
    and the index page picks it up automatically.
 
 ## Gotchas

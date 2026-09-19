@@ -32,10 +32,20 @@ class Brewery:
     url: str                      # public events page (goes into event URL/description)
     location: str                 # default LOCATION for every event
     timezone: str
-    source: dict[str, Any]        # {"type": "elfsight", "widget_id": "..."} etc.
+    source: dict[str, Any] | None = None   # {"type": "elfsight", "widget_id": "..."} etc.
+    feed_url: str = ""            # set instead of `source` when the brewery already publishes an .ics
+    google_calendar_id: str = ""  # optional; makes the "Add to Google Calendar" link a native subscribe
     keep_past_days: int = 60
     default_duration_minutes: int = 120
     description: str = ""
+
+    def __post_init__(self):
+        if bool(self.source) == bool(self.feed_url):
+            raise SystemExit(f"{self.slug}: set exactly one of `source` or `feed_url`")
+
+    @property
+    def external(self) -> bool:
+        return bool(self.feed_url)
 
 
 @dataclass

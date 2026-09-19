@@ -56,6 +56,9 @@ def main(argv: list[str] | None = None) -> int:
 def build(cfg: Config, breweries: list[Brewery], out: Path, *, dry_run: bool) -> int:
     failures = 0
     for brewery in breweries:
+        if brewery.external:
+            log.info("%s: external feed (%s), nothing to build", brewery.slug, brewery.feed_url)
+            continue
         try:
             events = fetch_events(brewery)
         except Exception as exc:
@@ -86,6 +89,9 @@ def build(cfg: Config, breweries: list[Brewery], out: Path, *, dry_run: bool) ->
 def list_events(breweries: list[Brewery], days: int) -> int:
     horizon = date.today() + timedelta(days=days)
     for brewery in breweries:
+        if brewery.external:
+            print(f"== {brewery.name}: external feed, subscribe directly: {brewery.feed_url}")
+            continue
         events = fetch_events(brewery)
         print(f"== {brewery.name} ({len(events)} events in source) ==")
         for ev in sorted(events, key=lambda e: ical._sort_key(e.start)):
@@ -108,13 +114,18 @@ def render_index(cfg: Config) -> str:
     title = html.escape(cfg.site.get("title", "Brewery Calendars"))
     rows = []
     for b in cfg.breweries:
-        https_url = f"{base}/{b.slug}.ics"
+        https_url = b.feed_url or f"{base}/{b.slug}.ics"
         webcal_url = https_url.replace("https://", "webcal://", 1)
-        google_url = f"https://calendar.google.com/calendar/r?cid={quote(webcal_url, safe='')}"
+        if b.google_calendar_id:
+            google_url = f"https://calendar.google.com/calendar/r?cid={quote(b.google_calendar_id, safe='')}"
+        else:
+            google_url = f"https://calendar.google.com/calendar/r?cid={quote(webcal_url, safe='')}"
+        badge = ('<span class="badge">brewery\'s own public calendar, updates live</span>' if b.external
+                 else '<span class="badge">rebuilt weekly from their events page</span>')
         rows.append(f"""
       <li>
         <h2>{html.escape(b.name)}</h2>
-        <p class="meta">{html.escape(b.location)} &middot; <a href="{html.escape(b.url)}">events page</a></p>
+        <p class="meta">{html.escape(b.location)} &middot; <a href="{html.escape(b.url)}">events page</a> &middot; {badge}</p>
         <p class="links">
           <a class="btn" href="{webcal_url}">Subscribe (Apple / Outlook)</a>
           <a class="btn" href="{google_url}">Add to Google Calendar</a>
@@ -138,6 +149,7 @@ def render_index(cfg: Config) -> str:
   .btn {{ background:var(--btn); color:#fff; text-decoration:none; padding:8px 14px; border-radius:8px; font-size:.9rem; }}
   .btn.alt {{ background:var(--muted); }}
   .url {{ margin:0; font-size:.8rem; word-break:break-all; color:var(--muted); }}
+  .badge {{ font-size:.8rem; }}
   footer {{ color:var(--muted); font-size:.8rem; margin-top:32px; }}
 </style></head>
 <body><main>

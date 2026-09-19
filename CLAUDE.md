@@ -14,6 +14,9 @@ same way; this fills the gap for breweries with no feed).
 
 - **Config-first.** A new brewery on a known platform is a `config/breweries.yaml` entry only.
   New platforms get a small adapter in `brewcal/sources/` registered in `sources/__init__.py`.
+- **Link, don't mirror, feeds that already exist.** Chilly Hollow's Elfsight widget is fed by a
+  public Google Calendar; the config uses `feed_url` and the index links straight to Google's
+  `.ics`. A weekly mirror would only add lag and lose RECURRENCE-ID overrides.
 - **Structured data over scraping.** Honor Brewing uses an Elfsight widget whose JSON boot
   endpoint has everything. Before writing an HTML scraper for a new brewery, look for the
   widget/platform API first (Elfsight, Squarespace `?format=json`, The Events Calendar
