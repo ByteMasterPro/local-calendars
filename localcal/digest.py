@@ -1,9 +1,14 @@
-"""Weekly Discord digest, three sections Christopher specified:
+"""Weekly Discord digest, three sections Christopher specified.
 
-  Fairs, Festivals and Carnivals   next 5 upcoming one-offs (any date) + one "ongoing weekends" line
+"This week" is Monday-Sunday. The post runs Monday morning, but can run any day: it then shows
+only what is left of the week (run time through Sunday), and anything already over is dropped.
+Each section lists this week's events in full, then ONE "Next week:" line of highlights for the
+following Mon-Sun. Nothing further out appears.
+
+  Fairs, Festivals and Carnivals   one-offs this week + one "Ongoing weekends" line for season farms
   Local Breweries                  seasonal first (Sep-Oct Oktoberfest/German/Halloween, Nov-Dec holiday),
-                                   topped up with live music; never karaoke/trivia/discount noise
-  Town Activities                  this week, capped, meetings and farmers markets excluded
+                                   topped up with live music only when thin; never karaoke/trivia/discounts
+  Town Activities                  capped, meetings excluded, with a Farmers Markets sub-list
 
 Every line reads:  **Sun Sep 20**, 1–4pm — [Title](url) (Venue, Town): excerpt. Tomorrow.
 Settings live under `digest:` in config/calendars.yaml.
@@ -16,6 +21,7 @@ import re
 import time as _time
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -44,106 +50,180 @@ class Section:
 class Digest:
     title: str
     start: date
-    end: date                 # inclusive last day of the "this week" window
+    end: date                 # inclusive: the Sunday closing this week
+    next_start: date
+    next_end: date
     sections: list[Section]
     index_url: str
     errors: int = 0
 
 
+@dataclass
+class Window:
+    start: date               # first day shown in detail (the run day)
+    end: date                 # Sunday of this week, inclusive
+    next_start: date          # following Monday
+    next_end: date            # following Sunday, inclusive
+    now: datetime             # anything that ended before this is dropped
+    preview_limit: int = 5
+
+
 # ------------------------------------------------------------------------ build
 
-def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None) -> Digest:
+def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, now: datetime | None = None) -> Digest:
     cfg_d = cfg.digest or {}
     secs = cfg_d.get("sections") or {}
-    week_days = days or int(cfg_d.get("days", 7))
-    horizon = max([week_days] + [int(v.get("days", 0)) for v in secs.values()] + [int(secs.get("fairs", {}).get("horizon_days", 0))])
-    rows, errors = query.gather(feeds, start, start + timedelta(days=horizon))
+    tz = ZoneInfo(feeds[0].timezone) if feeds else ZoneInfo("America/New_York")
+    w = week_window(start, now or datetime.now(tz), int(cfg_d.get("preview_limit", 5)))
+    rows, errors = query.gather(feeds, w.start, w.next_end + timedelta(days=1))
     by_slug = {f.slug: f for f in feeds}
 
     sections = []
     if "fairs" in secs:
         c = secs["fairs"]
         sections.append(Section("fairs", c.get("label", "Fairs, Festivals and Carnivals"), "🎪", 0x2A8FBD,
-                                fairs_lines(rows, c, start, by_slug)))
+                                fairs_lines(rows, c, w, by_slug)))
     if "breweries" in secs:
         c = secs["breweries"]
         sections.append(Section("breweries", c.get("label", "Local Breweries"), "🍺", 0xF39C12,
-                                breweries_lines(rows, c, start, by_slug)))
+                                breweries_lines(rows, c, w, by_slug)))
     if "towns" in secs:
         c = secs["towns"]
         sections.append(Section("towns", c.get("label", "Town Activities"), "🏘️", 0x27AE60,
-                                towns_lines(rows, c, start, by_slug)))
-    return Digest(title=cfg_d.get("title", "This week"), start=start, end=start + timedelta(days=week_days - 1),
-                  sections=sections, index_url=cfg.site.get("base_url", ""), errors=errors)
+                                towns_lines(rows, c, w, by_slug)))
+    return Digest(title=cfg_d.get("title", "This week"), start=w.start, end=w.end, next_start=w.next_start,
+                  next_end=w.next_end, sections=sections, index_url=cfg.site.get("base_url", ""), errors=errors)
 
 
-def fairs_lines(rows, c, start, by_slug) -> list[str]:
-    horizon = start + timedelta(days=int(c.get("horizon_days", 120)))
-    pool = _select(rows, kinds=c.get("kinds", ["festival"]), start=start, end=horizon, exclude=c.get("exclude"))
-    one_offs = _collapse([r for r in pool if not r["series"]])
-    ongoing = _collapse([r for r in pool if r["series"]])
-    lines = [format_line(r, start, by_slug) for r in one_offs[: int(c.get("limit", 5))]]
+def week_window(start: date, now: datetime, preview_limit: int = 5) -> Window:
+    """Monday-Sunday weeks. Run on a Saturday and you get Sat-Sun; next week is always Mon-Sun."""
+    sunday = start + timedelta(days=6 - start.weekday())
+    return Window(start=start, end=sunday, next_start=sunday + timedelta(days=1),
+                  next_end=sunday + timedelta(days=7), now=now, preview_limit=preview_limit)
+
+
+def fairs_lines(rows, c, w: Window, by_slug) -> list[str]:
+    kinds = c.get("kinds", ["festival"])
+    this = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
+    one_offs = _collapse([r for r in this if not r["series"]])
+    ongoing = _collapse([r for r in this if r["series"]])
+    lines = [format_line(r, w.start, by_slug) for r in one_offs[: int(c.get("limit", 8))]]
     if ongoing:
         bits = []
         for r in ongoing:
             until = f" thru {_d(date.fromisoformat(r['series_until']))}" if r.get("series_until") else ""
             bits.append(f"{_link(_short_title(r['summary']), r['url'])}{until}")
         lines.append("**Ongoing weekends:** " + " · ".join(bits))
-    return lines
+    shown = {r["summary"].lower() for r in one_offs + ongoing}
+    nxt = _collapse([r for r in _select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude"))
+                     if r["summary"].lower() not in shown])
+    return lines + _preview(nxt, w)
 
 
-def breweries_lines(rows, c, start, by_slug) -> list[str]:
-    end = start + timedelta(days=int(c.get("days", 14)))
-    pool = _select(rows, kinds=c.get("kinds", ["brewery"]), start=start, end=end, exclude=c.get("exclude"))
-    seasonal_rx = _season_pattern(c.get("seasonal") or [], start)
-    picked = _collapse([r for r in pool if query.matches(r, seasonal_rx)]) if seasonal_rx else []
-    limit = int(c.get("limit", 8))
-    # Music is the fallback when the season isn't giving us much, not a permanent top-up.
-    if len(picked) < int(c.get("fill_below", 3)) and c.get("fallback"):
-        seen = {(r["summary"].lower(), r["calendar"]) for r in picked}
-        fill = [r for r in _collapse([r for r in pool if query.matches(r, c["fallback"])])
-                if (r["summary"].lower(), r["calendar"]) not in seen]
-        picked = sorted(picked + fill[: limit - len(picked)], key=lambda r: r["_sort"])
-    return [format_line(r, start, by_slug) for r in picked[:limit]]
+def breweries_lines(rows, c, w: Window, by_slug) -> list[str]:
+    kinds = c.get("kinds", ["brewery"])
+    seasonal_rx = _season_pattern(c.get("seasonal") or [], w.start)
+    limit, fill_below = int(c.get("limit", 8)), int(c.get("fill_below", 3))
+
+    def pick(pool, cap, fill_below):
+        chosen = _collapse([r for r in pool if query.matches(r, seasonal_rx)]) if seasonal_rx else []
+        # Music is the fallback when the season isn't giving us much, not a permanent top-up.
+        if len(chosen) < fill_below and c.get("fallback"):
+            seen = {(r["summary"].lower(), r["calendar"]) for r in chosen}
+            fill = [r for r in _collapse([r for r in pool if query.matches(r, c["fallback"])])
+                    if (r["summary"].lower(), r["calendar"]) not in seen]
+            chosen = sorted(chosen + fill[: cap - len(chosen)], key=lambda r: r["_sort"])
+        return chosen[:cap]
+
+    this = pick(_select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude")), limit, fill_below)
+    shown = {r["summary"].lower() for r in this}
+    # highlights: seasonal only; music only if the following week has nothing seasonal at all
+    nxt = pick(_select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude")), w.preview_limit, 1)
+    nxt = [r for r in nxt if r["summary"].lower() not in shown]
+    return [format_line(r, w.start, by_slug) for r in this] + _preview(nxt, w)
 
 
-def towns_lines(rows, c, start, by_slug) -> list[str]:
-    end = start + timedelta(days=int(c.get("days", 7)))
-    pool = _collapse(_select(rows, kinds=c.get("kinds", ["town"]), start=start, end=end, exclude=c.get("exclude")))
+def towns_lines(rows, c, w: Window, by_slug) -> list[str]:
+    kinds = c.get("kinds", ["town"])
+    fm = c.get("farmers_markets") or {}
+    fm_rx = re.compile(fm["pattern"], re.I) if fm.get("pattern") else None
     prio = c.get("prioritize")
-    if prio:
-        pool.sort(key=lambda r: (0 if query.matches(r, prio) else 1, r["_sort"]))
-    picked = sorted(pool[: int(c.get("limit", 8))], key=lambda r: r["_sort"])
-    return [format_line(r, start, by_slug) for r in picked]
+
+    def rank(pool, cap):
+        pool = _collapse(pool)
+        if prio:
+            pool.sort(key=lambda r: (0 if query.matches(r, prio) else 1, r["_sort"]))
+        return sorted(pool[:cap], key=lambda r: r["_sort"])
+
+    this = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
+    markets = [r for r in this if fm_rx and fm_rx.search(query.haystack(r))]
+    lines = [format_line(r, w.start, by_slug) for r in rank([r for r in this if r not in markets], int(c.get("limit", 8)))]
+    if markets:
+        lines.append(f"🥕 **{fm.get('label', 'Farmers Markets')}:**")
+        lines += [_market_line(occ, by_slug) for occ in _group(markets).values()]
+    shown = {r["summary"].lower() for r in this}
+    nxt = _select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude"))
+    nxt = rank([r for r in nxt if r["summary"].lower() not in shown and not (fm_rx and fm_rx.search(query.haystack(r)))], w.preview_limit)
+    return lines + _preview(nxt, w)
+
+
+def _preview(rows, w: Window) -> list[str]:
+    """One compact line of next week's highlights: title (day) · title (day)."""
+    if not rows:
+        return []
+    bits = [f"{_link(_short_title(r['summary']), r['url'])} ({datetime.fromisoformat(r['start']):%a})" for r in rows[: w.preview_limit]]
+    return [f"**Next week ({_d(w.next_start)} – {_d(w.next_end)}):** " + " · ".join(bits)]
+
+
+def _market_line(occ, by_slug) -> str:
+    """Leesburg Saturday Farmers Market — Sat 8am–12pm, Sun 9am–12pm (Virginia Village, Leesburg)"""
+    first = occ[0]
+    times = []
+    for o in occ:
+        s = datetime.fromisoformat(o["start"]); e = datetime.fromisoformat(o["end"])
+        times.append(f"{s:%a}" + ("" if o["all_day"] else f" {_span(s, e)}"))
+    return f"{_link(first['summary'], first['url'])} — {', '.join(times)} ({_where(first, by_slug)})"
 
 
 # --------------------------------------------------------------------- helpers
 
-def _select(rows, *, kinds, start, end, exclude):
+def _select(rows, *, kinds, start, end, now, exclude):
+    """Rows of the given kinds overlapping [start, end] (inclusive days), minus noise.
+
+    `now` (a tz-aware datetime, or None) drops anything already finished on the run day.
+    Multi-week things that began before the window (exhibits, programs) are left out; a fair
+    that started a few days ago and is still running stays in.
+    """
     ex = re.compile(exclude, re.I) if exclude else None
     out = []
     for r in rows:
         if r["kind"] not in kinds:
             continue
-        s = datetime.fromisoformat(r["start"]).date()
-        e = datetime.fromisoformat(r["end"]).date()
-        if e < start or s >= end:
+        s_dt = datetime.fromisoformat(r["start"]); e_dt = datetime.fromisoformat(r["end"])
+        s, e = s_dt.date(), (e_dt.date() - timedelta(days=1) if r["all_day"] else e_dt.date())
+        if e < start or s > end:
             continue
-        if s < start and (e - s).days > 3 and not r["series"]:
+        if s < start and (e - s).days > 14 and not r["series"]:
             continue                                    # long-running thing that began weeks ago
+        if now is not None and not r["all_day"] and e_dt <= now:
+            continue                                    # already over today
         if ex and ex.search(query.haystack(r)):
             continue
         out.append(r)
     return out
 
 
-def _collapse(rows):
-    """One row per (title, calendar), keeping the earliest occurrence and counting the rest."""
+def _group(rows) -> dict[tuple, list]:
     grouped: dict[tuple, list] = {}
     for r in sorted(rows, key=lambda r: r["_sort"]):
         grouped.setdefault((r["summary"].lower(), r["calendar"]), []).append(r)
+    return grouped
+
+
+def _collapse(rows):
+    """One row per (title, calendar), keeping the earliest occurrence and counting the rest."""
     out = []
-    for occ in grouped.values():
+    for occ in _group(rows).values():
         first = dict(occ[0])
         first["_more"] = [datetime.fromisoformat(o["start"]) for o in occ[1:]]
         out.append(first)
@@ -188,10 +268,15 @@ def _where(r, by_slug) -> str:
         venue = feed.short_name
     else:
         first = re.split(r",| @ | \(", loc, maxsplit=1)[0].strip()
-        venue = first if first and not first[0].isdigit() else (feed.name if feed else r["calendar"])
-    if town and town.lower() not in venue.lower():
+        if first and not first[0].isdigit():
+            venue = first
+        elif feed and feed.source and feed.source.get("type") == "manual":
+            venue = ""                                  # curated list: the town says it all
+        else:
+            venue = feed.name if feed else r["calendar"]
+    if venue and town and town.lower() not in venue.lower():
         return f"{venue}, {town}"
-    return venue
+    return venue or town
 
 
 def _town_from(location: str) -> str:
@@ -203,6 +288,7 @@ def _excerpt(desc: str) -> str:
     text = html_to_text(desc or "")
     text = _OUR_TRAILERS.sub("", text)
     text = re.sub(r"https?://\S+", "", text)
+    text = re.sub(r"\.{2,}", ".", text)
     text = re.sub(r"\s+", " ", text).strip(" .-–")
     if not text:
         return ""
@@ -255,7 +341,7 @@ def render_text(d: Digest) -> str:
 
 def discord_payloads(d: Digest) -> list[dict]:
     """Header message + one embed per section (split if a section is long)."""
-    header = f"📅 **{d.title}** — {_d(d.start)} to {_d(d.end)}"
+    header = f"📅 **{d.title}** — {_d(d.start)} to {_d(d.end)}" + (" (the rest of this week)" if d.start.weekday() > 0 else "")
     if d.index_url:
         header += f"\nAll calendars and subscribe links: <{d.index_url}>"
     payloads = [{"content": header[:DISCORD_MAX_CONTENT]}]

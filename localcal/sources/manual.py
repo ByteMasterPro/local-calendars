@@ -20,6 +20,9 @@ File format:
       - title: Temple Hall Farm Fall Days
         season: {start: 2026-09-26, end: 2026-11-03, days: [SA, SU]}   # weekly all-day on those
         ...                                                            # days; days defaults to SA,SU
+
+      - title: Leesburg Saturday Farmers Market
+        season: {start: 2026-05-02, end: 2026-10-31, days: [SA], time: "08:00-12:00"}   # timed weekly
 """
 
 from __future__ import annotations
@@ -57,7 +60,11 @@ def _parse_entry(e: dict, feed: Feed, tz: ZoneInfo) -> Event:
         wanted = {_WEEKDAY_INDEX[d] for d in days}
         while first.weekday() not in wanted:                 # DTSTART must be an occurrence
             first += timedelta(days=1)
-        start, end, all_day = first, first + timedelta(days=1), True
+        if season.get("time"):
+            t1, t2 = (time.fromisoformat(x.strip()) for x in str(season["time"]).split("-"))
+            start, end, all_day = datetime.combine(first, t1, tzinfo=tz), datetime.combine(first, t2, tzinfo=tz), False
+        else:
+            start, end, all_day = first, first + timedelta(days=1), True
         rrule = {"FREQ": "WEEKLY", "BYDAY": days, "UNTIL": datetime.combine(last, time(23, 59), tzinfo=tz)}
         exdates = [_as_date(x) for x in season.get("skip") or []]
     else:

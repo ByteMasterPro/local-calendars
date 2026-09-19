@@ -1,0 +1,68 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//localcal 0.1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALDESC:Weekly farmers markets around Leesburg, curated in config/eve
+ nts/farmers-markets.yaml.
+X-WR-CALNAME:Farmers Markets near Leesburg
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+X-WR-TIMEZONE:America/New_York
+BEGIN:VTIMEZONE
+TZID:America/New_York
+COMMENT:This timezone only works from 2025-05-01 to 2029-05-05.
+BEGIN:DAYLIGHT
+DTSTART:20250501T000000
+TZNAME:EDT
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0400
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:20251102T020000
+RDATE:20261101T020000,20271107T020000,20281105T020000
+TZNAME:EST
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20260308T030000
+RDATE:20270314T030000,20280312T030000,20290311T030000
+TZNAME:EDT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:Leesburg Saturday Farmers Market
+DTSTART;TZID=America/New_York:20260502T080000
+DTEND;TZID=America/New_York:20260502T120000
+DTSTAMP:20260919T155328Z
+UID:leesburg-saturday-farmers-market-2026-05-02@farmers-markets
+RRULE:FREQ=WEEKLY;UNTIL=20261101T035900Z;BYDAY=SA
+CATEGORIES:farmers market,family
+DESCRIPTION:Loudoun Valley HomeGrown Markets Cooperative's producer-only m
+ arket\; everything sold is grown or made by the vendor. Summer hours 8am-1
+ 2pm May-Oct\; open year-round (winter hours vary).\n\nMore info: https://w
+ ww.loudounfarmersmarkets.org/leesburg-saturday
+LOCATION:Virginia Village Shopping Center\, 30 Catoctin Circle SE\, Leesbu
+ rg\, VA 20175
+TRANSP:TRANSPARENT
+URL:https://www.loudounfarmersmarkets.org/leesburg-saturday
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Cascades Sunday Farmers Market
+DTSTART;TZID=America/New_York:20260503T090000
+DTEND;TZID=America/New_York:20260503T120000
+DTSTAMP:20260919T155328Z
+UID:cascades-sunday-farmers-market-2026-05-03@farmers-markets
+RRULE:FREQ=WEEKLY;UNTIL=20261026T035900Z;BYDAY=SU
+CATEGORIES:farmers market,family
+DESCRIPTION:LVHMC's Sunday market in Cascades\, Sterling. Sundays 9am-noon
+ \, May through October.\n\nMore info: https://www.loudounfarmersmarkets.or
+ g/
+LOCATION:21060 Whitfield Dr\, Sterling\, VA 20165
+TRANSP:TRANSPARENT
+URL:https://www.loudounfarmersmarkets.org/
+END:VEVENT
+END:VCALENDAR

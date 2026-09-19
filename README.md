@@ -17,6 +17,7 @@ up?" across all of them at once.
 | Historic Manassas Inc. | `https://historicmanassas.org/events/?ical=1` | their own iCal export (live) |
 | One Loudoun | `https://bytemasterpro.github.io/local-calendars/one-loudoun.ics` | rebuilt daily from their Squarespace events JSON |
 | Fairs & Festivals near Leesburg | `https://bytemasterpro.github.io/local-calendars/fairs-festivals.ics` | hand-curated in `config/events/fairs-festivals.yaml` |
+| Farmers Markets near Leesburg | `https://bytemasterpro.github.io/local-calendars/farmers-markets.ics` | hand-curated in `config/events/farmers-markets.yaml` |
 
 ## Subscribing
 
@@ -41,22 +42,25 @@ sorted by start time. `--json` is for piping into other tools.
 
 ## Weekly Discord digest
 
-`localcal digest` posts three sections every Monday, built from the same live query:
+`localcal digest` posts three sections every Monday. "This week" is Monday-Sunday; run it on a
+Saturday and it shows only what is left of the weekend (anything already over is dropped). Each
+section lists this week's events in full, then one **Next week:** line of highlights for the
+following Mon-Sun. Nothing further out appears.
 
-- **Fairs, Festivals and Carnivals** - the next 5 upcoming one-off events (any week, up to 120
-  days out) from the curated calendar, plus one "Ongoing weekends" line for season-long farms.
-- **Local Breweries** - two weeks ahead. Seasonal events first (Sep-Oct: Oktoberfest, German,
-  Halloween; Nov-Dec: Christmas and holiday), topped up with live music only when the season is
-  thin. Karaoke, trivia, discounts and watch parties are excluded.
-- **Town Activities** - this week from the town/community calendars, max 8, meetings and farmers
-  markets excluded, festivals/parades/movies/kids ranked first.
+- **Fairs, Festivals and Carnivals** - one-offs this week, plus one "Ongoing weekends" line for
+  season-long farms (pumpkin patches, Cox Farms) so they don't repeat every week.
+- **Local Breweries** - seasonal events first (Sep-Oct: Oktoberfest, German, Halloween; Nov-Dec:
+  Christmas and holiday), topped up with live music only when the season is thin. Karaoke,
+  trivia, discounts and watch parties are excluded. The preview is seasonal-only.
+- **Town Activities** - capped at 8, meetings excluded, festivals/parades/movies/kids ranked first,
+  with a 🥕 **Farmers Markets** sub-list (Leesburg Saturday, Cascades Sunday, Historic Manassas).
 
 Each line reads `**Sun Sep 20**, 1–4pm — Title (Venue, Town): excerpt. Tomorrow.` Everything is
 tunable under `digest:` in `config/calendars.yaml`.
 
 ```bash
-uv run localcal digest                     # print a preview for the coming week
-uv run localcal digest --from 2026-09-21   # preview a specific Monday
+uv run localcal digest                     # preview from today through Sunday
+uv run localcal digest --from 2026-09-21   # preview as if run on that day
 DISCORD_WEBHOOK_URL=... uv run localcal digest --post
 ```
 

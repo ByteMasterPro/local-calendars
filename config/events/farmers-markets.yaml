@@ -1,0 +1,23 @@
+# Farmers markets near Leesburg. Recurring `season` entries; re-verify each spring when the
+# co-ops publish the new season. Winter hours for Leesburg are not published on the LVHMC site,
+# so this entry ends Oct 31 and should be extended once confirmed.
+
+events:
+  - title: Leesburg Saturday Farmers Market
+    season: {start: 2026-05-02, end: 2026-10-31, days: [SA], time: "08:00-12:00"}
+    location: Virginia Village Shopping Center, 30 Catoctin Circle SE, Leesburg, VA 20175
+    url: https://www.loudounfarmersmarkets.org/leesburg-saturday
+    description: >-
+      Loudoun Valley HomeGrown Markets Cooperative's producer-only market; everything sold is grown
+      or made by the vendor. Summer hours 8am-12pm May-Oct; open year-round (winter hours vary).
+    tags: [farmers market, family]
+    verified: 2026-09-19
+
+  - title: Cascades Sunday Farmers Market
+    season: {start: 2026-05-03, end: 2026-10-25, days: [SU], time: "09:00-12:00"}
+    location: 21060 Whitfield Dr, Sterling, VA 20165
+    url: https://www.loudounfarmersmarkets.org/
+    description: >-
+      LVHMC's Sunday market in Cascades, Sterling. Sundays 9am-noon, May through October.
+    tags: [farmers market, family]
+    verified: 2026-09-19

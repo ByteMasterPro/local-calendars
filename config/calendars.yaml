@@ -136,6 +136,16 @@ calendars:
     # WordPress "The Events Calendar" plugin; it exports iCal natively.
     feed_url: https://historicmanassas.org/events/?ical=1
 
+  - slug: farmers-markets
+    name: Farmers Markets near Leesburg
+    kind: town
+    url: https://www.loudounfarmersmarkets.org/
+    location: Loudoun County, VA
+    description: Weekly farmers markets around Leesburg, curated in config/events/farmers-markets.yaml.
+    source:
+      type: manual
+      file: config/events/farmers-markets.yaml
+
   # ------------------------------------------------------------ fairs & festivals
   - slug: fairs-festivals
     name: Fairs & Festivals near Leesburg
@@ -147,23 +157,22 @@ calendars:
       type: manual
       file: config/events/fairs-festivals.yaml
 
-# Weekly Discord digest (`localcal digest`, Mondays). Three sections. Regexes are case-insensitive
-# and matched against title + description + tags + calendar name. Each line reads
+# Weekly Discord digest (`localcal digest`, Mondays). Three sections. Each shows ONLY this week
+# (run day through Sunday) in detail, then one "Next week:" line of highlights for the following
+# Mon-Sun. Regexes are case-insensitive, matched against title + description + tags + calendar.
 #   **Sun Sep 20**, 1–4pm — Title (Venue, Town): excerpt. Tomorrow.
 digest:
   title: This week around Leesburg
-  days: 7                                  # the "this week" window (header + Town Activities)
+  preview_limit: 5                         # highlights per "Next week:" line
   sections:
     fairs:
       label: "Fairs, Festivals and Carnivals"
       kinds: [festival]
-      limit: 5                             # next 5 one-off events, whatever week they fall in...
-      horizon_days: 120                    # ...looking this far ahead; season attractions get one
-                                           # "Ongoing weekends" line instead of eating the 5 slots
+      limit: 8                             # one-offs this week; season farms collapse into one
+                                           # "Ongoing weekends" line
     breweries:
       label: "Local Breweries"
       kinds: [brewery]
-      days: 14                             # two weekends of planning room
       limit: 8
       exclude: "karaoke|trivia|bingo|singo|\\d+% off|% off|happy hour|appy hour|watch party|kids eat free|growler|taco tuesday|teacher tuesday|discount|football"
       seasonal:                            # matched first, by the month the digest runs in
@@ -176,7 +185,9 @@ digest:
     towns:
       label: "Town Activities"
       kinds: [town]
-      days: 7
       limit: 8
-      exclude: "farmers market|council|commission|board meeting|public hearing|zoning|work session|advisory"
+      exclude: "council|commission|board meeting|public hearing|zoning|work session|advisory|zumba|fitness|yoga|workout"
       prioritize: "fair|festival|carnival|parade|fireworks|movie|market|kids|family|concert|halloween|pumpkin|holiday|airshow|air show|tour"
+      farmers_markets:
+        label: "Farmers Markets"
+        pattern: "farmers'? market|farmer's market"

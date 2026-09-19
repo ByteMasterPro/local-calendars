@@ -3,7 +3,7 @@
     localcal build    [--only SLUG] [--dry-run]              fetch sources, write docs/<slug>.ics + docs/index.html
     localcal upcoming [--days N] [--grep REGEX] [--only SLUG,SLUG] [--json]
                                                              what's happening across ALL calendars (built + external)
-    localcal digest   [--days 7] [--post]                    weekly Discord digest (Recommended / Other Family Events)
+    localcal digest   [--from DATE] [--post]                 weekly Discord digest (this week + next-week highlights)
 """
 
 from __future__ import annotations
@@ -52,8 +52,8 @@ def main(argv: list[str] | None = None) -> int:
     u.add_argument("--json", action="store_true")
 
     dg = sub.add_parser("digest", help="build (and with --post, send) the weekly Discord digest")
-    dg.add_argument("--days", type=int, default=None, help="window length (default: digest.days in config, else 7)")
-    dg.add_argument("--from", dest="start", type=date.fromisoformat, default=None)
+    dg.add_argument("--from", dest="start", type=date.fromisoformat, default=None,
+                    help="pretend it is this day (the window runs from here to Sunday)")
     dg.add_argument("--post", action="store_true", help="send to $DISCORD_WEBHOOK_URL instead of printing")
     dg.add_argument("--only", help="comma-separated slugs")
 
@@ -72,7 +72,7 @@ def main(argv: list[str] | None = None) -> int:
         return build(cfg, feeds, args.out, dry_run=args.dry_run)
     start = args.start or date.today()
     if args.cmd == "digest":
-        return digest(cfg, feeds, start, args.days or int(cfg.digest.get("days", 7)), post=args.post)
+        return digest(cfg, feeds, start, post=args.post)
     return upcoming(cfg, feeds, start, start + timedelta(days=args.days), args.grep, as_json=args.json)
 
 
@@ -157,8 +157,8 @@ def _clock(dt: datetime) -> str:
 
 # ---------------------------------------------------------------------------- digest
 
-def digest(cfg: Config, feeds: list[Feed], start: date, days: int, *, post: bool) -> int:
-    d = digest_mod.build(cfg, feeds, start, days)
+def digest(cfg: Config, feeds: list[Feed], start: date, *, post: bool) -> int:
+    d = digest_mod.build(cfg, feeds, start)
     if not post:
         print(digest_mod.render_text(d))
         return 1 if d.errors else 0
