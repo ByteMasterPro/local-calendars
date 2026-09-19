@@ -10,6 +10,9 @@ up?" across all of them at once.
 |---|---|---|
 | Honor Brewing - Loudoun | `https://bytemasterpro.github.io/local-calendars/honor-brewing-loudoun.ics` | rebuilt daily from their Elfsight widget |
 | Chilly Hollow Brewing Co. | `https://calendar.google.com/calendar/ical/7a36777b804e9b9d04d70c58670135065f60a7e350d7b860f9e9c7686a9a7131%40group.calendar.google.com/public/basic.ics` | their own public Google Calendar (live) |
+| Solace Brewing Co. in Sterling | `https://calendar.google.com/calendar/ical/c_81872c01230a1e2a19950379cffece76cfb4c99e93bfa5a74ef2c3c26715c165%40group.calendar.google.com/public/basic.ics` | their own public Google Calendar (live) |
+| Vanish Farmwoods Brewery (music) | `https://vanishbeer.com/calendar/category/music/?post_type=tribe_events&ical=1&eventDisplay=list` | their own iCal export (live) |
+| Flying Ace Farm | `https://flyingacefarm.com/?post_type=tribe_events&ical=1&eventDisplay=list` | their own iCal export (live) |
 | Town of Leesburg - Community Events | `https://bytemasterpro.github.io/local-calendars/leesburg.ics` | rebuilt daily from the Town's calendar RSS |
 | Historic Manassas Inc. | `https://historicmanassas.org/events/?ical=1` | their own iCal export (live) |
 

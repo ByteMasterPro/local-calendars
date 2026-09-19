@@ -47,4 +47,4 @@ def test_index_links_external_feed_directly():
 def test_index_groups_by_kind():
     cfg = load_config(ROOT / "config" / "calendars.yaml")
     page = render_index(cfg)
-    assert page.index("<h2>Breweries</h2>") < page.index("Honor Brewing") < page.index("<h2>Towns") < page.index("Leesburg")
+    assert page.index("<h2>Breweries</h2>") < page.index("Honor Brewing") < page.index("<h2>Towns") < page.index("Town of Leesburg")

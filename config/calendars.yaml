@@ -42,6 +42,33 @@ calendars:
     feed_url: https://calendar.google.com/calendar/ical/7a36777b804e9b9d04d70c58670135065f60a7e350d7b860f9e9c7686a9a7131%40group.calendar.google.com/public/basic.ics
     google_calendar_id: 7a36777b804e9b9d04d70c58670135065f60a7e350d7b860f9e9c7686a9a7131@group.calendar.google.com
 
+  # The three below already publish feeds; they are here so `localcal upcoming` covers them and
+  # the index page is the one place to find every subscribe URL.
+  - slug: solace-sterling
+    name: Solace Brewing Co. in Sterling
+    kind: brewery
+    url: https://www.solacebrewing.com/sterling
+    location: Solace Brewing Co., 42615 Trade W Dr, Sterling, VA 20166
+    feed_url: https://calendar.google.com/calendar/ical/c_81872c01230a1e2a19950379cffece76cfb4c99e93bfa5a74ef2c3c26715c165%40group.calendar.google.com/public/basic.ics
+    google_calendar_id: c_81872c01230a1e2a19950379cffece76cfb4c99e93bfa5a74ef2c3c26715c165@group.calendar.google.com
+
+  - slug: vanish
+    name: Vanish Farmwoods Brewery
+    kind: brewery
+    url: https://vanishbeer.com/calendar/
+    location: Vanish Farmwoods Brewery, 42245 Black Hops Ln, Leesburg, VA 20176
+    # WordPress The Events Calendar; this is the "music" category feed Christopher already uses.
+    feed_url: https://vanishbeer.com/calendar/category/music/?post_type=tribe_events&ical=1&eventDisplay=list
+
+  - slug: flying-ace
+    name: Flying Ace Farm
+    kind: brewery
+    url: https://flyingacefarm.com/
+    location: Flying Ace Farm, 40950 Flying Ace Ln, Lovettsville, VA 20180
+    # WordPress The Events Calendar. Some of their entries are typed in America/Halifax (their
+    # quirk, an hour off); we pass them through as published.
+    feed_url: https://flyingacefarm.com/?post_type=tribe_events&ical=1&eventDisplay=list
+
   # Honor's Fairfax/Chantilly location has its own widget on /honor-brewing-fairfax:
   # - slug: honor-brewing-fairfax
   #   name: Honor Brewing - Fairfax
