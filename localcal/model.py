@@ -9,7 +9,7 @@ from typing import Any
 
 import yaml
 
-KINDS = {"brewery": "Breweries", "town": "Towns & Community", "other": "Other"}
+KINDS = {"brewery": "Breweries", "town": "Towns & Community", "festival": "Fairs & Festivals", "other": "Other"}
 
 
 @dataclass
@@ -68,6 +68,7 @@ class Feed:
 class Config:
     site: dict[str, Any]          # {"title": ..., "base_url": ...} used for the index page
     feeds: list[Feed]
+    digest: dict[str, Any] = field(default_factory=dict)   # Discord digest settings, see config
 
     def feed_url_for(self, feed: Feed) -> str:
         """The URL a subscriber should use for this feed."""
@@ -81,4 +82,4 @@ def load_config(path: Path) -> Config:
     slugs = [f.slug for f in feeds]
     if len(slugs) != len(set(slugs)):
         raise SystemExit(f"duplicate slugs in {path}: {slugs}")
-    return Config(site=raw.get("site") or {}, feeds=feeds)
+    return Config(site=raw.get("site") or {}, feeds=feeds, digest=raw.get("digest") or {})

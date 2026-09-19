@@ -9,6 +9,9 @@
 #        with the /Home/Components/RssFeeds/RssFeed/View?ctID=6&cateIDs=... URL and accumulate: true
 #      - WordPress "The Events Calendar"     -> feed_url: https://site/events/?ical=1
 #      - CivicPlus (.gov, /calendar.aspx)    -> feed_url: /common/modules/iCalendar/iCalendar.aspx?catID=N&feed=calendar
+#      - Squarespace events page             -> source: {type: squarespace, url: https://site/events}
+#        (try feed_url: https://site/events?format=ical first; some templates support it)
+#      - no feed anywhere (fairs, carnivals) -> add to config/events/fairs-festivals.yaml
 #   2. `uv run localcal upcoming --only <slug>` to eyeball, then commit + push. The workflow publishes.
 #   3. New platform: write localcal/sources/<name>.py, register it in sources/__init__.py.
 
@@ -97,6 +100,16 @@ calendars:
       rss_url: https://www.leesburgva.gov/Home/Components/RssFeeds/RssFeed/View?ctID=6&cateIDs=60,7,180,260,62,1333,216,52,66,213,259,47,171,1340,263,1316
     accumulate: true
 
+  - slug: one-loudoun
+    name: One Loudoun
+    kind: town
+    url: https://www.downtownoneloudoun.com/events/
+    location: One Loudoun, 20387 Exchange St, Ashburn, VA 20147
+    # Squarespace events collection; ?format=json works, ?format=ical does not on their template.
+    source:
+      type: squarespace
+      url: https://www.downtownoneloudoun.com/events
+
   - slug: historic-manassas
     name: Historic Manassas Inc.
     kind: town
@@ -104,3 +117,28 @@ calendars:
     location: Historic Downtown Manassas, VA
     # WordPress "The Events Calendar" plugin; it exports iCal natively.
     feed_url: https://historicmanassas.org/events/?ical=1
+
+  # ------------------------------------------------------------ fairs & festivals
+  - slug: fairs-festivals
+    name: Fairs & Festivals near Leesburg
+    kind: festival
+    url: https://bytemasterpro.github.io/local-calendars/
+    location: Northern Virginia
+    description: Hand-curated fairs, festivals, carnivals and seasonal farm events within about an hour of Leesburg, VA.
+    source:
+      type: manual
+      file: config/events/fairs-festivals.yaml
+
+# Weekly Discord digest (`localcal digest`). Regexes are case-insensitive and matched against
+# title + description + categories/tags + calendar name.
+digest:
+  title: This week around Leesburg
+  days: 7
+  recommended:
+    label: "Recommended For You"
+    pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|halloween|haunt|spooky|trick.or.treat|pumpkin|harvest fest|fall fest|chillyfest|honorfest"
+  family:
+    label: "Other Family Events"
+    kinds: [festival]                  # every event from these calendars qualifies...
+    pattern: "\\bfair\\b|festival|fest\\b|carnival|parade|jubilee|fireworks|movie night|kids|family|craft show|bazaar|moonlight market|touch.a.truck|egg hunt|air ?show"   # ...plus matches anywhere
+    exclude: "farmers market|council|commission|board meeting|public hearing|zoning"

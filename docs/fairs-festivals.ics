@@ -1,0 +1,171 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//localcal 0.1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALDESC:Hand-curated fairs, festivals, carnivals and seasonal farm ev
+ ents within about an hour of Leesburg, VA.
+X-WR-CALNAME:Fairs & Festivals near Leesburg
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+X-WR-TIMEZONE:America/New_York
+BEGIN:VTIMEZONE
+TZID:America/New_York
+COMMENT:This timezone only works from 2025-09-18 to 2029-10-07.
+BEGIN:DAYLIGHT
+DTSTART:20250918T000000
+TZNAME:EDT
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0400
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:20251102T020000
+RDATE:20261101T020000,20271107T020000,20281105T020000
+TZNAME:EST
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20260308T030000
+RDATE:20270314T030000,20280312T030000,20290311T030000
+TZNAME:EDT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:Bluemont Fair
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260921
+DTSTAMP:20260919T145512Z
+UID:bluemont-fair-2026-09-19@fairs-festivals
+CATEGORIES:fair,family
+DESCRIPTION:Village fair\, 10am to 5pm both days: local artisans\, live mu
+ sic on several stages\, heritage exhibits\, children's activities\, food a
+ nd local beverages.\n\nMore info: https://www.bluemontfair.org/
+LOCATION:Bluemont Fairgrounds\, 33846 Snickersville Tpke\, Bluemont\, VA 2
+ 0135
+TRANSP:TRANSPARENT
+URL:https://www.bluemontfair.org/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Great Country Farms Fall Pumpkin Harvest Festival
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+DTSTAMP:20260919T145512Z
+UID:great-country-farms-fall-pumpkin-harvest-festival-2026-09-19@fairs-fes
+ tivals
+RRULE:FREQ=WEEKLY;UNTIL=20261101T035900Z;BYDAY=SA,SU
+CATEGORIES:fall,pumpkin,festival,farm,family
+DESCRIPTION:Runs Sep 19 through Oct 31. Pick-your-own pumpkins\, corn maze
+ \, pig races\, pumpkin cannons\, cider donuts\, character appearances\, ju
+ mping pillows and playgrounds. Also: Family Flashlight Corn Maze Nights Se
+ p 19 & 26\, Adult Corn Maze Nights (21+) Fri/Sat in October\, Pumpkin Chun
+ kin' Nov 1-3\, LoCo Cider Fest Nov 15. Listed on weekends here.\n\nMore in
+ fo: https://greatcountryfarms.com/festivals-events/
+LOCATION:Great Country Farms\, 18780 Foggy Bottom Rd\, Bluemont\, VA 20135
+TRANSP:TRANSPARENT
+URL:https://greatcountryfarms.com/festivals-events/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Cox Farms Fall Festival
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+DTSTAMP:20260919T145512Z
+UID:cox-farms-fall-festival-2026-09-19@fairs-festivals
+RRULE:FREQ=WEEKLY;UNTIL=20261109T045900Z;BYDAY=SA,SU
+CATEGORIES:fall,pumpkin,festival,farm,family
+DESCRIPTION:The big one. Sep 19 through Nov 8\; 10am-6pm in Sep/Oct\, 10am
+ -5pm in Nov. Giant slides\, hayrides\, rope swings\, farm animals\, corn m
+ aze\, cider donuts. Listed on weekends here.\n\nMore info: https://coxfarm
+ sva.com/fall-festival/
+LOCATION:Cox Farms\, 15621 Braddock Rd\, Centreville\, VA 20120
+TRANSP:TRANSPARENT
+URL:https://coxfarmsva.com/fall-festival/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:State Fair of Virginia
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20261005
+DTSTAMP:20260919T145512Z
+UID:state-fair-of-virginia-2026-09-25@fairs-festivals
+CATEGORIES:fair,family
+DESCRIPTION:The state fair: 4-H and FFA agricultural exhibits\, rides and 
+ midway\, live concerts\, monster trucks\, classic fair food. Gates Fri-Sat
+  10am-10pm\, Sun-Thu 10am-9pm. About 1h45m from Leesburg\; advance tickets
+  are cheaper.\n\nMore info: https://www.statefairva.org/
+LOCATION:Meadow Event Park\, 13191 Dawn Blvd\, Doswell\, VA 23047
+TRANSP:TRANSPARENT
+URL:https://www.statefairva.org/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Fields of Fear at Cox Farms (haunted\, older kids/teens)
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20260926
+DTSTAMP:20260919T145512Z
+UID:fields-of-fear-at-cox-farms-haunted-older-kids-teens-2026-09-25@fairs-
+ festivals
+RRULE:FREQ=WEEKLY;UNTIL=20261108T045900Z;BYDAY=FR,SA
+CATEGORIES:halloween,haunted,teens
+DESCRIPTION:Cox Farms' after-dark Halloween event: Fridays and Saturdays 7
+ :30pm-11pm (last entry 10pm) Sep 25 through Nov 7\, plus Sunday Oct 11. Ha
+ unted cornfield\, forest trail\, bonfires. Not for young children.\n\nMore
+  info: https://fieldsoffear.coxfarmsva.com/
+LOCATION:Cox Farms\, 15621 Braddock Rd\, Centreville\, VA 20120
+TRANSP:TRANSPARENT
+URL:https://fieldsoffear.coxfarmsva.com/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Temple Hall Farm Fall Days (pumpkin patch & flower fields)
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+DTSTAMP:20260919T145512Z
+UID:temple-hall-farm-fall-days-pumpkin-patch-flower-fields-2026-09-26@fair
+ s-festivals
+RRULE:FREQ=WEEKLY;UNTIL=20261104T045900Z;BYDAY=SA,SU
+CATEGORIES:fall,pumpkin,farm,family
+DESCRIPTION:NOVA Parks' working farm 10 minutes from Lansdowne. Open daily
+  9am-5pm (last tickets 4pm) Sep 26 through Nov 3. $15 per person includes 
+ a pumpkin and a flower bouquet\; $3 off weekdays\; under 2 free. Farm anim
+ als\, jumping pillows\, hill slides\, corn box\; food truck on weekends. L
+ isted on weekends here\, but open every day.\n\nMore info: https://www.nov
+ aparks.com/events/temple-hall-farm-pumpkin-patch-sunflower-fields
+LOCATION:Temple Hall Farm Regional Park\, 15855 Limestone School Rd\, Lees
+ burg\, VA 20176
+TRANSP:TRANSPARENT
+URL:https://www.novaparks.com/events/temple-hall-farm-pumpkin-patch-sunflo
+ wer-fields
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lovettsville Oktoberfest (30th)
+DTSTART;TZID=America/New_York:20260926T100000
+DTEND;TZID=America/New_York:20260926T170000
+DTSTAMP:20260919T145512Z
+UID:lovettsville-oktoberfest-30th-2026-09-26@fairs-festivals
+CATEGORIES:german,oktoberfest,festival,family
+DESCRIPTION:The Town of Lovettsville's 30th Oktoberfest\, back around the 
+ Squirkle and Town Hall. German food and beer\, stein hauling and hoisting
+ \, the Wiener Dog Races\, Kinderfest for kids\, and 50+ artisans and local
+  businesses. Free shuttles run 9:30am to 6pm from Lovettsville Community P
+ ark.\n\nMore info: https://www.lovettsvilleoktoberfest.com/
+LOCATION:Zoldos Square & Town Hall\, 6 E Pennsylvania Ave\, Lovettsville\,
+  VA 20180
+TRANSP:TRANSPARENT
+URL:https://www.lovettsvilleoktoberfest.com/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Waterford Fair
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261005
+DTSTAMP:20260919T145512Z
+UID:waterford-fair-2026-10-02@fairs-festivals
+CATEGORIES:fair,festival,family
+DESCRIPTION:Three-day fall festival in the historic village\, 10am to 5pm 
+ daily: 85+ juried heritage and contemporary craft artisans\, living histor
+ ians\, historic home tours\, juried art exhibition\, regional food and dri
+ nk\, music.\n\nMore info: https://www.waterfordfairva.org/
+LOCATION:Waterford Foundation\, 40222 Fairfax St\, Waterford\, VA 20197
+TRANSP:TRANSPARENT
+URL:https://www.waterfordfairva.org/
+END:VEVENT
+END:VCALENDAR

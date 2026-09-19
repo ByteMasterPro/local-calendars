@@ -1,0 +1,33 @@
+name: Weekly Discord digest
+
+on:
+  schedule:
+    # Mondays 11:00 UTC = 07:00 EDT / 06:00 EST, covering Mon-Sun. GitHub cron is UTC only.
+    - cron: "0 11 * * 1"
+  workflow_dispatch:
+    inputs:
+      post:
+        description: "Actually post to Discord (otherwise print a preview in the log)"
+        type: boolean
+        default: true
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    env:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --frozen
+
+      - name: Build and post digest
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "::warning::DISCORD_WEBHOOK_URL secret is not set; printing preview only"
+            uv run localcal digest
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.post }}" != "true" ]; then
+            uv run localcal digest
+          else
+            uv run localcal digest --post
+          fi

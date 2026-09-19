@@ -27,6 +27,20 @@ council meetings) unless asked. Regex is a retrieval net, not the answer; read t
 descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event even though
 "german" isn't in the title). Note Leesburg's feed only sees ~2 weeks ahead.
 
+## Fairs & Festivals (curated) and the Discord digest
+
+- `config/events/fairs-festivals.yaml` is hand-curated because no regional aggregator publishes
+  a feed (checked DullesMoms, Visit Loudoun, NOVA Parks, Loudoun Now on 2026-09-19). When
+  Christopher asks to add a fair/festival, verify the date on the organizer's site or a .gov
+  listing, then add it with a `verified:` date. Never add an event from memory alone.
+  Multi-week attractions (pumpkin patches, Cox Farms) use `season:` so they show on weekends
+  rather than as a two-month banner.
+- The weekly Discord post (`localcal digest`, Mondays via `.github/workflows/digest.yml`) has two
+  sections he named: "Recommended For You" (Oktoberfest/German/Halloween/pumpkin) and "Other
+  Family Events" (fairs, festivals, carnivals, parades, movie nights). Tune the regexes under
+  `digest:` in `config/calendars.yaml`; preview with `localcal digest --from <monday>`.
+  It needs the `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets.
+
 ## Conventions
 
 - **Config-first.** A new calendar on a known platform is a `config/calendars.yaml` entry.
@@ -62,7 +76,11 @@ uv run pytest
   `/Home/Components/RssFeeds/RssFeed/View?ctID=6&cateIDs=...` is NOT blocked. ctID=5 is News,
   6 is Calendar. Category ids are in the `<select name="eventcats_...">` on /residents/calendar.
   Horizon is ~2 weeks and no query parameter widens it, hence `accumulate: true`.
-- **Historic Manassas** (WordPress + The Events Calendar): `?ical=1` works.
+- **Historic Manassas** (WordPress + The Events Calendar): `?ical=1` works. Each performance of
+  a show has its own UID, so the digest collapses by (title, calendar), not UID.
+- **One Loudoun** (Squarespace): `?format=json` works, `?format=ical` does not on their template.
+  They enter weekly series (Zumba, Moonlight Market) as one months-long event; the adapter turns
+  a 7+ day same-weekday span into a weekly RRULE.
 - **Loudoun County** (loudoun.gov, CivicPlus): iCal exists at
   `/common/modules/iCalendar/iCalendar.aspx?catID=34&feed=calendar` but "County Events" had 4
   items; not worth adding as of 2026-09-19. Sterling, Ashburn and Aldie are unincorporated, so

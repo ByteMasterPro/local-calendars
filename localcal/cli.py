@@ -3,6 +3,7 @@
     localcal build    [--only SLUG] [--dry-run]              fetch sources, write docs/<slug>.ics + docs/index.html
     localcal upcoming [--days N] [--grep REGEX] [--only SLUG,SLUG] [--json]
                                                              what's happening across ALL calendars (built + external)
+    localcal digest   [--days 7] [--post]                    weekly Discord digest (Recommended / Other Family Events)
 """
 
 from __future__ import annotations
@@ -18,12 +19,10 @@ from pathlib import Path
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
-import recurring_ical_events
-import requests
-from icalendar import Calendar
-
-from localcal import ical
+from localcal import digest as digest_mod
+from localcal import ical, query
 from localcal.model import KINDS, Config, Feed, load_config
+from localcal.query import load_calendar, occurrences  # noqa: F401  (re-exported for tests)
 from localcal.sources import fetch_events
 
 log = logging.getLogger("localcal")
@@ -51,6 +50,12 @@ def main(argv: list[str] | None = None) -> int:
     u.add_argument("--only", help="comma-separated slugs")
     u.add_argument("--json", action="store_true")
 
+    dg = sub.add_parser("digest", help="build (and with --post, send) the weekly Discord digest")
+    dg.add_argument("--days", type=int, default=None, help="window length (default: digest.days in config, else 7)")
+    dg.add_argument("--from", dest="start", type=date.fromisoformat, default=None)
+    dg.add_argument("--post", action="store_true", help="send to $DISCORD_WEBHOOK_URL instead of printing")
+    dg.add_argument("--only", help="comma-separated slugs")
+
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format="%(levelname)s %(name)s: %(message)s",
                         stream=sys.stderr)
@@ -65,6 +70,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "build":
         return build(cfg, feeds, args.out, dry_run=args.dry_run)
     start = args.start or date.today()
+    if args.cmd == "digest":
+        return digest(cfg, feeds, start, args.days or int(cfg.digest.get("days", 7)), post=args.post)
     return upcoming(cfg, feeds, start, start + timedelta(days=args.days), args.grep, as_json=args.json)
 
 
@@ -108,60 +115,11 @@ def build(cfg: Config, feeds: list[Feed], out: Path, *, dry_run: bool) -> int:
 
 # ------------------------------------------------------------------------ upcoming
 
-def load_calendar(feed: Feed) -> Calendar:
-    """Every feed as an icalendar.Calendar, fetched live (external .ics or built from source)."""
-    if feed.external:
-        resp = requests.get(feed.feed_url, headers={"User-Agent": USER_AGENT}, timeout=60)
-        resp.raise_for_status()
-        return Calendar.from_ical(resp.content)
-    return Calendar.from_ical(ical.render(feed, fetch_events(feed)))
-
-
-def occurrences(feed: Feed, cal: Calendar, start: date, end: date) -> list[dict]:
-    """Expand recurring events and normalise each occurrence to a plain dict."""
-    tz = ZoneInfo(feed.timezone)
-    rows = []
-    for v in recurring_ical_events.of(cal).between(start, end):
-        s = v["DTSTART"].dt
-        e = v["DTEND"].dt if "DTEND" in v else s
-        all_day = not isinstance(s, datetime)
-        if not all_day:
-            s = s.astimezone(tz) if s.tzinfo else s.replace(tzinfo=tz)
-            e = e.astimezone(tz) if e.tzinfo else e.replace(tzinfo=tz)
-        cats = v.get("CATEGORIES")
-        rows.append({
-            "calendar": feed.name,
-            "slug": feed.slug,
-            "summary": str(v.get("SUMMARY", "")).strip(),
-            "start": s.isoformat(),
-            "end": e.isoformat(),
-            "all_day": all_day,
-            "location": str(v.get("LOCATION", "")),
-            "url": str(v.get("URL", "")),
-            "description": str(v.get("DESCRIPTION", "")),
-            "categories": [str(c) for c in cats.cats] if cats is not None else [],
-            "_sort": s if isinstance(s, datetime) else datetime.combine(s, time.min, tzinfo=tz),
-        })
-    return rows
-
-
 def upcoming(cfg: Config, feeds: list[Feed], start: date, end: date, pattern: str | None, *, as_json: bool) -> int:
-    rx = re.compile(pattern, re.I) if pattern else None
-    rows: list[dict] = []
-    errors = 0
-    for feed in feeds:
-        try:
-            cal = load_calendar(feed)
-        except Exception as exc:
-            log.error("%s: could not load (%s)", feed.slug, exc)
-            errors += 1
-            continue
-        for row in occurrences(feed, cal, start, end):
-            hay = " ".join([row["summary"], row["description"], " ".join(row["categories"])])
-            if rx and not rx.search(hay):
-                continue
-            rows.append(row)
-    rows.sort(key=lambda r: r["_sort"])
+    rows, errors = query.gather(feeds, start, end)
+    if pattern:
+        rx = re.compile(pattern, re.I)
+        rows = [r for r in rows if query.matches(r, rx)]
 
     if as_json:
         for r in rows:
@@ -182,6 +140,8 @@ def upcoming(cfg: Config, feeds: list[Feed], start: date, end: date, pattern: st
         if r["all_day"]:
             span = e.date() - timedelta(days=1)
             when = "all day" if span <= day else f"through {span:%b %d}"
+        elif e.date() > day:
+            when = f"{_clock(s)} thru {e:%b %d}"
         else:
             when = f"{_clock(s)}-{_clock(e)}"
         print(f"  {when:<18} {r['summary'][:70]:<70}  [{r['calendar']}]")
@@ -192,6 +152,23 @@ def upcoming(cfg: Config, feeds: list[Feed], start: date, end: date, pattern: st
 
 def _clock(dt: datetime) -> str:
     return dt.strftime("%-I:%M%p").lower().replace(":00", "")
+
+
+# ---------------------------------------------------------------------------- digest
+
+def digest(cfg: Config, feeds: list[Feed], start: date, days: int, *, post: bool) -> int:
+    d = digest_mod.build(cfg, feeds, start, days)
+    if not post:
+        print(digest_mod.render_text(d))
+        return 1 if d.errors else 0
+    webhook = os.environ.get("DISCORD_WEBHOOK_URL")
+    if not webhook:
+        log.error("DISCORD_WEBHOOK_URL is not set; printing instead")
+        print(digest_mod.render_text(d))
+        return 2
+    digest_mod.post(webhook, digest_mod.discord_payloads(d))
+    log.info("digest posted: %s", ", ".join(f"{s.label}={len(s.lines)}" for s in d.sections))
+    return 1 if d.errors else 0
 
 
 # --------------------------------------------------------------------------- index

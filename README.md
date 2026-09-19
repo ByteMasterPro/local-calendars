@@ -15,6 +15,8 @@ up?" across all of them at once.
 | Flying Ace Farm | `https://flyingacefarm.com/?post_type=tribe_events&ical=1&eventDisplay=list` | their own iCal export (live) |
 | Town of Leesburg - Community Events | `https://bytemasterpro.github.io/local-calendars/leesburg.ics` | rebuilt daily from the Town's calendar RSS |
 | Historic Manassas Inc. | `https://historicmanassas.org/events/?ical=1` | their own iCal export (live) |
+| One Loudoun | `https://bytemasterpro.github.io/local-calendars/one-loudoun.ics` | rebuilt daily from their Squarespace events JSON |
+| Fairs & Festivals near Leesburg | `https://bytemasterpro.github.io/local-calendars/fairs-festivals.ics` | hand-curated in `config/events/fairs-festivals.yaml` |
 
 ## Subscribing
 
@@ -37,13 +39,35 @@ Everything is fetched live (external feeds are downloaded, built feeds are rebui
 source), recurring events are expanded with EXDATE/RECURRENCE-ID honoured, and results are
 sorted by start time. `--json` is for piping into other tools.
 
+## Weekly Discord digest
+
+`localcal digest` builds a two-section post from the same live query: **Recommended For You**
+(Oktoberfest / German / Halloween / pumpkin-patch matches, tuned in `digest.recommended.pattern`)
+and **Other Family Events** (everything on the Fairs & Festivals calendar plus fair / festival /
+parade / movie-night matches elsewhere). Recurring items collapse to one line ("also Sun").
+
+```bash
+uv run localcal digest                     # print a preview for the next 7 days
+uv run localcal digest --from 2026-09-21   # preview a specific week
+DISCORD_WEBHOOK_URL=... uv run localcal digest --post
+```
+
+`.github/workflows/digest.yml` posts every Monday 11:00 UTC using the `DISCORD_WEBHOOK_URL`
+repository secret (Discord channel > Edit > Integrations > Webhooks > New Webhook, then
+`gh secret set DISCORD_WEBHOOK_URL --repo ByteMasterPro/local-calendars`). Without the secret
+the workflow prints the preview to its log instead of failing.
+
 ## How it works
 
 ```
 config/calendars.yaml        one entry per calendar: slug, name, kind, address, source adapter or feed_url
 localcal/sources/            adapters that turn a site's event data into Event objects
 localcal/ical.py             Event -> RFC 5545 .ics (TZID + bounded VTIMEZONE, RRULE, EXDATE); parse + merge
-localcal/cli.py              `localcal build` writes docs/<slug>.ics + docs/index.html; `localcal upcoming`
+localcal/query.py            live fetch + recurrence expansion shared by `upcoming` and the digest
+localcal/digest.py           Discord digest sections, formatting and webhook posting
+localcal/cli.py              `localcal build` / `upcoming` / `digest`
+config/events/               curated event lists used by the `manual` adapter
+.github/workflows/digest.yml Monday 11:00 UTC Discord post (needs the DISCORD_WEBHOOK_URL secret)
 docs/                        the published site (GitHub Pages serves this folder)
 .github/workflows/build.yml  daily cron (10:00 UTC) + on push to config/localcal; commits docs/
 ```
@@ -59,6 +83,11 @@ the bot only commits when a source actually changed something.
 - **`vision_rss`** - Granicus govAccess (Vision CMS) municipal sites, whose HTML is often behind
   a bot wall but whose calendar RSS is not. The date/time is parsed out of each item's title.
   Pair with `accumulate: true` because the RSS only lists ~2 weeks ahead.
+- **`squarespace`** - any Squarespace events page, via `?format=json`. Months-long single events
+  on one weekday (how Squarespace users enter "every Thursday") are turned into weekly series.
+- **`manual`** - a curated YAML file (`config/events/*.yaml`) for fairs, festivals and carnivals
+  that no one publishes a feed for. Supports one-offs, timed events and multi-week `season`
+  attractions that show on chosen weekdays. Every entry carries a `verified:` date.
 - **External feeds** (`feed_url`) - when the venue already publishes an `.ics` (public Google
   Calendar, WordPress The Events Calendar `?ical=1`, CivicPlus `iCalendar.aspx`), we link to it
   instead of mirroring. `upcoming` still queries it.

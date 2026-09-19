@@ -1,0 +1,103 @@
+# Fairs, festivals, carnivals and seasonal farm events near Leesburg, VA that nobody publishes
+# a feed for. Hand-curated: add what you find (see localcal/sources/manual.py for the format).
+# Every entry here was checked against the organizer's own site or a government listing on the
+# date in `verified`. Re-verify dates each season; organizers move them.
+#
+#   start/end:  a date = all-day (end is the inclusive last day); "YYYY-MM-DD HH:MM" = timed
+#   season:     multi-week attraction -> shows as an all-day item on the listed weekdays
+#   tags:       feed the Discord digest's "Recommended For You" matcher (german, oktoberfest,
+#               halloween, fair, festival, carnival, family, ...)
+
+events:
+  - title: Bluemont Fair
+    start: 2026-09-19
+    end: 2026-09-20
+    location: Bluemont Fairgrounds, 33846 Snickersville Tpke, Bluemont, VA 20135
+    url: https://www.bluemontfair.org/
+    description: >-
+      Village fair, 10am to 5pm both days: local artisans, live music on several stages,
+      heritage exhibits, children's activities, food and local beverages.
+    tags: [fair, family]
+    verified: 2026-09-19
+
+  - title: Lovettsville Oktoberfest (30th)
+    start: 2026-09-26 10:00
+    end: 2026-09-26 17:00
+    location: Zoldos Square & Town Hall, 6 E Pennsylvania Ave, Lovettsville, VA 20180
+    url: https://www.lovettsvilleoktoberfest.com/
+    description: >-
+      The Town of Lovettsville's 30th Oktoberfest, back around the Squirkle and Town Hall.
+      German food and beer, stein hauling and hoisting, the Wiener Dog Races, Kinderfest for
+      kids, and 50+ artisans and local businesses. Free shuttles run 9:30am to 6pm from
+      Lovettsville Community Park.
+    tags: [german, oktoberfest, festival, family]
+    verified: 2026-09-19
+
+  - title: State Fair of Virginia
+    start: 2026-09-25
+    end: 2026-10-04
+    location: Meadow Event Park, 13191 Dawn Blvd, Doswell, VA 23047
+    url: https://www.statefairva.org/
+    description: >-
+      The state fair: 4-H and FFA agricultural exhibits, rides and midway, live concerts,
+      monster trucks, classic fair food. Gates Fri-Sat 10am-10pm, Sun-Thu 10am-9pm.
+      About 1h45m from Leesburg; advance tickets are cheaper.
+    tags: [fair, family]
+    verified: 2026-09-19
+
+  - title: Waterford Fair
+    start: 2026-10-02
+    end: 2026-10-04
+    location: Waterford Foundation, 40222 Fairfax St, Waterford, VA 20197
+    url: https://www.waterfordfairva.org/
+    description: >-
+      Three-day fall festival in the historic village, 10am to 5pm daily: 85+ juried heritage
+      and contemporary craft artisans, living historians, historic home tours, juried art
+      exhibition, regional food and drink, music.
+    tags: [fair, festival, family]
+    verified: 2026-09-19
+
+  - title: Temple Hall Farm Fall Days (pumpkin patch & flower fields)
+    season: {start: 2026-09-26, end: 2026-11-03, days: [SA, SU]}
+    location: Temple Hall Farm Regional Park, 15855 Limestone School Rd, Leesburg, VA 20176
+    url: https://www.novaparks.com/events/temple-hall-farm-pumpkin-patch-sunflower-fields
+    description: >-
+      NOVA Parks' working farm 10 minutes from Lansdowne. Open daily 9am-5pm (last tickets 4pm)
+      Sep 26 through Nov 3. $15 per person includes a pumpkin and a flower bouquet; $3 off
+      weekdays; under 2 free. Farm animals, jumping pillows, hill slides, corn box; food truck on
+      weekends. Listed on weekends here, but open every day.
+    tags: [fall, pumpkin, farm, family]
+    verified: 2026-09-19
+
+  - title: Great Country Farms Fall Pumpkin Harvest Festival
+    season: {start: 2026-09-19, end: 2026-10-31, days: [SA, SU]}
+    location: Great Country Farms, 18780 Foggy Bottom Rd, Bluemont, VA 20135
+    url: https://greatcountryfarms.com/festivals-events/
+    description: >-
+      Runs Sep 19 through Oct 31. Pick-your-own pumpkins, corn maze, pig races, pumpkin cannons,
+      cider donuts, character appearances, jumping pillows and playgrounds. Also: Family
+      Flashlight Corn Maze Nights Sep 19 & 26, Adult Corn Maze Nights (21+) Fri/Sat in October,
+      Pumpkin Chunkin' Nov 1-3, LoCo Cider Fest Nov 15. Listed on weekends here.
+    tags: [fall, pumpkin, festival, farm, family]
+    verified: 2026-09-19
+
+  - title: Cox Farms Fall Festival
+    season: {start: 2026-09-19, end: 2026-11-08, days: [SA, SU]}
+    location: Cox Farms, 15621 Braddock Rd, Centreville, VA 20120
+    url: https://coxfarmsva.com/fall-festival/
+    description: >-
+      The big one. Sep 19 through Nov 8; 10am-6pm in Sep/Oct, 10am-5pm in Nov. Giant slides,
+      hayrides, rope swings, farm animals, corn maze, cider donuts. Listed on weekends here.
+    tags: [fall, pumpkin, festival, farm, family]
+    verified: 2026-09-19
+
+  - title: Fields of Fear at Cox Farms (haunted, older kids/teens)
+    season: {start: 2026-09-25, end: 2026-11-07, days: [FR, SA]}
+    location: Cox Farms, 15621 Braddock Rd, Centreville, VA 20120
+    url: https://fieldsoffear.coxfarmsva.com/
+    description: >-
+      Cox Farms' after-dark Halloween event: Fridays and Saturdays 7:30pm-11pm (last entry 10pm)
+      Sep 25 through Nov 7, plus Sunday Oct 11. Haunted cornfield, forest trail, bonfires.
+      Not for young children.
+    tags: [halloween, haunted, teens]
+    verified: 2026-09-19

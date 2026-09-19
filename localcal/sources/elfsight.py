@@ -24,6 +24,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from localcal.model import Event, Feed
+from localcal.text import html_to_text as _html_to_text
 
 log = logging.getLogger(__name__)
 
@@ -148,16 +149,3 @@ def _as_list(value) -> list:
     if value is None or value == "":
         return []
     return value if isinstance(value, list) else [value]
-
-
-_BLOCK_END = re.compile(r"</(div|p|li|h[1-6]|tr)>|<br\s*/?>", re.I)
-_TAGS = re.compile(r"<[^>]+>")
-
-
-def _html_to_text(fragment: str) -> str:
-    text = _BLOCK_END.sub("\n", fragment)
-    text = _TAGS.sub("", text)
-    text = html.unescape(text)
-    text = re.sub(r"[ \t]+\n", "\n", text)
-    text = re.sub(r"\n{3,}", "\n\n", text)
-    return text.strip()

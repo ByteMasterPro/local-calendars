@@ -53,7 +53,15 @@ def _vevent(ev: Event, now: datetime) -> VEvent:
     if ev.categories:
         v.add("CATEGORIES", ev.categories)
     if ev.rrule:
-        v.add("RRULE", vRecur(ev.rrule))
+        rule = dict(ev.rrule)
+        until = rule.get("UNTIL")
+        # RFC 5545: with a TZID DTSTART, UNTIL must be in UTC (a floating UNTIL is read as UTC
+        # by most clients, which silently drops the last occurrence).
+        if isinstance(until, datetime) and until.tzinfo is not None:
+            rule["UNTIL"] = until.astimezone(timezone.utc)
+        elif isinstance(until, date) and not isinstance(until, datetime) and isinstance(ev.start, datetime):
+            rule["UNTIL"] = datetime.combine(until, datetime.max.time().replace(microsecond=0), tzinfo=ev.start.tzinfo).astimezone(timezone.utc)
+        v.add("RRULE", vRecur(rule))
     for ex in ev.exdates:
         v.add("EXDATE", ex)
     v.add("TRANSP", "TRANSPARENT")   # subscribed brewery events should not block free/busy

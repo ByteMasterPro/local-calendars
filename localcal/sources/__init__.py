@@ -25,9 +25,26 @@ def _vision_rss(feed: Feed) -> list[Event]:
     return vision_rss.parse_events(xml, feed)
 
 
+def _squarespace(feed: Feed) -> list[Event]:
+    from localcal.sources import squarespace
+
+    return squarespace.parse_events(squarespace.fetch(feed.source["url"]), feed)
+
+
+def _manual(feed: Feed) -> list[Event]:
+    from pathlib import Path
+
+    from localcal.sources import manual
+
+    root = Path(__file__).resolve().parent.parent.parent
+    return manual.parse_events(manual.load(root / feed.source["file"]), feed)
+
+
 REGISTRY: dict[str, Callable[[Feed], list[Event]]] = {
     "elfsight": _elfsight,
     "vision_rss": _vision_rss,
+    "squarespace": _squarespace,
+    "manual": _manual,
 }
 
 
