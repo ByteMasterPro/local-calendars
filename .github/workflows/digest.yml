@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}      # bot with Manage Messages: purges the channel first
+      DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5

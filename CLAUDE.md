@@ -48,7 +48,9 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   date** (bold date header once, events as `- time — Title (Venue, Town): excerpt` bullets).
   Top picks repeat in full inside their sections; he wants that repetition. Tune under `digest:` in
   `config/calendars.yaml`; preview with `localcal digest --from <day>`. Needs the
-  `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets.
+  `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets. Since 2026-09-19 the post is
+  preceded by a **channel purge** (all non-pinned messages) via `DISCORD_BOT_TOKEN` +
+  `DISCORD_CHANNEL_ID`, same pattern as JobHunt's newsletter; without them it posts unpurged.
 - `short_name` / `town` on a feed drive the "(Vanish, Leesburg)" part; `wall_clock_tzids` fixes
   venues that tag events with the wrong TZID (Flying Ace uses America/Halifax for a quarter of
   theirs; the wall-clock time is the real Eastern time).

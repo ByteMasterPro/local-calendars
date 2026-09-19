@@ -20,7 +20,7 @@ import logging
 import re
 import time as _time
 from dataclasses import dataclass, field
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 import requests
@@ -439,6 +439,62 @@ def discord_payloads(d: Digest) -> list[dict]:
 def post(webhook_url: str, payloads: list[dict]) -> None:
     for payload in payloads:
         _post(webhook_url, payload)
+
+
+DISCORD_API = "https://discord.com/api/v10"
+
+
+def purge_channel(bot_token: str, channel_id: str) -> int:
+    """Delete every non-pinned message in the channel so the new digest is the only thing there.
+
+    Needs a bot in the server with Manage Messages + Read Message History on the channel. The
+    bulk-delete endpoint only accepts messages younger than 14 days; older ones go one by one.
+    Same approach as JobHunt's newsletter purge.
+    """
+    headers = {"Authorization": f"Bot {bot_token}"}
+    deleted = 0
+    for _ in range(20):                                   # safety cap: 2,000 messages
+        resp = _discord(requests.get, f"{DISCORD_API}/channels/{channel_id}/messages", headers=headers, params={"limit": 100})
+        msgs = [m for m in resp.json() if not m.get("pinned")]
+        if not msgs:
+            break
+        young = [m["id"] for m in msgs if _snowflake_age_days(m["id"]) < 13.5]
+        old = [m["id"] for m in msgs if m["id"] not in set(young)]
+        if len(young) >= 2:
+            _discord(requests.post, f"{DISCORD_API}/channels/{channel_id}/messages/bulk-delete", headers=headers, json={"messages": young})
+            deleted += len(young)
+        elif len(young) == 1:
+            _discord(requests.delete, f"{DISCORD_API}/channels/{channel_id}/messages/{young[0]}", headers=headers)
+            deleted += 1
+        for mid in old:
+            _discord(requests.delete, f"{DISCORD_API}/channels/{channel_id}/messages/{mid}", headers=headers)
+            deleted += 1
+            _time.sleep(0.4)                               # individual deletes are rate-limited
+        if len(resp.json()) < 100:
+            break
+    return deleted
+
+
+def _discord(method, url, **kw):
+    """One Discord REST call with 429 handling; raises on other errors."""
+    for _ in range(5):
+        resp = method(url, timeout=30, **kw)
+        if resp.status_code == 429:
+            try:
+                wait = float(resp.json().get("retry_after", 1.0))
+            except Exception:
+                wait = 1.0
+            _time.sleep(min(wait + 0.1, 5.0))
+            continue
+        if resp.status_code >= 300:
+            raise RuntimeError(f"Discord API {resp.status_code} on {url.split('/v10')[-1]}: {resp.text[:200]}")
+        return resp
+    raise RuntimeError("Discord API still rate-limited after 5 retries")
+
+
+def _snowflake_age_days(message_id: str) -> float:
+    ts_ms = (int(message_id) >> 22) + 1420070400000
+    return (datetime.now(timezone.utc).timestamp() - ts_ms / 1000) / 86400
 
 
 def _post(webhook_url: str, payload: dict) -> None:

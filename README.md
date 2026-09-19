@@ -68,6 +68,12 @@ DISCORD_WEBHOOK_URL=... uv run localcal digest --post
 `.github/workflows/digest.yml` posts Mondays 11:00 UTC using the `DISCORD_WEBHOOK_URL` repository
 secret. Trigger it by hand with `gh workflow run "Weekly Discord digest"`.
 
+Before posting, the channel is **purged** (every non-pinned message deleted) so it only ever holds
+the current digest. That needs a bot in the server with *Manage Messages* and *Read Message
+History* on the channel, and two more secrets: `DISCORD_BOT_TOKEN` and `DISCORD_CHANNEL_ID`
+(Discord: right-click the channel > Copy Channel ID, with Developer Mode on). Without them the
+digest still posts, just without the purge. Pin anything you want to survive.
+
 ## How it works
 
 ```

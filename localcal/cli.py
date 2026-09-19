@@ -167,6 +167,17 @@ def digest(cfg: Config, feeds: list[Feed], start: date, *, post: bool) -> int:
         log.error("DISCORD_WEBHOOK_URL is not set; printing instead")
         print(digest_mod.render_text(d))
         return 2
+    # Christopher wants the channel to hold only the current digest: wipe it right before posting.
+    bot_token, channel_id = os.environ.get("DISCORD_BOT_TOKEN"), os.environ.get("DISCORD_CHANNEL_ID")
+    if bot_token and channel_id:
+        try:
+            n = digest_mod.purge_channel(bot_token, channel_id)
+            log.info("purged %d old message(s) from the channel", n)
+        except Exception as exc:
+            log.warning("channel purge failed (posting anyway): %s", exc)
+            print("::warning::channel purge failed; digest posted on top of old messages")
+    else:
+        log.warning("DISCORD_BOT_TOKEN / DISCORD_CHANNEL_ID not set; skipping channel purge")
     digest_mod.post(webhook, digest_mod.discord_payloads(d))
     log.info("digest posted: %s", ", ".join(f"{s.label}={len(s.lines)}" for s in d.sections))
     if d.errors:
