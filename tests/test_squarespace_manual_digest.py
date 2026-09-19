@@ -128,3 +128,23 @@ def test_build_routes_rows_into_sections(monkeypatch):
     assert payloads[0]["content"].startswith("📅 **T** — Sat Sep 19 to Fri Sep 25")
     assert [p["embeds"][0]["title"] for p in payloads[1:]] == ["⭐ Recommended For You", "🎪 Other Family Events"]
     assert "Sat Sep 19 to Fri Sep 25" in digest.render_text(d)
+
+
+def test_cli_digest_post_path_without_webhook_returns_2(monkeypatch, capsys):
+    from localcal import cli
+    cfg = Config(site={"base_url": "https://idx"}, feeds=[], digest={"title": "T"})
+    monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
+    monkeypatch.delenv("DISCORD_WEBHOOK_URL", raising=False)
+    assert cli.digest(cfg, [], date(2026, 9, 21), 7, post=True) == 2
+    assert "T — Mon Sep 21" in capsys.readouterr().out
+
+
+def test_cli_digest_post_path_posts_each_payload(monkeypatch):
+    from localcal import cli
+    cfg = Config(site={"base_url": "https://idx"}, feeds=[], digest={"title": "T"})
+    monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
+    monkeypatch.setenv("DISCORD_WEBHOOK_URL", "https://discord.test/hook")
+    sent = []
+    monkeypatch.setattr(digest, "_post", lambda url, payload: sent.append((url, payload)))
+    assert cli.digest(cfg, [], date(2026, 9, 21), 7, post=True) == 0
+    assert len(sent) == 3 and all(u == "https://discord.test/hook" for u, _ in sent)
