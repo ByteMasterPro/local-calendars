@@ -1,0 +1,117 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//localcal 0.1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALDESC:Events at Town of Leesburg - Community Events. Source: https:
+ //www.leesburgva.gov/residents/calendar
+X-WR-CALNAME:Town of Leesburg - Community Events
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+X-WR-TIMEZONE:America/New_York
+BEGIN:VTIMEZONE
+TZID:America/New_York
+COMMENT:This timezone only works from 2025-09-23 to 2029-10-05.
+BEGIN:DAYLIGHT
+DTSTART:20250923T000000
+TZNAME:EDT
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0400
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:20251102T020000
+RDATE:20261101T020000,20271107T020000,20281105T020000
+TZNAME:EST
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20260308T030000
+RDATE:20270314T030000,20280312T030000,20290311T030000
+TZNAME:EDT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:The Battle of New Market Heights: Freedom Will be Theirs by the Sw
+ ord
+DTSTART;TZID=America/New_York:20260924T180000
+DTEND;TZID=America/New_York:20260924T200000
+DTSTAMP:20260919T134919Z
+UID:39075@leesburg
+DESCRIPTION:In the predawn darkness of September 29\, 1864\, Black Union s
+ oldiers attacked a heavily fortified position on the outskirts of Richmond
+  known as New Market Heights. In a few short hours of desperate fighting\,
+  these soldiers struck a blow against...\n\nDetails: https://www.leesburgv
+ a.gov/Home/Components/Calendar/Event/39075/\n\nCalendar: https://www.leesb
+ urgva.gov/residents/calendar
+LOCATION:Leesburg\, VA
+TRANSP:TRANSPARENT
+URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/39075/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Leesburg Airshow
+DTSTART;TZID=America/New_York:20260926T110000
+DTEND;TZID=America/New_York:20260926T160000
+DTSTAMP:20260919T134919Z
+UID:38727@leesburg
+DESCRIPTION:The Leesburg Airshow takes to the skies each September at Lees
+ burg Executive Airport. This free festival features amazing aerial perform
+ ances overhead\, fun activities on the ground\, and delicious festival foo
+ d for all ages.\n\nDetails: https://www.leesburgva.gov/Home/Components/Cal
+ endar/Event/38727/\n\nCalendar: https://www.leesburgva.gov/residents/calen
+ dar
+LOCATION:Leesburg\, VA
+TRANSP:TRANSPARENT
+URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/38727/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:First Friday at the Donaldson Cabin: Leesburg Day
+DTSTART;TZID=America/New_York:20261002T170000
+DTEND;TZID=America/New_York:20261002T190000
+DTSTAMP:20260919T134919Z
+UID:38693@leesburg
+DESCRIPTION:Celebrating Leesburg’s history and identity\, this exhibit b
+ rings together stories\, artifacts\, and images tied directly to the town.
+  It’s a snapshot of what makes Leesburg unique! Drop in at any time duri
+ ng the event. No registration required.\n\nDetails: https://www.leesburgva
+ .gov/Home/Components/Calendar/Event/38693/\n\nCalendar: https://www.leesbu
+ rgva.gov/residents/calendar
+LOCATION:Leesburg\, VA
+TRANSP:TRANSPARENT
+URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/38693/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Community Shredding Event
+DTSTART;TZID=America/New_York:20261003T090000
+DTEND;TZID=America/New_York:20261003T130000
+DTSTAMP:20260919T134919Z
+UID:38989@leesburg
+DESCRIPTION:Community Shredding Event Date: October 3\, 2026 Time: 9:00 a.
+ m.–1:00 p.m. (or until trucks are full) Location: Heritage High School\,
+  520 Evergreen Mills Rd SE\, Leesburg Protect your identity by safely disp
+ osing of sensitive documents. This free...\n\nDetails: https://www.leesbur
+ gva.gov/Home/Components/Calendar/Event/38989/\n\nCalendar: https://www.lee
+ sburgva.gov/residents/calendar
+LOCATION:Leesburg\, VA
+TRANSP:TRANSPARENT
+URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/38989/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Leesburg Walking Tour with James P. Roberts
+DTSTART;TZID=America/New_York:20261003T090000
+DTEND;TZID=America/New_York:20261003T120000
+DTSTAMP:20260919T134919Z
+UID:39073@leesburg
+DESCRIPTION:This three-hour tour is an insider’s commentary of local peo
+ ple\, places\, and points of interest both in and around Leesburg. Particu
+ lar detail will be paid to how Leesburg has grown and evolved through the 
+ years architecturally\, economically\, and...\n\nDetails: https://www.lees
+ burgva.gov/Home/Components/Calendar/Event/39073/\n\nCalendar: https://www.
+ leesburgva.gov/residents/calendar
+LOCATION:Leesburg\, VA
+TRANSP:TRANSPARENT
+URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/39073/
+END:VEVENT
+END:VCALENDAR

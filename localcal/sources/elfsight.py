@@ -23,12 +23,12 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from brewcal.model import Brewery, Event
+from localcal.model import Event, Feed
 
 log = logging.getLogger(__name__)
 
 BOOT_URL = "https://core.service.elfsight.com/p/boot/"
-USER_AGENT = "brewcal/0.1 (+https://github.com/ByteMasterPro/brewery-calendars)"
+USER_AGENT = "localcal/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
 
 # Elfsight repeat vocabulary -> RFC 5545 FREQ. Unknown values are logged and treated
 # as one-off events rather than guessed.
@@ -51,21 +51,21 @@ def fetch_settings(widget_id: str, session: requests.Session | None = None) -> d
     return data["settings"]
 
 
-def parse_events(settings: dict[str, Any], brewery: Brewery) -> list[Event]:
+def parse_events(settings: dict[str, Any], feed: Feed) -> list[Event]:
     types = {t["id"]: t["name"] for t in settings.get("eventTypes") or []}
     locations = {l["id"]: l for l in settings.get("locations") or []}
-    default_tz = ZoneInfo(brewery.timezone)
+    default_tz = ZoneInfo(feed.timezone)
     out: list[Event] = []
     for raw in settings.get("events") or []:
         try:
-            out.append(_parse_one(raw, brewery, types, locations, default_tz))
+            out.append(_parse_one(raw, feed, types, locations, default_tz))
         except Exception as exc:  # one bad record must not sink the whole feed
             log.warning("skipping event %s (%s): %s", raw.get("id"), raw.get("name"), exc)
     return out
 
 
-def _parse_one(raw, brewery: Brewery, types, locations, default_tz) -> Event:
-    tz = ZoneInfo(raw.get("timeZone") or brewery.timezone) if raw.get("timeZone") else default_tz
+def _parse_one(raw, feed: Feed, types, locations, default_tz) -> Event:
+    tz = ZoneInfo(raw.get("timeZone") or feed.timezone) if raw.get("timeZone") else default_tz
     all_day = bool(raw.get("isAllDay")) or raw["start"].get("type") == "date" or not raw["start"].get("time")
 
     start = _to_when(raw["start"], tz, all_day)
@@ -74,7 +74,7 @@ def _parse_one(raw, brewery: Brewery, types, locations, default_tz) -> Event:
         if end <= start:
             end = start + timedelta(days=1)   # DTEND is exclusive for all-day events
     elif end <= start:
-        end = start + timedelta(minutes=brewery.default_duration_minutes)
+        end = start + timedelta(minutes=feed.default_duration_minutes)
 
     # Action buttons (e.g. "Get Tickets") carry the only outbound link on most events.
     links: list[tuple[str, str]] = []
@@ -86,18 +86,18 @@ def _parse_one(raw, brewery: Brewery, types, locations, default_tz) -> Event:
 
     desc_lines = [_html_to_text(raw.get("description") or "")]
     desc_lines += [f"{text}: {href}" for text, href in links]
-    desc_lines.append(f"Event listing: {brewery.url}")
+    desc_lines.append(f"Event listing: {feed.url}")
     description = "\n\n".join(line for line in desc_lines if line)
 
     return Event(
-        uid=f"{raw['id']}@{brewery.slug}",
+        uid=f"{raw['id']}@{feed.slug}",
         summary=html.unescape(raw.get("name") or "(untitled)").strip(),
         start=start,
         end=end,
         all_day=all_day,
         description=description,
-        location=_location(raw, locations) or brewery.location,
-        url=links[0][1] if links else brewery.url,
+        location=_location(raw, locations) or feed.location,
+        url=links[0][1] if links else feed.url,
         categories=[types[t] for t in _as_list(raw.get("eventType")) if t in types],
         rrule=_rrule(raw, tz),
         exdates=[_to_when({"date": d, "time": raw["start"].get("time")}, tz, all_day)

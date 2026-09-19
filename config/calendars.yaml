@@ -1,0 +1,79 @@
+# Local calendar feeds. Each entry is one calendar; non-external ones become docs/<slug>.ics.
+#
+# To add a calendar:
+#   1. Look at how the site renders events (view source). Prefer structured data over scraping:
+#      - class="elfsight-app-<uuid>"        -> source: {type: elfsight, widget_id: <uuid>}
+#        (if its boot JSON says selectedEventsProvider: "google", the events live in a public
+#         Google Calendar; use feed_url on calendar.google.com/calendar/ical/<id>/public/basic.ics)
+#      - /Home/Components/Calendar/Event/    -> Granicus/Vision CMS; use source: {type: vision_rss}
+#        with the /Home/Components/RssFeeds/RssFeed/View?ctID=6&cateIDs=... URL and accumulate: true
+#      - WordPress "The Events Calendar"     -> feed_url: https://site/events/?ical=1
+#      - CivicPlus (.gov, /calendar.aspx)    -> feed_url: /common/modules/iCalendar/iCalendar.aspx?catID=N&feed=calendar
+#   2. `uv run localcal upcoming --only <slug>` to eyeball, then commit + push. The workflow publishes.
+#   3. New platform: write localcal/sources/<name>.py, register it in sources/__init__.py.
+
+site:
+  title: Local Calendars
+  base_url: https://bytemasterpro.github.io/local-calendars
+
+defaults:
+  timezone: America/New_York
+  keep_past_days: 60              # keep recently-past events so the calendar isn't empty looking back
+  default_duration_minutes: 120   # used when the source has no end time (or end <= start)
+
+calendars:
+  # ------------------------------------------------------------------ breweries
+  - slug: honor-brewing-loudoun
+    name: Honor Brewing - Loudoun
+    kind: brewery
+    url: https://honorbrewing.com/honor-brewing-loudoun
+    location: Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166
+    source:
+      type: elfsight
+      widget_id: 5cfe5396-d62a-432e-8a83-f53cb73bb713
+
+  - slug: chilly-hollow
+    name: Chilly Hollow Brewing Co.
+    kind: brewery
+    url: https://chillyhollowbrewingco.com/happenings
+    location: Chilly Hollow Brewing Co., 669 Chilly Hollow Rd, Berryville, VA 22611
+    # Their elf.site widget (801481ca-8bef-49da-9c68-dd8aa5cda35d) is fed by a public Google
+    # Calendar; subscribing to that directly gives live updates and full recurrence fidelity.
+    feed_url: https://calendar.google.com/calendar/ical/7a36777b804e9b9d04d70c58670135065f60a7e350d7b860f9e9c7686a9a7131%40group.calendar.google.com/public/basic.ics
+    google_calendar_id: 7a36777b804e9b9d04d70c58670135065f60a7e350d7b860f9e9c7686a9a7131@group.calendar.google.com
+
+  # Honor's Fairfax/Chantilly location has its own widget on /honor-brewing-fairfax:
+  # - slug: honor-brewing-fairfax
+  #   name: Honor Brewing - Fairfax
+  #   kind: brewery
+  #   url: https://honorbrewing.com/honor-brewing-fairfax
+  #   location: Honor Brewing - Chantilly, 14004 Willard Rd, Chantilly, VA 20151
+  #   source: {type: elfsight, widget_id: 620fc0b1-b6f5-4814-a54a-33d51c45bfe8}
+
+  # ---------------------------------------------------------- towns & community
+  - slug: leesburg
+    name: Town of Leesburg - Community Events
+    kind: town
+    url: https://www.leesburgva.gov/residents/calendar
+    location: Leesburg, VA
+    # The Town site (Granicus/Vision CMS) sits behind Akamai Bot Manager, but its RSS does not.
+    # ctID=6 is the calendar. cateIDs picks community categories and leaves out council/board
+    # meetings, zoning cases and the multi-month art exhibits (which would render as banners):
+    #   60 Community Events, 7 Downtown Events, 180 Races/Walks/Biking, 260 Walking Tours,
+    #   62 Seminars & Classes, 1333 Workshops & Classes, 216 Other Events, 52 Town Holidays,
+    #   66 EAC Community Events, 213 Diversity Commission Community Events, 259 Book talks,
+    #   47 Friends of Thomas Balch Library, 171 Ribbon Cuttings, 1340 Revolution on Screen,
+    #   263 Other Library Events, 1316 Donaldson Cabin
+    # The RSS only lists ~2 weeks ahead, so the published feed accumulates across runs.
+    source:
+      type: vision_rss
+      rss_url: https://www.leesburgva.gov/Home/Components/RssFeeds/RssFeed/View?ctID=6&cateIDs=60,7,180,260,62,1333,216,52,66,213,259,47,171,1340,263,1316
+    accumulate: true
+
+  - slug: historic-manassas
+    name: Historic Manassas Inc.
+    kind: town
+    url: https://historicmanassas.org/events/
+    location: Historic Downtown Manassas, VA
+    # WordPress "The Events Calendar" plugin; it exports iCal natively.
+    feed_url: https://historicmanassas.org/events/?ical=1
