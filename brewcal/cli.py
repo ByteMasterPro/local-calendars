@@ -10,7 +10,7 @@ import argparse
 import html
 import logging
 import sys
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from urllib.parse import quote
 
@@ -122,7 +122,6 @@ def render_index(cfg: Config) -> str:
         </p>
         <p class="url"><code>{https_url}</code></p>
       </li>""")
-    updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title>
@@ -146,7 +145,7 @@ def render_index(cfg: Config) -> str:
   <p>Subscribable calendars for breweries that don't publish their own. Feeds are rebuilt automatically from each brewery's events page.</p>
   <ul>{''.join(rows)}
   </ul>
-  <footer>Page generated {updated}. Add a brewery in <code>config/breweries.yaml</code>.</footer>
+  <footer>Feeds rebuild automatically every Monday. Source and config: <a href="https://github.com/ByteMasterPro/brewery-calendars">github.com/ByteMasterPro/brewery-calendars</a></footer>
 </main></body></html>
 """
 
