@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import re
+import time as _time
 from datetime import date, datetime, time
 from zoneinfo import ZoneInfo
 
@@ -19,13 +20,26 @@ log = logging.getLogger(__name__)
 USER_AGENT = "localcal/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
 
 
-def load_calendar(feed: Feed) -> Calendar:
-    """Every feed as an icalendar.Calendar, fetched live (external .ics or built from source)."""
-    if feed.external:
-        resp = requests.get(feed.feed_url, headers={"User-Agent": USER_AGENT}, timeout=60)
-        resp.raise_for_status()
-        return Calendar.from_ical(resp.content)
-    return Calendar.from_ical(ical.render(feed, fetch_events(feed)))
+def load_calendar(feed: Feed, attempts: int = 3) -> Calendar:
+    """Every feed as an icalendar.Calendar, fetched live (external .ics or built from source).
+
+    Third-party hosts hiccup (a brewery's TLS cert mid-rotation took Vanish down for one run),
+    so transient failures are retried with a short backoff before giving up on the feed.
+    """
+    last: Exception | None = None
+    for attempt in range(attempts):
+        try:
+            if feed.external:
+                resp = requests.get(feed.feed_url, headers={"User-Agent": USER_AGENT}, timeout=60)
+                resp.raise_for_status()
+                return Calendar.from_ical(resp.content)
+            return Calendar.from_ical(ical.render(feed, fetch_events(feed)))
+        except Exception as exc:
+            last = exc
+            if attempt < attempts - 1:
+                log.warning("%s: attempt %d failed (%s); retrying", feed.slug, attempt + 1, str(exc)[:120])
+                _time.sleep(2 * (attempt + 1))
+    raise last  # type: ignore[misc]
 
 
 def occurrences(feed: Feed, cal: Calendar, start: date, end: date) -> list[dict]:

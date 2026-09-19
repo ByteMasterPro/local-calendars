@@ -169,7 +169,10 @@ def digest(cfg: Config, feeds: list[Feed], start: date, days: int, *, post: bool
         return 2
     digest_mod.post(webhook, digest_mod.discord_payloads(d))
     log.info("digest posted: %s", ", ".join(f"{s.label}={len(s.lines)}" for s in d.sections))
-    return 1 if d.errors else 0
+    if d.errors:
+        # The post itself carries the warning line; on Actions surface it as an annotation, not a failure.
+        print(f"::warning::{d.errors} calendar(s) could not be loaded; digest posted without them")
+    return 0
 
 
 # --------------------------------------------------------------------------- index
