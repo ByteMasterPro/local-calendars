@@ -152,14 +152,18 @@ BREW = [
 
 
 def titles(lines):
-    return [l.split("[")[1].split("]")[0] for l in lines if not l.startswith("**Next week")]
+    return [l.split("[")[1].split("]")[0] for l in lines if l and "[" in l and not l.startswith("**Next week")]
+
+
+def nonblank(lines):
+    return [l for l in lines if l]
 
 
 def test_breweries_this_week_seasonal_then_seasonal_only_preview():
     c = CFG.digest["sections"]["breweries"]
     lines = digest.breweries_lines(BREW, c, W_MON, FEEDS)
     assert titles(lines) == ["Beer Release: Oktoberfest", "Honorfest", "Oktoberfest Brunch"]      # 3 seasonal -> no music fill
-    assert lines[-1] == "**Next week (Mon Sep 28 – Sun Oct 4):** [Chillyfest](https://x/e) (Fri)"      # seasonal only in preview
+    assert lines[-2] == "" and lines[-1] == "**Next week (Mon Sep 28 – Sun Oct 4):** [Chillyfest](https://x/e) (Fri)"   # blank line, then seasonal-only preview
 
 
 def test_breweries_music_fills_when_season_is_thin():
@@ -192,7 +196,7 @@ def test_fairs_this_week_ongoing_and_preview_dedupe():
             row("Cox Farms Fall Festival", "2026-09-26", "2026-09-27", calendar="fairs", kind="festival", all_day=True, series=True, series_until="2026-11-08"),
             row("Cox Farms Fall Festival", "2026-09-27", "2026-09-28", calendar="fairs", kind="festival", all_day=True, series=True, series_until="2026-11-08"),
             row("Cox Farms Fall Festival", "2026-10-03", "2026-10-04", calendar="fairs", kind="festival", all_day=True, series=True, series_until="2026-11-08")]
-    lines = digest.fairs_lines(rows, CFG.digest["sections"]["fairs"], W_MON, FEEDS)
+    lines = nonblank(digest.fairs_lines(rows, CFG.digest["sections"]["fairs"], W_MON, FEEDS))
     assert titles(lines[:1]) == ["State Fair"]                                             # Bluemont was last week
     assert lines[1] == "**Ongoing weekends:** [Cox Farms Fall Festival](https://x/e) thru Sun Nov 8"
     assert lines[2] == "**Next week (Mon Sep 28 – Sun Oct 4):** [Waterford Fair](https://x/e) (Fri)"   # State Fair not repeated
@@ -206,7 +210,9 @@ def test_towns_prioritised_capped_markets_subsection_and_preview():
             row("Leesburg Farmers Market", "2026-09-26T08:00:00-04:00", "2026-09-26T12:00:00-04:00", calendar="town", kind="town",
                 location="Virginia Village, 30 Catoctin Cir, Leesburg, VA 20175"),
             row("Fall Jubilee", "2026-10-03T10:00:00-04:00", "2026-10-03T17:00:00-04:00", calendar="town", kind="town")]
-    lines = digest.towns_lines(rows, CFG.digest["sections"]["towns"], W_MON, FEEDS)
+    raw = digest.towns_lines(rows, CFG.digest["sections"]["towns"], W_MON, FEEDS)
+    assert raw[2] == "" and raw[-2] == ""                                                  # blank lines before sub-list and preview
+    lines = nonblank(raw)
     assert titles(lines[:2]) == ["Movie Night", "Halloween Parade"]                        # limit 2, prioritised, chronological
     assert lines[2] == "🥕 **Farmers Markets:**"
     assert lines[3] == "[Leesburg Farmers Market](https://x/e) — Sat 8am–12pm (Town of Leesburg)"   # feed short_name wins

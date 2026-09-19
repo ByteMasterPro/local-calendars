@@ -159,6 +159,7 @@ def towns_lines(rows, c, w: Window, by_slug) -> list[str]:
     markets = [r for r in this if fm_rx and fm_rx.search(query.haystack(r))]
     lines = [format_line(r, w.start, by_slug) for r in rank([r for r in this if r not in markets], int(c.get("limit", 8)))]
     if markets:
+        lines.append("")
         lines.append(f"🥕 **{fm.get('label', 'Farmers Markets')}:**")
         lines += [_market_line(occ, by_slug) for occ in _group(markets).values()]
     shown = {r["summary"].lower() for r in this}
@@ -172,7 +173,7 @@ def _preview(rows, w: Window) -> list[str]:
     if not rows:
         return []
     bits = [f"{_link(_short_title(r['summary']), r['url'])} ({datetime.fromisoformat(r['start']):%a})" for r in rows[: w.preview_limit]]
-    return [f"**Next week ({_d(w.next_start)} – {_d(w.next_end)}):** " + " · ".join(bits)]
+    return ["", f"**Next week ({_d(w.next_start)} – {_d(w.next_end)}):** " + " · ".join(bits)]   # blank line separates it
 
 
 def _market_line(occ, by_slug) -> str:
