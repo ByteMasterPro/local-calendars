@@ -123,20 +123,41 @@ def test_week_window_is_monday_to_sunday_from_run_day():
     assert (W_SAT.start, W_SAT.end, W_SAT.next_start, W_SAT.next_end) == (SAT, date(2026, 9, 20), MON, date(2026, 9, 27))
 
 
-def test_format_line_matches_christophers_example():
-    r = row("PROST! German Experience", "2026-09-20T13:00:00-04:00", "2026-09-20T16:00:00-04:00", calendar="vanish",
+PROST = row("PROST! German Experience", "2026-09-20T13:00:00-04:00", "2026-09-20T16:00:00-04:00", calendar="vanish",
             url="https://vanishbeer.com/event/prost", desc="Prost! Rockville German Band was founded in 2010. The band performs polkas.\n\nEvent listing: https://vanishbeer.com")
-    line = digest.format_line(r, SAT, FEEDS)
-    assert line == ("**Sun Sep 20**, 1–4pm — [PROST! German Experience](https://vanishbeer.com/event/prost) (Vanish, Leesburg): "
-                    "Prost! Rockville German Band was founded in 2010. The band performs polkas. Tomorrow.")
 
 
-def test_format_line_ranges_all_day_and_link_fallback():
-    r = row("2nd Annual Chillyfest", "2026-10-02", "2026-10-05", calendar="chilly", all_day=True, url="")
-    assert digest.format_line(r, MON, FEEDS) == "**Fri Oct 2 – Sun Oct 4** — [2nd Annual Chillyfest](https://x) (Chilly Hollow, Berryville)"
-    r = row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="honor", slug="honor",
-            location="Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166", url="https://h")
-    assert digest.format_line(r, MON, FEEDS).startswith("**Sat Sep 26**, 11am–11pm — [Honorfest](https://h) (Honor Brewing - Loudoun, Sterling)")
+def test_pick_lines_is_date_line_then_quoted_excerpt():
+    lines = digest.pick_lines([PROST], W_SAT, FEEDS)
+    assert lines == ["**Sun Sep 20**, 1–4pm — [PROST! German Experience](https://vanishbeer.com/event/prost) (Vanish, Leesburg) · Tomorrow",
+                     "> Prost! Rockville German Band was founded in 2010. The band performs polkas."]
+    span = row("2nd Annual Chillyfest", "2026-10-02", "2026-10-05", calendar="chilly", all_day=True, url="")
+    assert digest.pick_lines([span, PROST], W_MON, FEEDS)[0] == "**Fri Oct 2 – Sun Oct 4** — [2nd Annual Chillyfest](https://x) (Chilly Hollow, Berryville)"
+    assert digest.pick_lines([span, PROST], W_MON, FEEDS)[1] == ""          # blank line between picks
+
+
+def test_grouped_lines_date_header_then_bullets():
+    honor = row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="honor", slug="honor",
+                location="Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166", url="https://h", desc="Raise a Stein!")
+    brunch = row("Oktoberfest Brunch", "2026-09-27T12:00:00-04:00", "2026-09-27T14:30:00-04:00", calendar="vanish")
+    release = row("Beer Release: Oktoberfest", "2026-09-24", "2026-09-25", calendar="chilly", all_day=True, url="")
+    lines = digest.grouped_lines([brunch, honor, release], W_MON, FEEDS)
+    assert lines == [
+        "**Thu Sep 24**",
+        "- [Beer Release: Oktoberfest](https://x) (Chilly Hollow, Berryville)",
+        "\u200b\n**Sat Sep 26**",
+        "- 11am–11pm — [Honorfest](https://h) (Honor Brewing - Loudoun, Sterling): Raise a Stein!",
+        "\u200b\n**Sun Sep 27**",
+        "- 12–2:30pm — [Oktoberfest Brunch](https://x/e) (Vanish, Leesburg)",
+    ]
+
+
+def test_grouped_lines_span_sits_under_first_visible_day_with_thru():
+    fair = row("State Fair", "2026-09-25", "2026-10-05", calendar="fairs", kind="festival", all_day=True)
+    lines = digest.grouped_lines([fair], W_MON, FEEDS)
+    assert lines == ["**Fri Sep 25**", "- thru Sun Oct 4 — [State Fair](https://x/e) (Fairs)"]
+    w2 = digest.week_window(date(2026, 9, 28), datetime(2026, 9, 28, 11, tzinfo=timezone.utc))
+    assert digest.grouped_lines([fair], w2, FEEDS)[0] == "**Mon Sep 28** · Today"      # already running: under the run day
 
 
 BREW = [
@@ -151,82 +172,92 @@ BREW = [
 ]
 
 
-def titles(lines):
-    return [l.split("[")[1].split("]")[0] for l in lines if l and "[" in l and not l.startswith("**Next week")]
+def names(rows):
+    return [r["summary"] for r in rows]
 
 
-def nonblank(lines):
-    return [l for l in lines if l]
-
-
-def test_breweries_this_week_seasonal_then_seasonal_only_preview():
-    c = CFG.digest["sections"]["breweries"]
-    lines = digest.breweries_lines(BREW, c, W_MON, FEEDS)
-    assert titles(lines) == ["Beer Release: Oktoberfest", "Honorfest", "Oktoberfest Brunch"]      # 3 seasonal -> no music fill
-    assert lines[-2] == "" and lines[-1] == "**Next week (Mon Sep 28 – Sun Oct 4):** [Chillyfest](https://x/e) (Fri)"   # blank line, then seasonal-only preview
+def test_breweries_select_seasonal_then_seasonal_only_preview():
+    B = digest.breweries_select(BREW, CFG.digest["sections"]["breweries"], W_MON)
+    assert names(B["this"]) == ["Beer Release: Oktoberfest", "Honorfest", "Oktoberfest Brunch"]   # 3 seasonal -> no music fill
+    assert names(B["seasonal"]) == names(B["this"])
+    assert names(B["next"]) == ["Chillyfest"]                                                     # seasonal only in preview
 
 
 def test_breweries_music_fills_when_season_is_thin():
-    c = CFG.digest["sections"]["breweries"]
     thin = [r for r in BREW if r["summary"] not in ("Honorfest", "Oktoberfest Brunch")]
-    assert titles(digest.breweries_lines(thin, c, W_MON, FEEDS)) == ["Beer Release: Oktoberfest", "Live Music: Someone"]
+    B = digest.breweries_select(thin, CFG.digest["sections"]["breweries"], W_MON)
+    assert names(B["this"]) == ["Beer Release: Oktoberfest", "Live Music: Someone"]
+    assert names(B["seasonal"]) == ["Beer Release: Oktoberfest"]                                 # music is not a top-pick candidate
 
 
 def test_breweries_holiday_pattern_in_december():
     rows = [row("Ugly Sweater Christmas Party", "2026-12-05T18:00:00-05:00", "2026-12-05T21:00:00-05:00", calendar="vanish"),
             row("Oktoberfest Leftovers", "2026-12-06T18:00:00-05:00", "2026-12-06T21:00:00-05:00", calendar="vanish")]
     w = digest.week_window(date(2026, 11, 30), datetime(2026, 11, 30, 11, tzinfo=timezone.utc))
-    lines = digest.breweries_lines(rows, CFG.digest["sections"]["breweries"], w, FEEDS)
-    assert len(lines) == 1 and "Christmas" in lines[0]
+    assert names(digest.breweries_select(rows, CFG.digest["sections"]["breweries"], w)["this"]) == ["Ugly Sweater Christmas Party"]
 
 
 def test_saturday_run_drops_finished_events_and_keeps_sunday():
     rows = [row("Morning Yoga Brew", "2026-09-19T09:00:00-04:00", "2026-09-19T10:00:00-04:00", calendar="vanish", desc="live music"),
             row("Afternoon Band", "2026-09-19T13:00:00-04:00", "2026-09-19T16:00:00-04:00", calendar="vanish", desc="live music"),
-            row("PROST German Experience", "2026-09-20T13:00:00-04:00", "2026-09-20T16:00:00-04:00", calendar="vanish")]
+            PROST]
     w = digest.week_window(SAT, datetime(2026, 9, 19, 11, 30, tzinfo=ZoneInfo("America/New_York")))
-    got = titles(digest.breweries_lines(rows, CFG.digest["sections"]["breweries"], w, FEEDS))
-    assert got == ["Afternoon Band", "PROST German Experience"]           # 9-10am is over; Sunday still shows
+    assert names(digest.breweries_select(rows, CFG.digest["sections"]["breweries"], w)["this"]) == ["Afternoon Band", "PROST! German Experience"]
 
 
-def test_fairs_this_week_ongoing_and_preview_dedupe():
+def test_fairs_select_this_week_ongoing_and_preview_dedupe():
     rows = [row("Bluemont Fair", "2026-09-19", "2026-09-21", calendar="fairs", kind="festival", all_day=True),
             row("State Fair", "2026-09-25", "2026-10-05", calendar="fairs", kind="festival", all_day=True),          # this week AND next
             row("Waterford Fair", "2026-10-02", "2026-10-05", calendar="fairs", kind="festival", all_day=True),      # next week
             row("Cox Farms Fall Festival", "2026-09-26", "2026-09-27", calendar="fairs", kind="festival", all_day=True, series=True, series_until="2026-11-08"),
             row("Cox Farms Fall Festival", "2026-09-27", "2026-09-28", calendar="fairs", kind="festival", all_day=True, series=True, series_until="2026-11-08"),
             row("Cox Farms Fall Festival", "2026-10-03", "2026-10-04", calendar="fairs", kind="festival", all_day=True, series=True, series_until="2026-11-08")]
-    lines = nonblank(digest.fairs_lines(rows, CFG.digest["sections"]["fairs"], W_MON, FEEDS))
-    assert titles(lines[:1]) == ["State Fair"]                                             # Bluemont was last week
-    assert lines[1] == "**Ongoing weekends:** [Cox Farms Fall Festival](https://x/e) thru Sun Nov 8"
-    assert lines[2] == "**Next week (Mon Sep 28 – Sun Oct 4):** [Waterford Fair](https://x/e) (Fri)"   # State Fair not repeated
+    F = digest.fairs_select(rows, CFG.digest["sections"]["fairs"], W_MON)
+    assert names(F["this"]) == ["State Fair"]                       # Bluemont was last week
+    assert names(F["ongoing"]) == ["Cox Farms Fall Festival"]
+    assert names(F["next"]) == ["Waterford Fair"]                   # State Fair not repeated in the preview
 
 
-def test_towns_prioritised_capped_markets_subsection_and_preview():
+def test_towns_select_prioritised_capped_markets_and_preview():
     rows = [row("Town Council Meeting", "2026-09-22T19:00:00-04:00", "2026-09-22T21:00:00-04:00", calendar="town", kind="town", desc="council"),
             row("Zumba", "2026-09-22T19:00:00-04:00", "2026-09-22T20:00:00-04:00", calendar="town", kind="town"),
             row("Movie Night", "2026-09-24T20:00:00-04:00", "2026-09-24T22:00:00-04:00", calendar="town", kind="town"),
             row("Halloween Parade", "2026-09-26T10:00:00-04:00", "2026-09-26T12:00:00-04:00", calendar="town", kind="town"),
-            row("Leesburg Farmers Market", "2026-09-26T08:00:00-04:00", "2026-09-26T12:00:00-04:00", calendar="town", kind="town",
-                location="Virginia Village, 30 Catoctin Cir, Leesburg, VA 20175"),
+            row("Leesburg Farmers Market", "2026-09-26T08:00:00-04:00", "2026-09-26T12:00:00-04:00", calendar="town", kind="town"),
             row("Fall Jubilee", "2026-10-03T10:00:00-04:00", "2026-10-03T17:00:00-04:00", calendar="town", kind="town")]
-    raw = digest.towns_lines(rows, CFG.digest["sections"]["towns"], W_MON, FEEDS)
-    assert raw[2] == "" and raw[-2] == ""                                                  # blank lines before sub-list and preview
-    lines = nonblank(raw)
-    assert titles(lines[:2]) == ["Movie Night", "Halloween Parade"]                        # limit 2, prioritised, chronological
-    assert lines[2] == "🥕 **Farmers Markets:**"
-    assert lines[3] == "[Leesburg Farmers Market](https://x/e) — Sat 8am–12pm (Town of Leesburg)"   # feed short_name wins
-    assert lines[4] == "**Next week (Mon Sep 28 – Sun Oct 4):** [Fall Jubilee](https://x/e) (Sat)"
+    T = digest.towns_select(rows, CFG.digest["sections"]["towns"], W_MON)
+    assert names(T["this"]) == ["Movie Night", "Halloween Parade"]   # limit 2, prioritised, chronological
+    assert names(T["markets"]) == ["Leesburg Farmers Market"]
+    assert names(T["next"]) == ["Fall Jubilee"]
+
+
+def test_top_picks_union_chronological_capped():
+    F = {"this": [row("State Fair", "2026-09-25", "2026-10-05", calendar="fairs", kind="festival", all_day=True)]}
+    B = {"seasonal": [row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="vanish"),
+                      row("Beer Release: Oktoberfest", "2026-09-24", "2026-09-25", calendar="chilly", all_day=True)]}
+    T = {"this": [row("Leesburg Airshow", "2026-09-26T11:00:00-04:00", "2026-09-26T16:00:00-04:00", calendar="town", kind="town"),
+                  row("Zumba", "2026-09-22T19:00:00-04:00", "2026-09-22T20:00:00-04:00", calendar="town", kind="town")]}
+    picks = digest.top_picks(F, B, T, {"pattern": "air ?show|parade", "limit": 3}, W_MON)
+    assert names(picks) == ["Beer Release: Oktoberfest", "State Fair", "Honorfest"]      # Zumba never; Airshow cut by limit
 
 
 def test_build_and_payloads(monkeypatch):
     monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
     d = digest.build(CFG, list(FEEDS.values()), SAT, now=NOON_SAT)
-    assert [s.label for s in d.sections] == ["Fairs, Festivals and Carnivals", "Local Breweries", "Town Activities"]
+    assert [s.label for s in d.sections] == ["Fairs, Festivals and Carnivals", "Local Breweries", "Town Activities"]   # no picks -> no card
     assert (d.start, d.end, d.next_start, d.next_end) == (SAT, date(2026, 9, 20), MON, date(2026, 9, 27))
     payloads = digest.discord_payloads(d)
     assert payloads[0]["content"].startswith("📅 **T** — Sat Sep 19 to Sun Sep 20 (the rest of this week)")
     assert [p["embeds"][0]["title"] for p in payloads[1:]] == ["🎪 Fairs, Festivals and Carnivals", "🍺 Local Breweries", "🏘️ Town Activities"]
+
+
+def test_build_with_picks_puts_top_picks_first(monkeypatch):
+    monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: (BREW, 0))
+    cfg = Config(site={}, feeds=list(FEEDS.values()), digest={**CFG.digest, "top_picks": {"limit": 5, "pattern": "parade"}})
+    d = digest.build(cfg, list(FEEDS.values()), MON, now=datetime(2026, 9, 21, 11, tzinfo=timezone.utc))
+    assert d.sections[0].label == "Top picks this week"
+    assert d.sections[0].lines[0].startswith("**Thu Sep 24** — [Beer Release: Oktoberfest]")
+    assert any("Honorfest" in l for l in d.sections[0].lines) and any("Honorfest" in l for l in d.sections[2].lines)   # repeated on purpose
 
 
 def test_cli_digest_post_path_without_webhook_returns_2(monkeypatch, capsys):

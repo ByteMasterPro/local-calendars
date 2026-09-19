@@ -164,6 +164,10 @@ calendars:
 digest:
   title: This week around Leesburg
   preview_limit: 5                         # highlights per "Next week:" line
+  top_picks:                               # first card: the week's best, with full excerpts.
+    label: "Top picks this week"           # candidates = fair one-offs + seasonal brewery events +
+    limit: 5                               # town items matching `pattern`; chronological
+    pattern: "fair\\b|festival|carnival|parade|fireworks|air ?show|halloween|pumpkin|oktober|german|holiday|christmas|santa|tree lighting"
   sections:
     fairs:
       label: "Fairs, Festivals and Carnivals"

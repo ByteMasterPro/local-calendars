@@ -42,8 +42,11 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   (cap 8, with a Farmers Markets sub-list). **"This week" is Mon-Sun**; a Saturday run shows only
   what is left of the weekend and drops anything already over. Each section ends with ONE
   "Next week:" highlights line; nothing further out is shown (he explicitly rejected seeing a
-  fair 2 weeks away in detail). Line format is his:
-  `**Sun Sep 20**, 1–4pm — Title (Venue, Town): excerpt. Tomorrow.` Tune under `digest:` in
+  fair 2 weeks away in detail). Layout he chose from four mockups on 2026-09-19: a **Top picks
+  this week** card first (fair one-offs + seasonal brewery events + parade/airshow-type town
+  items; date line, then the excerpt as a `>` quote), then the three sections, each **grouped by
+  date** (bold date header once, events as `- time — Title (Venue, Town): excerpt` bullets).
+  Top picks repeat in full inside their sections; he wants that repetition. Tune under `digest:` in
   `config/calendars.yaml`; preview with `localcal digest --from <day>`. Needs the
   `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets.
 - `short_name` / `town` on a feed drive the "(Vanish, Leesburg)" part; `wall_clock_tzids` fixes
