@@ -143,7 +143,7 @@ def test_breweries_seasonal_first_music_only_when_thin(monkeypatch):
     assert titles == ["Beer Release: Oktoberfest", "Honorfest", "Oktoberfest Brunch"]      # 3 seasonal -> no music fill
     thin = [r for r in rows if "Oktoberfest" not in r["summary"] or "Release" in r["summary"]]
     titles = [l.split("[")[1].split("]")[0] for l in digest.breweries_lines(thin, c, MON, FEEDS)]
-    assert titles == ["Beer Release: Oktoberfest", "Live Music: Someone"]                   # thin -> music fills
+    assert titles == ["Beer Release: Oktoberfest", "Live Music: Someone", "Honorfest"]      # 2 seasonal -> music fills, chronological
 
 
 def test_breweries_holiday_pattern_in_november():
