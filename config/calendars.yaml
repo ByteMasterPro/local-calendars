@@ -29,6 +29,8 @@ calendars:
   - slug: honor-brewing-loudoun
     name: Honor Brewing - Loudoun
     kind: brewery
+    short_name: Honor Brewing
+    town: Sterling
     url: https://honorbrewing.com/honor-brewing-loudoun
     location: Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166
     source:
@@ -38,6 +40,8 @@ calendars:
   - slug: chilly-hollow
     name: Chilly Hollow Brewing Co.
     kind: brewery
+    short_name: Chilly Hollow
+    town: Berryville
     url: https://chillyhollowbrewingco.com/happenings
     location: Chilly Hollow Brewing Co., 669 Chilly Hollow Rd, Berryville, VA 22611
     # Their elf.site widget (801481ca-8bef-49da-9c68-dd8aa5cda35d) is fed by a public Google
@@ -50,6 +54,8 @@ calendars:
   - slug: solace-sterling
     name: Solace Brewing Co. in Sterling
     kind: brewery
+    short_name: Solace
+    town: Sterling
     url: https://www.solacebrewing.com/sterling
     location: Solace Brewing Co., 42615 Trade W Dr, Sterling, VA 20166
     feed_url: https://calendar.google.com/calendar/ical/c_81872c01230a1e2a19950379cffece76cfb4c99e93bfa5a74ef2c3c26715c165%40group.calendar.google.com/public/basic.ics
@@ -58,6 +64,8 @@ calendars:
   - slug: vanish
     name: Vanish Farmwoods Brewery
     kind: brewery
+    short_name: Vanish
+    town: Leesburg
     url: https://vanishbeer.com/calendar/
     location: Vanish Farmwoods Brewery, 42245 Black Hops Ln, Leesburg, VA 20176
     # WordPress The Events Calendar; this is the "music" category feed Christopher already uses.
@@ -66,11 +74,15 @@ calendars:
   - slug: flying-ace
     name: Flying Ace Farm
     kind: brewery
+    short_name: Flying Ace Farm
+    town: Lovettsville
     url: https://flyingacefarm.com/
     location: Flying Ace Farm, 40950 Flying Ace Ln, Lovettsville, VA 20180
-    # WordPress The Events Calendar. Some of their entries are typed in America/Halifax (their
-    # quirk, an hour off); we pass them through as published.
+    # WordPress The Events Calendar. About a quarter of their entries are typed in America/Halifax
+    # while the descriptions give Eastern times (Oktoberfest Brunch "12:00-2:30PM" is stored as
+    # 12:00 Halifax). `upcoming`/digest re-read those as Eastern; the raw feed is left as published.
     feed_url: https://flyingacefarm.com/?post_type=tribe_events&ical=1&eventDisplay=list
+    wall_clock_tzids: [America/Halifax]
 
   # Honor's Fairfax/Chantilly location has its own widget on /honor-brewing-fairfax:
   # - slug: honor-brewing-fairfax
@@ -84,6 +96,8 @@ calendars:
   - slug: leesburg
     name: Town of Leesburg - Community Events
     kind: town
+    short_name: Town of Leesburg
+    town: Leesburg
     url: https://www.leesburgva.gov/residents/calendar
     location: Leesburg, VA
     # The Town site (Granicus/Vision CMS) sits behind Akamai Bot Manager, but its RSS does not.
@@ -103,6 +117,8 @@ calendars:
   - slug: one-loudoun
     name: One Loudoun
     kind: town
+    short_name: One Loudoun
+    town: Ashburn
     url: https://www.downtownoneloudoun.com/events/
     location: One Loudoun, 20387 Exchange St, Ashburn, VA 20147
     # Squarespace events collection; ?format=json works, ?format=ical does not on their template.
@@ -113,6 +129,8 @@ calendars:
   - slug: historic-manassas
     name: Historic Manassas Inc.
     kind: town
+    short_name: Historic Manassas
+    town: Manassas
     url: https://historicmanassas.org/events/
     location: Historic Downtown Manassas, VA
     # WordPress "The Events Calendar" plugin; it exports iCal natively.
@@ -129,16 +147,36 @@ calendars:
       type: manual
       file: config/events/fairs-festivals.yaml
 
-# Weekly Discord digest (`localcal digest`). Regexes are case-insensitive and matched against
-# title + description + categories/tags + calendar name.
+# Weekly Discord digest (`localcal digest`, Mondays). Three sections. Regexes are case-insensitive
+# and matched against title + description + tags + calendar name. Each line reads
+#   **Sun Sep 20**, 1–4pm — Title (Venue, Town): excerpt. Tomorrow.
 digest:
   title: This week around Leesburg
-  days: 7
-  recommended:
-    label: "Recommended For You"
-    pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|halloween|haunt|spooky|trick.or.treat|pumpkin|harvest fest|fall fest|chillyfest|honorfest"
-  family:
-    label: "Other Family Events"
-    kinds: [festival]                  # every event from these calendars qualifies...
-    pattern: "\\bfair\\b|festival|fest\\b|carnival|parade|jubilee|fireworks|movie night|kids|family|craft show|bazaar|moonlight market|touch.a.truck|egg hunt|air ?show"   # ...plus matches anywhere
-    exclude: "farmers market|council|commission|board meeting|public hearing|zoning"
+  days: 7                                  # the "this week" window (header + Town Activities)
+  sections:
+    fairs:
+      label: "Fairs, Festivals and Carnivals"
+      kinds: [festival]
+      limit: 5                             # next 5 one-off events, whatever week they fall in...
+      horizon_days: 120                    # ...looking this far ahead; season attractions get one
+                                           # "Ongoing weekends" line instead of eating the 5 slots
+    breweries:
+      label: "Local Breweries"
+      kinds: [brewery]
+      days: 14                             # two weekends of planning room
+      limit: 8
+      exclude: "karaoke|trivia|bingo|singo|\\d+% off|% off|happy hour|appy hour|watch party|kids eat free|growler|taco tuesday|teacher tuesday|discount|football"
+      seasonal:                            # matched first, by the month the digest runs in
+        - months: [9, 10]
+          pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|halloween|haunt|spooky|costume|pumpkin|harvest|fest\\b"
+        - months: [11, 12]
+          pattern: "christmas|holiday|santa|tree lighting|ugly sweater|gingerbread|nutcracker|hanukkah|menorah|new year|winter|caroling|wreath"
+      fill_below: 3                        # fewer seasonal picks than this -> top up with...
+      fallback: "live music|concert|\\bband\\b|acoustic|bluegrass|\\bjam\\b|music"   # ...music, up to `limit`
+    towns:
+      label: "Town Activities"
+      kinds: [town]
+      days: 7
+      limit: 8
+      exclude: "farmers market|council|commission|board meeting|public hearing|zoning|work session|advisory"
+      prioritize: "fair|festival|carnival|parade|fireworks|movie|market|kids|family|concert|halloween|pumpkin|holiday|airshow|air show|tour"

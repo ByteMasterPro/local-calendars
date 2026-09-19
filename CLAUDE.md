@@ -35,11 +35,17 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   listing, then add it with a `verified:` date. Never add an event from memory alone.
   Multi-week attractions (pumpkin patches, Cox Farms) use `season:` so they show on weekends
   rather than as a two-month banner.
-- The weekly Discord post (`localcal digest`, Mondays via `.github/workflows/digest.yml`) has two
-  sections he named: "Recommended For You" (Oktoberfest/German/Halloween/pumpkin) and "Other
-  Family Events" (fairs, festivals, carnivals, parades, movie nights). Tune the regexes under
-  `digest:` in `config/calendars.yaml`; preview with `localcal digest --from <monday>`.
-  It needs the `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets.
+- The weekly Discord post (`localcal digest`, Mondays via `.github/workflows/digest.yml`) has the
+  three sections Christopher specified on 2026-09-19: "Fairs, Festivals and Carnivals" (next 5
+  one-offs + an ongoing-weekends line), "Local Breweries" (seasonal first: Oktoberfest/German/
+  Halloween in Sep-Oct, Christmas/holiday in Nov-Dec; live music only as a fallback; never
+  karaoke/trivia/discounts), "Town Activities" (this week, max 8). Line format is his:
+  `**Sun Sep 20**, 1–4pm — Title (Venue, Town): excerpt. Tomorrow.` Tune under `digest:` in
+  `config/calendars.yaml`; preview with `localcal digest --from <monday>`. Needs the
+  `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets.
+- `short_name` / `town` on a feed drive the "(Vanish, Leesburg)" part; `wall_clock_tzids` fixes
+  venues that tag events with the wrong TZID (Flying Ace uses America/Halifax for a quarter of
+  theirs; the wall-clock time is the real Eastern time).
 
 ## Conventions
 

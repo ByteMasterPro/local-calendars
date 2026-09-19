@@ -41,21 +41,27 @@ sorted by start time. `--json` is for piping into other tools.
 
 ## Weekly Discord digest
 
-`localcal digest` builds a two-section post from the same live query: **Recommended For You**
-(Oktoberfest / German / Halloween / pumpkin-patch matches, tuned in `digest.recommended.pattern`)
-and **Other Family Events** (everything on the Fairs & Festivals calendar plus fair / festival /
-parade / movie-night matches elsewhere). Recurring items collapse to one line ("also Sun").
+`localcal digest` posts three sections every Monday, built from the same live query:
+
+- **Fairs, Festivals and Carnivals** - the next 5 upcoming one-off events (any week, up to 120
+  days out) from the curated calendar, plus one "Ongoing weekends" line for season-long farms.
+- **Local Breweries** - two weeks ahead. Seasonal events first (Sep-Oct: Oktoberfest, German,
+  Halloween; Nov-Dec: Christmas and holiday), topped up with live music only when the season is
+  thin. Karaoke, trivia, discounts and watch parties are excluded.
+- **Town Activities** - this week from the town/community calendars, max 8, meetings and farmers
+  markets excluded, festivals/parades/movies/kids ranked first.
+
+Each line reads `**Sun Sep 20**, 1–4pm — Title (Venue, Town): excerpt. Tomorrow.` Everything is
+tunable under `digest:` in `config/calendars.yaml`.
 
 ```bash
-uv run localcal digest                     # print a preview for the next 7 days
-uv run localcal digest --from 2026-09-21   # preview a specific week
+uv run localcal digest                     # print a preview for the coming week
+uv run localcal digest --from 2026-09-21   # preview a specific Monday
 DISCORD_WEBHOOK_URL=... uv run localcal digest --post
 ```
 
-`.github/workflows/digest.yml` posts every Monday 11:00 UTC using the `DISCORD_WEBHOOK_URL`
-repository secret (Discord channel > Edit > Integrations > Webhooks > New Webhook, then
-`gh secret set DISCORD_WEBHOOK_URL --repo ByteMasterPro/local-calendars`). Without the secret
-the workflow prints the preview to its log instead of failing.
+`.github/workflows/digest.yml` posts Mondays 11:00 UTC using the `DISCORD_WEBHOOK_URL` repository
+secret. Trigger it by hand with `gh workflow run "Weekly Discord digest"`.
 
 ## How it works
 

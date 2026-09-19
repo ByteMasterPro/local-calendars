@@ -84,67 +84,117 @@ def test_repo_fairs_file_parses_and_is_all_verified():
 
 # --------------------------------------------------------------------- digest
 
-def row(summary, start, end, *, calendar="Cal", kind="brewery", uid=None, cats=(), url="https://x/e", location="", all_day=False, desc=""):
-    return {"calendar": calendar, "slug": calendar.lower(), "kind": kind, "uid": uid or summary, "summary": summary,
+def row(summary, start, end, *, calendar="Cal", slug=None, kind="brewery", uid=None, cats=(), url="https://x/e",
+        location="", all_day=False, desc="", series=False, series_until=None):
+    return {"calendar": calendar, "slug": slug or calendar.lower(), "kind": kind, "uid": uid or summary, "summary": summary,
             "start": start, "end": end, "all_day": all_day, "location": location, "url": url, "description": desc,
-            "categories": list(cats), "_sort": datetime.fromisoformat(start)}
+            "categories": list(cats), "series": series, "series_until": series_until,
+            "_sort": (lambda d: d if d.tzinfo else d.replace(tzinfo=timezone.utc))(datetime.fromisoformat(start))}
 
 
-def test_format_rows_collapses_repeats_and_formats_spans():
+FEEDS = {
+    "vanish": feed("vanish", "brewery", feed_url="https://v/ics", short_name="Vanish", town="Leesburg"),
+    "chilly": feed("chilly", "brewery", feed_url="https://c/ics", short_name="Chilly Hollow", town="Berryville"),
+    "fairs": feed("fairs", "festival", source={"type": "manual", "file": "x"}),
+    "town": feed("town", "town", feed_url="https://t/ics", short_name="Town of Leesburg", town="Leesburg"),
+}
+CFG = Config(site={"base_url": "https://idx"}, feeds=list(FEEDS.values()), digest={
+    "title": "T", "days": 7,
+    "sections": {
+        "fairs": {"kinds": ["festival"], "limit": 5, "horizon_days": 120},
+        "breweries": {"kinds": ["brewery"], "days": 14, "limit": 8, "fill_below": 3,
+                      "exclude": "karaoke|trivia|% off",
+                      "seasonal": [{"months": [9, 10], "pattern": "oktober|german|prost|fest\\b"},
+                                   {"months": [11, 12], "pattern": "christmas|holiday|santa"}],
+                      "fallback": "live music|music"},
+        "towns": {"kinds": ["town"], "days": 7, "limit": 2, "exclude": "council", "prioritize": "movie|parade"},
+    }})
+MON = date(2026, 9, 21)
+
+
+def test_format_line_matches_christophers_example():
+    r = row("PROST! German Experience", "2026-09-20T13:00:00-04:00", "2026-09-20T16:00:00-04:00", calendar="vanish",
+            url="https://vanishbeer.com/event/prost", desc="Prost! Rockville German Band was founded in 2010. The band performs polkas.\n\nEvent listing: https://vanishbeer.com")
+    line = digest.format_line(r, date(2026, 9, 19), FEEDS)
+    assert line == ("**Sun Sep 20**, 1–4pm — [PROST! German Experience](https://vanishbeer.com/event/prost) (Vanish, Leesburg): "
+                    "Prost! Rockville German Band was founded in 2010. The band performs polkas. Tomorrow.")
+
+
+def test_format_line_ranges_all_day_and_link_fallback():
+    r = row("2nd Annual Chillyfest", "2026-10-02", "2026-10-05", calendar="chilly", all_day=True, url="")
+    assert digest.format_line(r, MON, FEEDS) == "**Fri Oct 2 – Sun Oct 4** — [2nd Annual Chillyfest](https://x) (Chilly Hollow, Berryville)"
+    r = row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="honor", slug="honor",
+            location="Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166", url="https://h")
+    assert digest.format_line(r, MON, FEEDS).startswith("**Sat Sep 26**, 11am–11pm — [Honorfest](https://h) (Honor Brewing - Loudoun, Sterling)")
+
+
+def test_breweries_seasonal_first_music_only_when_thin(monkeypatch):
     rows = [
-        row("Cox Farms Fall Festival", "2026-09-26", "2026-09-27", all_day=True, location="Cox Farms, 15621 Braddock Rd"),
-        row("Cox Farms Fall Festival", "2026-09-27", "2026-09-28", all_day=True, location="Cox Farms, 15621 Braddock Rd"),
-        row("Hairspray", "2026-09-25T19:00:00-04:00", "2026-09-25T21:30:00-04:00", uid="h1", location="Hylton Performing Arts Center @ 10960 George Mason Circle"),
-        row("Hairspray", "2026-09-26T19:00:00-04:00", "2026-09-26T21:30:00-04:00", uid="h2", location="Hylton Performing Arts Center @ 10960 George Mason Circle"),
-        row("State Fair", "2026-09-25", "2026-10-05", all_day=True, location="Meadow Event Park, Doswell"),
-        row("Trivia", "2026-09-22T18:30:00-04:00", "2026-09-22T21:00:00-04:00", location="42615 Trade W Dr, Sterling", calendar="Solace"),
+        row("Karaoke Oktoberfest Night", "2026-09-22T19:00:00-04:00", "2026-09-22T21:00:00-04:00", calendar="chilly"),   # excluded
+        row("Beer Release: Oktoberfest", "2026-09-24", "2026-09-25", calendar="chilly", all_day=True),
+        row("Live Music: Someone", "2026-09-25T17:00:00-04:00", "2026-09-25T20:00:00-04:00", calendar="chilly"),
+        row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="vanish"),
+        row("Oktoberfest Brunch", "2026-09-27T12:00:00-04:00", "2026-09-27T14:30:00-04:00", calendar="vanish"),
+        row("20% Off Beer", "2026-09-27T12:00:00-04:00", "2026-09-27T20:00:00-04:00", calendar="vanish"),               # excluded
     ]
-    lines = digest.format_rows(rows)
-    assert len(lines) == 4
-    assert lines[0] == "**Sat Sep 26** · [Cox Farms Fall Festival](https://x/e) — Cox Farms · also Sun"
-    assert lines[1].startswith("**Fri Sep 25** 7pm-9:30pm · [Hairspray](https://x/e) — Hylton Performing Arts Center · also Sat")
-    assert "**Fri Sep 25** thru Oct 4 · [State Fair](https://x/e) — Meadow Event Park" in lines[2]
-    assert lines[3].endswith("— Solace")            # bare street address falls back to the calendar name
+    c = CFG.digest["sections"]["breweries"]
+    lines = digest.breweries_lines(rows, c, MON, FEEDS)
+    titles = [l.split("[")[1].split("]")[0] for l in lines]
+    assert titles == ["Beer Release: Oktoberfest", "Honorfest", "Oktoberfest Brunch"]      # 3 seasonal -> no music fill
+    thin = [r for r in rows if "Oktoberfest" not in r["summary"] or "Release" in r["summary"]]
+    titles = [l.split("[")[1].split("]")[0] for l in digest.breweries_lines(thin, c, MON, FEEDS)]
+    assert titles == ["Beer Release: Oktoberfest", "Live Music: Someone"]                   # thin -> music fills
 
 
-def test_build_routes_rows_into_sections(monkeypatch):
-    cfg = Config(site={"base_url": "https://idx"}, feeds=[], digest={
-        "title": "T", "recommended": {"pattern": "oktober|german"},
-        "family": {"kinds": ["festival"], "pattern": "movie night", "exclude": "council"}})
-    rows = [
-        row("Lovettsville Oktoberfest", "2026-09-26T10:00:00-04:00", "2026-09-26T17:00:00-04:00", kind="festival", cats=("german",)),
-        row("Bluemont Fair", "2026-09-19", "2026-09-21", kind="festival", all_day=True),
-        row("Movie Night", "2026-09-24T20:00:00-04:00", "2026-09-24T22:00:00-04:00", kind="town"),
-        row("Town Council Meeting", "2026-09-22T19:00:00-04:00", "2026-09-22T21:00:00-04:00", kind="town", desc="council"),
-        row("Live Music: Band", "2026-09-19T18:00:00-04:00", "2026-09-19T21:00:00-04:00", kind="brewery"),
-        row("Summer at the Museum", "2026-08-20T08:00:00-04:00", "2026-10-22T17:00:00-04:00", kind="festival"),   # ongoing since before window
-    ]
-    monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: (rows, 0))
-    d = digest.build(cfg, [], date(2026, 9, 19), 7)
-    rec, fam = d.sections
-    assert [l.split("[")[1].split("]")[0] for l in rec.lines] == ["Lovettsville Oktoberfest"]
-    assert [l.split("[")[1].split("]")[0] for l in fam.lines] == ["Bluemont Fair", "Movie Night"]
+def test_breweries_holiday_pattern_in_november():
+    rows = [row("Ugly Sweater Christmas Party", "2026-12-05T18:00:00-05:00", "2026-12-05T21:00:00-05:00", calendar="vanish"),
+            row("Oktoberfest Leftovers", "2026-12-06T18:00:00-05:00", "2026-12-06T21:00:00-05:00", calendar="vanish")]
+    lines = digest.breweries_lines(rows, CFG.digest["sections"]["breweries"], date(2026, 11, 30), FEEDS)
+    assert len(lines) == 1 and "Christmas" in lines[0]
+
+
+def test_fairs_next_five_one_offs_plus_ongoing_line():
+    rows = [row(f"Fair {i}", f"2026-10-{10 + i:02d}", f"2026-10-{11 + i:02d}", calendar="fairs", kind="festival", all_day=True) for i in range(7)]
+    rows += [row("Cox Farms Fall Festival", "2026-09-26", "2026-09-27", calendar="fairs", kind="festival", all_day=True, series=True, series_until="2026-11-08"),
+             row("Cox Farms Fall Festival", "2026-09-27", "2026-09-28", calendar="fairs", kind="festival", all_day=True, series=True, series_until="2026-11-08"),
+             row("Old Fair", "2026-08-01", "2026-08-03", calendar="fairs", kind="festival", all_day=True)]              # past
+    lines = digest.fairs_lines(rows, CFG.digest["sections"]["fairs"], MON, FEEDS)
+    assert len(lines) == 6 and lines[0].startswith("**Sat Oct 10**") and lines[4].startswith("**Wed Oct 14**")
+    assert lines[5] == "**Ongoing weekends:** [Cox Farms Fall Festival](https://x/e) thru Sun Nov 8"
+
+
+def test_towns_prioritised_capped_and_excluded():
+    rows = [row("Town Council Meeting", "2026-09-22T19:00:00-04:00", "2026-09-22T21:00:00-04:00", calendar="town", kind="town", desc="council"),
+            row("Zumba", "2026-09-22T19:00:00-04:00", "2026-09-22T20:00:00-04:00", calendar="town", kind="town"),
+            row("Movie Night", "2026-09-24T20:00:00-04:00", "2026-09-24T22:00:00-04:00", calendar="town", kind="town"),
+            row("Halloween Parade", "2026-09-26T10:00:00-04:00", "2026-09-26T12:00:00-04:00", calendar="town", kind="town")]
+    lines = digest.towns_lines(rows, CFG.digest["sections"]["towns"], MON, FEEDS)
+    assert [l.split("[")[1].split("]")[0] for l in lines] == ["Movie Night", "Halloween Parade"]   # limit 2, prioritised, chronological
+
+
+def test_build_and_payloads(monkeypatch):
+    monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
+    d = digest.build(CFG, list(FEEDS.values()), MON)
+    assert [s.label for s in d.sections] == ["Fairs, Festivals and Carnivals", "Local Breweries", "Town Activities"]
     payloads = digest.discord_payloads(d)
-    assert payloads[0]["content"].startswith("📅 **T** — Sat Sep 19 to Fri Sep 25")
-    assert [p["embeds"][0]["title"] for p in payloads[1:]] == ["⭐ Recommended For You", "🎪 Other Family Events"]
-    assert "Sat Sep 19 to Fri Sep 25" in digest.render_text(d)
+    assert payloads[0]["content"].startswith("📅 **T** — Mon Sep 21 to Sun Sep 27")
+    assert [p["embeds"][0]["title"] for p in payloads[1:]] == ["🎪 Fairs, Festivals and Carnivals", "🍺 Local Breweries", "🏘️ Town Activities"]
+    assert "Mon Sep 21 to Sun Sep 27" in digest.render_text(d)
 
 
 def test_cli_digest_post_path_without_webhook_returns_2(monkeypatch, capsys):
     from localcal import cli
-    cfg = Config(site={"base_url": "https://idx"}, feeds=[], digest={"title": "T"})
     monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
     monkeypatch.delenv("DISCORD_WEBHOOK_URL", raising=False)
-    assert cli.digest(cfg, [], date(2026, 9, 21), 7, post=True) == 2
+    assert cli.digest(CFG, [], MON, 7, post=True) == 2
     assert "T — Mon Sep 21" in capsys.readouterr().out
 
 
 def test_cli_digest_post_path_posts_each_payload(monkeypatch):
     from localcal import cli
-    cfg = Config(site={"base_url": "https://idx"}, feeds=[], digest={"title": "T"})
     monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
     monkeypatch.setenv("DISCORD_WEBHOOK_URL", "https://discord.test/hook")
     sent = []
     monkeypatch.setattr(digest, "_post", lambda url, payload: sent.append((url, payload)))
-    assert cli.digest(cfg, [], date(2026, 9, 21), 7, post=True) == 0
-    assert len(sent) == 3 and all(u == "https://discord.test/hook" for u, _ in sent)
+    assert cli.digest(CFG, [], MON, 7, post=True) == 0
+    assert len(sent) == 4 and all(u == "https://discord.test/hook" for u, _ in sent)

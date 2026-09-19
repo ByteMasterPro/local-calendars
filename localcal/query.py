@@ -48,14 +48,22 @@ def occurrences(feed: Feed, cal: Calendar, start: date, end: date) -> list[dict]
     `end` is exclusive, matching recurring_ical_events.between().
     """
     tz = ZoneInfo(feed.timezone)
+    # remember which UIDs are series and when they end, so the digest can say "weekends thru Nov 8"
+    series_until: dict[str, date | None] = {}
+    for v in cal.walk("VEVENT"):
+        if "RRULE" in v:
+            until = v["RRULE"].get("UNTIL")
+            u = until[0] if until else None
+            if isinstance(u, datetime):                 # UNTIL is UTC on the wire; read it as local
+                u = (u.astimezone(tz) if u.tzinfo else u.replace(tzinfo=tz)).date()
+            series_until[str(v.get("UID", ""))] = u
     rows = []
     for v in recurring_ical_events.of(cal).between(start, end):
         s = v["DTSTART"].dt
         e = v["DTEND"].dt if "DTEND" in v else s
         all_day = not isinstance(s, datetime)
         if not all_day:
-            s = s.astimezone(tz) if s.tzinfo else s.replace(tzinfo=tz)
-            e = e.astimezone(tz) if e.tzinfo else e.replace(tzinfo=tz)
+            s, e = _localize(s, tz, feed), _localize(e, tz, feed)
         cats = v.get("CATEGORIES")
         rows.append({
             "calendar": feed.name,
@@ -70,9 +78,22 @@ def occurrences(feed: Feed, cal: Calendar, start: date, end: date) -> list[dict]
             "url": str(v.get("URL", "")),
             "description": str(v.get("DESCRIPTION", "")),
             "categories": [str(c) for c in cats.cats] if cats is not None else [],
+            "series": str(v.get("UID", "")) in series_until,
+            "series_until": (series_until.get(str(v.get("UID", ""))) or None) and series_until[str(v.get("UID", ""))].isoformat(),
             "_sort": s if isinstance(s, datetime) else datetime.combine(s, time.min, tzinfo=tz),
         })
     return rows
+
+
+def _localize(dt: datetime, tz: ZoneInfo, feed: Feed) -> datetime:
+    """Express dt in the feed's timezone. If the venue tagged it with a TZID they use by mistake
+    (Flying Ace enters some events as America/Halifax), keep the wall-clock time and swap the zone."""
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=tz)
+    key = getattr(dt.tzinfo, "key", None) or getattr(dt.tzinfo, "zone", None) or str(dt.tzinfo)
+    if key in feed.wall_clock_tzids:
+        return dt.replace(tzinfo=tz)
+    return dt.astimezone(tz)
 
 
 def gather(feeds: list[Feed], start: date, end: date) -> tuple[list[dict], int]:

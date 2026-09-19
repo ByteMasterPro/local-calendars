@@ -45,10 +45,14 @@ class Feed:
     location: str                 # default LOCATION for every event
     timezone: str
     kind: str = "other"           # groups the index page; see KINDS
+    short_name: str = ""          # "(Vanish, Leesburg)" in the digest; defaults to name
+    town: str = ""                # ditto; defaults to the town parsed from `location`
     source: dict[str, Any] | None = None   # {"type": "elfsight", "widget_id": "..."} etc.
     feed_url: str = ""            # set instead of `source` when the venue already publishes an .ics
     google_calendar_id: str = ""  # optional; makes the "Add to Google Calendar" link a native subscribe
     accumulate: bool = False      # source only shows a short window: merge into the published feed
+    wall_clock_tzids: list[str] = field(default_factory=list)   # TZIDs the venue uses by mistake;
+                                  # their wall-clock times are re-read as `timezone` (Flying Ace)
     keep_past_days: int = 60
     default_duration_minutes: int = 120
     description: str = ""
