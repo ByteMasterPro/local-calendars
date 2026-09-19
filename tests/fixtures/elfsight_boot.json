@@ -1,0 +1,303 @@
+{
+ "status": 1,
+ "data": {
+  "widgets": {
+   "test-widget": {
+    "status": 1,
+    "data": {
+     "app": "event-calendar",
+     "settings": {
+      "events": [
+       {
+        "id": "73c0a77c-8e6a-47d4-9496-e9780503872e",
+        "name": "Live Music: JunkFood",
+        "start": {
+         "type": "datetime",
+         "date": "2026-09-19",
+         "time": "18:00"
+        },
+        "end": {
+         "type": "datetime",
+         "date": "2026-09-19",
+         "time": "21:00"
+        },
+        "timeZone": "America/New_York",
+        "repeatPeriod": "noRepeat",
+        "repeatFrequency": "daily",
+        "repeatInterval": 1,
+        "repeatWeeklyOnDays": [],
+        "repeatEnds": "never",
+        "repeatEndsDate": null,
+        "repeatEndsOccurrences": 1,
+        "repeatMonthlyOnDay": "sameDay",
+        "exceptions": [],
+        "description": "",
+        "eventType": [
+         "048590d3-f612-472d-8908-2b1736df3ac9"
+        ],
+        "location": [],
+        "host": [],
+        "tags": [],
+        "color": "transparent",
+        "actions": [],
+        "actionsCaption": "",
+        "isAllDay": false
+       },
+       {
+        "id": "72c688b9-c3d1-414c-81c3-66c91d9e551c",
+        "name": "Honorfest",
+        "start": {
+         "type": "datetime",
+         "date": "2026-09-26",
+         "time": "11:00"
+        },
+        "end": {
+         "type": "datetime",
+         "date": "2026-09-26",
+         "time": "23:00"
+        },
+        "timeZone": "America/New_York",
+        "repeatPeriod": "noRepeat",
+        "repeatFrequency": "daily",
+        "repeatInterval": 1,
+        "repeatWeeklyOnDays": [],
+        "repeatEnds": "never",
+        "repeatEndsDate": null,
+        "repeatEndsOccurrences": 1,
+        "repeatMonthlyOnDay": "sameDay",
+        "exceptions": [],
+        "description": "<div>Raise a Stein at HONORFEST!</div><br><div>Get ready for an unforgettable day of Oktoberfest fun at Honor Brewing - Loudoun! Break out your lederhosen, gather your friends, and celebrate with great beer, live music, and classic Oktoberfest traditions.</div><br><div>What's happening:</div><br><div>\u2022 HonorFest Oktoberfest Lager<br>\u2022 $5 Honorfest, Oktoberfest Lager, pints ALL DAY<br>\u2022 $10 Honorfest 4-pack specials<br>\u2022 Traditional accordion music from 1\u20133 PM<br>\u2022 Live music by Bad Press Band from 6\u20139 PM<br>\u2022 Stein Holding Contest from 12\u20136 PM (think you've got what it takes?), compete for bragging rights AND prizes</div><br><div>PLUS purchase one our exclusive 2026 Honor Brewing steins and get your first beer fill on us!</div><br><div>Whether you're competing for stein-holding bragging rights, enjoying authentic Oktoberfest music, or simply relaxing with a cold pint, there's something for everyone.</div><br><div>Mark your calendar for Saturday, September 26 and join us for one of our favorite celebrations of the year. Prost!</div>",
+        "eventType": [],
+        "location": [],
+        "host": [],
+        "tags": [],
+        "color": "transparent",
+        "actions": [],
+        "actionsCaption": "",
+        "isAllDay": false
+       },
+       {
+        "id": "ea5f6a87-6614-492f-bdbd-3e32e8b072af",
+        "name": "3rd Annual Classic Lite Beer Mile",
+        "start": {
+         "type": "datetime",
+         "date": "2026-08-30",
+         "time": "09:00"
+        },
+        "end": {
+         "type": "datetime",
+         "date": "2026-08-30",
+         "time": "11:00"
+        },
+        "timeZone": "America/New_York",
+        "repeatPeriod": "noRepeat",
+        "repeatFrequency": "daily",
+        "repeatInterval": 1,
+        "repeatWeeklyOnDays": [],
+        "repeatEnds": "never",
+        "repeatEndsDate": null,
+        "repeatEndsOccurrences": 1,
+        "repeatMonthlyOnDay": "sameDay",
+        "exceptions": [],
+        "description": "",
+        "eventType": [
+         "0798fc3a-a232-4238-a867-7e30f9937b35"
+        ],
+        "location": [],
+        "host": [],
+        "tags": [],
+        "color": "transparent",
+        "isAllDay": false,
+        "actions": [
+         {
+          "id": "ce7fab9189b71",
+          "type": "link",
+          "text": "INFO & TICKETS",
+          "link": {
+           "rawValue": "https://www.eventbrite.com/e/honor-brewing-3rd-annual-classic-lite-beer-mile-tickets-1991591140714",
+           "value": "https://www.eventbrite.com/e/honor-brewing-3rd-annual-classic-lite-beer-mile-tickets-1991591140714",
+           "type": "url",
+           "target": "_blank"
+          },
+          "primary": true
+         }
+        ],
+        "actionsCaption": ""
+       },
+       {
+        "id": "285ea9f2-6a44-436b-9174-067581452834",
+        "name": "Live Music: JunkFood",
+        "start": {
+         "type": "datetime",
+         "date": "2026-06-05",
+         "time": "18:00"
+        },
+        "end": {
+         "type": "datetime",
+         "date": "2026-06-05",
+         "time": "21:00"
+        },
+        "timeZone": "America/New_York",
+        "repeatPeriod": "noRepeat",
+        "repeatFrequency": "daily",
+        "repeatInterval": 1,
+        "repeatWeeklyOnDays": [],
+        "repeatEnds": "never",
+        "repeatEndsDate": null,
+        "repeatEndsOccurrences": 1,
+        "repeatMonthlyOnDay": "sameDay",
+        "exceptions": [],
+        "description": "",
+        "eventType": [
+         "048590d3-f612-472d-8908-2b1736df3ac9"
+        ],
+        "location": [],
+        "host": [],
+        "tags": [],
+        "color": "transparent",
+        "isAllDay": false,
+        "actions": [],
+        "actionsCaption": ""
+       },
+       {
+        "id": "7aa31801-7b79-40a8-ac88-4c99f7e4ea73",
+        "name": "Honorfest Beer Dinner",
+        "start": {
+         "type": "datetime",
+         "date": "2025-09-16",
+         "time": "19:00"
+        },
+        "end": {
+         "type": "datetime",
+         "date": "2025-09-16",
+         "time": "19:00"
+        },
+        "timeZone": "America/New_York",
+        "repeatPeriod": "noRepeat",
+        "repeatFrequency": "daily",
+        "repeatInterval": 1,
+        "repeatEnds": "never",
+        "repeatEndsDate": null,
+        "repeatEndsOccurrences": 1,
+        "repeatMonthlyOnDay": "sameDay",
+        "description": "",
+        "eventType": [
+         "0798fc3a-a232-4238-a867-7e30f9937b35"
+        ],
+        "location": [],
+        "host": [],
+        "tags": [],
+        "color": "transparent",
+        "exceptions": [],
+        "actions": [
+         {
+          "id": "e0deb2d42bc",
+          "type": "link",
+          "text": "Get Tickets",
+          "link": {
+           "rawValue": "https://www.eventbrite.com/e/1583100920469?aff=oddtdtcreator",
+           "value": "https://www.eventbrite.com/e/1583100920469?aff=oddtdtcreator",
+           "type": "url",
+           "target": "_blank"
+          },
+          "primary": true
+         }
+        ],
+        "actionsCaption": ""
+       },
+       {
+        "id": "recurring-trivia",
+        "name": "Trivia Night &amp; Tacos",
+        "start": {
+         "type": "datetime",
+         "date": "2026-09-01",
+         "time": "19:00"
+        },
+        "end": {
+         "type": "datetime",
+         "date": "2026-09-01",
+         "time": "21:00"
+        },
+        "timeZone": "America/New_York",
+        "repeatPeriod": "weekly",
+        "repeatFrequency": "weekly",
+        "repeatInterval": 1,
+        "repeatWeeklyOnDays": [
+         "tuesday"
+        ],
+        "repeatEnds": "onDate",
+        "repeatEndsDate": "2026-12-15",
+        "repeatEndsOccurrences": 1,
+        "repeatMonthlyOnDay": "sameDay",
+        "exceptions": [
+         "2026-11-24"
+        ],
+        "description": "<p>Free to play.<br>Prizes!</p>",
+        "eventType": [],
+        "location": [
+         "loc-1"
+        ],
+        "host": [],
+        "tags": [],
+        "color": "transparent",
+        "actions": [],
+        "actionsCaption": "",
+        "isAllDay": false
+       },
+       {
+        "id": "allday-release",
+        "name": "Can Release Day",
+        "start": {
+         "type": "date",
+         "date": "2026-10-03"
+        },
+        "end": {
+         "type": "date",
+         "date": "2026-10-03"
+        },
+        "timeZone": "America/New_York",
+        "repeatPeriod": "noRepeat",
+        "exceptions": [],
+        "description": "",
+        "eventType": [],
+        "location": [],
+        "host": [],
+        "tags": [],
+        "actions": [],
+        "isAllDay": true
+       }
+      ],
+      "eventTypes": [
+       {
+        "id": "0798fc3a-a232-4238-a867-7e30f9937b35",
+        "name": "Ticketed Event",
+        "categoryColor": "transparent",
+        "filterID": "ticketed-event"
+       },
+       {
+        "id": "09763e9b-1791-4492-b39c-f2688e2bd256",
+        "name": "Charity Event",
+        "categoryColor": "transparent",
+        "filterID": "charity-event"
+       },
+       {
+        "id": "048590d3-f612-472d-8908-2b1736df3ac9",
+        "name": "Live Music",
+        "categoryColor": "transparent",
+        "filterID": "live-music"
+       }
+      ],
+      "locations": [
+       {
+        "id": "loc-1",
+        "name": "The Patio",
+        "address": "42604 Trade West Dr, Sterling, VA"
+       }
+      ],
+      "hosts": []
+     }
+    }
+   }
+  }
+ }
+}

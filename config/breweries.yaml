@@ -1,0 +1,34 @@
+# Brewery calendar feeds. Each entry becomes docs/<slug>.ics.
+#
+# To add a brewery:
+#   1. Find how the site renders events (view source). If it embeds an Elfsight Event
+#      Calendar you will see class="elfsight-app-<uuid>"; copy the uuid as widget_id.
+#   2. Add an entry below. Run `uv run brewcal list --brewery <slug>` to eyeball the events,
+#      then `uv run brewcal build`. Push; the workflow republishes the feed.
+#   3. If the site uses something else, write a new adapter in brewcal/sources/ and register
+#      it in brewcal/sources/__init__.py, then use its key as `source.type`.
+
+site:
+  title: Brewery Calendars
+  base_url: https://bytemasterpro.github.io/brewery-calendars
+
+defaults:
+  timezone: America/New_York
+  keep_past_days: 60              # keep recently-past events so the calendar isn't empty looking back
+  default_duration_minutes: 120   # used when the source has no end time (or end <= start)
+
+breweries:
+  - slug: honor-brewing-loudoun
+    name: Honor Brewing - Loudoun
+    url: https://honorbrewing.com/honor-brewing-loudoun
+    location: Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166
+    source:
+      type: elfsight
+      widget_id: 5cfe5396-d62a-432e-8a83-f53cb73bb713
+
+  # Honor's Fairfax/Chantilly location has its own widget on /honor-brewing-fairfax:
+  # - slug: honor-brewing-fairfax
+  #   name: Honor Brewing - Fairfax
+  #   url: https://honorbrewing.com/honor-brewing-fairfax
+  #   location: Honor Brewing - Chantilly, 14004 Willard Rd, Chantilly, VA 20151
+  #   source: {type: elfsight, widget_id: 620fc0b1-b6f5-4814-a54a-33d51c45bfe8}

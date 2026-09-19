@@ -1,0 +1,46 @@
+name: Build calendar feeds
+
+on:
+  schedule:
+    # Weekly: Mondays 10:00 UTC = 06:00 EDT / 05:00 EST. GitHub cron is UTC only.
+    - cron: "0 10 * * 1"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "config/**"
+      - "brewcal/**"
+      - ".github/workflows/build.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-feeds
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Install
+        run: uv sync --frozen
+
+      - name: Build feeds
+        run: uv run brewcal build
+
+      - name: Commit updated feeds
+        run: |
+          git config user.name "brewcal bot"
+          git config user.email "brewcal-bot@users.noreply.github.com"
+          git add docs
+          if git diff --cached --quiet; then
+            echo "Feeds unchanged"
+          else
+            git commit -m "feeds: $(date -u +%Y-%m-%d)"
+            git push
+          fi

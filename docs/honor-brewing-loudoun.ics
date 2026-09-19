@@ -1,0 +1,476 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//brewcal 0.1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALDESC:Events at Honor Brewing - Loudoun. Source: https://honorbrewi
+ ng.com/honor-brewing-loudoun
+X-WR-CALNAME:Honor Brewing - Loudoun
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+X-WR-TIMEZONE:America/New_York
+BEGIN:VTIMEZONE
+TZID:America/New_York
+COMMENT:This timezone only works from 2025-07-23 to 2029-09-29.
+BEGIN:DAYLIGHT
+DTSTART:20250723T000000
+TZNAME:EDT
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0400
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:20251102T020000
+RDATE:20261101T020000,20271107T020000,20281105T020000
+TZNAME:EST
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20260308T030000
+RDATE:20270314T030000,20280312T030000,20290311T030000
+TZNAME:EDT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:Chritmas in July Event Showcase
+DTSTART;TZID=America/New_York:20260724T170000
+DTEND;TZID=America/New_York:20260724T200000
+DTSTAMP:20260919T015209Z
+UID:6b941839-2cc8-441a-b423-dc7afcdef5b7@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: The Bad Press Band
+DTSTART;TZID=America/New_York:20260724T180000
+DTEND;TZID=America/New_York:20260724T210000
+DTSTAMP:20260919T015209Z
+UID:4fc28251-394d-41ab-a9fe-fcd06e948ca4@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Chesapeak Sons
+DTSTART;TZID=America/New_York:20260725T180000
+DTEND;TZID=America/New_York:20260725T210000
+DTSTAMP:20260919T015209Z
+UID:ef4672f6-1a42-46cf-9f0c-69c0671dd6b1@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Bev with Dev - Summer Sips
+DTSTART;TZID=America/New_York:20260730T190000
+DTEND;TZID=America/New_York:20260730T210000
+DTSTAMP:20260919T015209Z
+UID:b3a26405-8b4b-42cc-8ebc-8306a244aba8@honor-brewing-loudoun
+CATEGORIES:Ticketed Event
+DESCRIPTION:INFO & TICKETS: https://www.eventbrite.com/e/bevs-with-dev-sum
+ mer-sips-tickets-1993451184154\n\nEvent listing: https://honorbrewing.com/
+ honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://www.eventbrite.com/e/bevs-with-dev-summer-sips-tickets-1993451
+ 184154
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Karaoke Night!
+DTSTART;TZID=America/New_York:20260731T180000
+DTEND;TZID=America/New_York:20260731T210000
+DTSTAMP:20260919T015209Z
+UID:20f932b9-e9d5-48e4-8514-471163d69378@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Second Suns Band
+DTSTART;TZID=America/New_York:20260801T180000
+DTEND;TZID=America/New_York:20260801T210000
+DTSTAMP:20260919T015209Z
+UID:d89940ba-9f5a-4d75-92dc-5ec25542547a@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:August Charity Tap Line: Vets on Track
+DTSTART;TZID=America/New_York:20260806T160000
+DTEND;TZID=America/New_York:20260806T200000
+DTSTAMP:20260919T015209Z
+UID:c4c62172-e396-4e93-a8b6-7d4a60ab48e8@honor-brewing-loudoun
+CATEGORIES:Charity Event
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:First Friday: Live Music & Local Vendors
+DTSTART;TZID=America/New_York:20260807T170000
+DTEND;TZID=America/New_York:20260807T210000
+DTSTAMP:20260919T015209Z
+UID:ef26be27-0fbb-4cb7-916a-f25d1a111a0a@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Homey Don't Play Dat
+DTSTART;TZID=America/New_York:20260807T180000
+DTEND;TZID=America/New_York:20260807T210000
+DTSTAMP:20260919T015209Z
+UID:0bc31c02-3ea4-40fd-a127-5dffcdb0bbcf@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Rolling Stones Tribute Band: Mother's Little Helpers
+DTSTART;TZID=America/New_York:20260808T180000
+DTEND;TZID=America/New_York:20260808T210000
+DTSTAMP:20260919T015209Z
+UID:d1331d92-3d55-46ac-9d89-e4a213225a7d@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Blazin Keys Dueling Pianos
+DTSTART;TZID=America/New_York:20260814T180000
+DTEND;TZID=America/New_York:20260814T210000
+DTSTAMP:20260919T015209Z
+UID:d9e316bc-2b18-48f7-b610-ce999a26bc48@honor-brewing-loudoun
+CATEGORIES:Ticketed Event
+DESCRIPTION:INFO & TICKETS: https://www.eventbrite.com/e/blazin-keys-dueli
+ ng-pianos-tickets-1991462960323\n\nEvent listing: https://honorbrewing.com
+ /honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://www.eventbrite.com/e/blazin-keys-dueling-pianos-tickets-199146
+ 2960323
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Honor Brewing Luau
+DTSTART;TZID=America/New_York:20260815T120000
+DTEND;TZID=America/New_York:20260815T230000
+DTSTAMP:20260919T015209Z
+UID:8537269b-bf32-4e73-96e2-a76ad0c59efb@honor-brewing-loudoun
+DESCRIPTION:Pig Roast. Live Island Music All Day. Beach Cocktails. Food Sp
+ ecials.\n\nEvent listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Caribbean Vibe Steel Drum
+DTSTART;TZID=America/New_York:20260815T120000
+DTEND;TZID=America/New_York:20260815T150000
+DTSTAMP:20260919T015209Z
+UID:afe5bd74-2df8-4a95-b910-6c4a329cc39b@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Yessah
+DTSTART;TZID=America/New_York:20260815T180000
+DTEND;TZID=America/New_York:20260815T210000
+DTSTAMP:20260919T015209Z
+UID:dff7f005-e59c-4aca-9a6d-b450d3205b4e@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Back to School Teacher Happy Hour
+DTSTART;TZID=America/New_York:20260821T150000
+DTEND;TZID=America/New_York:20260821T230000
+DTSTAMP:20260919T015209Z
+UID:5f46e047-6266-436c-9ce8-9bdc4f8c2f30@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: The Sellouts
+DTSTART;TZID=America/New_York:20260822T180000
+DTEND;TZID=America/New_York:20260822T210000
+DTSTAMP:20260919T015209Z
+UID:7e8d81df-b4cf-45f2-9bf0-c325eb157d0a@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Coffee & Cars Meet-Up with Mercy Times
+DTSTART;TZID=America/New_York:20260823T100000
+DTEND;TZID=America/New_York:20260823T120000
+DTSTAMP:20260919T015209Z
+UID:eb68d56c-f1f8-4dea-a76b-12a3b259ab2e@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Karaoke Night!
+DTSTART;TZID=America/New_York:20260828T180000
+DTEND;TZID=America/New_York:20260828T210000
+DTSTAMP:20260919T015209Z
+UID:8c7c6fa8-54d8-4f79-8501-c695ec9988b9@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Shane Gamble
+DTSTART;TZID=America/New_York:20260829T120000
+DTEND;TZID=America/New_York:20260829T150000
+DTSTAMP:20260919T015209Z
+UID:a8d8eb97-76bb-4a51-878c-313bd4da22d2@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Scott Kurt & The Memphis 59
+DTSTART;TZID=America/New_York:20260829T180000
+DTEND;TZID=America/New_York:20260829T210000
+DTSTAMP:20260919T015209Z
+UID:d7810ba0-fdd8-414f-84e5-47a6c19d9fad@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:3rd Annual Classic Lite Beer Mile
+DTSTART;TZID=America/New_York:20260830T090000
+DTEND;TZID=America/New_York:20260830T110000
+DTSTAMP:20260919T015209Z
+UID:ea5f6a87-6614-492f-bdbd-3e32e8b072af@honor-brewing-loudoun
+CATEGORIES:Ticketed Event
+DESCRIPTION:INFO & TICKETS: https://www.eventbrite.com/e/honor-brewing-3rd
+ -annual-classic-lite-beer-mile-tickets-1991591140714\n\nEvent listing: htt
+ ps://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://www.eventbrite.com/e/honor-brewing-3rd-annual-classic-lite-bee
+ r-mile-tickets-1991591140714
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Berlin Calling
+DTSTART;TZID=America/New_York:20260830T103000
+DTEND;TZID=America/New_York:20260830T123000
+DTSTAMP:20260919T015209Z
+UID:fafd0039-a671-4206-a09c-a1141ebb9a96@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Pumpkin Ain't Easy Beer Release
+DTSTART;TZID=America/New_York:20260901T110000
+DTEND;TZID=America/New_York:20260901T220000
+DTSTAMP:20260919T015209Z
+UID:0744e730-7025-4268-a432-944ced010962@honor-brewing-loudoun
+DESCRIPTION:$5 Drafts & $10 4-packs\n\nEvent listing: https://honorbrewing
+ .com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:First Friday: Live Music & Local Vendors
+DTSTART;TZID=America/New_York:20260904T170000
+DTEND;TZID=America/New_York:20260904T210000
+DTSTAMP:20260919T015209Z
+UID:dd6f2e6d-20f5-4322-bb59-5ae30beff714@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Lonesome Ryder Band
+DTSTART;TZID=America/New_York:20260904T180000
+DTEND;TZID=America/New_York:20260904T210000
+DTSTAMP:20260919T015209Z
+UID:669758c8-eb9c-4eea-a857-2ad049c15978@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: My Chemical Bromance
+DTSTART;TZID=America/New_York:20260905T180000
+DTEND;TZID=America/New_York:20260905T210000
+DTSTAMP:20260919T015209Z
+UID:1d30c3c8-0a78-4dfb-85ed-82fad2973fc8@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Chapter 11
+DTSTART;TZID=America/New_York:20260912T180000
+DTEND;TZID=America/New_York:20260912T210000
+DTSTAMP:20260919T015209Z
+UID:90d31210-0f4d-4bb6-8bdb-1bbec645cf1c@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Commanders Watch Party with Sports Junkies
+DTSTART;TZID=America/New_York:20260913T042500
+DTEND;TZID=America/New_York:20260913T072500
+DTSTAMP:20260919T015209Z
+UID:cc4ed9be-fd01-4145-8801-894f30a22d26@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: The Roadducks
+DTSTART;TZID=America/New_York:20260918T180000
+DTEND;TZID=America/New_York:20260918T210000
+DTSTAMP:20260919T015209Z
+UID:fc6c6327-bf8c-4861-a13b-468238ff33d4@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: JunkFood
+DTSTART;TZID=America/New_York:20260919T180000
+DTEND;TZID=America/New_York:20260919T210000
+DTSTAMP:20260919T015209Z
+UID:73c0a77c-8e6a-47d4-9496-e9780503872e@honor-brewing-loudoun
+CATEGORIES:Live Music
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:SINGO: Musicals Music Bingo
+DTSTART;TZID=America/New_York:20260924T190000
+DTEND;TZID=America/New_York:20260924T210000
+DTSTAMP:20260919T015209Z
+UID:bd62b2bc-a35b-4868-b7e2-41c43f412561@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Karaoke Night!
+DTSTART;TZID=America/New_York:20260925T180000
+DTEND;TZID=America/New_York:20260925T210000
+DTSTAMP:20260919T015209Z
+UID:c1337733-759e-4d28-8e83-8c69d12cecb0@honor-brewing-loudoun
+DESCRIPTION:Event listing: https://honorbrewing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Honorfest
+DTSTART;TZID=America/New_York:20260926T110000
+DTEND;TZID=America/New_York:20260926T230000
+DTSTAMP:20260919T015209Z
+UID:72c688b9-c3d1-414c-81c3-66c91d9e551c@honor-brewing-loudoun
+DESCRIPTION:Raise a Stein at HONORFEST!\n\nGet ready for an unforgettable 
+ day of Oktoberfest fun at Honor Brewing - Loudoun! Break out your lederhos
+ en\, gather your friends\, and celebrate with great beer\, live music\, an
+ d classic Oktoberfest traditions.\n\nWhat's happening:\n\n• HonorFest Ok
+ toberfest Lager\n• $5 Honorfest\, Oktoberfest Lager\, pints ALL DAY\n•
+  $10 Honorfest 4-pack specials\n• Traditional accordion music from 1–3
+  PM\n• Live music by Bad Press Band from 6–9 PM\n• Stein Holding Con
+ test from 12–6 PM (think you've got what it takes?)\, compete for braggi
+ ng rights AND prizes\n\nPLUS purchase one our exclusive 2026 Honor Brewing
+  steins and get your first beer fill on us!\n\nWhether you're competing fo
+ r stein-holding bragging rights\, enjoying authentic Oktoberfest music\, o
+ r simply relaxing with a cold pint\, there's something for everyone.\n\nMa
+ rk your calendar for Saturday\, September 26 and join us for one of our fa
+ vorite celebrations of the year. Prost!\n\nEvent listing: https://honorbre
+ wing.com/honor-brewing-loudoun
+LOCATION:Honor Brewing - Loudoun\, 42604 Trade West Dr\, Sterling\, VA 201
+ 66
+TRANSP:TRANSPARENT
+URL:https://honorbrewing.com/honor-brewing-loudoun
+END:VEVENT
+END:VCALENDAR
