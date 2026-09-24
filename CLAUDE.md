@@ -92,6 +92,12 @@ uv run pytest
   `/Home/Components/RssFeeds/RssFeed/View?ctID=6&cateIDs=...` is NOT blocked. ctID=5 is News,
   6 is Calendar. Category ids are in the `<select name="eventcats_...">` on /residents/calendar.
   Horizon is ~2 weeks and no query parameter widens it, hence `accumulate: true`.
+- **Vanish** (vanishbeer.com, Liquid Web): intermittently serves a cert chain that fails
+  verification from GitHub runners ("certificate has expired"), though the chain is valid and
+  verifies fine minutes later; diagnosed 2026-09-24 from a runner (chain ok, 5/5 fetches ok).
+  Not fixable here: `query.RETRY_BACKOFF` spans ~75s so a blip does not drop it from the digest.
+  **Flying Ace** has similarly answered with an HTML error page mid-run. If either starts failing
+  every run, the next step is caching the last good copy of each external feed.
 - **Historic Manassas** (WordPress + The Events Calendar): `?ical=1` works. Each performance of
   a show has its own UID, so the digest collapses by (title, calendar), not UID.
 - **One Loudoun** (Squarespace): `?format=json` works, `?format=ical` does not on their template.

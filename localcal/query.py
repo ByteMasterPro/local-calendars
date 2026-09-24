@@ -20,14 +20,21 @@ log = logging.getLogger(__name__)
 USER_AGENT = "localcal/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
 
 
-def load_calendar(feed: Feed, attempts: int = 3) -> Calendar:
+# Seconds to wait after each failed attempt. Vanish's host (Liquid Web) intermittently serves a
+# chain that fails verification, and Flying Ace has answered with an HTML error page; both clear
+# within a minute or two, so the backoff spans ~75s rather than the ~6s a tight retry gives.
+RETRY_BACKOFF = (3, 10, 25, 40)
+
+
+def load_calendar(feed: Feed, backoff: tuple[int, ...] = RETRY_BACKOFF) -> Calendar:
     """Every feed as an icalendar.Calendar, fetched live (external .ics or built from source).
 
-    Third-party hosts hiccup (a brewery's TLS cert mid-rotation took Vanish down for one run),
-    so transient failures are retried with a short backoff before giving up on the feed.
+    Third-party hosts hiccup, so transient failures are retried over a widening backoff before
+    the feed is given up on. A feed that stays broken still only costs its own retries: other
+    calendars are fetched independently and the digest posts without it.
     """
     last: Exception | None = None
-    for attempt in range(attempts):
+    for attempt in range(len(backoff) + 1):
         try:
             if feed.external:
                 resp = requests.get(feed.feed_url, headers={"User-Agent": USER_AGENT}, timeout=60)
@@ -36,9 +43,10 @@ def load_calendar(feed: Feed, attempts: int = 3) -> Calendar:
             return Calendar.from_ical(ical.render(feed, fetch_events(feed)))
         except Exception as exc:
             last = exc
-            if attempt < attempts - 1:
-                log.warning("%s: attempt %d failed (%s); retrying", feed.slug, attempt + 1, str(exc)[:120])
-                _time.sleep(2 * (attempt + 1))
+            if attempt < len(backoff):
+                log.warning("%s: attempt %d failed (%s); retrying in %ds",
+                            feed.slug, attempt + 1, str(exc)[:120], backoff[attempt])
+                _time.sleep(backoff[attempt])
     raise last  # type: ignore[misc]
 
 

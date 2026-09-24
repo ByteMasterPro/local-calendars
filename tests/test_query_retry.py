@@ -17,10 +17,12 @@ def test_load_calendar_retries_then_succeeds(monkeypatch):
             raise ConnectionError("tls hiccup")
         return Resp()
 
+    waits = []
     monkeypatch.setattr(query.requests, "get", fake_get)
-    monkeypatch.setattr(query._time, "sleep", lambda s: None)
+    monkeypatch.setattr(query._time, "sleep", waits.append)
     cal = query.load_calendar(feed)
     assert calls["n"] == 3 and cal["PRODID"] == "t"
+    assert waits == list(query.RETRY_BACKOFF[:2])          # widening backoff, not a tight loop
 
 
 def test_load_calendar_gives_up_after_attempts(monkeypatch):
@@ -30,4 +32,8 @@ def test_load_calendar_gives_up_after_attempts(monkeypatch):
     monkeypatch.setattr(query._time, "sleep", lambda s: None)
     import pytest
     with pytest.raises(ConnectionError):
-        query.load_calendar(feed, attempts=2)
+        query.load_calendar(feed, backoff=(1,))
+
+
+def test_backoff_spans_at_least_a_minute():
+    assert sum(query.RETRY_BACKOFF) >= 60          # long enough to outlast a host's bad-chain window
