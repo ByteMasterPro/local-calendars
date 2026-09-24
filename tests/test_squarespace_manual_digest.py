@@ -134,12 +134,10 @@ def test_pick_lines_groups_same_day_picks_under_one_date_header():
                 location="Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166", url="https://h", desc="Raise a Stein!")
     assert digest.pick_lines([okt, honor], W_MON, FEEDS) == [
         "**Sat Sep 26**",
-        "[Lovettsville Oktoberfest](https://lov) (Zoldos Square, Lovettsville)",
-        "🕛 10am–5pm",
+        "[Lovettsville Oktoberfest](https://lov) · 10am–5pm (Zoldos Square, Lovettsville)",
         "> German food and beer, stein hauling.",
         "",
-        "[Honorfest](https://h) (Honor Brewing - Loudoun, Sterling)",
-        "🕛 11am–11pm",
+        "[Honorfest](https://h) · 11am–11pm (Honor Brewing - Loudoun, Sterling)",
         "> Raise a Stein!",
     ]
 
@@ -155,8 +153,7 @@ def test_pick_lines_keeps_spans_and_lone_all_day_events_on_one_line():
         "> Rides and midway.",
         "",
         "**Sat Sep 26**",
-        "[Honorfest](https://h) (Vanish, Leesburg)",
-        "🕛 11am–11pm",
+        "[Honorfest](https://h) · 11am–11pm (Vanish, Leesburg)",
     ]
 
 
@@ -165,8 +162,8 @@ def test_pick_lines_all_day_event_joins_a_day_that_has_timed_picks():
     timed = row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="vanish", url="https://h")
     lines = digest.pick_lines([allday, timed], W_MON, FEEDS)
     assert lines[0] == "**Sat Sep 26**" and lines.count("**Sat Sep 26**") == 1      # date printed once
-    assert lines[1] == "[Beer Release](https://b) (Chilly Hollow, Berryville)"       # no clock line for all-day
-    assert lines[2] == "" and lines[3] == "[Honorfest](https://h) (Vanish, Leesburg)"
+    assert lines[1] == "[Beer Release](https://b) (Chilly Hollow, Berryville)"       # no time for an all-day pick
+    assert lines[2] == "" and lines[3] == "[Honorfest](https://h) · 11am–11pm (Vanish, Leesburg)"
 
 
 def test_pick_lines_today_and_tomorrow_sit_on_the_date_line():
@@ -174,8 +171,7 @@ def test_pick_lines_today_and_tomorrow_sit_on_the_date_line():
                 url="https://p", desc="Polkas and waltzes.")
     assert digest.pick_lines([prost], W_SAT, FEEDS) == [
         "**Sun Sep 20** · Tomorrow",
-        "[PROST! German Experience](https://p) (Vanish, Leesburg)",
-        "🕛 1–4pm",
+        "[PROST! German Experience](https://p) · 1–4pm (Vanish, Leesburg)",
         "> Polkas and waltzes.",
     ]
 

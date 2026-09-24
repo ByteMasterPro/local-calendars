@@ -46,7 +46,7 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   this week** card first (fair one-offs + seasonal brewery events + parade/airshow-type town
   items), then the three sections, each **grouped by date** (bold date header once, events as `- time — Title (Venue, Town): excerpt` bullets).
   In Top Picks (reworked 2026-09-24) same-day picks share one date header and read
-  `Title (Venue)` / `🕛 time` / `> excerpt`; multi-day spans and all-day events on days with no
+  `Title · time (Venue)` / `> excerpt`; multi-day spans and all-day events on days with no
   timed pick keep the one-line `**date** — Title (Venue)` form, since a clock line would add
   nothing. Top picks repeat in full inside their sections; he wants that repetition. Tune under `digest:` in
   `config/calendars.yaml`; preview with `localcal digest --from <day>`. Needs the

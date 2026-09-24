@@ -202,12 +202,11 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
     under it, then the excerpt:
 
         **Sat Sep 26**
-        [Lovettsville Oktoberfest](url) (Zoldos Square, Lovettsville)
-        🕛 10am–5pm
+        [Lovettsville Oktoberfest](url) · 10am–5pm (Zoldos Square, Lovettsville)
         > German food and beer, stein hauling, Wiener Dog Races, Kinderfest...
 
-    Two kinds keep the older one-line form, because a clock line would say nothing: an event
-    spanning several days, and an all-day event on a day with no timed picks.
+    An event spanning several days, and an all-day event on a day with no timed picks, lead with
+    the date instead, since there is no single day (or no time) to hang under a header.
 
         **Fri Sep 25 – Sun Oct 4** — [State Fair of Virginia](url) (Meadow Event Park, Doswell)
         > The state fair: 4-H and FFA exhibits, rides and midway...
@@ -224,7 +223,6 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
         day = s_dt.date()
         feed = by_slug.get(r["slug"])
         url = r["url"] or (feed.url if feed else "")
-        title = f"{_link(r['summary'], url)} ({_where(r, by_slug)})"
         excerpt = _excerpt(r["description"])
         if out:
             out.append("")
@@ -236,15 +234,14 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
                 when += f", from {_clock(s_dt)}"
             elif last == day and not r["all_day"]:
                 when += f", {_span(s_dt, e_dt)}"
-            out.append(f"{when} — {title}{_rel(day, w)}")
+            out.append(f"{when} — {_link(r['summary'], url)} ({_where(r, by_slug)}){_rel(day, w)}")
             cur_day = None                      # a later pick on this day re-prints its header
         else:
             if day != cur_day:
                 out.append(f"**{_d(day)}**{_rel(day, w)}")
                 cur_day = day
-            out.append(title)
-            if not r["all_day"]:
-                out.append(f"🕛 {_span(s_dt, e_dt)}")
+            when = "" if r["all_day"] else f" · {_span(s_dt, e_dt)}"
+            out.append(f"{_link(r['summary'], url)}{when} ({_where(r, by_slug)})")
         if excerpt:
             out.append(f"> {excerpt}")
     return out

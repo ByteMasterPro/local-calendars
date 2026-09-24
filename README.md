@@ -43,7 +43,7 @@ sorted by start time. `--json` is for piping into other tools.
 ## Weekly Discord digest
 
 `localcal digest` posts a **Top picks this week** card followed by three sections every Monday,
-each grouped by date (one bold date header, the day's events under it; picks add a `🕛` time line). "This week" is Monday-Sunday; run it on a
+each grouped by date (one bold date header, the day's events under it). "This week" is Monday-Sunday; run it on a
 Saturday and it shows only what is left of the weekend (anything already over is dropped). Each
 section lists this week's events in full, then one **Next week:** line of highlights for the
 following Mon-Sun. Nothing further out appears.
