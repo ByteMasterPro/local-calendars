@@ -1,0 +1,53 @@
+name: Diagnose feed TLS
+
+on:
+  workflow_dispatch:
+    inputs:
+      host:
+        description: "Host to probe"
+        default: vanishbeer.com
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --frozen
+
+      - name: Runner + OpenSSL versions
+        run: |
+          openssl version -a | head -3
+          uv run python -c "import ssl, certifi, requests; print('py ssl:', ssl.OPENSSL_VERSION); print('certifi:', certifi.where()); print('requests:', requests.__version__)"
+
+      - name: Resolve host
+        run: |
+          getent hosts ${{ inputs.host }} || true
+          dig +short ${{ inputs.host }} A || true
+
+      - name: Chain as this runner sees it (per IP)
+        run: |
+          for ip in $(dig +short ${{ inputs.host }} A); do
+            echo "=== $ip ==="
+            echo | openssl s_client -connect $ip:443 -servername ${{ inputs.host }} -showcerts 2>/dev/null \
+              | awk '/-----BEGIN CERT/,/-----END CERT/' > /tmp/chain.pem || true
+            awk 'BEGIN{n=0} /BEGIN CERT/{n++} {print > ("/tmp/c" n ".pem")}' /tmp/chain.pem
+            for f in /tmp/c*.pem; do openssl x509 -in $f -noout -subject -issuer -enddate 2>/dev/null | sed 's/^/  /'; echo; done
+            echo | openssl s_client -connect $ip:443 -servername ${{ inputs.host }} 2>&1 | grep -E "Verify return code|verify error" | sed 's/^/  /'
+            echo | openssl s_client -connect $ip:443 -servername ${{ inputs.host }} -CAfile $(uv run python -c "import certifi;print(certifi.where())") 2>&1 | grep -E "Verify return code" | sed 's/^/  certifi: /'
+            rm -f /tmp/c*.pem
+          done
+
+      - name: Python fetch (5 attempts)
+        run: |
+          uv run python - <<'PY'
+          import requests, time
+          url = "https://${{ inputs.host }}/calendar/category/music/?post_type=tribe_events&ical=1&eventDisplay=list"
+          for i in range(5):
+              try:
+                  r = requests.get(url, timeout=30, headers={"User-Agent": "localcal/0.1"})
+                  print(i, "OK", r.status_code, len(r.content), r.headers.get("content-type"), r.headers.get("server"))
+              except Exception as e:
+                  print(i, "FAIL", type(e).__name__, str(e)[-140:])
+              time.sleep(3)
+          PY
