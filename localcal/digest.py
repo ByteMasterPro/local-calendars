@@ -202,13 +202,13 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
     under it, then the excerpt:
 
         **Sat Sep 26**
-        [Lovettsville Oktoberfest](url) · 10am–5pm (Zoldos Square, Lovettsville)
+        **[Lovettsville Oktoberfest](url)** · 10am–5pm (Zoldos Square, Lovettsville)
         > German food and beer, stein hauling, Wiener Dog Races, Kinderfest...
 
     An event spanning several days, and an all-day event on a day with no timed picks, lead with
     the date instead, since there is no single day (or no time) to hang under a header.
 
-        **Fri Sep 25 – Sun Oct 4** — [State Fair of Virginia](url) (Meadow Event Park, Doswell)
+        **Fri Sep 25 – Sun Oct 4** — **[State Fair of Virginia](url)** (Meadow Event Park, Doswell)
         > The state fair: 4-H and FFA exhibits, rides and midway...
     """
     rows = sorted(rows, key=lambda r: r["_sort"])
@@ -234,14 +234,14 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
                 when += f", from {_clock(s_dt)}"
             elif last == day and not r["all_day"]:
                 when += f", {_span(s_dt, e_dt)}"
-            out.append(f"{when} — {_link(r['summary'], url)} ({_where(r, by_slug)}){_rel(day, w)}")
+            out.append(f"{when} — **{_link(r['summary'], url)}** ({_where(r, by_slug)}){_rel(day, w)}")
             cur_day = None                      # a later pick on this day re-prints its header
         else:
             if day != cur_day:
                 out.append(f"**{_d(day)}**{_rel(day, w)}")
                 cur_day = day
             when = "" if r["all_day"] else f" · {_span(s_dt, e_dt)}"
-            out.append(f"{_link(r['summary'], url)}{when} ({_where(r, by_slug)})")
+            out.append(f"**{_link(r['summary'], url)}**{when} ({_where(r, by_slug)})")
         if excerpt:
             out.append(f"> {excerpt}")
     return out
