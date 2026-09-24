@@ -127,13 +127,57 @@ PROST = row("PROST! German Experience", "2026-09-20T13:00:00-04:00", "2026-09-20
             url="https://vanishbeer.com/event/prost", desc="Prost! Rockville German Band was founded in 2010. The band performs polkas.\n\nEvent listing: https://vanishbeer.com")
 
 
-def test_pick_lines_is_date_line_then_quoted_excerpt():
-    lines = digest.pick_lines([PROST], W_SAT, FEEDS)
-    assert lines == ["**Sun Sep 20**, 1–4pm — [PROST! German Experience](https://vanishbeer.com/event/prost) (Vanish, Leesburg) · Tomorrow",
-                     "> Prost! Rockville German Band was founded in 2010. The band performs polkas."]
-    span = row("2nd Annual Chillyfest", "2026-10-02", "2026-10-05", calendar="chilly", all_day=True, url="")
-    assert digest.pick_lines([span, PROST], W_MON, FEEDS)[0] == "**Fri Oct 2 – Sun Oct 4** — [2nd Annual Chillyfest](https://x) (Chilly Hollow, Berryville)"
-    assert digest.pick_lines([span, PROST], W_MON, FEEDS)[1] == ""          # blank line between picks
+def test_pick_lines_groups_same_day_picks_under_one_date_header():
+    okt = row("Lovettsville Oktoberfest", "2026-09-26T10:00:00-04:00", "2026-09-26T17:00:00-04:00", calendar="fairs", kind="festival",
+              location="Zoldos Square, Lovettsville, VA 20180", url="https://lov", desc="German food and beer, stein hauling.")
+    honor = row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="honor", slug="honor",
+                location="Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166", url="https://h", desc="Raise a Stein!")
+    assert digest.pick_lines([okt, honor], W_MON, FEEDS) == [
+        "**Sat Sep 26**",
+        "[Lovettsville Oktoberfest](https://lov) (Zoldos Square, Lovettsville)",
+        "🕛 10am–5pm",
+        "> German food and beer, stein hauling.",
+        "",
+        "[Honorfest](https://h) (Honor Brewing - Loudoun, Sterling)",
+        "🕛 11am–11pm",
+        "> Raise a Stein!",
+    ]
+
+
+def test_pick_lines_keeps_spans_and_lone_all_day_events_on_one_line():
+    span = row("State Fair", "2026-09-25", "2026-10-05", calendar="fairs", kind="festival", all_day=True, url="https://sf", desc="Rides and midway.")
+    release = row("Beer Release: Oktoberfest", "2026-09-24", "2026-09-25", calendar="chilly", all_day=True, url="")
+    timed = row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="vanish", url="https://h")
+    assert digest.pick_lines([release, span, timed], W_MON, FEEDS) == [
+        "**Thu Sep 24** — [Beer Release: Oktoberfest](https://x) (Chilly Hollow, Berryville)",
+        "",
+        "**Fri Sep 25 – Sun Oct 4** — [State Fair](https://sf) (Fairs)",
+        "> Rides and midway.",
+        "",
+        "**Sat Sep 26**",
+        "[Honorfest](https://h) (Vanish, Leesburg)",
+        "🕛 11am–11pm",
+    ]
+
+
+def test_pick_lines_all_day_event_joins_a_day_that_has_timed_picks():
+    allday = row("Beer Release", "2026-09-26", "2026-09-27", calendar="chilly", all_day=True, url="https://b")
+    timed = row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="vanish", url="https://h")
+    lines = digest.pick_lines([allday, timed], W_MON, FEEDS)
+    assert lines[0] == "**Sat Sep 26**" and lines.count("**Sat Sep 26**") == 1      # date printed once
+    assert lines[1] == "[Beer Release](https://b) (Chilly Hollow, Berryville)"       # no clock line for all-day
+    assert lines[2] == "" and lines[3] == "[Honorfest](https://h) (Vanish, Leesburg)"
+
+
+def test_pick_lines_today_and_tomorrow_sit_on_the_date_line():
+    prost = row("PROST! German Experience", "2026-09-20T13:00:00-04:00", "2026-09-20T16:00:00-04:00", calendar="vanish",
+                url="https://p", desc="Polkas and waltzes.")
+    assert digest.pick_lines([prost], W_SAT, FEEDS) == [
+        "**Sun Sep 20** · Tomorrow",
+        "[PROST! German Experience](https://p) (Vanish, Leesburg)",
+        "🕛 1–4pm",
+        "> Polkas and waltzes.",
+    ]
 
 
 def test_grouped_lines_date_header_then_bullets():

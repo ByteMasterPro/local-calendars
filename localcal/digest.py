@@ -198,31 +198,70 @@ def top_picks(F, B, T, c, w: Window) -> list[dict]:
 # --------------------------------------------------------------- rendering
 
 def pick_lines(rows, w: Window, by_slug) -> list[str]:
-    """Top Picks card: one event per block, date line first, excerpt quoted beneath it.
+    """Top Picks card. Events on the same day sit under one date header, title first, clock line
+    under it, then the excerpt:
 
-        **Sat Sep 26**, 10am–5pm — [Lovettsville Oktoberfest](url) (Zoldos Square, Lovettsville)
+        **Sat Sep 26**
+        [Lovettsville Oktoberfest](url) (Zoldos Square, Lovettsville)
+        🕛 10am–5pm
         > German food and beer, stein hauling, Wiener Dog Races, Kinderfest...
+
+    Two kinds keep the older one-line form, because a clock line would say nothing: an event
+    spanning several days, and an all-day event on a day with no timed picks.
+
+        **Fri Sep 25 – Sun Oct 4** — [State Fair of Virginia](url) (Meadow Event Park, Doswell)
+        > The state fair: 4-H and FFA exhibits, rides and midway...
     """
+    rows = sorted(rows, key=lambda r: r["_sort"])
+    # A day gets a header only if something that day carries a time; otherwise its all-day
+    # events read better inline, and the date never appears twice for the same day.
+    timed_days = {_first_day(r) for r in rows if not r["all_day"] and not _is_span(r)}
+
     out: list[str] = []
+    cur_day: date | None = None
     for r in rows:
         s_dt = datetime.fromisoformat(r["start"]); e_dt = datetime.fromisoformat(r["end"])
-        last = e_dt.date() - timedelta(days=1) if r["all_day"] else e_dt.date()
-        if last > s_dt.date():
-            when = f"**{_d(s_dt.date())} – {_d(last)}**" + ("" if r["all_day"] else f", from {_clock(s_dt)}")
-        elif r["all_day"]:
-            when = f"**{_d(s_dt.date())}**"
-        else:
-            when = f"**{_d(s_dt.date())}**, {_span(s_dt, e_dt)}"
-        rel = " · Today" if s_dt.date() == w.now.date() else " · Tomorrow" if s_dt.date() == w.now.date() + timedelta(days=1) else ""
+        day = s_dt.date()
         feed = by_slug.get(r["slug"])
         url = r["url"] or (feed.url if feed else "")
+        title = f"{_link(r['summary'], url)} ({_where(r, by_slug)})"
+        excerpt = _excerpt(r["description"])
         if out:
             out.append("")
-        out.append(f"{when} — {_link(r['summary'], url)} ({_where(r, by_slug)}){rel}")
-        excerpt = _excerpt(r["description"])
+
+        if _is_span(r) or day not in timed_days:
+            last = e_dt.date() - timedelta(days=1) if r["all_day"] else e_dt.date()
+            when = f"**{_d(day)} – {_d(last)}**" if last > day else f"**{_d(day)}**"
+            if last > day and not r["all_day"]:
+                when += f", from {_clock(s_dt)}"
+            elif last == day and not r["all_day"]:
+                when += f", {_span(s_dt, e_dt)}"
+            out.append(f"{when} — {title}{_rel(day, w)}")
+            cur_day = None                      # a later pick on this day re-prints its header
+        else:
+            if day != cur_day:
+                out.append(f"**{_d(day)}**{_rel(day, w)}")
+                cur_day = day
+            out.append(title)
+            if not r["all_day"]:
+                out.append(f"🕛 {_span(s_dt, e_dt)}")
         if excerpt:
             out.append(f"> {excerpt}")
     return out
+
+
+def _is_span(r) -> bool:
+    e = datetime.fromisoformat(r["end"])
+    last = e.date() - timedelta(days=1) if r["all_day"] else e.date()
+    return last > _first_day(r)
+
+
+def _rel(day: date, w: Window) -> str:
+    if day == w.now.date():
+        return " · Today"
+    if day == w.now.date() + timedelta(days=1):
+        return " · Tomorrow"
+    return ""
 
 
 def grouped_lines(rows, w: Window, by_slug) -> list[str]:
@@ -237,8 +276,7 @@ def grouped_lines(rows, w: Window, by_slug) -> list[str]:
     for r in sorted(rows, key=lambda r: (max(_first_day(r), w.start), r["_sort"])):
         day = max(_first_day(r), w.start)
         if day != last:
-            rel = " · Today" if day == w.now.date() else " · Tomorrow" if day == w.now.date() + timedelta(days=1) else ""
-            lines.append(("" if last is None else "\u200b\n") + f"**{_d(day)}**{rel}")   # zero-width line = spacing in Discord
+            lines.append(("" if last is None else "\u200b\n") + f"**{_d(day)}**{_rel(day, w)}")   # zero-width line = spacing in Discord
             last = day
         lines.append("- " + item_text(r, by_slug))
     return lines
