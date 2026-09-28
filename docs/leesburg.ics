@@ -11,7 +11,7 @@ X-PUBLISHED-TTL:P1D
 X-WR-TIMEZONE:America/New_York
 BEGIN:VTIMEZONE
 TZID:America/New_York
-COMMENT:This timezone only works from 2025-09-23 to 2029-10-10.
+COMMENT:This timezone only works from 2025-09-23 to 2029-10-15.
 BEGIN:DAYLIGHT
 DTSTART:20250923T000000
 TZNAME:EDT
@@ -38,7 +38,7 @@ SUMMARY:The Battle of New Market Heights: Freedom Will be Theirs by the Sw
  ord
 DTSTART;TZID=America/New_York:20260924T180000
 DTEND;TZID=America/New_York:20260924T200000
-DTSTAMP:20260926T140808Z
+DTSTAMP:20260928T175749Z
 UID:39075@leesburg
 DESCRIPTION:In the predawn darkness of September 29\, 1864\, Black Union s
  oldiers attacked a heavily fortified position on the outskirts of Richmond
@@ -54,7 +54,7 @@ BEGIN:VEVENT
 SUMMARY:Bike MS: Nation's Capital 2026
 DTSTART;TZID=America/New_York:20260926T073000
 DTEND;TZID=America/New_York:20260926T170000
-DTSTAMP:20260926T140808Z
+DTSTAMP:20260928T175749Z
 UID:39161@leesburg
 DESCRIPTION:The Multiple Sclerosis Society's annual bike ride passes throu
  gh Leesburg. More information: https://events.nationalmssociety.org/2764\n
@@ -68,7 +68,7 @@ BEGIN:VEVENT
 SUMMARY:Leesburg Airshow
 DTSTART;TZID=America/New_York:20260926T110000
 DTEND;TZID=America/New_York:20260926T160000
-DTSTAMP:20260926T140808Z
+DTSTAMP:20260928T175749Z
 UID:38727@leesburg
 DESCRIPTION:The Leesburg Airshow takes to the skies each September at Lees
  burg Executive Airport. This free festival features amazing aerial perform
@@ -81,10 +81,26 @@ TRANSP:TRANSPARENT
 URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/38727/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Loudoun County High School Homecoming Parade
+DTSTART;TZID=America/New_York:20260930T183000
+DTEND;TZID=America/New_York:20260930T200000
+DTSTAMP:20260928T175749Z
+UID:39179@leesburg
+DESCRIPTION:Loudoun County High School will host its homecoming parade on 
+ Wednesday\, September 30 beginning at 6:30 p.m. The event will begin at th
+ e Safeway Shopping Center and conclude at Loudoun County High School. As a
+  result\, there will be no parking on...\n\nDetails: https://www.leesburgv
+ a.gov/Home/Components/Calendar/Event/39179/\n\nCalendar: https://www.leesb
+ urgva.gov/residents/calendar
+LOCATION:Leesburg\, VA
+TRANSP:TRANSPARENT
+URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/39179/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:First Friday at the Donaldson Cabin: Leesburg Day
 DTSTART;TZID=America/New_York:20261002T170000
 DTEND;TZID=America/New_York:20261002T190000
-DTSTAMP:20260926T140808Z
+DTSTAMP:20260928T175749Z
 UID:38693@leesburg
 DESCRIPTION:Celebrating Leesburg’s history and identity\, this exhibit b
  rings together stories\, artifacts\, and images tied directly to the town.
@@ -100,7 +116,7 @@ BEGIN:VEVENT
 SUMMARY:Community Shredding Event
 DTSTART;TZID=America/New_York:20261003T090000
 DTEND;TZID=America/New_York:20261003T130000
-DTSTAMP:20260926T140808Z
+DTSTAMP:20260928T175749Z
 UID:38989@leesburg
 DESCRIPTION:Community Shredding Event Date: October 3\, 2026 Time: 9:00 a.
  m.–1:00 p.m. (or until trucks are full) Location: Heritage High School\,
@@ -116,7 +132,7 @@ BEGIN:VEVENT
 SUMMARY:Leesburg Walking Tour with James P. Roberts
 DTSTART;TZID=America/New_York:20261003T090000
 DTEND;TZID=America/New_York:20261003T120000
-DTSTAMP:20260926T140808Z
+DTSTAMP:20260928T175749Z
 UID:39073@leesburg
 DESCRIPTION:This three-hour tour is an insider’s commentary of local peo
  ple\, places\, and points of interest both in and around Leesburg. Particu
@@ -129,10 +145,25 @@ TRANSP:TRANSPARENT
 URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/39073/
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:38th Annual Leesburg Car Show
+DTSTART;TZID=America/New_York:20261003T110000
+DTEND;TZID=America/New_York:20261003T180000
+DTSTAMP:20260928T175749Z
+UID:39177@leesburg
+DESCRIPTION:The 38th Annual Leesburg Car Show returns to the streets of do
+ wntown Leesburg on Saturday\, October 3\, 2026 (rain date October 17). For
+  more information: https://www.lcps.org/o/acl/page/car-show/\n\nDetails: h
+ ttps://www.leesburgva.gov/Home/Components/Calendar/Event/39177/\n\nCalenda
+ r: https://www.leesburgva.gov/residents/calendar
+LOCATION:Leesburg\, VA
+TRANSP:TRANSPARENT
+URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/39177/
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Genealogy Club: Thomas Balch Library Resources
 DTSTART;TZID=America/New_York:20261008T180000
 DTEND;TZID=America/New_York:20261008T190000
-DTSTAMP:20260926T140808Z
+DTSTAMP:20260928T175749Z
 UID:39087@leesburg
 DESCRIPTION:The Genealogy Club is held both in-person and virtually and me
  ets on the second Thursday of each month to discuss shared interests such 
@@ -143,5 +174,17 @@ DESCRIPTION:The Genealogy Club is held both in-person and virtually and me
 LOCATION:Leesburg\, VA
 TRANSP:TRANSPARENT
 URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/39087/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Town Offices Closed for Columbus Day
+DTSTART;VALUE=DATE:20261012
+DTEND;VALUE=DATE:20261013
+DTSTAMP:20260928T175749Z
+UID:38219@leesburg
+DESCRIPTION:Details: https://www.leesburgva.gov/Home/Components/Calendar/E
+ vent/38219/\n\nCalendar: https://www.leesburgva.gov/residents/calendar
+LOCATION:Leesburg\, VA
+TRANSP:TRANSPARENT
+URL:https://www.leesburgva.gov/Home/Components/Calendar/Event/38219/
 END:VEVENT
 END:VCALENDAR
