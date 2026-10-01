@@ -157,6 +157,32 @@ def test_pick_lines_keeps_spans_and_lone_all_day_events_on_one_line():
     ]
 
 
+def test_pick_lines_groups_picks_sharing_one_multi_day_run():
+    waterford = row("Waterford Fair", "2026-10-02", "2026-10-05", calendar="fairs", kind="festival", all_day=True,
+                    url="https://wf", desc="Three-day fall festival.")
+    chilly = row("2nd Annual Chillyfest", "2026-10-02", "2026-10-05", calendar="chilly", all_day=True, url="https://cf")
+    lone = row("State Fair", "2026-09-25", "2026-10-05", calendar="fairs", kind="festival", all_day=True, url="https://sf")
+    w = digest.week_window(date(2026, 9, 28), datetime(2026, 9, 28, 11, tzinfo=timezone.utc))
+    assert digest.pick_lines([lone, waterford, chilly], w, FEEDS) == [
+        "**Fri Sep 25 – Sun Oct 4** — **[State Fair](https://sf)** (Fairs)",   # run nothing else shares: one line
+        "",
+        "**Fri Oct 2 – Sun Oct 4**",                                            # shared run: one header
+        "**[Waterford Fair](https://wf)** (Fairs)",
+        "> Three-day fall festival.",
+        "",
+        "**[2nd Annual Chillyfest](https://cf)** (Chilly Hollow, Berryville)",
+    ]
+
+
+def test_pick_lines_overlapping_but_different_runs_stay_separate():
+    a = row("Fair A", "2026-10-02", "2026-10-05", calendar="fairs", kind="festival", all_day=True, url="https://a")
+    b = row("Fair B", "2026-10-03", "2026-10-05", calendar="fairs", kind="festival", all_day=True, url="https://b")
+    w = digest.week_window(date(2026, 9, 28), datetime(2026, 9, 28, 11, tzinfo=timezone.utc))
+    lines = digest.pick_lines([a, b], w, FEEDS)
+    assert lines[0].startswith("**Fri Oct 2 – Sun Oct 4** — **[Fair A]")
+    assert lines[2].startswith("**Sat Oct 3 – Sun Oct 4** — **[Fair B]")
+
+
 def test_pick_lines_all_day_event_joins_a_day_that_has_timed_picks():
     allday = row("Beer Release", "2026-09-26", "2026-09-27", calendar="chilly", all_day=True, url="https://b")
     timed = row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="vanish", url="https://h")

@@ -45,10 +45,11 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   fair 2 weeks away in detail). Layout he chose from four mockups on 2026-09-19: a **Top picks
   this week** card first (fair one-offs + seasonal brewery events + parade/airshow-type town
   items), then the three sections, each **grouped by date** (bold date header once, events as `- time — Title (Venue, Town): excerpt` bullets).
-  In Top Picks (reworked 2026-09-24) same-day picks share one date header and read
-  `**Title** · time (Venue)` / `> excerpt`; multi-day spans and all-day events on days with no
-  timed pick keep the one-line `**date** — Title (Venue)` form, since a clock line would add
-  nothing. Top picks repeat in full inside their sections; he wants that repetition. Tune under `digest:` in
+  In Top Picks (reworked 2026-09-24, extended 2026-10-01) same-day picks share one date header
+  and read `**Title** · time (Venue)` / `> excerpt`; two or more picks running exactly the same
+  multi-day range likewise share one `**Fri Oct 2 – Sun Oct 4**` header. A range nothing else
+  shares, and an all-day event on a day with no timed pick, keep the one-line
+  `**date** — Title (Venue)` form, since there is no second event to group. Top picks repeat in full inside their sections; he wants that repetition. Tune under `digest:` in
   `config/calendars.yaml`; preview with `localcal digest --from <day>`. Needs the
   `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets. Since 2026-09-19 the post is
   preceded by a **channel purge** (all non-pinned messages) via `DISCORD_BOT_TOKEN` +

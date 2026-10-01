@@ -198,53 +198,103 @@ def top_picks(F, B, T, c, w: Window) -> list[dict]:
 # --------------------------------------------------------------- rendering
 
 def pick_lines(rows, w: Window, by_slug) -> list[str]:
-    """Top Picks card. Events on the same day sit under one date header, title first, clock line
-    under it, then the excerpt:
+    """Top Picks card. Events sharing a day sit under one date header, and events sharing the
+    same multi-day run sit under one range header:
 
         **Sat Sep 26**
         **[Lovettsville Oktoberfest](url)** · 10am–5pm (Zoldos Square, Lovettsville)
         > German food and beer, stein hauling, Wiener Dog Races, Kinderfest...
 
-    An event spanning several days, and an all-day event on a day with no timed picks, lead with
-    the date instead, since there is no single day (or no time) to hang under a header.
+        **Fri Oct 2 – Sun Oct 4**
+        **[Waterford Fair](url)** (Waterford Foundation)
+        > Three-day fall festival in the historic village...
+
+    A run nothing else shares, and an all-day event on a day with no timed picks, keep the
+    one-line form, since there is no second event to hang under a header:
 
         **Fri Sep 25 – Sun Oct 4** — **[State Fair of Virginia](url)** (Meadow Event Park, Doswell)
-        > The state fair: 4-H and FFA exhibits, rides and midway...
     """
     rows = sorted(rows, key=lambda r: r["_sort"])
     # A day gets a header only if something that day carries a time; otherwise its all-day
     # events read better inline, and the date never appears twice for the same day.
     timed_days = {_first_day(r) for r in rows if not r["all_day"] and not _is_span(r)}
+    # Likewise a date range gets a header only when more than one pick runs exactly that range.
+    span_runs: dict[tuple, list] = {}
+    for r in rows:
+        if _is_span(r):
+            span_runs.setdefault(_run(r), []).append(r)
 
     out: list[str] = []
     cur_day: date | None = None
+    done: set[int] = set()
     for r in rows:
-        s_dt = datetime.fromisoformat(r["start"]); e_dt = datetime.fromisoformat(r["end"])
+        if id(r) in done:
+            continue
+        s_dt = datetime.fromisoformat(r["start"])
         day = s_dt.date()
-        feed = by_slug.get(r["slug"])
-        url = r["url"] or (feed.url if feed else "")
-        excerpt = _excerpt(r["description"])
+
+        if _is_span(r):
+            peers = span_runs[_run(r)]
+            first, last = _run(r)
+            if out:
+                out.append("")
+            if len(peers) > 1:
+                out.append(f"**{_d(first)} – {_d(last)}**{_rel(first, w)}")
+                for i, peer in enumerate(peers):
+                    done.add(id(peer))
+                    if i:
+                        out.append("")
+                    out.extend(_title_and_excerpt(peer, by_slug))
+            else:
+                done.add(id(r))
+                when = f"**{_d(first)} – {_d(last)}**" + ("" if r["all_day"] else f", from {_clock(s_dt)}")
+                out.append(f"{when} — **{_link(r['summary'], _url(r, by_slug))}** ({_where(r, by_slug)}){_rel(first, w)}")
+                _append_excerpt(out, r)
+            cur_day = None                      # a later pick on this day re-prints its header
+            continue
+
         if out:
             out.append("")
-
-        if _is_span(r) or day not in timed_days:
-            last = e_dt.date() - timedelta(days=1) if r["all_day"] else e_dt.date()
-            when = f"**{_d(day)} – {_d(last)}**" if last > day else f"**{_d(day)}**"
-            if last > day and not r["all_day"]:
-                when += f", from {_clock(s_dt)}"
-            elif last == day and not r["all_day"]:
-                when += f", {_span(s_dt, e_dt)}"
-            out.append(f"{when} — **{_link(r['summary'], url)}** ({_where(r, by_slug)}){_rel(day, w)}")
-            cur_day = None                      # a later pick on this day re-prints its header
+        if day not in timed_days:
+            e_dt = datetime.fromisoformat(r["end"])
+            when = f"**{_d(day)}**" + ("" if r["all_day"] else f", {_span(s_dt, e_dt)}")
+            out.append(f"{when} — **{_link(r['summary'], _url(r, by_slug))}** ({_where(r, by_slug)}){_rel(day, w)}")
+            _append_excerpt(out, r)
+            cur_day = None
         else:
             if day != cur_day:
                 out.append(f"**{_d(day)}**{_rel(day, w)}")
                 cur_day = day
-            when = "" if r["all_day"] else f" · {_span(s_dt, e_dt)}"
-            out.append(f"**{_link(r['summary'], url)}**{when} ({_where(r, by_slug)})")
-        if excerpt:
-            out.append(f"> {excerpt}")
+            out.extend(_title_and_excerpt(r, by_slug))
     return out
+
+
+def _title_and_excerpt(r, by_slug) -> list[str]:
+    """`**Title** · time (Venue)` plus the excerpt, for an event under a date or range header."""
+    when = ""
+    if not r["all_day"] and not _is_span(r):
+        when = f" · {_span(datetime.fromisoformat(r['start']), datetime.fromisoformat(r['end']))}"
+    lines = [f"**{_link(r['summary'], _url(r, by_slug))}**{when} ({_where(r, by_slug)})"]
+    _append_excerpt(lines, r)
+    return lines
+
+
+def _append_excerpt(lines: list[str], r) -> None:
+    excerpt = _excerpt(r["description"])
+    if excerpt:
+        lines.append(f"> {excerpt}")
+
+
+def _url(r, by_slug) -> str:
+    feed = by_slug.get(r["slug"])
+    return r["url"] or (feed.url if feed else "")
+
+
+def _run(r) -> tuple:
+    """(first day, last day) of a multi-day event, as shown."""
+    e = datetime.fromisoformat(r["end"])
+    last = e.date() - timedelta(days=1) if r["all_day"] else e.date()
+    return (_first_day(r), last)
 
 
 def _is_span(r) -> bool:
