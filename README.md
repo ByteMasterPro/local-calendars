@@ -121,6 +121,13 @@ the bot only commits when a source actually changed something.
 4. New platform: write `localcal/sources/<name>.py` exposing `fetch(feed) -> list[Event]` and
    register it in `localcal/sources/__init__.py`.
 
+## Old subscription URLs
+
+Subscriptions created before the rename point at `bytemasterpro.github.io/brewery-calendars/...`.
+GitHub Pages cannot redirect those, so the [brewery-calendars](https://github.com/ByteMasterPro/brewery-calendars)
+repo serves the same files at the old paths and refreshes them from here daily. Prefer the
+`local-calendars` URLs for anything new; add new feed filenames to that repo as well.
+
 ## Gotchas
 
 - GitHub disables scheduled workflows on public repos after 60 days without repository activity.
