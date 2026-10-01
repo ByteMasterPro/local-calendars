@@ -82,7 +82,15 @@ def build(cfg: Config, feeds: list[Feed], out: Path, *, dry_run: bool) -> int:
     failures = 0
     for feed in feeds:
         if feed.external:
-            log.info("%s: external feed (%s), nothing to build", feed.slug, feed.feed_url)
+            # Nothing to publish (subscribers read the venue's own feed), but keep a local copy
+            # so the digest still has their events when the venue's server misbehaves.
+            try:
+                content = query.fetch_external(feed)
+                if not dry_run:
+                    query.save_cache(feed, content)
+                log.info("%s: external feed cached (%d bytes)", feed.slug, len(content))
+            except Exception as exc:
+                log.warning("%s: external feed unreachable, keeping last cached copy: %s", feed.slug, str(exc)[:120])
             continue
         target = out / f"{feed.slug}.ics"
         try:

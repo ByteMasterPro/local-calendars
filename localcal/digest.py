@@ -315,7 +315,7 @@ def grouped_lines(rows, w: Window, by_slug) -> list[str]:
     """Date header once, then the day's events as a list beneath it:
 
         **Sat Sep 26** · Tomorrow
-        - 11am–11pm — [Honorfest](url) (Honor Brewing, Sterling): excerpt
+        - [Honorfest](url) · 11am–11pm (Honor Brewing, Sterling): excerpt
 
     Multi-day events sit under their first visible day with "thru <last day>"."""
     lines: list[str] = []
@@ -343,7 +343,7 @@ def item_text(r, by_slug) -> str:
     feed = by_slug.get(r["slug"])
     url = r["url"] or (feed.url if feed else "")
     title = _link(r["summary"], url)
-    head = f"{when} — {title}" if when else title
+    head = f"{title} · {when}" if when else title          # same shape as Top Picks: title, then time
     excerpt = _excerpt(r["description"])
     return f"{head} ({_where(r, by_slug)})" + (f": {excerpt}" if excerpt else "") + also
 
@@ -365,13 +365,13 @@ def _preview(rows, w: Window) -> list[str]:
 
 
 def _market_line(occ, by_slug) -> str:
-    """Leesburg Saturday Farmers Market — Sat 8am–12pm, Sun 9am–12pm (Virginia Village, Leesburg)"""
+    """Leesburg Saturday Farmers Market · Sat 8am–12pm, Sun 9am–12pm (Virginia Village, Leesburg)"""
     first = occ[0]
     times = []
     for o in occ:
         s = datetime.fromisoformat(o["start"]); e = datetime.fromisoformat(o["end"])
         times.append(f"{s:%a}" + ("" if o["all_day"] else f" {_span(s, e)}"))
-    return f"- {_link(first['summary'], first['url'])} — {', '.join(times)} ({_where(first, by_slug)})"
+    return f"- {_link(first['summary'], first['url'])} · {', '.join(times)} ({_where(first, by_slug)})"
 
 
 # --------------------------------------------------------------------- helpers

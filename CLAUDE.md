@@ -96,9 +96,11 @@ uv run pytest
 - **Vanish** (vanishbeer.com, Liquid Web): intermittently serves a cert chain that fails
   verification from GitHub runners ("certificate has expired"), though the chain is valid and
   verifies fine minutes later; diagnosed 2026-09-24 from a runner (chain ok, 5/5 fetches ok).
-  Not fixable here: `query.RETRY_BACKOFF` spans ~75s so a blip does not drop it from the digest.
-  **Flying Ace** has similarly answered with an HTML error page mid-run. If either starts failing
-  every run, the next step is caching the last good copy of each external feed.
+  It has also answered a feed request with the parked-domain **lander page** (HTTP 200, HTML).
+  Three failures in four runs, so since 2026-10-01: `fetch_external` rejects anything that is not
+  a parseable VCALENDAR, `localcal build` writes each external feed to `cache/<slug>.ics` daily,
+  and `load_calendar` falls back to that copy after `query.RETRY_BACKOFF` (~75s) is exhausted, so
+  the venue stays in the digest. **Flying Ace** has had the same HTML-instead-of-iCal problem.
 - **Historic Manassas** (WordPress + The Events Calendar): `?ical=1` works. Each performance of
   a show has its own UID, so the digest collapses by (title, calendar), not UID.
 - **One Loudoun** (Squarespace): `?format=json` works, `?format=ical` does not on their template.

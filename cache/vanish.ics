@@ -1,0 +1,470 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Vanish Farmwoods Brewery - ECPv6.18.0//NONSGML v1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Vanish Farmwoods Brewery
+X-ORIGINAL-URL:https://vanishbeer.com
+X-WR-CALDESC:Events for Vanish Farmwoods Brewery
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-Robots-Tag:noindex
+X-PUBLISHED-TTL:PT1H
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:20250309T070000
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:20251102T060000
+END:STANDARD
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:20260308T070000
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:20261101T060000
+END:STANDARD
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:20270314T070000
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:20271107T060000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261002T170000
+DTEND;TZID=America/New_York:20261002T200000
+DTSTAMP:20260902T105312Z
+CREATED:20260901T184150Z
+LAST-MODIFIED:20260902T105312Z
+UID:10001220-1790960400-1790971200@vanishbeer.com
+SUMMARY:Jeremy Fox
+DESCRIPTION:A local country and classic rock musician who has been playing all over NOVA since 2021. Come and support local\, live music tonight.
+URL:https://vanishbeer.com/event/jeremy-fox-2/2026-10-02/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/274675129_5004718322904471_9186554901387402027_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261003T130000
+DTEND;TZID=America/New_York:20261003T160000
+DTSTAMP:20260603T113946Z
+CREATED:20260603T113946Z
+LAST-MODIFIED:20260603T113946Z
+UID:10001195-1791032400-1791043200@vanishbeer.com
+SUMMARY:Amorous Theft
+DESCRIPTION:Amorous Theft is a 5-piece cover band from Loudoun County\, VA playing Gen X favorites that you forgot you loved from the 80’s\, 90’s and beyond. There’s always something for everyone so come out and see us!
+URL:https://vanishbeer.com/event/amorous-theft/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/06/701385204_1411674250983863_1029060983785105613_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261003T170000
+DTEND;TZID=America/New_York:20261003T200000
+DTSTAMP:20260603T114505Z
+CREATED:20260603T114505Z
+LAST-MODIFIED:20260603T114505Z
+UID:10001196-1791046800-1791057600@vanishbeer.com
+SUMMARY:Small Town 7
+DESCRIPTION:Northern Virginia-based rock cover band playing your favorite hits from the 1980s through today!
+URL:https://vanishbeer.com/event/small-town-7/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/06/502990553_18042012623553767_7120358573828622946_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261004T130000
+DTEND;TZID=America/New_York:20261004T160000
+DTSTAMP:20260328T123724Z
+CREATED:20220115T115433Z
+LAST-MODIFIED:20260328T123724Z
+UID:10001140-1791118800-1791129600@vanishbeer.com
+SUMMARY:Summer & Eric Acoustic Duo
+DESCRIPTION:We are an acoustic duo from Northern Virginia. We play an array of music from all genres that spans the past 4 decades. There is always something for everyone! We love the challenge of taking a song\, making it acoustic that is rich with percussion\, rhythm and harmonies.
+URL:https://vanishbeer.com/event/summer-eric-acoustic-duo/2026-10-04/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2022/01/image_50425089-scaled.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261009T170000
+DTEND;TZID=America/New_York:20261009T200000
+DTSTAMP:20260603T113349Z
+CREATED:20260603T113349Z
+LAST-MODIFIED:20260603T113349Z
+UID:10001194-1791565200-1791576000@vanishbeer.com
+SUMMARY:Ray Castro
+DESCRIPTION:Solo acoustic cover artist who plays popular\, upbeat 80s/90s/2000s hits.
+URL:https://vanishbeer.com/event/ray-castro/2026-10-09/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/06/673482290_5204538546438582_2413663943201557526_n-1.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261010T130000
+DTEND;TZID=America/New_York:20261010T160000
+DTSTAMP:20260603T111044Z
+CREATED:20220315T134101Z
+LAST-MODIFIED:20260603T111044Z
+UID:10001099-1791637200-1791648000@vanishbeer.com
+SUMMARY:Jumptown
+DESCRIPTION:Jumptown is a high-energy dance band\, based in Northern Virginia. We specialize in classic funk\, contemporary Blues\, R&B\, and Soul music. This horn-powered ensemble delivers high-energy performances that keep their audiences on their feet.
+URL:https://vanishbeer.com/event/jumptown/2026-10-10/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2022/03/1000019831.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261010T170000
+DTEND;TZID=America/New_York:20261010T200000
+DTSTAMP:20260329T104513Z
+CREATED:20221217T135813Z
+LAST-MODIFIED:20260329T104513Z
+UID:10001147-1791651600-1791662400@vanishbeer.com
+SUMMARY:Coldstream
+DESCRIPTION:Coldstream is a Classic Rock\, Country\, and Blues band from New Market\, Maryland.  The band brings their flare and style to the classics you know and love\, plus some pop tunes you will surely recognize. The band brings a love for entertainment that shows in every performance. Come check out Coldstream you will not be disappointed. Rich – lead vocals\, guitar\, Derek – guitar and background vocals\, Pete – bass guitar\, Melissa – lead vocals\, Cisco – drums\, background vocals
+URL:https://vanishbeer.com/event/coldstream/2026-10-10/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2022/12/image.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261011T130000
+DTEND;TZID=America/New_York:20261011T160000
+DTSTAMP:20260604T003106Z
+CREATED:20230526T143419Z
+LAST-MODIFIED:20260604T003106Z
+UID:10001201-1791723600-1791734400@vanishbeer.com
+SUMMARY:Britton Niesslein
+DESCRIPTION:Based in NOVA\, singing tunes in the area that bring people together.
+URL:https://vanishbeer.com/event/britton-niesslein/2026-10-11/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2023/05/335078302_157018117220680_6369298533247229269_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261016T170000
+DTEND;TZID=America/New_York:20261016T200000
+DTSTAMP:20260329T155729Z
+CREATED:20260329T155729Z
+LAST-MODIFIED:20260329T155729Z
+UID:10001151-1792170000-1792180800@vanishbeer.com
+SUMMARY:John Benjamin
+DESCRIPTION:John Benjamin is a touring acoustic artist and songwriter with a rich\, soulful sound that blends heartfelt vocals with expressive\, roots-driven guitar work. His music creates an intimate\, authentic vibe that connects deeply with every room he plays. He has a very large repertoire of great country\, rock & pop covers\, along with his new album “Tenfold” he just recorded with top tier Nashville studio musicians.
+URL:https://vanishbeer.com/event/john-benjamin/2026-10-16/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/03/20AC3A8D-FFD7-4603-98F2-A46B0D838272.jpeg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261017T130000
+DTEND;TZID=America/New_York:20261017T160000
+DTSTAMP:20260423T124216Z
+CREATED:20211206T174910Z
+LAST-MODIFIED:20260423T124216Z
+UID:10001115-1792242000-1792252800@vanishbeer.com
+SUMMARY:Melissa Quinn Fox
+DESCRIPTION:MELISSA QUINN FOX IS A COUNTRY/AMERICANA ARTIST FROM PITTSBURGH\, PA. KNOWN BEST FOR HER STORY-DRIVEN SONGS\, UNIQUE VOCAL TONE\, AND CAPTIVATING LIVE PERFORMANCES.
+URL:https://vanishbeer.com/event/melissa-quinn-fox/2026-10-17/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2021/12/194227936_10159380627901703_3023085066668462784_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261017T170000
+DTEND;TZID=America/New_York:20261017T200000
+DTSTAMP:20260424T111106Z
+CREATED:20250427T120514Z
+LAST-MODIFIED:20260424T111106Z
+UID:10001172-1792256400-1792267200@vanishbeer.com
+SUMMARY:Favorite Child
+DESCRIPTION:Favorite Child blends soulful indie rock with rich three-part harmonies\, soaring guitar\, and keys. Influenced by The Decemberists and Fleetwood Mac\, plus original tunes. \nAmericana Highways Magazine: “Favorite Child’s tight\, energetic performance kept the audience riveted to the action on stage…” 
+URL:https://vanishbeer.com/event/favorite-child/2026-10-17/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2025/04/FavChildBand-0503-scaled.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261018T130000
+DTEND;TZID=America/New_York:20261018T160000
+DTSTAMP:20251203T152901Z
+CREATED:20240910T150411Z
+LAST-MODIFIED:20251203T152901Z
+UID:10001089-1792328400-1792339200@vanishbeer.com
+SUMMARY:Eric Zatz
+DESCRIPTION:Local NOVA musician plaing a variety of classic rock\, 80s\, 90s\, and current hits.
+URL:https://vanishbeer.com/event/eric-zatz/2026-10-18/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2024/09/zatz.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261023T170000
+DTEND;TZID=America/New_York:20261023T200000
+DTSTAMP:20260901T183108Z
+CREATED:20260901T183108Z
+LAST-MODIFIED:20260901T183108Z
+UID:10001218-1792774800-1792785600@vanishbeer.com
+SUMMARY:Tony Wilkins
+DESCRIPTION:Local DMV musician Tony Wilkins of the band Undertone puts his own unique spin on a mixed genre of some of your favorite acoustic covers along with some of his own original songs.
+URL:https://vanishbeer.com/event/tony-wilkins/2026-10-23/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/att.KbG9kgHOwRCNGQxU3F6nCANDKJdO6MVgF7l1DzseR4I.jpeg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261024T130000
+DTEND;TZID=America/New_York:20261024T160000
+DTSTAMP:20260328T130934Z
+CREATED:20250427T113925Z
+LAST-MODIFIED:20260328T130934Z
+UID:10001145-1792846800-1792857600@vanishbeer.com
+SUMMARY:Frayed Knots
+DESCRIPTION:Frayed Knots is a high-energy rock band based in Leesburg\, VA\, known for their dynamic live performances and eclectic mix of classic and modern rock covers. With tight musicianship and a fun\, crowd-pleasing style\, they’ve become a local favorite at festivals\, bars\, and private events across Northern Virginia.
+URL:https://vanishbeer.com/event/frayed-knots/2026-10-24/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2025/04/Frayed-Knots-Promo-25-2.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261024T170000
+DTEND;TZID=America/New_York:20261024T200000
+DTSTAMP:20260402T132255Z
+CREATED:20260402T132255Z
+LAST-MODIFIED:20260402T132255Z
+UID:10001162-1792861200-1792872000@vanishbeer.com
+SUMMARY:Big Tow
+DESCRIPTION:Rock\, Blues\, Alt\, B-side gems\, fine harmonies. Scott\, Jay\, Dave\, Michael\, George\, Devin from the NOVA area. 
+URL:https://vanishbeer.com/event/big-tow/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/04/605812680_1162654752518251_463171348483947401_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261025T130000
+DTEND;TZID=America/New_York:20261025T160000
+DTSTAMP:20260402T132748Z
+CREATED:20230811T164636Z
+LAST-MODIFIED:20260402T132748Z
+UID:10001163-1792933200-1792944000@vanishbeer.com
+SUMMARY:Hume Frye Duo
+DESCRIPTION:The Hume-Frye Duo features classic rock\, country\, blues\, and eclectic tunes for all ages.
+URL:https://vanishbeer.com/event/hume-frye-duo/2026-10-25/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2023/08/hume.jpeg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261030T170000
+DTEND;TZID=America/New_York:20261030T200000
+DTSTAMP:20260901T184711Z
+CREATED:20260901T184711Z
+LAST-MODIFIED:20260901T184711Z
+UID:10001221-1793379600-1793390400@vanishbeer.com
+SUMMARY:Curtis Tyler
+DESCRIPTION:Curtis Tyler is a local musician bringing your favorite songs to the stage. Playing solo acoustic versions of country\, pop\, and rock hits spanning the decades—something for everyone to sing along to.
+URL:https://vanishbeer.com/event/curtis-tyler/2026-10-30/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/24974.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261031T130000
+DTEND;TZID=America/New_York:20261031T160000
+DTSTAMP:20260328T124119Z
+CREATED:20240622T143016Z
+LAST-MODIFIED:20260328T124119Z
+UID:10001144-1793451600-1793462400@vanishbeer.com
+SUMMARY:The Big Laird Band
+DESCRIPTION:Since their inception in 2021\, The Big Laird band has been performing high-quality\, hyperkinetic versions of all your favorite classic and modern rock songs. The band’s core consists of vocalist Matt Harris and guitarist Brett Buehler\, who have been playing music together for over a decade.
+URL:https://vanishbeer.com/event/the-big-laird-band/2026-10-31/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2024/06/laird.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261031T170000
+DTEND;TZID=America/New_York:20261031T200000
+DTSTAMP:20260604T003246Z
+CREATED:20260603T114829Z
+LAST-MODIFIED:20260604T003246Z
+UID:10001197-1793466000-1793476800@vanishbeer.com
+SUMMARY:Cheater Slicks
+DESCRIPTION:Local band playing classic rock/ southern rock throwing in some country. Who doesn’t love that
+URL:https://vanishbeer.com/event/cheater-slicks/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2026/06/image0.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261101T130000
+DTEND;TZID=America/New_York:20261101T160000
+DTSTAMP:20260901T185202Z
+CREATED:20260901T185202Z
+LAST-MODIFIED:20260901T185202Z
+UID:10001225-1793538000-1793548800@vanishbeer.com
+SUMMARY:R&R
+DESCRIPTION:Described as an acoustic jukebox\, R&R are a saxophone and guitar duo who perform unique covers of songs from the 70’s to today. REQUESTS ARE ENCOURAGED! Bring your friends\, drink something delicious\, and tell us your favorite tunes\, because you deserve some R&R!
+URL:https://vanishbeer.com/event/rr/2026-11-01/
+LOCATION:VA
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2026/09/Lake-Photo-2.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261107T130000
+DTEND;TZID=America/New_York:20261107T160000
+DTSTAMP:20260603T115050Z
+CREATED:20220328T133146Z
+LAST-MODIFIED:20260603T115050Z
+UID:10001198-1794056400-1794067200@vanishbeer.com
+SUMMARY:Climb On
+DESCRIPTION:Climb On is an alternative rock band based out of Alexandria\, Virginia that offers a unique sound that blends the cutting edge with a blast from the past. The band plays your favorite rock music from the 90s/2000s\, classic rock\, and pop music with some saxophone spiced in. Get ready for a energetic and fun show!
+URL:https://vanishbeer.com/event/climb-on/2026-11-07/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/webp:https://vanishbeer.com/wp-content/uploads/2022/03/climb.webp
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261107T170000
+DTEND;TZID=America/New_York:20261107T200000
+DTSTAMP:20260901T190158Z
+CREATED:20260901T190158Z
+LAST-MODIFIED:20260901T190158Z
+UID:10001229-1794070800-1794081600@vanishbeer.com
+SUMMARY:The Mission
+DESCRIPTION:The Mission is a rock cover band from Frederick\, Maryland with other 100 years of combined performing experience.  The band covers well known hits from the 1970s up to today.  Singing along and dancing are highly encouraged!
+URL:https://vanishbeer.com/event/the-mission/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/mission-scaled.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261108T130000
+DTEND;TZID=America/New_York:20261108T160000
+DTSTAMP:20260604T003106Z
+CREATED:20230526T143419Z
+LAST-MODIFIED:20260604T003106Z
+UID:10001202-1794142800-1794153600@vanishbeer.com
+SUMMARY:Britton Niesslein
+DESCRIPTION:Based in NOVA\, singing tunes in the area that bring people together.
+URL:https://vanishbeer.com/event/britton-niesslein/2026-11-08/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2023/05/335078302_157018117220680_6369298533247229269_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261113T170000
+DTEND;TZID=America/New_York:20261113T200000
+DTSTAMP:20260901T185640Z
+CREATED:20260901T185640Z
+LAST-MODIFIED:20260901T185640Z
+UID:10001227-1794589200-1794600000@vanishbeer.com
+SUMMARY:The Kelsey's
+DESCRIPTION:Husband and wife duo covering everything from Sabrina Carpenter and Taylor Swift to Eric Clapton and Guns N’ Roses\, along with plenty of other crowd favorites. We try to have a little something for everyone!
+URL:https://vanishbeer.com/event/the-kelseys/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261114T130000
+DTEND;TZID=America/New_York:20261114T160000
+DTSTAMP:20260605T113236Z
+CREATED:20221217T145742Z
+LAST-MODIFIED:20260605T113236Z
+UID:10001203-1794661200-1794672000@vanishbeer.com
+SUMMARY:Bad Panda
+DESCRIPTION:Bad Panda band plays popular classic and alternative rock hits from the 80’s\, 90’s and 2000’s.
+URL:https://vanishbeer.com/event/bad-panda/2026-11-14/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2022/12/panda.jpeg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261114T170000
+DTEND;TZID=America/New_York:20261114T200000
+DTSTAMP:20251229T133053Z
+CREATED:20230417T234651Z
+LAST-MODIFIED:20251229T133053Z
+UID:10000994-1794675600-1794686400@vanishbeer.com
+SUMMARY:Weekend @ Bernie's
+DESCRIPTION:Weekend@Bernie‘s is a rock/pop cover band located in Northern Virginia. Setlist includes popular rock/pop cover songs throughout the decades with a huge focus on 80’s anthems!
+URL:https://vanishbeer.com/event/weekend-bernies/2026-11-14/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2023/04/W@BsBandPhoto.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261115T130000
+DTEND;TZID=America/New_York:20261115T160000
+DTSTAMP:20260423T123500Z
+CREATED:20251104T122503Z
+LAST-MODIFIED:20260423T123500Z
+UID:10001165-1794747600-1794758400@vanishbeer.com
+SUMMARY:Against the Grain
+DESCRIPTION:Against the Grain is an acoustical duo playing energetic 50’s-modern covers and original music.
+URL:https://vanishbeer.com/event/against-the-grain-2/2026-11-15/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2023/03/337376877_593442576032205_1026438779307422729_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261120T170000
+DTEND;TZID=America/New_York:20261120T200000
+DTSTAMP:20260902T105312Z
+CREATED:20260901T184150Z
+LAST-MODIFIED:20260902T105312Z
+UID:10001230-1795194000-1795204800@vanishbeer.com
+SUMMARY:Jeremy Fox
+DESCRIPTION:A local country and classic rock musician who has been playing all over NOVA since 2021. Come and support local\, live music tonight.
+URL:https://vanishbeer.com/event/jeremy-fox-2/2026-11-20/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/274675129_5004718322904471_9186554901387402027_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261121T130000
+DTEND;TZID=America/New_York:20261121T160000
+DTSTAMP:20260331T125852Z
+CREATED:20241018T144037Z
+LAST-MODIFIED:20260331T125852Z
+UID:10001160-1795266000-1795276800@vanishbeer.com
+SUMMARY:Fork in the Road
+DESCRIPTION:Country comes to town when Fork In The Road hits the stage.  Hailing from Virginia\, this five-piece country rock band is your ticket to a boot-stompin’ good time.  With influences from red dirt country and southern rock\, their sound is as unique as it is irresistible.  Led by members Scott Gookin\, Robert Ford and Aaron Talley\, this trio of vocalists brings a harmony-rich experience like no other.
+URL:https://vanishbeer.com/event/fork-in-the-road-2/2026-11-21/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2024/10/image0-2.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261121T170000
+DTEND;TZID=America/New_York:20261121T200000
+DTSTAMP:20260901T185816Z
+CREATED:20220323T102625Z
+LAST-MODIFIED:20260901T185816Z
+UID:10001228-1795280400-1795291200@vanishbeer.com
+SUMMARY:Tropical Attitudes
+DESCRIPTION:A group of guys who like to get out there and relive that tropical vacation experience every chance they get. We love tiki bars\, warm weather and playing the style of music that brings back great memories and makes new ones. Today is all about  Jimmy Buffet\, Top Rock Beach Band music.
+URL:https://vanishbeer.com/event/tropical-attitudes/2026-11-21/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2022/03/tropic.jpg
+END:VEVENT
+END:VCALENDAR

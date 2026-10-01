@@ -5,7 +5,8 @@ from __future__ import annotations
 import logging
 import re
 import time as _time
-from datetime import date, datetime, time
+from datetime import date, datetime, time, timezone
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import recurring_ical_events
@@ -20,26 +21,50 @@ log = logging.getLogger(__name__)
 USER_AGENT = "localcal/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
 
 
+CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
+
 # Seconds to wait after each failed attempt. Vanish's host (Liquid Web) intermittently serves a
 # chain that fails verification, and Flying Ace has answered with an HTML error page; both clear
 # within a minute or two, so the backoff spans ~75s rather than the ~6s a tight retry gives.
 RETRY_BACKOFF = (3, 10, 25, 40)
 
 
-def load_calendar(feed: Feed, backoff: tuple[int, ...] = RETRY_BACKOFF) -> Calendar:
+def fetch_external(feed: Feed) -> bytes:
+    """An external feed's raw .ics bytes, checked for being an actual calendar.
+
+    Vanish's host has answered a feed request with a parked-domain lander page (HTTP 200,
+    HTML body), so a response is only accepted once it parses as a VCALENDAR.
+    """
+    resp = requests.get(feed.feed_url, headers={"User-Agent": USER_AGENT}, timeout=60)
+    resp.raise_for_status()
+    Calendar.from_ical(resp.content)                 # raises on HTML or anything unparseable
+    return resp.content
+
+
+def cache_path(feed: Feed, cache_dir: Path | None = None) -> Path:
+    return (cache_dir or CACHE_DIR) / f"{feed.slug}.ics"
+
+
+def save_cache(feed: Feed, content: bytes, cache_dir: Path | None = None) -> None:
+    path = cache_path(feed, cache_dir)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(content)
+
+
+def load_calendar(feed: Feed, backoff: tuple[int, ...] = RETRY_BACKOFF, cache_dir: Path | None = None) -> Calendar:
     """Every feed as an icalendar.Calendar, fetched live (external .ics or built from source).
 
-    Third-party hosts hiccup, so transient failures are retried over a widening backoff before
-    the feed is given up on. A feed that stays broken still only costs its own retries: other
-    calendars are fetched independently and the digest posts without it.
+    Third-party hosts hiccup, so transient failures are retried over a widening backoff. If an
+    external feed is still unreachable after that, the last good copy under `cache/` is used
+    rather than dropping the venue from the digest; `localcal build` refreshes those daily.
     """
     last: Exception | None = None
     for attempt in range(len(backoff) + 1):
         try:
             if feed.external:
-                resp = requests.get(feed.feed_url, headers={"User-Agent": USER_AGENT}, timeout=60)
-                resp.raise_for_status()
-                return Calendar.from_ical(resp.content)
+                content = fetch_external(feed)
+                save_cache(feed, content, cache_dir)
+                return Calendar.from_ical(content)
             return Calendar.from_ical(ical.render(feed, fetch_events(feed)))
         except Exception as exc:
             last = exc
@@ -47,6 +72,13 @@ def load_calendar(feed: Feed, backoff: tuple[int, ...] = RETRY_BACKOFF) -> Calen
                 log.warning("%s: attempt %d failed (%s); retrying in %ds",
                             feed.slug, attempt + 1, str(exc)[:120], backoff[attempt])
                 _time.sleep(backoff[attempt])
+
+    cached = cache_path(feed, cache_dir)
+    if feed.external and cached.exists():
+        age_h = (datetime.now(timezone.utc).timestamp() - cached.stat().st_mtime) / 3600
+        log.warning("%s: live fetch failed (%s); using cached copy from %.0fh ago",
+                    feed.slug, str(last)[:120], age_h)
+        return Calendar.from_ical(cached.read_bytes())
     raise last  # type: ignore[misc]
 
 

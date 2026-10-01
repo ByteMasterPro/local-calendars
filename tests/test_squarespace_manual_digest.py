@@ -212,16 +212,16 @@ def test_grouped_lines_date_header_then_bullets():
         "**Thu Sep 24**",
         "- [Beer Release: Oktoberfest](https://x) (Chilly Hollow, Berryville)",
         "\u200b\n**Sat Sep 26**",
-        "- 11am–11pm — [Honorfest](https://h) (Honor Brewing - Loudoun, Sterling): Raise a Stein!",
+        "- [Honorfest](https://h) · 11am–11pm (Honor Brewing - Loudoun, Sterling): Raise a Stein!",
         "\u200b\n**Sun Sep 27**",
-        "- 12–2:30pm — [Oktoberfest Brunch](https://x/e) (Vanish, Leesburg)",
+        "- [Oktoberfest Brunch](https://x/e) · 12–2:30pm (Vanish, Leesburg)",
     ]
 
 
 def test_grouped_lines_span_sits_under_first_visible_day_with_thru():
     fair = row("State Fair", "2026-09-25", "2026-10-05", calendar="fairs", kind="festival", all_day=True)
     lines = digest.grouped_lines([fair], W_MON, FEEDS)
-    assert lines == ["**Fri Sep 25**", "- thru Sun Oct 4 — [State Fair](https://x/e) (Fairs)"]
+    assert lines == ["**Fri Sep 25**", "- [State Fair](https://x/e) · thru Sun Oct 4 (Fairs)"]
     w2 = digest.week_window(date(2026, 9, 28), datetime(2026, 9, 28, 11, tzinfo=timezone.utc))
     assert digest.grouped_lines([fair], w2, FEEDS)[0] == "**Mon Sep 28** · Today"      # already running: under the run day
 

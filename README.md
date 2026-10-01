@@ -105,6 +105,9 @@ the bot only commits when a source actually changed something.
 - **`manual`** - a curated YAML file (`config/events/*.yaml`) for fairs, festivals and carnivals
   that no one publishes a feed for. Supports one-offs, timed events and multi-week `season`
   attractions that show on chosen weekdays. Every entry carries a `verified:` date.
+- **Cached external feeds** - `cache/<slug>.ics` holds the last good copy of every external feed,
+  refreshed by the daily build. If a venue's server is down, serves HTML instead of iCal, or fails
+  TLS when the digest runs, the cached copy is used so the venue still appears in the post.
 - **External feeds** (`feed_url`) - when the venue already publishes an `.ics` (public Google
   Calendar, WordPress The Events Calendar `?ical=1`, CivicPlus `iCalendar.aspx`), we link to it
   instead of mirroring. `upcoming` still queries it.
