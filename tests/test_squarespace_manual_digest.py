@@ -105,7 +105,7 @@ CFG = Config(site={"base_url": "https://idx"}, feeds=list(FEEDS.values()), diges
         "fairs": {"kinds": ["festival"], "limit": 8},
         "breweries": {"kinds": ["brewery"], "limit": 8, "fill_below": 3,
                       "exclude": "karaoke|trivia|% off",
-                      "seasonal": [{"months": [9, 10], "pattern": "oktober|german|prost|fest\\b"},
+                      "seasonal": [{"months": [9, 10], "pattern": "oktober|german|prost|hallowe\\w*|fest\\b"},
                                    {"months": [11, 12], "pattern": "christmas|holiday|santa"}],
                       "fallback": "live music|music"},
         "towns": {"kinds": ["town"], "limit": 2, "exclude": "council", "prioritize": "movie|parade",
@@ -349,3 +349,31 @@ def test_manual_timed_season_becomes_weekly_timed_series():
                                  "season": {"start": date(2026, 5, 2), "end": date(2026, 10, 31), "days": ["SA"], "time": "08:00-12:00"}}], MAN)
     assert not ev.all_day and ev.start.isoformat() == "2026-05-02T08:00:00-04:00" and ev.end.hour == 12
     assert ev.rrule["BYDAY"] == ["SA"] and ev.rrule["UNTIL"].date() == date(2026, 10, 31)
+
+
+def test_long_running_event_becomes_a_running_now_line_not_a_dropped_one():
+    """Honor's month-long Halloween pop-up was vanishing from every week after its first."""
+    popup = row("Halloweem Pop-Up Bar", "2026-10-01", "2026-10-31", calendar="honor", slug="honor",
+                all_day=True, url="https://h", location="Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166")
+    gig = row("Live Music: Someone", "2026-10-09T17:00:00-04:00", "2026-10-09T20:00:00-04:00", calendar="chilly")
+    w = digest.week_window(date(2026, 10, 5), datetime(2026, 10, 5, 11, tzinfo=timezone.utc))
+    B = digest.breweries_select([popup, gig], CFG.digest["sections"]["breweries"], w)
+    assert names(B["running"]) == ["Halloweem Pop-Up Bar"]
+    assert "Halloweem Pop-Up Bar" not in names(B["this"])          # not re-listed in full each week
+    assert "Halloweem Pop-Up Bar" not in names(B["next"])          # nor repeated in the preview
+    assert digest._running_line(B["running"], FEEDS) == [
+        "", "**Running now:** [Halloweem Pop-Up Bar](https://h) thru Fri Oct 30"]
+
+
+def test_long_running_event_is_listed_in_full_the_week_it_starts():
+    popup = row("Halloweem Pop-Up Bar", "2026-10-01", "2026-10-31", calendar="honor", slug="honor", all_day=True, url="https://h")
+    w = digest.week_window(date(2026, 9, 28), datetime(2026, 9, 28, 11, tzinfo=timezone.utc))
+    B = digest.breweries_select([popup], CFG.digest["sections"]["breweries"], w)
+    assert names(B["this"]) == ["Halloweem Pop-Up Bar"] and B["running"] == []
+
+
+def test_seasonal_pattern_tolerates_the_venues_halloween_spelling():
+    import re
+    rx = re.compile(CFG.digest["sections"]["breweries"]["seasonal"][0]["pattern"], re.I)
+    for spelling in ("Halloweem Pop-Up Bar", "Halloween Costume Party", "Hallowe'en Party"):
+        assert rx.search(spelling), spelling

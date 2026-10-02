@@ -50,7 +50,11 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   multi-day range likewise share one `**Fri Oct 2 – Sun Oct 4**` header. A range nothing else
   shares, and an all-day event on a day with no timed pick, keep the one-line
   `**date** — Title (Venue)` form, since there is no second event to group. Top picks repeat in full inside their sections; he wants that repetition. Tune under `digest:` in
-  `config/calendars.yaml`; preview with `localcal digest --from <day>`. Needs the
+  `config/calendars.yaml`; preview with `localcal digest --from <day>`. An event that began
+  before this week and runs for weeks (Honor's month-long Halloween pop-up bar) is listed in full
+  the week it starts, then collapses to one **Running now:** line per section rather than being
+  dropped (it was, until 2026-10-02) or repeated in full every Monday. Venues misspell things, so
+  keyword patterns stay loose: Honor spells it "Halloweem", hence `hallowe\w*`. Needs the
   `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets. Since 2026-09-19 the post is
   preceded by a **channel purge** (all non-pinned messages) via `DISCORD_BOT_TOKEN` +
   `DISCORD_CHANNEL_ID`, same pattern as JobHunt's newsletter; without them it posts unpurged.

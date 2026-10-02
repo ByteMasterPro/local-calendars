@@ -91,7 +91,7 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
         sections.append(Section("picks", c.get("label", "Top picks this week"), "⭐", 0xE67E22, pick_lines(picks, w, by_slug)))
     if F:
         c = secs["fairs"]
-        lines = grouped_lines(F["this"], w, by_slug)
+        lines = grouped_lines(F["this"], w, by_slug) + _running_line(F["running"], by_slug)
         if F["ongoing"]:
             bits = []
             for r in F["ongoing"]:
@@ -102,10 +102,11 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
     if B:
         c = secs["breweries"]
         sections.append(Section("breweries", c.get("label", "Local Breweries"), "🍺", 0xF39C12,
-                                grouped_lines(B["this"], w, by_slug) + _preview(B["next"], w)))
+                                grouped_lines(B["this"], w, by_slug) + _running_line(B["running"], by_slug)
+                                + _preview(B["next"], w)))
     if T:
         c = secs["towns"]
-        lines = grouped_lines(T["this"], w, by_slug)
+        lines = grouped_lines(T["this"], w, by_slug) + _running_line(T["running"], by_slug)
         if T["markets"]:
             lines += ["", f"🥕 **{(c.get('farmers_markets') or {}).get('label', 'Farmers Markets')}:**"]
             lines += [_market_line(occ, by_slug) for occ in _group(T["markets"]).values()]
@@ -127,12 +128,14 @@ def week_window(start: date, now: datetime, preview_limit: int = 5) -> Window:
 def fairs_select(rows, c, w: Window) -> dict:
     kinds = c.get("kinds", ["festival"])
     this = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
+    running = _collapse([r for r in this if r.get("_ongoing")])
+    this = [r for r in this if not r.get("_ongoing")]
     one_offs = _collapse([r for r in this if not r["series"]])[: int(c.get("limit", 8))]
     ongoing = _collapse([r for r in this if r["series"]])
-    shown = {r["summary"].lower() for r in one_offs + ongoing}
+    shown = {r["summary"].lower() for r in one_offs + ongoing + running}
     nxt = _collapse([r for r in _select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude"))
                      if r["summary"].lower() not in shown])
-    return {"this": one_offs, "ongoing": ongoing, "next": nxt}
+    return {"this": one_offs, "ongoing": ongoing, "running": running, "next": nxt}
 
 
 def breweries_select(rows, c, w: Window) -> dict:
@@ -150,12 +153,14 @@ def breweries_select(rows, c, w: Window) -> dict:
             chosen = sorted(chosen + fill[: cap - len(chosen)], key=lambda r: r["_sort"])
         return chosen[:cap], seasonal
 
-    this, seasonal = pick(_select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude")), limit, fill_below)
-    shown = {r["summary"].lower() for r in this}
+    pool = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
+    running = _collapse([r for r in pool if r.get("_ongoing")])
+    this, seasonal = pick([r for r in pool if not r.get("_ongoing")], limit, fill_below)
+    shown = {r["summary"].lower() for r in this + running}
     # highlights: seasonal only; music only if the following week has nothing seasonal at all
     nxt, _ = pick(_select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude")), w.preview_limit, 1)
     nxt = [r for r in nxt if r["summary"].lower() not in shown]
-    return {"this": this, "seasonal": seasonal, "next": nxt}
+    return {"this": this, "seasonal": seasonal, "running": running, "next": nxt}
 
 
 def towns_select(rows, c, w: Window) -> dict:
@@ -170,13 +175,15 @@ def towns_select(rows, c, w: Window) -> dict:
             pool.sort(key=lambda r: (0 if query.matches(r, prio) else 1, r["_sort"]))
         return sorted(pool[:cap], key=lambda r: r["_sort"])
 
-    this = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
+    pool = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
+    running = _collapse([r for r in pool if r.get("_ongoing")])
+    this = [r for r in pool if not r.get("_ongoing")]
     markets = [r for r in this if fm_rx and fm_rx.search(query.haystack(r))]
     main = rank([r for r in this if r not in markets], int(c.get("limit", 8)))
-    shown = {r["summary"].lower() for r in main}
+    shown = {r["summary"].lower() for r in main + running}
     nxt = _select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude"))
     nxt = rank([r for r in nxt if r["summary"].lower() not in shown and not (fm_rx and fm_rx.search(query.haystack(r)))], w.preview_limit)
-    return {"this": main, "markets": markets, "next": nxt}
+    return {"this": main, "markets": markets, "running": running, "next": nxt}
 
 
 def top_picks(F, B, T, c, w: Window) -> list[dict]:
@@ -356,6 +363,15 @@ def _key(r) -> tuple:
     return (r["summary"].lower(), r["calendar"])
 
 
+def _running_line(rows, by_slug) -> list[str]:
+    """One line for things that have been running since before this week and continue past it,
+    so a month-long pop-up bar is mentioned without being re-listed in full every Monday."""
+    if not rows:
+        return []
+    bits = [f"{_link(_short_title(r['summary']), _url(r, by_slug))} thru {_d(_run(r)[1])}" for r in rows]
+    return ["", "**Running now:** " + " · ".join(bits)]
+
+
 def _preview(rows, w: Window) -> list[str]:
     """One compact line of next week's highlights: title (day) · title (day)."""
     if not rows:
@@ -380,8 +396,9 @@ def _select(rows, *, kinds, start, end, now, exclude):
     """Rows of the given kinds overlapping [start, end] (inclusive days), minus noise.
 
     `now` (a tz-aware datetime, or None) drops anything already finished on the run day.
-    Multi-week things that began before the window (exhibits, programs) are left out; a fair
-    that started a few days ago and is still running stays in.
+    Multi-week things that began before the window (a month-long pop-up bar, a museum programme)
+    are tagged `_ongoing` so a section can mention them in one line instead of listing them in
+    full every week; a fair that started a few days ago and is still running stays in as normal.
     """
     ex = re.compile(exclude, re.I) if exclude else None
     out = []
@@ -392,12 +409,12 @@ def _select(rows, *, kinds, start, end, now, exclude):
         s, e = s_dt.date(), (e_dt.date() - timedelta(days=1) if r["all_day"] else e_dt.date())
         if e < start or s > end:
             continue
-        if s < start and (e - s).days > 14 and not r["series"]:
-            continue                                    # long-running thing that began weeks ago
         if now is not None and not r["all_day"] and e_dt <= now:
             continue                                    # already over today
         if ex and ex.search(query.haystack(r)):
             continue
+        if s < start and (e - s).days > 14 and not r["series"]:
+            r = {**r, "_ongoing": True}                 # began before this week and runs for weeks
         out.append(r)
     return out
 

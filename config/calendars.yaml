@@ -167,7 +167,7 @@ digest:
   top_picks:                               # first card: the week's best, with full excerpts.
     label: "Top picks this week"           # candidates = fair one-offs + seasonal brewery events +
     limit: 5                               # town items matching `pattern`; chronological
-    pattern: "fair\\b|festival|carnival|parade|fireworks|air ?show|halloween|pumpkin|oktober|german|holiday|christmas|santa|tree lighting"
+    pattern: "fair\\b|festival|carnival|parade|fireworks|air ?show|hallowe\\w*|pumpkin|oktober|german|holiday|christmas|santa|tree lighting"
   sections:
     fairs:
       label: "Fairs, Festivals and Carnivals"
@@ -181,7 +181,7 @@ digest:
       exclude: "karaoke|trivia|bingo|singo|\\d+% off|% off|happy hour|appy hour|watch party|kids eat free|growler|taco tuesday|teacher tuesday|discount|football"
       seasonal:                            # matched first, by the month the digest runs in
         - months: [9, 10]
-          pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|halloween|haunt|spooky|costume|pumpkin|harvest|fest\\b"
+          pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|hallowe\\w*|haunt|spooky|costume|pumpkin|harvest|fest\\b"
         - months: [11, 12]
           pattern: "christmas|holiday|santa|tree lighting|ugly sweater|gingerbread|nutcracker|hanukkah|menorah|new year|winter|caroling|wreath"
       fill_below: 3                        # fewer seasonal picks than this -> top up with...
@@ -191,7 +191,7 @@ digest:
       kinds: [town]
       limit: 8
       exclude: "council|commission|board meeting|public hearing|zoning|work session|advisory|zumba|fitness|yoga|workout"
-      prioritize: "fair|festival|carnival|parade|fireworks|movie|market|kids|family|concert|halloween|pumpkin|holiday|airshow|air show|tour"
+      prioritize: "fair|festival|carnival|parade|fireworks|movie|market|kids|family|concert|hallowe\\w*|pumpkin|holiday|airshow|air show|tour"
       farmers_markets:
         label: "Farmers Markets"
         pattern: "farmers'? market|farmer's market"
