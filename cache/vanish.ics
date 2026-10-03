@@ -49,20 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261002T170000
-DTEND;TZID=America/New_York:20261002T200000
-DTSTAMP:20260902T105312Z
-CREATED:20260901T184150Z
-LAST-MODIFIED:20260902T105312Z
-UID:10001220-1790960400-1790971200@vanishbeer.com
-SUMMARY:Jeremy Fox
-DESCRIPTION:A local country and classic rock musician who has been playing all over NOVA since 2021. Come and support local\, live music tonight.
-URL:https://vanishbeer.com/event/jeremy-fox-2/2026-10-02/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/274675129_5004718322904471_9186554901387402027_n.jpg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261003T130000
 DTEND;TZID=America/New_York:20261003T160000
 DTSTAMP:20260603T113946Z
@@ -466,5 +452,19 @@ URL:https://vanishbeer.com/event/tropical-attitudes/2026-11-21/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2022/03/tropic.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261122T130000
+DTEND;TZID=America/New_York:20261122T160000
+DTSTAMP:20260330T120705Z
+CREATED:20251230T120748Z
+LAST-MODIFIED:20260330T120705Z
+UID:10001157-1795352400-1795363200@vanishbeer.com
+SUMMARY:Shredded Cheddar
+DESCRIPTION:Shredding onto the Northern Virginia music scene\, local duo Shredded Cheddar is sharp and ready to rock!
+URL:https://vanishbeer.com/event/shredded-cheddar/2026-11-22/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2025/12/cheddar.png
 END:VEVENT
 END:VCALENDAR

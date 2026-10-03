@@ -79,21 +79,6 @@ LOCATION:City of Manassas Community Center\, 8750 Sudley Road\, Manassas\, VA\, 
 ORGANIZER;CN="City of Manassas Parks%2C Culture &amp%3Bamp%3B Recreation":MAILTO:pcr@manassasva.gov
 END:VEVENT
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261001T080000
-DTEND;TZID=America/New_York:20261001T130000
-DTSTAMP:20260406T224519Z
-CREATED:20260406T224519Z
-LAST-MODIFIED:20260406T224519Z
-UID:10006308-1790841600-1790859600@historicmanassas.org
-SUMMARY:Historic Manassas Farmers Market (Thursdays)
-DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA
-URL:https://historicmanassas.org/event/historic-manassas-farmers-market-thursdays/2026-10-01/
-LOCATION:Harris Pavilion @ 9201 Center St\, Manassas\, VA 20110\, USA\, Manassas\, VA\, United States
-CATEGORIES:Family Friendly,Farmers' Market
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
-GEO:38.7509488;-77.4752667
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261003T080000
 DTEND;TZID=America/New_York:20261003T130000
 DTSTAMP:20260630T205410Z
@@ -478,5 +463,19 @@ URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturday
 LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
 CATEGORIES:Family Friendly,Farmers' Market
 ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261017T140000
+DTEND;TZID=America/New_York:20261017T160000
+DTSTAMP:20260824T224408Z
+CREATED:20260824T224408Z
+LAST-MODIFIED:20260824T224408Z
+UID:10006537-1792245600-1792252800@historicmanassas.org
+SUMMARY:Man of La Mancha - Manassas
+DESCRIPTION:Join us for a magical evening at the Gregory Family Theater At Hylton Performing Arts Center as we present "Man of La Mancha - Manassas." This beloved musical transports you to a world of dreams and chivalry\, where the noble Don Quixote embarks on a quest to revive the age of knights. The intimate atmosphere of the theater enhances the emotional depth of the story\, making it a perfect setting for this timeless tale of hope and adventure. \nDon't miss your chance to experience the captivating performances and stirring melodies that have enchanted audiences for decades. Gather your friends and family for a night filled with laughter\, inspiration\, and unforgettable moments. Secure your seats now for "Man of La Mancha - Manassas" and be part of this extraordinary theatrical journey!
+URL:https://historicmanassas.org/event/man-of-la-mancha-manassas/
+LOCATION:Gregory Family Theater At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
+CATEGORIES:Theater
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/08/Man-Of-La-Mancha-4.jpg
 END:VEVENT
 END:VCALENDAR
