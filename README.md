@@ -65,8 +65,11 @@ uv run localcal digest --from 2026-09-21   # preview as if run on that day
 DISCORD_WEBHOOK_URL=... uv run localcal digest --post
 ```
 
-`.github/workflows/digest.yml` posts Mondays 11:00 UTC using the `DISCORD_WEBHOOK_URL` repository
-secret. Trigger it by hand with `gh workflow run "Weekly Discord digest"`.
+`.github/workflows/digest.yml` posts on Mondays using the `DISCORD_WEBHOOK_URL` repository
+secret. GitHub's cron queue runs hours late and occasionally drops a run, so there are four
+triggers through the day; scheduled runs pass `--skip-if-posted`, which checks the channel and
+exits quietly once that week's digest is up. Trigger it by hand any time with
+`gh workflow run "Weekly Discord digest"` (a manual run always posts).
 
 Before posting, the channel is **purged** (every non-pinned message deleted) so it only ever holds
 the current digest. That needs a bot in the server with *Manage Messages* and *Read Message

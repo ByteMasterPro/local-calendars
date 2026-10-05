@@ -2,9 +2,10 @@ name: Build calendar feeds
 
 on:
   schedule:
-    # Daily 10:00 UTC = 06:00 EDT / 05:00 EST. Daily (not weekly) because Leesburg's RSS only
-    # shows ~2 weeks ahead, and breweries post mid-week. GitHub cron is UTC only.
-    - cron: "0 10 * * *"
+    # Daily 05:23 UTC. Daily (not weekly) because Leesburg's RSS only shows ~2 weeks ahead, and
+    # breweries post mid-week. GitHub cron is UTC only, runs late by hours, and is most contended
+    # at the top of the hour, so this is early and off the hour to land before the digest.
+    - cron: "23 5 * * *"
   workflow_dispatch:
   push:
     branches: [main]

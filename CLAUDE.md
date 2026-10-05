@@ -55,7 +55,14 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   the week it starts, then collapses to one **Running now:** line per section rather than being
   dropped (it was, until 2026-10-02) or repeated in full every Monday. Venues misspell things, so
   keyword patterns stay loose: Honor spells it "Halloweem", hence `hallowe\w*`. Needs the
-  `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets. Since 2026-09-19 the post is
+  `DISCORD_WEBHOOK_URL` repo secret, which only Christopher sets.
+- **GitHub cron is unreliable here**: runs have fired 4-9 hours after their scheduled time, and
+  the 2026-10-05 digest was queued then cancelled without ever getting a runner, so that Monday's
+  post never went out. Since then the digest has FOUR Monday triggers (06:17/10:17/14:17/18:17
+  UTC) and scheduled runs pass `--skip-if-posted`, which reads the channel through the bot token
+  and stands down if a digest with this title is already there from this week. A manual
+  `workflow_dispatch` always posts. If the check itself errors, it posts rather than risk losing
+  the week. Crons sit off the top of the hour because that minute is the most contended. Since 2026-09-19 the post is
   preceded by a **channel purge** (all non-pinned messages) via `DISCORD_BOT_TOKEN` +
   `DISCORD_CHANNEL_ID`, same pattern as JobHunt's newsletter; without them it posts unpurged.
 - `short_name` / `town` on a feed drive the "(Vanish, Leesburg)" part; `wall_clock_tzids` fixes

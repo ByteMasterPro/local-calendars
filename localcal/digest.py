@@ -594,6 +594,26 @@ def _discord(method, url, **kw):
     raise RuntimeError("Discord API still rate-limited after 5 retries")
 
 
+def posted_since(bot_token: str, channel_id: str, since: datetime, title: str) -> datetime | None:
+    """When this bot last posted a digest at or after `since`, if it did.
+
+    GitHub drops or delays scheduled runs by hours, so the digest has several Monday triggers;
+    this lets the later ones stand down once one has done the job. Only messages this app wrote
+    count, so chatter in the channel never looks like a digest.
+    """
+    resp = _discord(requests.get, f"{DISCORD_API}/channels/{channel_id}/messages",
+                    headers={"Authorization": f"Bot {bot_token}"}, params={"limit": 50})
+    for m in resp.json():                                  # newest first
+        if not (m.get("author") or {}).get("bot"):
+            continue
+        if title.lower() not in (m.get("content") or "").lower():
+            continue
+        ts = datetime.fromisoformat(m["timestamp"].replace("Z", "+00:00"))
+        if ts >= since:
+            return ts
+    return None
+
+
 def _snowflake_age_days(message_id: str) -> float:
     ts_ms = (int(message_id) >> 22) + 1420070400000
     return (datetime.now(timezone.utc).timestamp() - ts_ms / 1000) / 86400

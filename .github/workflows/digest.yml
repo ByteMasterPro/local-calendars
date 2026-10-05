@@ -2,14 +2,24 @@ name: Weekly Discord digest
 
 on:
   schedule:
-    # Mondays 11:00 UTC = 07:00 EDT / 06:00 EST, covering Mon-Sun. GitHub cron is UTC only.
-    - cron: "0 11 * * 1"
+    # GitHub runs cron on a best-effort queue: these have fired 4-9 hours late, and one was
+    # dropped entirely, so the digest has four Monday triggers at an odd minute (the top of the
+    # hour is the most contended). The first to run posts; the rest see it and stand down.
+    # 06:17 UTC = 02:17 EDT, early enough that even hours of drift still lands Monday morning.
+    - cron: "17 6 * * 1"
+    - cron: "17 10 * * 1"
+    - cron: "17 14 * * 1"
+    - cron: "17 18 * * 1"
   workflow_dispatch:
     inputs:
       post:
         description: "Actually post to Discord (otherwise print a preview in the log)"
         type: boolean
         default: true
+      skip_if_posted:
+        description: "Stand down if this week's digest is already in the channel (what the schedules do)"
+        type: boolean
+        default: false
 
 jobs:
   digest:
@@ -30,6 +40,8 @@ jobs:
             uv run localcal digest
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.post }}" != "true" ]; then
             uv run localcal digest
+          elif [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.skip_if_posted }}" = "true" ]; then
+            uv run localcal digest --post --skip-if-posted
           else
             uv run localcal digest --post
           fi

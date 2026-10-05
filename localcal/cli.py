@@ -55,6 +55,8 @@ def main(argv: list[str] | None = None) -> int:
     dg.add_argument("--from", dest="start", type=date.fromisoformat, default=None,
                     help="pretend it is this day (the window runs from here to Sunday)")
     dg.add_argument("--post", action="store_true", help="send to $DISCORD_WEBHOOK_URL instead of printing")
+    dg.add_argument("--skip-if-posted", action="store_true",
+                    help="do nothing if a digest already went out this week (for backup schedules)")
     dg.add_argument("--only", help="comma-separated slugs")
 
     args = ap.parse_args(argv)
@@ -72,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
         return build(cfg, feeds, args.out, dry_run=args.dry_run)
     start = args.start or date.today()
     if args.cmd == "digest":
-        return digest(cfg, feeds, start, post=args.post)
+        return digest(cfg, feeds, start, post=args.post, skip_if_posted=args.skip_if_posted)
     return upcoming(cfg, feeds, start, start + timedelta(days=args.days), args.grep, as_json=args.json)
 
 
@@ -165,18 +167,35 @@ def _clock(dt: datetime) -> str:
 
 # ---------------------------------------------------------------------------- digest
 
-def digest(cfg: Config, feeds: list[Feed], start: date, *, post: bool) -> int:
+def digest(cfg: Config, feeds: list[Feed], start: date, *, post: bool, skip_if_posted: bool = False) -> int:
+    webhook = os.environ.get("DISCORD_WEBHOOK_URL")
+    bot_token, channel_id = os.environ.get("DISCORD_BOT_TOKEN"), os.environ.get("DISCORD_CHANNEL_ID")
+    title = (cfg.digest or {}).get("title", "This week")
+
+    if post and skip_if_posted:
+        if not (bot_token and channel_id):
+            log.warning("--skip-if-posted needs DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID; posting anyway")
+        else:
+            tz = ZoneInfo(feeds[0].timezone if feeds else "America/New_York")
+            monday = datetime.combine(start - timedelta(days=start.weekday()), time.min, tzinfo=tz)
+            try:
+                already = digest_mod.posted_since(bot_token, channel_id, monday, title)
+            except Exception as exc:               # a read failure must not cost us the week's post
+                log.warning("could not check for an existing post (%s); posting", str(exc)[:120])
+                already = None
+            if already:
+                log.info("digest already posted %s; nothing to do", already.astimezone(tz).strftime("%a %b %d %H:%M %Z"))
+                return 0
+
     d = digest_mod.build(cfg, feeds, start)
     if not post:
         print(digest_mod.render_text(d))
         return 1 if d.errors else 0
-    webhook = os.environ.get("DISCORD_WEBHOOK_URL")
     if not webhook:
         log.error("DISCORD_WEBHOOK_URL is not set; printing instead")
         print(digest_mod.render_text(d))
         return 2
     # Christopher wants the channel to hold only the current digest: wipe it right before posting.
-    bot_token, channel_id = os.environ.get("DISCORD_BOT_TOKEN"), os.environ.get("DISCORD_CHANNEL_ID")
     if bot_token and channel_id:
         try:
             n = digest_mod.purge_channel(bot_token, channel_id)
