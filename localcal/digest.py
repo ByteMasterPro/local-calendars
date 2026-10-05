@@ -607,7 +607,11 @@ def posted_since(bot_token: str, channel_id: str, since: datetime, title: str) -
     """
     resp = _discord(requests.get, f"{DISCORD_API}/channels/{channel_id}/messages",
                     headers={"Authorization": f"Bot {bot_token}"}, params={"limit": 50})
-    for m in resp.json():                                  # newest first
+    msgs = resp.json()
+    log.info("scanned %d message(s); newest: %s", len(msgs),
+             ", ".join(f"[webhook={bool(m.get('webhook_id'))} bot={(m.get('author') or {}).get('bot')} "
+                       f"{(m.get('content') or '')[:40]!r}]" for m in msgs[:3]) or "none")
+    for m in msgs:                                         # newest first
         # The digest arrives through a webhook: those messages carry webhook_id, and do not
         # reliably carry author.bot, so a webhook_id check is what actually identifies ours.
         if not (m.get("webhook_id") or (m.get("author") or {}).get("bot")):
