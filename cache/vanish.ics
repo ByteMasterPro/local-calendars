@@ -49,20 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261004T130000
-DTEND;TZID=America/New_York:20261004T160000
-DTSTAMP:20260328T123724Z
-CREATED:20220115T115433Z
-LAST-MODIFIED:20260328T123724Z
-UID:10001140-1791118800-1791129600@vanishbeer.com
-SUMMARY:Summer & Eric Acoustic Duo
-DESCRIPTION:We are an acoustic duo from Northern Virginia. We play an array of music from all genres that spans the past 4 decades. There is always something for everyone! We love the challenge of taking a song\, making it acoustic that is rich with percussion\, rhythm and harmonies.
-URL:https://vanishbeer.com/event/summer-eric-acoustic-duo/2026-10-04/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2022/01/image_50425089-scaled.jpg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261009T170000
 DTEND;TZID=America/New_York:20261009T200000
 DTSTAMP:20260603T113349Z
@@ -466,5 +452,19 @@ URL:https://vanishbeer.com/event/wildflower-revival-tom-petty-tribute/2026-11-28
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2025/06/Wildflower-Revival_thmb.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261128T170000
+DTEND;TZID=America/New_York:20261128T200000
+DTSTAMP:20260902T112100Z
+CREATED:20260603T115634Z
+LAST-MODIFIED:20260902T112100Z
+UID:10001200-1795885200-1795896000@vanishbeer.com
+SUMMARY:Felix Pickles
+DESCRIPTION:Felix Pickles is a popular band from Loudoun County with mandolin and guitar\, playing contemporary rock n roll covers from every genre throughout the Northern Virginia/DMV area. This band is great for all ages and families with an eclectic playlist that has something for everyone and a myriad of musical instruments that keeps audiences hanging around to the very last song.
+URL:https://vanishbeer.com/event/felix-pickles/2026-11-28/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/06/490985605_1361630905001914_4304601391605944177_n.jpg
 END:VEVENT
 END:VCALENDAR
