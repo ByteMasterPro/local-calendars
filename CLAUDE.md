@@ -60,7 +60,10 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   the 2026-10-05 digest was queued then cancelled without ever getting a runner, so that Monday's
   post never went out. Since then the digest has FOUR Monday triggers (06:17/10:17/14:17/18:17
   UTC) and scheduled runs pass `--skip-if-posted`, which reads the channel through the bot token
-  and stands down if a digest with this title is already there from this week. A manual
+  and stands down if this digest's webhook already posted there this week. It matches on the
+  message's `webhook_id` (parsed from `DISCORD_WEBHOOK_URL`), NOT on message text: without
+  Discord's privileged Message Content intent the API returns empty `content` and `embeds` for
+  messages the bot did not write, which is why a title-matching version silently never fired. A manual
   `workflow_dispatch` always posts. If the check itself errors, it posts rather than risk losing
   the week. Crons sit off the top of the hour because that minute is the most contended. Since 2026-09-19 the post is
   preceded by a **channel purge** (all non-pinned messages) via `DISCORD_BOT_TOKEN` +

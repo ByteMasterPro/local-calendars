@@ -598,26 +598,31 @@ def _discord(method, url, **kw):
     raise RuntimeError("Discord API still rate-limited after 5 retries")
 
 
-def posted_since(bot_token: str, channel_id: str, since: datetime, title: str) -> datetime | None:
-    """When this bot last posted a digest at or after `since`, if it did.
+def webhook_id(webhook_url: str) -> str | None:
+    """The numeric id out of https://discord.com/api/webhooks/<id>/<token> (never the token)."""
+    m = re.search(r"/webhooks/(\d+)/", webhook_url or "")
+    return m.group(1) if m else None
+
+
+def posted_since(bot_token: str, channel_id: str, since: datetime, our_webhook_id: str | None) -> datetime | None:
+    """When this digest's webhook last posted in the channel at or after `since`, if it did.
 
     GitHub drops or delays scheduled runs by hours, so the digest has several Monday triggers;
-    this lets the later ones stand down once one has done the job. Only messages this app wrote
-    count, so chatter in the channel never looks like a digest.
+    this lets the later ones stand down once one has done the job.
+
+    Matching is by `webhook_id`, not message text: reading message content over the API needs
+    Discord's privileged Message Content intent, which this bot does not have, so `content` and
+    `embeds` come back empty. The channel is purged before each post, so anything still there
+    from our webhook is this week's digest.
     """
     resp = _discord(requests.get, f"{DISCORD_API}/channels/{channel_id}/messages",
                     headers={"Authorization": f"Bot {bot_token}"}, params={"limit": 50})
     msgs = resp.json()
-    log.info("scanned %d message(s); newest: %s", len(msgs),
-             ", ".join(f"[webhook={bool(m.get('webhook_id'))} bot={(m.get('author') or {}).get('bot')} "
-                       f"{(m.get('content') or '')[:40]!r}]" for m in msgs[:3]) or "none")
     for m in msgs:                                         # newest first
-        # The digest arrives through a webhook: those messages carry webhook_id, and do not
-        # reliably carry author.bot, so a webhook_id check is what actually identifies ours.
-        if not (m.get("webhook_id") or (m.get("author") or {}).get("bot")):
+        if our_webhook_id and m.get("webhook_id") != our_webhook_id:
             continue
-        if title.lower() not in (m.get("content") or "").lower():
-            continue
+        if not our_webhook_id and not m.get("webhook_id"):
+            continue                                       # unknown webhook: accept any app post
         ts = datetime.fromisoformat(m["timestamp"].replace("Z", "+00:00"))
         if ts >= since:
             return ts

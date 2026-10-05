@@ -72,26 +72,34 @@ def test_cli_posts_anyway_if_purge_fails(monkeypatch, capsys):
     assert sent and "::warning::channel purge failed" in capsys.readouterr().out
 
 
-# A webhook post: Discord does not reliably set author.bot on these, only webhook_id.
-DIGEST_MSG = {"author": {"username": "Local Calendars"}, "webhook_id": "155088",
-              "content": "📅 **This week around Leesburg** — Mon Oct 5 to Sun Oct 11",
+# Without the Message Content intent Discord returns empty content/embeds, so only webhook_id
+# distinguishes our digest from anything else in the channel.
+HOOK = "1550887383019294871"
+WEBHOOK_URL = f"https://discord.com/api/webhooks/{HOOK}/sometoken"
+DIGEST_MSG = {"author": {"username": "Local Calendars"}, "webhook_id": HOOK, "content": "",
               "timestamp": "2026-10-05T11:20:00.000000+00:00"}
-HUMAN_MSG = {"author": {"bot": False}, "content": "This week around Leesburg looks busy!",
-             "timestamp": "2026-10-06T18:00:00.000000+00:00"}
+OTHER_APP_MSG = {"author": {"username": "Other"}, "webhook_id": "999", "content": "",
+                 "timestamp": "2026-10-06T18:00:00.000000+00:00"}
+HUMAN_MSG = {"author": {"bot": False}, "content": "", "timestamp": "2026-10-06T18:00:00.000000+00:00"}
+
+
+def test_webhook_id_is_parsed_without_the_token():
+    assert digest.webhook_id(WEBHOOK_URL) == HOOK
+    assert digest.webhook_id("not-a-webhook") is None
 
 
 def test_posted_since_finds_this_weeks_digest(monkeypatch):
     from datetime import timedelta
     monkeypatch.setattr(digest.requests, "get", lambda url, **kw: Resp(200, [HUMAN_MSG, DIGEST_MSG]))
     monday = datetime(2026, 10, 5, tzinfo=timezone.utc)
-    assert digest.posted_since("tok", "123", monday, "This week around Leesburg") is not None
+    assert digest.posted_since("tok", "123", monday, HOOK) is not None
     # a digest from the previous week does not count
-    assert digest.posted_since("tok", "123", monday + timedelta(days=7), "This week around Leesburg") is None
+    assert digest.posted_since("tok", "123", monday + timedelta(days=7), HOOK) is None
 
 
-def test_posted_since_ignores_chatter_that_quotes_the_title(monkeypatch):
-    monkeypatch.setattr(digest.requests, "get", lambda url, **kw: Resp(200, [HUMAN_MSG]))
-    assert digest.posted_since("tok", "123", datetime(2026, 10, 5, tzinfo=timezone.utc), "This week around Leesburg") is None
+def test_posted_since_ignores_humans_and_other_apps(monkeypatch):
+    monkeypatch.setattr(digest.requests, "get", lambda url, **kw: Resp(200, [HUMAN_MSG, OTHER_APP_MSG]))
+    assert digest.posted_since("tok", "123", datetime(2026, 10, 5, tzinfo=timezone.utc), HOOK) is None
 
 
 def _cfg():
@@ -107,7 +115,7 @@ def test_skip_if_posted_stands_down_when_a_digest_already_went_out(monkeypatch):
     monkeypatch.setenv("DISCORD_BOT_TOKEN", "tok")
     monkeypatch.setenv("DISCORD_CHANNEL_ID", "123")
     acted = []
-    monkeypatch.setattr(digest, "posted_since", lambda t, c, since, title: datetime(2026, 10, 5, 11, tzinfo=timezone.utc))
+    monkeypatch.setattr(digest, "posted_since", lambda t, c, since, hook: datetime(2026, 10, 5, 11, tzinfo=timezone.utc))
     monkeypatch.setattr(digest, "purge_channel", lambda t, c: acted.append("purge") or 0)
     monkeypatch.setattr(digest, "_post", lambda url, payload: acted.append("post"))
     assert cli.digest(_cfg(), [], date(2026, 10, 5), post=True, skip_if_posted=True) == 0
@@ -122,7 +130,7 @@ def test_skip_if_posted_posts_when_the_week_is_still_empty(monkeypatch):
     monkeypatch.setenv("DISCORD_BOT_TOKEN", "tok")
     monkeypatch.setenv("DISCORD_CHANNEL_ID", "123")
     acted = []
-    monkeypatch.setattr(digest, "posted_since", lambda t, c, since, title: None)
+    monkeypatch.setattr(digest, "posted_since", lambda t, c, since, hook: None)
     monkeypatch.setattr(digest, "purge_channel", lambda t, c: acted.append("purge") or 0)
     monkeypatch.setattr(digest, "_post", lambda url, payload: acted.append("post"))
     assert cli.digest(_cfg(), [], date(2026, 10, 5), post=True, skip_if_posted=True) == 0

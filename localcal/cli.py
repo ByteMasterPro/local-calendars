@@ -178,9 +178,10 @@ def digest(cfg: Config, feeds: list[Feed], start: date, *, post: bool, skip_if_p
         else:
             tz = ZoneInfo(feeds[0].timezone if feeds else "America/New_York")
             monday = datetime.combine(start - timedelta(days=start.weekday()), time.min, tzinfo=tz)
-            log.info("skip-if-posted: looking for a %r digest posted since %s", title, monday)
+            hook_id = digest_mod.webhook_id(webhook or "")
+            log.info("skip-if-posted: looking for a post from webhook %s since %s", hook_id or "(any app)", monday)
             try:
-                already = digest_mod.posted_since(bot_token, channel_id, monday, title)
+                already = digest_mod.posted_since(bot_token, channel_id, monday, hook_id)
             except Exception as exc:               # a read failure must not cost us the week's post
                 log.warning("could not check for an existing post (%s); posting", str(exc)[:120])
                 already = None
