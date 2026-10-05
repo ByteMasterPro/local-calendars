@@ -178,6 +178,7 @@ def digest(cfg: Config, feeds: list[Feed], start: date, *, post: bool, skip_if_p
         else:
             tz = ZoneInfo(feeds[0].timezone if feeds else "America/New_York")
             monday = datetime.combine(start - timedelta(days=start.weekday()), time.min, tzinfo=tz)
+            log.info("skip-if-posted: looking for a %r digest posted since %s", title, monday)
             try:
                 already = digest_mod.posted_since(bot_token, channel_id, monday, title)
             except Exception as exc:               # a read failure must not cost us the week's post
@@ -186,6 +187,7 @@ def digest(cfg: Config, feeds: list[Feed], start: date, *, post: bool, skip_if_p
             if already:
                 log.info("digest already posted %s; nothing to do", already.astimezone(tz).strftime("%a %b %d %H:%M %Z"))
                 return 0
+            log.info("skip-if-posted: no digest found this week; posting")
 
     d = digest_mod.build(cfg, feeds, start)
     if not post:

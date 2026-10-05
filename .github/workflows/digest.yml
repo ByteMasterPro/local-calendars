@@ -41,7 +41,9 @@ jobs:
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.post }}" != "true" ]; then
             uv run localcal digest
           elif [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.skip_if_posted }}" = "true" ]; then
+            echo "branch: post with skip-if-posted guard"
             uv run localcal digest --post --skip-if-posted
           else
+            echo "branch: post unconditionally"
             uv run localcal digest --post
           fi
