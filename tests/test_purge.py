@@ -72,7 +72,9 @@ def test_cli_posts_anyway_if_purge_fails(monkeypatch, capsys):
     assert sent and "::warning::channel purge failed" in capsys.readouterr().out
 
 
-DIGEST_MSG = {"author": {"bot": True}, "content": "📅 **This week around Leesburg** — Mon Oct 5 to Sun Oct 11",
+# A webhook post: Discord does not reliably set author.bot on these, only webhook_id.
+DIGEST_MSG = {"author": {"username": "Local Calendars"}, "webhook_id": "155088",
+              "content": "📅 **This week around Leesburg** — Mon Oct 5 to Sun Oct 11",
               "timestamp": "2026-10-05T11:20:00.000000+00:00"}
 HUMAN_MSG = {"author": {"bot": False}, "content": "This week around Leesburg looks busy!",
              "timestamp": "2026-10-06T18:00:00.000000+00:00"}

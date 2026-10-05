@@ -377,3 +377,18 @@ def test_seasonal_pattern_tolerates_the_venues_halloween_spelling():
     rx = re.compile(CFG.digest["sections"]["breweries"]["seasonal"][0]["pattern"], re.I)
     for spelling in ("Halloweem Pop-Up Bar", "Halloween Costume Party", "Hallowe'en Party"):
         assert rx.search(spelling), spelling
+
+
+def test_running_seasonal_event_is_still_a_top_pick():
+    """A month-long Halloween pop-up is a highlight every week it runs, not just its first."""
+    popup = row("Halloweem Pop-Up Bar", "2026-10-01", "2026-10-31", calendar="honor", slug="honor", all_day=True,
+                url="https://h", location="Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166")
+    gig = row("Live Music: Someone", "2026-10-09T17:00:00-04:00", "2026-10-09T20:00:00-04:00", calendar="chilly")
+    w = digest.week_window(date(2026, 10, 5), datetime(2026, 10, 5, 11, tzinfo=timezone.utc))
+    B = digest.breweries_select([popup, gig], CFG.digest["sections"]["breweries"], w)
+    assert names(B["running"]) == ["Halloweem Pop-Up Bar"]
+    assert "Halloweem Pop-Up Bar" in names(B["seasonal"])          # feeds Top Picks
+    picks = digest.top_picks(None, B, None, {"pattern": "parade", "limit": 5}, w)
+    assert names(picks) == ["Halloweem Pop-Up Bar"]
+    assert digest.pick_lines(picks, w, FEEDS)[0] == (
+        "**Thu Oct 1 – Fri Oct 30** — **[Halloweem Pop-Up Bar](https://h)** (Honor Brewing - Loudoun, Sterling)")

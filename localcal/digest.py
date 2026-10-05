@@ -156,6 +156,10 @@ def breweries_select(rows, c, w: Window) -> dict:
     pool = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
     running = _collapse([r for r in pool if r.get("_ongoing")])
     this, seasonal = pick([r for r in pool if not r.get("_ongoing")], limit, fill_below)
+    # A month-long seasonal thing is still a highlight every week it runs, even though the
+    # section mentions it in one line rather than listing it again.
+    if seasonal_rx:
+        seasonal = seasonal + [r for r in running if query.matches(r, seasonal_rx)]
     shown = {r["summary"].lower() for r in this + running}
     # highlights: seasonal only; music only if the following week has nothing seasonal at all
     nxt, _ = pick(_select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude")), w.preview_limit, 1)
@@ -191,11 +195,11 @@ def top_picks(F, B, T, c, w: Window) -> list[dict]:
     items matching the top-pick pattern (parades, airshows, festivals). Chronological, capped."""
     rx = re.compile(c["pattern"], re.I) if c.get("pattern") else None
     cands: dict[tuple, dict] = {}
-    for r in (F or {}).get("this", []):
+    for r in (F or {}).get("this", []) + (F or {}).get("running", []):
         cands.setdefault(_key(r), r)
     for r in (B or {}).get("seasonal", []):
         cands.setdefault(_key(r), r)
-    for r in (T or {}).get("this", []):
+    for r in (T or {}).get("this", []) + (T or {}).get("running", []):
         if rx and query.matches(r, rx):
             cands.setdefault(_key(r), r)
     picks = sorted(cands.values(), key=lambda r: r["_sort"])
@@ -604,7 +608,9 @@ def posted_since(bot_token: str, channel_id: str, since: datetime, title: str) -
     resp = _discord(requests.get, f"{DISCORD_API}/channels/{channel_id}/messages",
                     headers={"Authorization": f"Bot {bot_token}"}, params={"limit": 50})
     for m in resp.json():                                  # newest first
-        if not (m.get("author") or {}).get("bot"):
+        # The digest arrives through a webhook: those messages carry webhook_id, and do not
+        # reliably carry author.bot, so a webhook_id check is what actually identifies ours.
+        if not (m.get("webhook_id") or (m.get("author") or {}).get("bot")):
             continue
         if title.lower() not in (m.get("content") or "").lower():
             continue
