@@ -142,14 +142,15 @@ def test_pick_lines_groups_same_day_picks_under_one_date_header():
     ]
 
 
-def test_pick_lines_keeps_spans_and_lone_all_day_events_on_one_line():
+def test_pick_lines_gives_every_run_a_header_and_keeps_lone_all_day_events_inline():
     span = row("State Fair", "2026-09-25", "2026-10-05", calendar="fairs", kind="festival", all_day=True, url="https://sf", desc="Rides and midway.")
     release = row("Beer Release: Oktoberfest", "2026-09-24", "2026-09-25", calendar="chilly", all_day=True, url="")
     timed = row("Honorfest", "2026-09-26T11:00:00-04:00", "2026-09-26T23:00:00-04:00", calendar="vanish", url="https://h")
     assert digest.pick_lines([release, span, timed], W_MON, FEEDS) == [
         "**Thu Sep 24** — **[Beer Release: Oktoberfest](https://x)** (Chilly Hollow, Berryville)",
         "",
-        "**Fri Sep 25 – Sun Oct 4** — **[State Fair](https://sf)** (Fairs)",
+        "**Fri Sep 25 – Sun Oct 4**",
+        "**[State Fair](https://sf)** (Fairs)",
         "> Rides and midway.",
         "",
         "**Sat Sep 26**",
@@ -164,7 +165,8 @@ def test_pick_lines_groups_picks_sharing_one_multi_day_run():
     lone = row("State Fair", "2026-09-25", "2026-10-05", calendar="fairs", kind="festival", all_day=True, url="https://sf")
     w = digest.week_window(date(2026, 9, 28), datetime(2026, 9, 28, 11, tzinfo=timezone.utc))
     assert digest.pick_lines([lone, waterford, chilly], w, FEEDS) == [
-        "**Fri Sep 25 – Sun Oct 4** — **[State Fair](https://sf)** (Fairs)",   # run nothing else shares: one line
+        "**Fri Sep 25 – Sun Oct 4**",                                           # its own header, like any run
+        "**[State Fair](https://sf)** (Fairs)",
         "",
         "**Fri Oct 2 – Sun Oct 4**",                                            # shared run: one header
         "**[Waterford Fair](https://wf)** (Fairs)",
@@ -179,8 +181,8 @@ def test_pick_lines_overlapping_but_different_runs_stay_separate():
     b = row("Fair B", "2026-10-03", "2026-10-05", calendar="fairs", kind="festival", all_day=True, url="https://b")
     w = digest.week_window(date(2026, 9, 28), datetime(2026, 9, 28, 11, tzinfo=timezone.utc))
     lines = digest.pick_lines([a, b], w, FEEDS)
-    assert lines[0].startswith("**Fri Oct 2 – Sun Oct 4** — **[Fair A]")
-    assert lines[2].startswith("**Sat Oct 3 – Sun Oct 4** — **[Fair B]")
+    assert lines[:2] == ["**Fri Oct 2 – Sun Oct 4**", "**[Fair A](https://a)** (Fairs)"]
+    assert lines[3:5] == ["**Sat Oct 3 – Sun Oct 4**", "**[Fair B](https://b)** (Fairs)"]
 
 
 def test_pick_lines_all_day_event_joins_a_day_that_has_timed_picks():
@@ -390,5 +392,6 @@ def test_running_seasonal_event_is_still_a_top_pick():
     assert "Halloweem Pop-Up Bar" in names(B["seasonal"])          # feeds Top Picks
     picks = digest.top_picks(None, B, None, {"pattern": "parade", "limit": 5}, w)
     assert names(picks) == ["Halloweem Pop-Up Bar"]
-    assert digest.pick_lines(picks, w, FEEDS)[0] == (
-        "**Thu Oct 1 – Fri Oct 30** — **[Halloweem Pop-Up Bar](https://h)** (Honor Brewing - Loudoun, Sterling)")
+    assert digest.pick_lines(picks, w, FEEDS) == [
+        "**Thu Oct 1 – Fri Oct 30**",
+        "**[Halloweem Pop-Up Bar](https://h)** (Honor Brewing - Loudoun, Sterling)"]

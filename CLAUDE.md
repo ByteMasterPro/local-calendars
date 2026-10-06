@@ -47,9 +47,9 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   items), then the three sections, each **grouped by date** (bold date header once, events as `- time — Title (Venue, Town): excerpt` bullets).
   In Top Picks (reworked 2026-09-24, extended 2026-10-01) same-day picks share one date header
   and read `**Title** · time (Venue)` / `> excerpt`; two or more picks running exactly the same
-  multi-day range likewise share one `**Fri Oct 2 – Sun Oct 4**` header. A range nothing else
-  shares, and an all-day event on a day with no timed pick, keep the one-line
-  `**date** — Title (Venue)` form, since there is no second event to group. Top picks repeat in full inside their sections; he wants that repetition. Tune under `digest:` in
+  multi-day range likewise share one `**Fri Oct 2 – Sun Oct 4**` header. Since 2026-10-06 EVERY
+  multi-day run gets that header, even when only one pick runs it. An all-day event on a day with
+  no timed pick is the one remaining inline case: `**date** — Title (Venue)`. Top picks repeat in full inside their sections; he wants that repetition. Tune under `digest:` in
   `config/calendars.yaml`; preview with `localcal digest --from <day>`. An event that began
   before this week and runs for weeks (Honor's month-long Halloween pop-up bar) is listed in full
   the week it starts, then collapses to one **Running now:** line per section rather than being

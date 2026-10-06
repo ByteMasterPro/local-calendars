@@ -220,10 +220,13 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
         **[Waterford Fair](url)** (Waterford Foundation)
         > Three-day fall festival in the historic village...
 
-    A run nothing else shares, and an all-day event on a day with no timed picks, keep the
-    one-line form, since there is no second event to hang under a header:
+        **Thu Oct 1 – Fri Oct 30**
+        **[Halloweem Pop-Up Bar](url)** (Honor Brewing, Sterling)
 
-        **Fri Sep 25 – Sun Oct 4** — **[State Fair of Virginia](url)** (Meadow Event Park, Doswell)
+    An all-day event on a day with no timed picks keeps the one-line form, since its date line
+    would otherwise carry nothing:
+
+        **Thu Sep 24** — **[Beer Release: Oktoberfest](url)** (Chilly Hollow, Berryville)
     """
     rows = sorted(rows, key=lambda r: r["_sort"])
     # A day gets a header only if something that day carries a time; otherwise its all-day
@@ -245,22 +248,15 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
         day = s_dt.date()
 
         if _is_span(r):
-            peers = span_runs[_run(r)]
             first, last = _run(r)
             if out:
                 out.append("")
-            if len(peers) > 1:
-                out.append(f"**{_d(first)} – {_d(last)}**{_rel(first, w)}")
-                for i, peer in enumerate(peers):
-                    done.add(id(peer))
-                    if i:
-                        out.append("")
-                    out.extend(_title_and_excerpt(peer, by_slug))
-            else:
-                done.add(id(r))
-                when = f"**{_d(first)} – {_d(last)}**" + ("" if r["all_day"] else f", from {_clock(s_dt)}")
-                out.append(f"{when} — **{_link(r['summary'], _url(r, by_slug))}** ({_where(r, by_slug)}){_rel(first, w)}")
-                _append_excerpt(out, r)
+            out.append(f"**{_d(first)} – {_d(last)}**{_rel(first, w)}")
+            for i, peer in enumerate(span_runs[_run(r)]):      # everything on exactly this run
+                done.add(id(peer))
+                if i:
+                    out.append("")
+                out.extend(_title_and_excerpt(peer, by_slug))
             cur_day = None                      # a later pick on this day re-prints its header
             continue
 
@@ -283,8 +279,9 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
 def _title_and_excerpt(r, by_slug) -> list[str]:
     """`**Title** · time (Venue)` plus the excerpt, for an event under a date or range header."""
     when = ""
-    if not r["all_day"] and not _is_span(r):
-        when = f" · {_span(datetime.fromisoformat(r['start']), datetime.fromisoformat(r['end']))}"
+    if not r["all_day"]:
+        s_dt, e_dt = datetime.fromisoformat(r["start"]), datetime.fromisoformat(r["end"])
+        when = f" · from {_clock(s_dt)}" if _is_span(r) else f" · {_span(s_dt, e_dt)}"
     lines = [f"**{_link(r['summary'], _url(r, by_slug))}**{when} ({_where(r, by_slug)})"]
     _append_excerpt(lines, r)
     return lines
