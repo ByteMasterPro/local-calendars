@@ -39,7 +39,8 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   three sections Christopher specified on 2026-09-19: "Fairs, Festivals and Carnivals", "Local
   Breweries" (seasonal first: Oktoberfest/German/Halloween in Sep-Oct, Christmas/holiday in
   Nov-Dec; live music only as a fallback; never karaoke/trivia/discounts), "Town Activities"
-  (cap 8, with a Farmers Markets sub-list). **"This week" is Mon-Sun**; a Saturday run shows only
+  (cap 8, with a Farmers Markets sub-list). The "Ongoing weekends:" and "Running now:" blocks are
+  a label line followed by one event per line (his 2026-10-06 request), not a joined line. **"This week" is Mon-Sun**; a Saturday run shows only
   what is left of the weekend and drops anything already over. Each section ends with ONE
   "Next week:" highlights line; nothing further out is shown (he explicitly rejected seeing a
   fair 2 weeks away in detail). Layout he chose from four mockups on 2026-09-19: a **Top picks

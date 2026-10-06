@@ -45,6 +45,14 @@ class Section:
     color: int
     lines: list[str] = field(default_factory=list)
 
+    def __post_init__(self):
+        # Blocks are separated by blank lines, so a section whose first block is absent (no dated
+        # events this week, only an ongoing list) would otherwise open with an empty line.
+        while self.lines and not self.lines[0].strip():
+            self.lines.pop(0)
+        while self.lines and not self.lines[-1].strip():
+            self.lines.pop()
+
 
 @dataclass
 class Digest:
@@ -93,11 +101,10 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
         c = secs["fairs"]
         lines = grouped_lines(F["this"], w, by_slug) + _running_line(F["running"], by_slug)
         if F["ongoing"]:
-            bits = []
+            lines += ["", "**Ongoing weekends:**"]          # label, then one per line
             for r in F["ongoing"]:
                 until = f" thru {_d(date.fromisoformat(r['series_until']))}" if r.get("series_until") else ""
-                bits.append(f"{_link(_short_title(r['summary']), r['url'])}{until}")
-            lines += ["", "**Ongoing weekends:** " + " · ".join(bits)]
+                lines.append(f"{_link(_short_title(r['summary']), r['url'])}{until}")
         sections.append(Section("fairs", c.get("label", "Fairs, Festivals and Carnivals"), "🎪", 0x2A8FBD, lines + _preview(F["next"], w)))
     if B:
         c = secs["breweries"]
@@ -369,8 +376,8 @@ def _running_line(rows, by_slug) -> list[str]:
     so a month-long pop-up bar is mentioned without being re-listed in full every Monday."""
     if not rows:
         return []
-    bits = [f"{_link(_short_title(r['summary']), _url(r, by_slug))} thru {_d(_run(r)[1])}" for r in rows]
-    return ["", "**Running now:** " + " · ".join(bits)]
+    return ["", "**Running now:**"] + [          # label, then one per line, as with ongoing weekends
+        f"{_link(_short_title(r['summary']), _url(r, by_slug))} thru {_d(_run(r)[1])}" for r in rows]
 
 
 def _preview(rows, w: Window) -> list[str]:
