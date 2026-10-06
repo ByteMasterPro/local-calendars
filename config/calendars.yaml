@@ -37,6 +37,20 @@ calendars:
       type: elfsight
       widget_id: 5cfe5396-d62a-432e-8a83-f53cb73bb713
 
+  - slug: route-7
+    name: Route 7 Brewing
+    kind: brewery
+    short_name: Route 7
+    town: Ashburn
+    url: https://route7brewing.com/
+    location: Route 7 Brewing, 20051 Riverside Commons Plaza #148, Ashburn, VA 20147
+    # They publish no calendar at all (website is menu-and-hours, Facebook needs a login).
+    # wheresthemusic.us lists their live music; everything else is read off their Instagram
+    # by hand into the curated file.
+    source:
+      - {type: wheresthemusic, url: https://wheresthemusic.us/venue/route-7-brewing/}
+      - {type: manual, file: config/events/route-7.yaml}
+
   - slug: chilly-hollow
     name: Chilly Hollow Brewing Co.
     kind: brewery

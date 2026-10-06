@@ -48,7 +48,7 @@ class Feed:
     kind: str = "other"           # groups the index page; see KINDS
     short_name: str = ""          # "(Vanish, Leesburg)" in the digest; defaults to name
     town: str = ""                # ditto; defaults to the town parsed from `location`
-    source: dict[str, Any] | None = None   # {"type": "elfsight", "widget_id": "..."} etc.
+    source: dict[str, Any] | list[dict[str, Any]] | None = None   # one adapter, or several merged
     feed_url: str = ""            # set instead of `source` when the venue already publishes an .ics
     google_calendar_id: str = ""  # optional; makes the "Add to Google Calendar" link a native subscribe
     accumulate: bool = False      # source only shows a short window: merge into the published feed
@@ -67,6 +67,20 @@ class Feed:
     @property
     def external(self) -> bool:
         return bool(self.feed_url)
+
+    @property
+    def sources(self) -> list[dict[str, Any]]:
+        """Always a list: a venue can need more than one (Route 7 has a listings site for its
+        live music and a curated file for everything read off their Instagram)."""
+        if not self.source:
+            return []
+        return list(self.source) if isinstance(self.source, list) else [self.source]
+
+    def source_url(self) -> str:
+        for s in self.sources:
+            if s.get("url"):
+                return str(s["url"])
+        return self.url
 
 
 @dataclass

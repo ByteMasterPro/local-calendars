@@ -528,3 +528,71 @@ def test_seasonal_pattern_does_not_fire_on_the_word_fall_in_prose():
     rx = re.compile(next(p["pattern"] for p in cfg.digest["sections"]["breweries"]["seasonal"] if 10 in p["months"]), re.I)
     assert not rx.search("Join us with your hot rods on Fridays this fall (weather permitting)")
     assert rx.search("3rd Annual Anniversary Fall Festival")
+
+
+# ------------------------------------------------------------- wheresthemusic
+
+WTM_PAGE = """
+<h3>Upcoming Events</h3>
+<div class="events">
+  <div class="event"><span class="day">05</span><span class="month">Dec 2026</span>
+    <a class="title">Felix Pickles</a><span class="genre">Blues</span><span class="genre">Country</span>
+    <span class="time">6:00 PM</span></div>
+  <div class="event"><span class="day">12</span><span class="month">Dec 2026</span>
+    <a class="title">Laurie Blue Music</a><span class="genre">Classic Rock</span>
+    <span class="time">6:30 PM</span></div>
+</div>
+<script>var map = 1;</script>
+"""
+
+WTM_FEED = Feed(slug="route-7", name="Route 7 Brewing", url="https://route7brewing.com/",
+                location="Route 7 Brewing, Ashburn, VA", timezone="America/New_York", kind="brewery",
+                source=[{"type": "wheresthemusic", "url": "https://wheresthemusic.us/venue/route-7-brewing/"}])
+
+
+def test_wheresthemusic_parses_a_venues_upcoming_shows():
+    from localcal.sources import wheresthemusic
+    a, b = wheresthemusic.parse_events(WTM_PAGE, WTM_FEED)
+    assert a.summary == "Live Music: Felix Pickles"
+    assert a.start.isoformat() == "2026-12-05T18:00:00-05:00"
+    assert a.end.isoformat() == "2026-12-05T20:00:00-05:00"      # default duration
+    assert a.uid == "wtm-felix-pickles-2026-12-05@route-7"
+    assert a.categories == ["Live Music"] and "Blues, Country" in a.description
+    assert b.start.isoformat() == "2026-12-12T18:30:00-05:00"
+
+
+def test_wheresthemusic_tolerates_a_page_without_listings():
+    from localcal.sources import wheresthemusic
+    assert wheresthemusic.parse_events("<p>nothing here</p>", WTM_FEED) == []
+
+
+def test_a_feed_can_merge_several_sources(monkeypatch):
+    from localcal import sources
+    from localcal.model import Event
+    from datetime import date
+    calls = []
+
+    def fake_wtm(feed, src):
+        calls.append(src["url"])
+        return [Event(uid="gig@route-7", summary="Live Music: Someone", start=date(2026, 12, 5), end=date(2026, 12, 6))]
+
+    def fake_manual(feed, src):
+        calls.append(src["file"])
+        return [Event(uid="gig@route-7", summary="duplicate, dropped", start=date(2026, 12, 5), end=date(2026, 12, 6)),
+                Event(uid="party@route-7", summary="Anniversary Party", start=date(2026, 12, 6), end=date(2026, 12, 7))]
+
+    monkeypatch.setitem(sources.REGISTRY, "wheresthemusic", fake_wtm)
+    monkeypatch.setitem(sources.REGISTRY, "manual", fake_manual)
+    feed = Feed(slug="route-7", name="R7", url="https://x", location="", timezone="America/New_York", kind="brewery",
+                source=[{"type": "wheresthemusic", "url": "u"}, {"type": "manual", "file": "f"}])
+    got = sources.fetch_events(feed)
+    assert [e.summary for e in got] == ["Live Music: Someone", "Anniversary Party"]   # uid dedupe, order kept
+    assert calls == ["u", "f"]
+
+
+def test_repo_config_has_route_7_with_both_sources():
+    from localcal.model import load_config
+    cfg = load_config(Path(__file__).resolve().parent.parent / "config" / "calendars.yaml")
+    r7 = next(f for f in cfg.feeds if f.slug == "route-7")
+    assert [s["type"] for s in r7.sources] == ["wheresthemusic", "manual"]
+    assert r7.town == "Ashburn"

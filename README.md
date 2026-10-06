@@ -16,6 +16,7 @@ up?" across all of them at once.
 | Town of Leesburg - Community Events | `https://bytemasterpro.github.io/local-calendars/leesburg.ics` | rebuilt daily from the Town's calendar RSS |
 | Historic Manassas Inc. | `https://historicmanassas.org/events/?ical=1` | their own iCal export (live) |
 | One Loudoun | `https://bytemasterpro.github.io/local-calendars/one-loudoun.ics` | rebuilt daily from their Squarespace events JSON |
+| Route 7 Brewing | `https://bytemasterpro.github.io/local-calendars/route-7.ics` | live music from wheresthemusic.us + curated |
 | Fairs & Festivals near Leesburg | `https://bytemasterpro.github.io/local-calendars/fairs-festivals.ics` | hand-curated in `config/events/fairs-festivals.yaml` |
 | Farmers Markets near Leesburg | `https://bytemasterpro.github.io/local-calendars/farmers-markets.ics` | hand-curated in `config/events/farmers-markets.yaml` |
 
@@ -108,6 +109,9 @@ the bot only commits when a source actually changed something.
 - **`manual`** - a curated YAML file (`config/events/*.yaml`) for fairs, festivals and carnivals
   that no one publishes a feed for. Supports one-offs, timed events and multi-week `season`
   attractions that show on chosen weekdays. Every entry carries a `verified:` date.
+- **`wheresthemusic`** - a venue page on wheresthemusic.us, for places with no calendar of their
+  own (Route 7 Brewing). A feed's `source` can be a list, so a venue can merge a listings site
+  with a curated file.
 - **Cached external feeds** - `cache/<slug>.ics` holds the last good copy of every external feed,
   refreshed by the daily build. If a venue's server is down, serves HTML instead of iCal, or fails
   TLS when the digest runs, the cached copy is used so the venue still appears in the post.

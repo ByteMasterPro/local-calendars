@@ -115,6 +115,29 @@ events, both found by him on 2026-10-06 and worth not repeating:
   Friday and Saturday entirely. It now ranks (seasonal, named kinds, music, rest), truncates by
   rank, and prints in time order; `limit` is 20, about one autumn week.
 
+## Instagram as a source (session-driven, never CI)
+
+Some venues announce only on Instagram. What works and what does not, established 2026-10-06:
+
+- A logged-out profile page DOES render the recent grid, and the thumbnails are real CDN urls at
+  640px - enough to read a month-at-a-glance poster. Honor posts one on the 1st of each month.
+- A plain HTTP fetch does NOT work: the grid is rendered by JS, so `requests` gets a shell. It
+  needs a real browser, and Instagram blocks datacenter IPs, so **this can never run in the
+  weekly GitHub job**. Do not build a scraper into CI, and do not log in as Christopher: that
+  risks his account and breaks Instagram's terms.
+- The workflow is: open `https://www.instagram.com/<handle>` in the browser pane, extract the
+  grid images, download them, read them, then write findings into
+  `config/events/overrides.yaml` (detail for events a feed already has) or a curated file like
+  `config/events/route-7.yaml` (events no feed carries). The extraction snippet:
+
+      const imgs=[...document.querySelectorAll('img')].filter(i=>((i.src||'')+(i.srcset||'')).includes('cdninstagram')&&!/profile|highlight/i.test(i.alt||''));
+      const pick=i=>{const s=(i.srcset||'').split(',').map(x=>x.trim().split(' ')).filter(a=>a[0]);const b=s.sort((a,b)=>parseInt(b[1]||0)-parseInt(a[1]||0))[0];return b?b[0]:i.src;};
+      imgs.map(i=>({d:(i.alt||'').match(/on (\w+ \d+, \d{4})/)?.[1], alt:i.alt, url:pick(i)}))
+
+  `alt` often carries Instagram's own OCR of the poster, which is a useful index even before
+  downloading. Then curl the urls (they are signed but work for a while) and Read the files.
+- Refresh when Christopher asks, or at the start of a month when venues post their schedule.
+
 ## Event artwork (where the real details hide)
 
 Venues put the good stuff in the poster, not the text: Honor's Fall Fest lists "20 vendors, axe
@@ -173,6 +196,11 @@ uv run pytest
   a parseable VCALENDAR, `localcal build` writes each external feed to `cache/<slug>.ics` daily,
   and `load_calendar` falls back to that copy after `query.RETRY_BACKOFF` (~75s) is exhausted, so
   the venue stays in the digest. **Flying Ace** has had the same HTML-instead-of-iCal problem.
+- **Route 7 Brewing** (Ashburn) publishes NO calendar: website is menu-and-hours, Facebook needs
+  a login, Instagram posts only days ahead. Its feed merges two sources: `wheresthemusic`
+  (wheresthemusic.us venue page, their live music, parseable with plain curl) and a curated
+  `config/events/route-7.yaml` for everything read off Instagram. A feed's `source` may be a
+  LIST; `fetch_events` merges them and dedupes by uid.
 - **Historic Manassas** (WordPress + The Events Calendar): `?ical=1` works. Each performance of
   a show has its own UID, so the digest collapses by (title, calendar), not UID.
 - **One Loudoun** (Squarespace): `?format=json` works, `?format=ical` does not on their template.

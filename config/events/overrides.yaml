@@ -26,5 +26,47 @@ events:
   - match: "Freaky Friday.*Shrek"
     calendar: Honor Brewing
     details: >-
-      Outdoor movie night on the lawn: Shrek at 7pm. Bring chairs and blankets.
+      Outdoor movie night on the lawn: Shrek. Their October poster says a 7:30 start, their
+      calendar says 7pm. Bring chairs and blankets.
     source: event poster, read 2026-10-06
+
+  # From Honor's October 2026 month-at-a-glance poster (Instagram @honorbrewingcompany, Oct 1).
+  # It carries times and detail their calendar feed leaves out.
+  - match: "Freaky Friday.*Jurassic Park"
+    calendar: Honor Brewing
+    details: "Outdoor movie night on the lawn: Jurassic Park, 7pm."
+    source: Instagram October 2026 schedule, read 2026-10-06
+
+  - match: "Freaky Friday.*Harry Potter"
+    calendar: Honor Brewing
+    details: "Outdoor movie night on the lawn: Harry Potter and the Sorcerer's Stone, 7pm."
+    source: Instagram October 2026 schedule, read 2026-10-06
+
+  - match: "Truc?k.or.Treat"
+    calendar: Honor Brewing
+    details: "Trunk-or-treat: a safe, family trick-or-treat event in the lot, 11am to 1pm."
+    source: Instagram October 2026 schedule, read 2026-10-06
+
+  - match: "Pumpkin Ain.t Easy Pint Night"
+    calendar: Honor Brewing
+    details: "Pumpkin pint night from 4pm: a free pint glass with any food purchase."
+    source: Instagram October 2026 schedule, read 2026-10-06
+
+  - match: "Halloween Costume Party"
+    calendar: Honor Brewing
+    details: >-
+      Halloween costume party, 6pm to 11pm: DJ from 6 to 10, tarot card reader, and a costume
+      contest with prizes.
+    source: Instagram October 2026 schedule, read 2026-10-06
+
+  - match: "October Charity Tap Line"
+    calendar: Honor Brewing
+    details: "Charity tap line night supporting Food on the Stove, 4pm to 8pm."
+    source: Instagram October 2026 schedule, read 2026-10-06
+
+  - match: "First Friday: Live Music"
+    calendar: Honor Brewing
+    details: >-
+      October First Friday: Twisted Flags play 6 to 9pm, with local vendors 5 to 8pm and an
+      extended happy hour from 3 to 6pm.
+    source: Instagram October 2026 schedule, read 2026-10-06

@@ -11,47 +11,62 @@ from typing import Callable
 from localcal.model import Event, Feed
 
 
-def _elfsight(feed: Feed) -> list[Event]:
+def _elfsight(feed: Feed, src: dict) -> list[Event]:
     from localcal.sources import elfsight
 
-    settings = elfsight.fetch_settings(feed.source["widget_id"])
-    return elfsight.parse_events(settings, feed)
+    return elfsight.parse_events(elfsight.fetch_settings(src["widget_id"]), feed)
 
 
-def _vision_rss(feed: Feed) -> list[Event]:
+def _vision_rss(feed: Feed, src: dict) -> list[Event]:
     from localcal.sources import vision_rss
 
-    xml = vision_rss.fetch(feed.source["rss_url"])
-    return vision_rss.parse_events(xml, feed)
+    return vision_rss.parse_events(vision_rss.fetch(src["rss_url"]), feed)
 
 
-def _squarespace(feed: Feed) -> list[Event]:
+def _squarespace(feed: Feed, src: dict) -> list[Event]:
     from localcal.sources import squarespace
 
-    return squarespace.parse_events(squarespace.fetch(feed.source["url"]), feed)
+    return squarespace.parse_events(squarespace.fetch(src["url"]), feed)
 
 
-def _manual(feed: Feed) -> list[Event]:
+def _manual(feed: Feed, src: dict) -> list[Event]:
     from pathlib import Path
 
     from localcal.sources import manual
 
     root = Path(__file__).resolve().parent.parent.parent
-    return manual.parse_events(manual.load(root / feed.source["file"]), feed)
+    return manual.parse_events(manual.load(root / src["file"]), feed)
 
 
-REGISTRY: dict[str, Callable[[Feed], list[Event]]] = {
+def _wheresthemusic(feed: Feed, src: dict) -> list[Event]:
+    from localcal.sources import wheresthemusic
+
+    return wheresthemusic.parse_events(wheresthemusic.fetch(src["url"]), feed)
+
+
+REGISTRY: dict[str, Callable[[Feed, dict], list[Event]]] = {
     "elfsight": _elfsight,
     "vision_rss": _vision_rss,
     "squarespace": _squarespace,
     "manual": _manual,
+    "wheresthemusic": _wheresthemusic,
 }
 
 
 def fetch_events(feed: Feed) -> list[Event]:
-    kind = feed.source.get("type")
-    try:
-        adapter = REGISTRY[kind]
-    except KeyError:
-        raise SystemExit(f"{feed.slug}: unknown source type {kind!r}; known: {sorted(REGISTRY)}")
-    return adapter(feed)
+    """Every source on the feed, merged. A later source does not displace an earlier one's
+    event with the same uid."""
+    seen: set[str] = set()
+    out: list[Event] = []
+    for src in feed.sources:
+        kind = src.get("type")
+        try:
+            adapter = REGISTRY[kind]
+        except KeyError:
+            raise SystemExit(f"{feed.slug}: unknown source type {kind!r}; known: {sorted(REGISTRY)}")
+        for ev in adapter(feed, src):
+            if ev.uid in seen:
+                continue
+            seen.add(ev.uid)
+            out.append(ev)
+    return out
