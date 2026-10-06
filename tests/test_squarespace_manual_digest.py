@@ -596,3 +596,25 @@ def test_repo_config_has_route_7_with_both_sources():
     r7 = next(f for f in cfg.feeds if f.slug == "route-7")
     assert [s["type"] for s in r7.sources] == ["wheresthemusic", "manual"]
     assert r7.town == "Ashburn"
+
+
+def test_notices_render_for_their_section_and_expire():
+    notices = [
+        {"venue": "White's Ferry", "kind": "brewery", "until": "2026-10-10", "instagram": "whitesferrybrew",
+         "text": "20% off wine flights.\n The code is in their Instagram caption."},
+        {"venue": "Old One", "kind": "brewery", "until": "2026-09-30", "text": "Expired offer."},
+        {"venue": "Town Hall", "kind": "town", "text": "No end date, shows until removed."},
+    ]
+    lines = digest.notice_lines(notices, date(2026, 10, 5), "brewery")
+    assert lines == ["📣 **Heads up:**",
+                     "**White's Ferry:** 20% off wine flights. The code is in their Instagram caption. "
+                     "([@whitesferrybrew](https://www.instagram.com/whitesferrybrew/))"]
+    assert digest.notice_lines(notices, date(2026, 10, 5), "town")[1].startswith("**Town Hall:**")
+    assert digest.notice_lines(notices, date(2026, 10, 11), "brewery") == []     # all expired
+    assert digest.notice_lines([], date(2026, 10, 5), "brewery") == []
+
+
+def test_repo_notices_file_parses():
+    from localcal import digest as d
+    root = Path(__file__).resolve().parent.parent
+    assert isinstance(d.load_notices(root), list)

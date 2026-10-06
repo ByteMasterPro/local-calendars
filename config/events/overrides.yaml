@@ -70,3 +70,23 @@ events:
       October First Friday: Twisted Flags play 6 to 9pm, with local vendors 5 to 8pm and an
       extended happy hour from 3 to 6pm.
     source: Instagram October 2026 schedule, read 2026-10-06
+
+# Offers and announcements seen on a venue's Instagram whose detail is caption-only. We never
+# log in, so instead of guessing a date or inventing a code, the digest points at the app.
+#   kind:      brewery (default) | town | festival - which section it appears under
+#   until:     last day to show it; leave out for "until someone removes it"
+#   instagram: handle, rendered as a link
+#
+# A real example of the shape (expired, kept to show the pattern): White's Ferry announced the
+# Leesburg Fall Festival across two posts - the first carried the date, the follow-up added
+# "20% OFF: Wine Flights - Fall Beer - Pretzel" and "More Details In Caption".
+#
+# notices:
+#   - venue: White's Ferry
+#     kind: brewery
+#     until: 2026-10-03
+#     instagram: whitesferrybrew
+#     text: >-
+#       20% off wine flights, fall beer and pretzels during the Fall Festival. The code is in
+#       their Instagram caption.
+notices: []

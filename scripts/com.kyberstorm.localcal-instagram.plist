@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Pulls the configured venues' public Instagram grids so their posters can be read.
+
+  Install:
+    cp scripts/com.kyberstorm.localcal-instagram.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.kyberstorm.localcal-instagram.plist
+  Run once now:
+    launchctl start com.kyberstorm.localcal-instagram
+  Stop:
+    launchctl unload ~/Library/LaunchAgents/com.kyberstorm.localcal-instagram.plist
+
+  Runs on this Mac, from this IP, logged out. It cannot run in GitHub Actions: Instagram
+  renders the grid with JavaScript and blocks datacenter IPs.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.kyberstorm.localcal-instagram</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-lc</string>
+    <string>cd ~/Projects/LocalCalendars &amp;&amp; /opt/homebrew/bin/uv run localcal instagram</string>
+  </array>
+
+  <!-- Mondays and Thursdays at 07:40: after venues post a month's schedule, before the digest. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>40</integer></dict>
+    <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>40</integer></dict>
+  </array>
+
+  <!-- If the Mac was asleep at the scheduled time, run once it wakes. -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/localcal-instagram.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/localcal-instagram.log</string>
+</dict>
+</plist>

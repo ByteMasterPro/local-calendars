@@ -33,6 +33,7 @@ calendars:
     town: Sterling
     url: https://honorbrewing.com/honor-brewing-loudoun
     location: Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166
+    instagram: honorbrewingcompany        # posts a month-at-a-glance schedule on the 1st
     source:
       type: elfsight
       widget_id: 5cfe5396-d62a-432e-8a83-f53cb73bb713
@@ -47,9 +48,23 @@ calendars:
     # They publish no calendar at all (website is menu-and-hours, Facebook needs a login).
     # wheresthemusic.us lists their live music; everything else is read off their Instagram
     # by hand into the curated file.
+    instagram: rt7brewing
     source:
       - {type: wheresthemusic, url: https://wheresthemusic.us/venue/route-7-brewing/}
       - {type: manual, file: config/events/route-7.yaml}
+
+  - slug: whites-ferry
+    name: White's Ferry Brewery & Winery
+    kind: brewery
+    short_name: White's Ferry
+    town: Leesburg
+    url: https://leesburgbrewery.com/
+    location: White's Ferry Brewery & Winery, 42484 Whites Ferry Rd, Leesburg, VA 20176
+    # Their /events/ page is weddings and private hire; everything public is announced on
+    # Instagram, often with the date and any promo code in the caption only.
+    instagram: whitesferrybrew
+    source:
+      - {type: manual, file: config/events/whites-ferry.yaml}
 
   - slug: chilly-hollow
     name: Chilly Hollow Brewing Co.

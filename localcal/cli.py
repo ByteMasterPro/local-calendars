@@ -5,6 +5,7 @@
                                                              what's happening across ALL calendars (built + external)
     localcal digest   [--from DATE] [--post]                 weekly Discord digest (this week + next-week highlights)
     localcal posters  [--days N] [--only SLUG] [--out DIR]   download event artwork for review
+    localcal instagram [--only SLUG]                         pull venues' public Instagram grids (local only)
 """
 
 from __future__ import annotations
@@ -24,6 +25,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from localcal import digest as digest_mod
+from localcal import instagram as ig_mod
 from localcal import ical, query
 from localcal.model import KINDS, Config, Feed, load_config
 from localcal.query import load_calendar, occurrences  # noqa: F401  (re-exported for tests)
@@ -61,6 +63,10 @@ def main(argv: list[str] | None = None) -> int:
     ps.add_argument("--missing-only", action="store_true", help="skip events that already have an override")
     ps.add_argument("--from", dest="start", type=date.fromisoformat, default=None)
 
+    ig = sub.add_parser("instagram", help="pull venues' public Instagram grids (needs a browser; never runs in CI)")
+    ig.add_argument("--only", help="comma-separated slugs")
+    ig.add_argument("--out", type=Path, default=ROOT / "data" / "instagram")
+
     dg = sub.add_parser("digest", help="build (and with --post, send) the weekly Discord digest")
     dg.add_argument("--from", dest="start", type=date.fromisoformat, default=None,
                     help="pretend it is this day (the window runs from here to Sunday)")
@@ -82,7 +88,10 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.cmd == "build":
         return build(cfg, feeds, args.out, dry_run=args.dry_run)
-    start = args.start or date.today()
+    start = getattr(args, "start", None) or date.today()
+    if args.cmd == "instagram":
+        return instagram(feeds, args.out)
+
     if args.cmd == "posters":
         return posters(cfg, feeds, start, start + timedelta(days=args.days), args.out, missing_only=args.missing_only)
     if args.cmd == "digest":
@@ -175,6 +184,33 @@ def upcoming(cfg: Config, feeds: list[Feed], start: date, end: date, pattern: st
 
 def _clock(dt: datetime) -> str:
     return dt.strftime("%-I:%M%p").lower().replace(":00", "")
+
+
+# ------------------------------------------------------------------------- instagram
+
+def instagram(feeds: list[Feed], out: Path) -> int:
+    """Pull each venue's public Instagram grid. Runs on Christopher's Mac under launchd, never
+    in CI: the grid needs a real browser and Instagram blocks datacenter IPs. Nothing logs in,
+    so captions stay unread and anything caption-only is flagged for him to open himself."""
+    handles = [(f.slug, f.instagram) for f in feeds if f.instagram]
+    if not handles:
+        log.error("no calendar has an `instagram:` handle configured")
+        return 2
+    out.mkdir(parents=True, exist_ok=True)
+    everything: list = []
+    failures = 0
+    for slug, handle in handles:
+        try:
+            posts = ig_mod.pull(handle, out)
+            everything += posts
+            log.info("%s: @%s has %d post(s) on file, %d worth reading",
+                     slug, handle, len(posts), sum(1 for p in posts if p.flagged))
+        except Exception as exc:
+            log.error("%s: @%s pull failed: %s", slug, handle, str(exc)[:200])
+            failures += 1
+    if everything:
+        log.info("review queue: %s", ig_mod.write_review(out, everything))
+    return 1 if failures else 0
 
 
 # --------------------------------------------------------------------------- posters

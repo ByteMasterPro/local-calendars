@@ -1,0 +1,24 @@
+# White's Ferry Brewery & Winery events, read off their Instagram (@whitesferrybrew).
+#
+# They publish no public calendar: leesburgbrewery.com/events/ is weddings and private hire.
+# Their posters often omit the date and say "more details in caption", which needs an account
+# to read, so anything caption-only goes in overrides.yaml under `notices:` instead of being
+# guessed at here.
+#
+# Known from their website (not Instagram): happy hour Wed & Thu 2-8pm, Fri 2-5pm, with $5
+# drafts, $7 estate wine and 25% off appetizers. Not listed as events: the digest filters
+# happy hours out, and three a week would swamp the calendar.
+
+events:
+  - title: Leesburg Fall Festival
+    start: 2026-10-03 14:00
+    end: 2026-10-03 18:00
+    url: https://www.instagram.com/whitesferrybrew/
+    description: >-
+      Free entry, live DJ and 10+ vendors on the riverfront, with 20% off wine flights, fall
+      beer and pretzels.
+    tags: [festival, family, fall]
+    verified: 2026-10-06
+    source: >-
+      Instagram @whitesferrybrew - the 2026-10-01 post carried the date and hours, the
+      2026-10-03 follow-up added the discounts.

@@ -16,6 +16,7 @@ up?" across all of them at once.
 | Town of Leesburg - Community Events | `https://bytemasterpro.github.io/local-calendars/leesburg.ics` | rebuilt daily from the Town's calendar RSS |
 | Historic Manassas Inc. | `https://historicmanassas.org/events/?ical=1` | their own iCal export (live) |
 | One Loudoun | `https://bytemasterpro.github.io/local-calendars/one-loudoun.ics` | rebuilt daily from their Squarespace events JSON |
+| White's Ferry Brewery & Winery | `https://bytemasterpro.github.io/local-calendars/whites-ferry.ics` | curated from their Instagram |
 | Route 7 Brewing | `https://bytemasterpro.github.io/local-calendars/route-7.ics` | live music from wheresthemusic.us + curated |
 | Fairs & Festivals near Leesburg | `https://bytemasterpro.github.io/local-calendars/fairs-festivals.ics` | hand-curated in `config/events/fairs-festivals.yaml` |
 | Farmers Markets near Leesburg | `https://bytemasterpro.github.io/local-calendars/farmers-markets.ics` | hand-curated in `config/events/farmers-markets.yaml` |
@@ -130,6 +131,23 @@ which the digest prefers over the feed's blurb.
 uv run localcal posters --days 30                  # into data/posters/ (gitignored)
 uv run localcal posters --days 30 --missing-only   # skip events that already have an override
 ```
+
+## Instagram
+
+Some venues (Route 7, White's Ferry) announce only on Instagram. `localcal instagram` loads each
+configured handle's public profile in headless Chromium, downloads new grid images to
+`data/instagram/<handle>/` and writes a `review.md` queue. Nothing logs in, so captions are never
+read; when a date or promo code is caption-only, a `notices:` entry in
+`config/events/overrides.yaml` makes the digest say so and link the profile.
+
+```bash
+uv run localcal instagram               # all configured handles
+cp scripts/com.kyberstorm.localcal-instagram.plist ~/Library/LaunchAgents/   # Mon/Thu 07:40
+launchctl load ~/Library/LaunchAgents/com.kyberstorm.localcal-instagram.plist
+```
+
+This is local-only by necessity: the grid is JavaScript-rendered and Instagram blocks datacenter
+IPs, so it cannot run in GitHub Actions.
 
 ## Adding a calendar
 

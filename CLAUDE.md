@@ -136,6 +136,19 @@ Some venues announce only on Instagram. What works and what does not, establishe
 
   `alt` often carries Instagram's own OCR of the poster, which is a useful index even before
   downloading. Then curl the urls (they are signed but work for a while) and Read the files.
+- **`uv run localcal instagram`** automates the pulling half: Playwright headless Chromium loads
+  each feed's `instagram:` handle logged out, downloads anything new to `data/instagram/<handle>/`
+  (gitignored) and writes `data/instagram/review.md`, a newest-first queue. `scripts/
+  com.kyberstorm.localcal-instagram.plist` runs it on his Mac Mon/Thu 07:40 (install notes are in
+  the file). It never runs in CI.
+- **Read every image in the queue, not just the starred ones.** A star only means Instagram's alt
+  text happened to carry an OCR hit; absence proves nothing. Venues also split one event across
+  posts: White's Ferry announced the Leesburg Fall Festival on 2026-10-01 with the date and hours,
+  then followed up on 10-03 with "20% OFF: Wine Flights - Fall Beer - Pretzel" and "More Details
+  In Caption". Connect them before writing anything.
+- When the detail that matters (a date, a promo code) is caption-only, do NOT guess: add a
+  `notices:` entry in `config/events/overrides.yaml` and the digest prints a "📣 Heads up" line
+  telling him to open their Instagram. That is his own instruction, 2026-10-06.
 - Refresh when Christopher asks, or at the start of a month when venues post their schedule.
 
 ## Event artwork (where the real details hide)

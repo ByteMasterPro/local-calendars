@@ -86,7 +86,9 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
     w = week_window(start, now or datetime.now(tz), int(cfg_d.get("preview_limit", 5)))
     rows, errors = query.gather(feeds, w.start, w.next_end + timedelta(days=1))
     by_slug = {f.slug: f for f in feeds}
-    ov = load_overrides(Path(__file__).resolve().parent.parent)
+    root = Path(__file__).resolve().parent.parent
+    ov = load_overrides(root)
+    notices = load_notices(root)
 
     # Pass 1: what each section would show. Pass 2: pick the week's highlights across them for the
     # Top Picks card. Highlights also appear in full in their own section; repetition is intended.
@@ -110,12 +112,12 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
                 ongoing.append(f"{_link(_short_title(r['summary']), r['url'])}{until}")
         sections.append(Section("fairs", c.get("label", "Fairs, Festivals and Carnivals"), "🎪", 0x2A8FBD,
                                 _blocks(_running_line(F["running"], by_slug), grouped_lines(F["this"], w, by_slug, ov),
-                                        ongoing, _preview(F["next"], w))))
+                                        ongoing, notice_lines(notices, w.start, "festival"), _preview(F["next"], w))))
     if B:
         c = secs["breweries"]
         sections.append(Section("breweries", c.get("label", "Local Breweries"), "🍺", 0xF39C12,
                                 _blocks(_running_line(B["running"], by_slug), grouped_lines(B["this"], w, by_slug, ov),
-                                        _preview(B["next"], w))))
+                                        notice_lines(notices, w.start, "brewery"), _preview(B["next"], w))))
     if T:
         c = secs["towns"]
         markets = []
@@ -124,7 +126,7 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
             markets += [_market_line(occ, by_slug) for occ in _group(T["markets"]).values()]
         sections.append(Section("towns", c.get("label", "Town Activities"), "🏘️", 0x27AE60,
                                 _blocks(_running_line(T["running"], by_slug), grouped_lines(T["this"], w, by_slug, ov),
-                                        markets, _preview(T["next"], w))))
+                                        markets, notice_lines(notices, w.start, "town"), _preview(T["next"], w))))
 
     return Digest(title=cfg_d.get("title", "This week"), start=w.start, end=w.end, next_start=w.next_start,
                   next_end=w.next_end, sections=sections, index_url=cfg.site.get("base_url", ""), errors=errors)
@@ -552,6 +554,34 @@ def load_overrides(root) -> list[dict]:
     if not path.exists():
         return []
     return list((yaml.safe_load(path.read_text()) or {}).get("events") or [])
+
+
+def load_notices(root) -> list[dict]:
+    """config/events/overrides.yaml `notices:`: offers and announcements spotted on a venue's
+    Instagram whose detail (a date, a promo code) is caption-only, so Christopher is pointed at
+    the app rather than given a guess."""
+    import yaml
+
+    path = Path(root) / "config" / "events" / "overrides.yaml"
+    if not path.exists():
+        return []
+    return list((yaml.safe_load(path.read_text()) or {}).get("notices") or [])
+
+
+def notice_lines(notices, today: date, kind: str) -> list[str]:
+    """The live notices for one section, as a block."""
+    live = []
+    for n in notices or []:
+        if (n.get("kind") or "brewery") != kind:
+            continue
+        until = n.get("until")
+        if until and date.fromisoformat(str(until)[:10]) < today:
+            continue
+        text = re.sub(r"\s+", " ", str(n["text"])).strip()
+        where = f"**{n['venue']}:** " if n.get("venue") else ""
+        handle = f" ({_link('@' + n['instagram'], 'https://www.instagram.com/' + n['instagram'] + '/')})" if n.get("instagram") else ""
+        live.append(f"{where}{text}{handle}")
+    return ["📣 **Heads up:**"] + live if live else []
 
 
 def override_for(row, overrides) -> dict | None:
