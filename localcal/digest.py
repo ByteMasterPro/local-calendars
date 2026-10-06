@@ -490,8 +490,8 @@ def _select(rows, *, kinds, start, end, now, exclude):
             continue
         if now is not None and not r["all_day"] and e_dt <= now:
             continue                                    # already over today
-        if ex and ex.search(query.haystack(r)):
-            continue
+        if ex and ex.search(query.title_haystack(r)):
+            continue        # title only: see query.title_haystack
         if s < start and (e - s).days > 14 and not r["series"]:
             r = {**r, "_ongoing": True}                 # began before this week and runs for weeks
         out.append(r)

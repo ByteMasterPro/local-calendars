@@ -167,6 +167,14 @@ def haystack(row: dict) -> str:
     return " ".join([row["summary"], row["description"], " ".join(row["categories"]), row["calendar"]])
 
 
+def title_haystack(row: dict) -> str:
+    """Title and categories only. Exclusions match on this: a venue names its discount nights
+    ("50% Off Growler Fills"), while a real event may merely mention a discount among its
+    attractions - White's Ferry's Leesburg Fall Festival offered 20% off wine flights, and
+    matching the description threw the whole festival away."""
+    return " ".join([row["summary"], " ".join(row["categories"])])
+
+
 def matches(row: dict, pattern: str | re.Pattern | None) -> bool:
     if not pattern:
         return False

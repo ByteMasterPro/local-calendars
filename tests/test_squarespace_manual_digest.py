@@ -105,7 +105,7 @@ CFG = Config(site={"base_url": "https://idx"}, feeds=list(FEEDS.values()), diges
         "fairs": {"kinds": ["festival"], "limit": 8},
         "breweries": {"kinds": ["brewery"], "limit": 8,
                       "exclude": "karaoke|trivia|% off", "prioritize": "movie night|festival",
-                      "seasonal": [{"months": [9, 10], "pattern": "oktober|german|prost|hallowe\\w*|fest\\b"},
+                      "seasonal": [{"months": [9, 10], "pattern": "oktober|german|prost|hallowe\\w*|fest\\w*"},
                                    {"months": [11, 12], "pattern": "christmas|holiday|santa"}],
                       "fallback": "live music|music"},
         "towns": {"kinds": ["town"], "limit": 2, "exclude": "council", "prioritize": "movie|parade",
@@ -618,3 +618,27 @@ def test_repo_notices_file_parses():
     from localcal import digest as d
     root = Path(__file__).resolve().parent.parent
     assert isinstance(d.load_notices(root), list)
+
+
+def test_exclusions_match_the_title_not_the_blurb():
+    """A festival that merely offers a discount is not a discount night.
+
+    White's Ferry's Leesburg Fall Festival was dropped from an entire week because its blurb
+    said "20% off wine flights"; the exclude list is for events NAMED after an offer.
+    """
+    c = {**CFG.digest["sections"]["breweries"], "exclude": r"karaoke|\d+% off|happy hour"}
+    fest = row("Leesburg Fall Festival", "2026-10-03T14:00:00-04:00", "2026-10-03T18:00:00-04:00",
+               calendar="whites-ferry", desc="Free entry, live DJ and 10+ vendors, with 20% off wine flights.")
+    noise = row("50% Off Growler Fills", "2026-10-03T12:00:00-04:00", "2026-10-03T20:00:00-04:00", calendar="solace")
+    w = digest.week_window(date(2026, 9, 28), datetime(2026, 9, 28, 7, tzinfo=timezone.utc))   # the week holding Oct 3
+    B = digest.breweries_select([fest, noise], c, w)
+    assert names(B["this"]) == ["Leesburg Fall Festival"]
+    assert "Leesburg Fall Festival" in names(B["seasonal"])        # and it reaches Top Picks
+
+
+def test_title_haystack_ignores_the_description():
+    from localcal import query
+    r = row("Movie Night", "2026-10-09T19:00:00-04:00", "2026-10-09T21:00:00-04:00", calendar="honor",
+            desc="karaoke afterwards", cats=("Family",))
+    assert query.title_haystack(r) == "Movie Night Family"
+    assert "karaoke" in query.haystack(r)                          # still searchable elsewhere

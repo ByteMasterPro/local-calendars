@@ -98,6 +98,11 @@ Nothing is promoted to pad a quiet week - he removed a "filler" tier on 2026-10-
 card should stay focused on his preferences "even if only 1 or 2 things show up"; mundane events
 belong in Local Breweries and the other sections, which list them anyway.
 
+**Exclusions match the TITLE only** (`query.title_haystack`), not the blurb. Matching the
+description cost a whole event: White's Ferry's Leesburg Fall Festival mentions "20% off wine
+flights", which the `\d+% off` rule read as a discount night and dropped from the week. An event
+NAMED after an offer ("50% Off Growler Fills") is still excluded.
+
 Loose patterns have a cost to watch: `fall\b` once matched "September and October this fall" in
 a car-meet blurb and promoted it over the movie night. Keep prose-common words out of the
 seasonal lists; prefer `fall ?fest\w*` over `fall`.
