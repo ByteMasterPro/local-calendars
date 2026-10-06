@@ -8,4 +8,33 @@
 # To refresh: ask Claude to check @rt7brewing, or run `uv run localcal posters` after adding
 # entries here. See CLAUDE.md, "Instagram as a source".
 
-events: []
+events:
+  # Their September karaoke poster (Songbirds & Sunshine) states "every first and third Sunday
+  # of the month". These are that pattern projected forward; re-check against their Instagram
+  # before trusting a date more than a few weeks out, since nothing confirms them individually.
+  - title: Sunday Night Karaoke
+    start: 2026-10-18 19:00
+    end: 2026-10-18 22:00
+    url: https://www.instagram.com/rt7brewing/
+    description: Sunday night karaoke with Songbirds & Sunshine Entertainment.
+    tags: [karaoke]
+    verified: 2026-10-06
+    source: Instagram @rt7brewing poster, 2026-09-04 - their stated first/third Sunday pattern
+
+  - title: Sunday Night Karaoke
+    start: 2026-11-01 19:00
+    end: 2026-11-01 22:00
+    url: https://www.instagram.com/rt7brewing/
+    description: Sunday night karaoke with Songbirds & Sunshine Entertainment.
+    tags: [karaoke]
+    verified: 2026-10-06
+    source: Instagram @rt7brewing poster, 2026-09-04 - their stated first/third Sunday pattern
+
+  - title: Sunday Night Karaoke
+    start: 2026-11-15 19:00
+    end: 2026-11-15 22:00
+    url: https://www.instagram.com/rt7brewing/
+    description: Sunday night karaoke with Songbirds & Sunshine Entertainment.
+    tags: [karaoke]
+    verified: 2026-10-06
+    source: Instagram @rt7brewing poster, 2026-09-04 - their stated first/third Sunday pattern

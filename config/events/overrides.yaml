@@ -55,9 +55,10 @@ events:
   - match: "Halloween Costume Party"
     calendar: Honor Brewing
     details: >-
-      Halloween costume party, 6pm to 11pm: DJ from 6 to 10, tarot card reader, and a costume
-      contest with prizes.
-    source: Instagram October 2026 schedule, read 2026-10-06
+      Halloween costume party, 6pm to 11pm: DJ from 6 to 10, a tarot card reader, the Halloween
+      pop-up bar, and cash prizes for best costume - first prize is $250 plus an annual mug club
+      membership (worth $300) and a Halloween pop-up t-shirt.
+    source: Instagram event poster, read 2026-10-06
 
   - match: "October Charity Tap Line"
     calendar: Honor Brewing
