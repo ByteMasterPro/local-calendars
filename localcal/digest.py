@@ -99,25 +99,29 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
         sections.append(Section("picks", c.get("label", "Top picks this week"), "⭐", 0xE67E22, pick_lines(picks, w, by_slug)))
     if F:
         c = secs["fairs"]
-        lines = grouped_lines(F["this"], w, by_slug) + _running_line(F["running"], by_slug)
+        ongoing = []
         if F["ongoing"]:
-            lines += ["", "**Ongoing weekends:**"]          # label, then one per line
+            ongoing = ["**Ongoing weekends:**"]             # label, then one per line
             for r in F["ongoing"]:
                 until = f" thru {_d(date.fromisoformat(r['series_until']))}" if r.get("series_until") else ""
-                lines.append(f"{_link(_short_title(r['summary']), r['url'])}{until}")
-        sections.append(Section("fairs", c.get("label", "Fairs, Festivals and Carnivals"), "🎪", 0x2A8FBD, lines + _preview(F["next"], w)))
+                ongoing.append(f"{_link(_short_title(r['summary']), r['url'])}{until}")
+        sections.append(Section("fairs", c.get("label", "Fairs, Festivals and Carnivals"), "🎪", 0x2A8FBD,
+                                _blocks(_running_line(F["running"], by_slug), grouped_lines(F["this"], w, by_slug),
+                                        ongoing, _preview(F["next"], w))))
     if B:
         c = secs["breweries"]
         sections.append(Section("breweries", c.get("label", "Local Breweries"), "🍺", 0xF39C12,
-                                grouped_lines(B["this"], w, by_slug) + _running_line(B["running"], by_slug)
-                                + _preview(B["next"], w)))
+                                _blocks(_running_line(B["running"], by_slug), grouped_lines(B["this"], w, by_slug),
+                                        _preview(B["next"], w))))
     if T:
         c = secs["towns"]
-        lines = grouped_lines(T["this"], w, by_slug) + _running_line(T["running"], by_slug)
+        markets = []
         if T["markets"]:
-            lines += ["", f"🥕 **{(c.get('farmers_markets') or {}).get('label', 'Farmers Markets')}:**"]
-            lines += [_market_line(occ, by_slug) for occ in _group(T["markets"]).values()]
-        sections.append(Section("towns", c.get("label", "Town Activities"), "🏘️", 0x27AE60, lines + _preview(T["next"], w)))
+            markets = [f"🥕 **{(c.get('farmers_markets') or {}).get('label', 'Farmers Markets')}:**"]
+            markets += [_market_line(occ, by_slug) for occ in _group(T["markets"]).values()]
+        sections.append(Section("towns", c.get("label", "Town Activities"), "🏘️", 0x27AE60,
+                                _blocks(_running_line(T["running"], by_slug), grouped_lines(T["this"], w, by_slug),
+                                        markets, _preview(T["next"], w))))
 
     return Digest(title=cfg_d.get("title", "This week"), start=w.start, end=w.end, next_start=w.next_start,
                   next_end=w.next_end, sections=sections, index_url=cfg.site.get("base_url", ""), errors=errors)
@@ -371,12 +375,24 @@ def _key(r) -> tuple:
     return (r["summary"].lower(), r["calendar"])
 
 
+def _blocks(*blocks: list[str]) -> list[str]:
+    """Join the parts of a section, a blank line between each, skipping the empty ones."""
+    out: list[str] = []
+    for block in blocks:
+        if not block:
+            continue
+        if out:
+            out.append("")
+        out.extend(block)
+    return out
+
+
 def _running_line(rows, by_slug) -> list[str]:
     """One line for things that have been running since before this week and continue past it,
     so a month-long pop-up bar is mentioned without being re-listed in full every Monday."""
     if not rows:
         return []
-    return ["", "**Running now:**"] + [          # label, then one per line, as with ongoing weekends
+    return ["**Running now:**"] + [              # label, then one per line, as with ongoing weekends
         f"{_link(_short_title(r['summary']), _url(r, by_slug))} thru {_d(_run(r)[1])}" for r in rows]
 
 
@@ -385,7 +401,7 @@ def _preview(rows, w: Window) -> list[str]:
     if not rows:
         return []
     bits = [f"{_link(_short_title(r['summary']), r['url'])} ({datetime.fromisoformat(r['start']):%a})" for r in rows[: w.preview_limit]]
-    return ["", f"**Next week ({_d(w.next_start)} – {_d(w.next_end)}):** " + " · ".join(bits)]   # blank line separates it
+    return [f"**Next week ({_d(w.next_start)} – {_d(w.next_end)}):** " + " · ".join(bits)]
 
 
 def _market_line(occ, by_slug) -> str:

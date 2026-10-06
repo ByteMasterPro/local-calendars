@@ -40,7 +40,9 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   Breweries" (seasonal first: Oktoberfest/German/Halloween in Sep-Oct, Christmas/holiday in
   Nov-Dec; live music only as a fallback; never karaoke/trivia/discounts), "Town Activities"
   (cap 8, with a Farmers Markets sub-list). The "Ongoing weekends:" and "Running now:" blocks are
-  a label line followed by one event per line (his 2026-10-06 request), not a joined line. **"This week" is Mon-Sun**; a Saturday run shows only
+  a label line followed by one event per line (his 2026-10-06 request), not a joined line, and
+  "Running now:" sits at the TOP of its section, above this week's dated events. Sections are
+  assembled from blocks by `_blocks()`, which puts one blank line between them. **"This week" is Mon-Sun**; a Saturday run shows only
   what is left of the weekend and drops anything already over. Each section ends with ONE
   "Next week:" highlights line; nothing further out is shown (he explicitly rejected seeing a
   fair 2 weeks away in detail). Layout he chose from four mockups on 2026-09-19: a **Top picks

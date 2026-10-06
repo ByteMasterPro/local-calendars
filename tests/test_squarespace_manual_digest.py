@@ -364,7 +364,7 @@ def test_long_running_event_becomes_a_running_now_line_not_a_dropped_one():
     assert "Halloweem Pop-Up Bar" not in names(B["this"])          # not re-listed in full each week
     assert "Halloweem Pop-Up Bar" not in names(B["next"])          # nor repeated in the preview
     assert digest._running_line(B["running"], FEEDS) == [
-        "", "**Running now:**", "[Halloweem Pop-Up Bar](https://h) thru Fri Oct 30"]
+        "**Running now:**", "[Halloweem Pop-Up Bar](https://h) thru Fri Oct 30"]
 
 
 def test_long_running_event_is_listed_in_full_the_week_it_starts():
