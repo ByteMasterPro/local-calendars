@@ -92,11 +92,11 @@ subscriptions remain.
 
 ## What Christopher wants surfaced
 
-Top Picks ranks before it caps: rank 0 marquee (fair/festival one-offs, seasonal brewery
-events), rank 1 `pattern` matches (movie nights, petting zoos), rank 2 `filler`
-(car cruise-ins, bike nights, fitness classes) which only earns a slot when the week has fewer
-than `fill_below` real picks - his 2026-10-06 rule: "fine to add ... but only if it was a very
-minimal week". A filler match is demoted even if it would otherwise rank 0.
+Top Picks is deliberately NARROW and ranks before it caps: rank 0 marquee (fair/festival
+one-offs, seasonal brewery events), rank 1 `pattern` matches (movie nights, petting zoos).
+Nothing is promoted to pad a quiet week - he removed a "filler" tier on 2026-10-06 saying the
+card should stay focused on his preferences "even if only 1 or 2 things show up"; mundane events
+belong in Local Breweries and the other sections, which list them anyway.
 
 Loose patterns have a cost to watch: `fall\b` once matched "September and October this fall" in
 a car-meet blurb and promoted it over the movie night. Keep prose-common words out of the

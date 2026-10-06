@@ -495,7 +495,7 @@ def test_fall_festival_gets_the_leaf_icon_not_the_generic_one():
     assert digest._icon(row("Manassas Fall Jubilee", "2026-10-03T10:00:00-04:00", "2026-10-03T17:00:00-04:00", calendar="town"), icons) == "🎡 "
 
 
-TP_FILLER = {"pattern": "movie|festival", "filler": "cruise.?in|car show", "limit": 8, "fill_below": 3}
+TP = {"pattern": "movie|festival", "limit": 8}
 
 
 def fests(*ns):
@@ -507,22 +507,17 @@ CRUISE = row("Car Cruise-In", "2026-10-09T17:00:00-04:00", "2026-10-09T20:00:00-
 MOVIE = row("Movie Night: Shrek", "2026-10-09T19:00:00-04:00", "2026-10-09T21:00:00-04:00", calendar="honor", slug="honor")
 
 
-def test_filler_pick_earns_a_slot_when_the_week_is_quiet():
-    picks = digest.top_picks(None, {"this": [CRUISE], "seasonal": [], "running": []}, None, TP_FILLER, W_MON)
-    assert names(picks) == ["Car Cruise-In"]
+def test_a_quiet_week_is_left_quiet_rather_than_padded():
+    """One or two picks is a fine week; ordinary events stay in their own section."""
+    assert digest.top_picks(None, {"this": [CRUISE], "seasonal": [], "running": []}, None, TP, W_MON) == []
+    picks = digest.top_picks(None, {"this": [CRUISE, MOVIE], "seasonal": [], "running": []}, None, TP, W_MON)
+    assert names(picks) == ["Movie Night: Shrek"]
 
 
-def test_filler_pick_is_dropped_once_the_week_has_real_ones():
+def test_ordinary_events_never_reach_top_picks():
     B = {"this": [CRUISE, MOVIE], "seasonal": [], "running": []}
-    picks = digest.top_picks({"this": fests(0, 1), "running": []}, B, None, TP_FILLER, W_MON)
-    assert names(picks) == ["Movie Night: Shrek", "Festival 0", "Festival 1"]   # 3 real picks reach fill_below
-
-
-def test_filler_is_demoted_even_when_it_matches_as_seasonal():
-    """A car meet whose blurb says 'this fall' must not ride in as a marquee pick."""
-    cruise = dict(CRUISE, description="2nd and 4th Fridays of September and October this fall")
-    B = {"this": [cruise, MOVIE], "seasonal": [cruise], "running": []}         # seasonal would be rank 0
-    picks = digest.top_picks({"this": fests(0, 1), "running": []}, B, None, TP_FILLER, W_MON)
+    picks = digest.top_picks({"this": fests(0, 1), "running": []}, B, None, TP, W_MON)
+    assert names(picks) == ["Movie Night: Shrek", "Festival 0", "Festival 1"]
     assert "Car Cruise-In" not in names(picks)
 
 

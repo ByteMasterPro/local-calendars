@@ -219,21 +219,18 @@ def towns_select(rows, c, w: Window) -> dict:
 
 
 def top_picks(F, B, T, c, w: Window) -> list[dict]:
-    """The week's highlights across sections.
+    """The week's highlights across sections: a deliberately narrow card.
 
-    Candidates are ranked before the cap, not just sorted by date: a Saturday festival must not
-    be cut to make room for Tuesday. Marquee items (fair and festival one-offs, seasonal brewery
-    events) rank 0, anything matching `pattern` ranks 1, and `filler` (car cruise-ins, bike
-    nights, fitness classes) ranks 2 and only earns a slot when the week is quiet. Printed in
-    time order.
+    Only two kinds qualify: marquee items (fair and festival one-offs, seasonal brewery events)
+    and anything matching `pattern` - the things Christopher wants spotlit. Nothing is promoted
+    to pad a quiet week; one or two picks is a fine week. Everything else still appears in its
+    own section. Ranked before the cap so a Saturday festival is never cut for a Tuesday, then
+    printed in time order.
     """
     rx = re.compile(c["pattern"], re.I) if c.get("pattern") else None
-    filler_rx = re.compile(c["filler"], re.I) if c.get("filler") else None
     cands: dict[tuple, tuple[int, dict]] = {}
 
     def offer(r, rank):
-        if filler_rx and query.matches(r, filler_rx):
-            rank = 2                                        # filler never outranks a real pick
         key = _key(r)
         if key not in cands or rank < cands[key][0]:
             cands[key] = (rank, r)
@@ -248,14 +245,9 @@ def top_picks(F, B, T, c, w: Window) -> list[dict]:
         for r in src:
             if rx and query.matches(r, rx):
                 offer(r, 1)
-            elif filler_rx and query.matches(r, filler_rx):
-                offer(r, 2)                                 # a candidate only on a quiet week
 
     ranked = sorted(cands.values(), key=lambda pair: (pair[0], pair[1]["_sort"]))
-    picks = [r for rank, r in ranked if rank < 2]
-    if len(picks) < int(c.get("fill_below", 4)):
-        picks += [r for rank, r in ranked if rank == 2]
-    return sorted(picks[: int(c.get("limit", 8))], key=lambda r: r["_sort"])
+    return sorted((r for _, r in ranked[: int(c.get("limit", 8))]), key=lambda r: r["_sort"])
 
 
 # --------------------------------------------------------------- rendering
