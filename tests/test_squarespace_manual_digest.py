@@ -395,3 +395,38 @@ def test_running_seasonal_event_is_still_a_top_pick():
     assert digest.pick_lines(picks, w, FEEDS) == [
         "**Thu Oct 1 – Fri Oct 30**",
         "**[Halloweem Pop-Up Bar](https://h)** (Honor Brewing - Loudoun, Sterling)"]
+
+
+ICONS = [{"match": "hallowe\\w*|haunt", "icon": "👻"}, {"match": "pumpkin", "icon": "🎃"},
+         {"match": "pottery|raku", "icon": "🏺"}, {"match": "live music", "icon": "🎵"}]
+
+
+def test_top_pick_icons_match_on_the_title_first():
+    popup = row("Halloweem Pop-Up Bar", "2026-10-01", "2026-10-31", calendar="honor", slug="honor", all_day=True, url="https://h")
+    # title says pottery, blurb mentions a pumpkin: the title decides
+    raku = row("Raku Pottery Festival", "2026-10-10T09:00:00-04:00", "2026-10-10T19:00:00-04:00", calendar="chilly",
+               url="https://r", desc="Walk away with a one-of-a-kind pumpkin.")
+    craft = row("Craft Night: Chunky Handknit Pumpkins", "2026-10-07T18:00:00-04:00", "2026-10-07T20:00:00-04:00",
+                calendar="chilly", url="https://c")
+    plain = row("Quiz Night", "2026-10-08T19:00:00-04:00", "2026-10-08T21:00:00-04:00", calendar="chilly", url="https://q")
+    w = digest.week_window(date(2026, 10, 5), datetime(2026, 10, 5, 11, tzinfo=timezone.utc))
+    lines = digest.pick_lines([popup, craft, raku, plain], w, FEEDS, icons=ICONS)
+    assert "👻 **[Halloweem Pop-Up Bar](https://h)**" in lines[1]
+    assert any(l.startswith("🎃 **[Craft Night") for l in lines)
+    assert any(l.startswith("🏺 **[Raku Pottery Festival") for l in lines)
+    assert any(l.startswith("**[Quiz Night") for l in lines)           # nothing applicable: no icon
+
+
+def test_icons_are_optional():
+    r = row("Quiz Night", "2026-10-08T19:00:00-04:00", "2026-10-08T21:00:00-04:00", calendar="chilly", url="https://q")
+    w = digest.week_window(date(2026, 10, 5), datetime(2026, 10, 5, 11, tzinfo=timezone.utc))
+    assert digest.pick_lines([r], w, FEEDS)[1].startswith("**[Quiz Night")
+
+
+def test_repo_icon_patterns_all_compile():
+    import re
+    from localcal.model import load_config
+    cfg = load_config(ROOT / "config" / "calendars.yaml")
+    for entry in cfg.digest["top_picks"]["icons"]:
+        re.compile(entry["match"])
+        assert entry["icon"].strip()

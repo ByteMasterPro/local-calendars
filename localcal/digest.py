@@ -96,7 +96,8 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
     sections = []
     if picks:
         c = cfg_d.get("top_picks") or {}
-        sections.append(Section("picks", c.get("label", "Top Picks This Week"), "⭐", 0xE67E22, pick_lines(picks, w, by_slug)))
+        sections.append(Section("picks", c.get("label", "Top Picks This Week"), "⭐", 0xE67E22,
+                                pick_lines(picks, w, by_slug, icons=c.get("icons"))))
     if F:
         c = secs["fairs"]
         ongoing = []
@@ -219,12 +220,12 @@ def top_picks(F, B, T, c, w: Window) -> list[dict]:
 
 # --------------------------------------------------------------- rendering
 
-def pick_lines(rows, w: Window, by_slug) -> list[str]:
+def pick_lines(rows, w: Window, by_slug, icons=None) -> list[str]:
     """Top Picks card. Events sharing a day sit under one date header, and events sharing the
     same multi-day run sit under one range header:
 
         **Sat Sep 26**
-        **[Lovettsville Oktoberfest](url)** · 10am–5pm (Zoldos Square, Lovettsville)
+        🍺 **[Lovettsville Oktoberfest](url)** · 10am–5pm (Zoldos Square, Lovettsville)
         > German food and beer, stein hauling, Wiener Dog Races, Kinderfest...
 
         **Fri Oct 2 – Sun Oct 4**
@@ -267,7 +268,7 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
                 done.add(id(peer))
                 if i:
                     out.append("")
-                out.extend(_title_and_excerpt(peer, by_slug))
+                out.extend(_title_and_excerpt(peer, by_slug, icons))
             cur_day = None                      # a later pick on this day re-prints its header
             continue
 
@@ -276,24 +277,24 @@ def pick_lines(rows, w: Window, by_slug) -> list[str]:
         if day not in timed_days:
             e_dt = datetime.fromisoformat(r["end"])
             when = f"**{_d(day)}**" + ("" if r["all_day"] else f", {_span(s_dt, e_dt)}")
-            out.append(f"{when} — **{_link(r['summary'], _url(r, by_slug))}** ({_where(r, by_slug)}){_rel(day, w)}")
+            out.append(f"{when} — {_icon(r, icons)}**{_link(r['summary'], _url(r, by_slug))}** ({_where(r, by_slug)}){_rel(day, w)}")
             _append_excerpt(out, r)
             cur_day = None
         else:
             if day != cur_day:
                 out.append(f"**{_d(day)}**{_rel(day, w)}")
                 cur_day = day
-            out.extend(_title_and_excerpt(r, by_slug))
+            out.extend(_title_and_excerpt(r, by_slug, icons))
     return out
 
 
-def _title_and_excerpt(r, by_slug) -> list[str]:
-    """`**Title** · time (Venue)` plus the excerpt, for an event under a date or range header."""
+def _title_and_excerpt(r, by_slug, icons=None) -> list[str]:
+    """`🎃 **Title** · time (Venue)` plus the excerpt, for an event under a date or range header."""
     when = ""
     if not r["all_day"]:
         s_dt, e_dt = datetime.fromisoformat(r["start"]), datetime.fromisoformat(r["end"])
         when = f" · from {_clock(s_dt)}" if _is_span(r) else f" · {_span(s_dt, e_dt)}"
-    lines = [f"**{_link(r['summary'], _url(r, by_slug))}**{when} ({_where(r, by_slug)})"]
+    lines = [f"{_icon(r, icons)}**{_link(r['summary'], _url(r, by_slug))}**{when} ({_where(r, by_slug)})"]
     _append_excerpt(lines, r)
     return lines
 
@@ -302,6 +303,18 @@ def _append_excerpt(lines: list[str], r) -> None:
     excerpt = _excerpt(r["description"])
     if excerpt:
         lines.append(f"> {excerpt}")
+
+
+def _icon(r, icons) -> str:
+    """A themed emoji for a pick, or "". The title decides; the description is the tiebreaker,
+    so a gig whose blurb mentions pumpkins does not become a pumpkin event."""
+    if not icons:
+        return ""
+    for haystack in (r["summary"], r["description"]):
+        for entry in icons:
+            if re.search(entry["match"], haystack or "", re.I):
+                return f"{entry['icon']} "
+    return ""
 
 
 def _url(r, by_slug) -> str:

@@ -48,6 +48,9 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   fair 2 weeks away in detail). Layout he chose from four mockups on 2026-09-19: a **Top picks
   this week** card first (fair one-offs + seasonal brewery events + parade/airshow-type town
   items), then the three sections, each **grouped by date** (bold date header once, events as `- time — Title (Venue, Town): excerpt` bullets).
+  Top Picks titles carry a themed emoji when one applies (👻 🎃 🍺 🏺 ...), from the ordered
+  `digest.top_picks.icons` list in `config/calendars.yaml`: first match wins, matched against the
+  title and only then the description, so a gig whose blurb mentions pumpkins stays a gig.
   In Top Picks (reworked 2026-09-24, extended 2026-10-01) same-day picks share one date header
   and read `**Title** · time (Venue)` / `> excerpt`; two or more picks running exactly the same
   multi-day range likewise share one `**Fri Oct 2 – Sun Oct 4**` header. Since 2026-10-06 EVERY

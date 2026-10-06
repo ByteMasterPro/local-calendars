@@ -168,6 +168,30 @@ digest:
     label: "Top Picks This Week"           # candidates = fair one-offs + seasonal brewery events +
     limit: 5                               # town items matching `pattern`; chronological
     pattern: "fair\\b|festival|carnival|parade|fireworks|air ?show|hallowe\\w*|pumpkin|oktober|german|holiday|christmas|santa|tree lighting"
+    icons:                                 # first match wins, title first then description; no match = no icon
+      - {match: "hallowe\\w*|haunt|spooky|ghost|zombie|fields of fear|trick.or.treat|costume", icon: "👻"}
+      - {match: "pumpkin|jack.o.lantern|gourd", icon: "🎃"}
+      - {match: "thanksgiving|turkey|friendsgiving", icon: "🦃"}
+      - {match: "christmas|tree lighting|gingerbread|nutcracker|wreath|caroling|hanukkah|menorah", icon: "🎄"}
+      - {match: "santa|st\\.? nick|breakfast with santa", icon: "🎅"}
+      - {match: "fireworks|new year", icon: "🎆"}
+      - {match: "oktober|german|deutsch|stein|bavarian|lederhosen|polka|prost|beer release|brewfest", icon: "🍺"}
+      - {match: "wine|cider|vineyard|meadery|mead\\b", icon: "🍷"}
+      - {match: "pottery|ceramic|raku|clay", icon: "🏺"}
+      - {match: "paint|craft|knit|quilt|art show|exhibit|gallery", icon: "🎨"}
+      - {match: "air ?show|aviation|airport", icon: "✈️"}
+      - {match: "car show|cruise.?in|cars & coffee|classic car|motorcycle", icon: "🚗"}
+      - {match: "movie|film|cinema", icon: "🎬"}
+      - {match: "parade", icon: "🎊"}
+      - {match: "corn maze|hayride|harvest|farm days", icon: "🌽"}
+      - {match: "farmers'? market", icon: "🥕"}
+      - {match: "5k|marathon|\\brace\\b|fun run", icon: "🏃"}
+      - {match: "musical|theatre|theater|\\bopera\\b", icon: "🎭"}
+      - {match: "live music|concert|\\bband\\b|acoustic|bluegrass", icon: "🎵"}
+      - {match: "\\bfair\\b|carnival|jubilee|festival|fest\\b", icon: "🎡"}
+      - {match: "anniversary|grand opening|ribbon cutting", icon: "🎉"}
+      - {match: "walking tour|history|historic|museum|genealogy", icon: "🏛️"}
+      - {match: "shredding|recycl|clean.?up", icon: "♻️"}
   sections:
     fairs:
       label: "Fairs, Festivals and Carnivals"
