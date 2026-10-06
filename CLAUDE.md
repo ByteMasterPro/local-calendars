@@ -219,6 +219,13 @@ uv run pytest
   (wheresthemusic.us venue page, their live music, parseable with plain curl) and a curated
   `config/events/route-7.yaml` for everything read off Instagram. A feed's `source` may be a
   LIST; `fetch_events` merges them and dedupes by uid.
+- **Village at Leesburg** (Wix, villageatleesburg.com/events/): renders entirely in JavaScript,
+  so a plain fetch returns "Javascript must be enabled" and CI cannot read it - curated in
+  `config/events/village-at-leesburg.yaml`, re-read from the page when asked. Their weekly tenant
+  promotions (bargain movie Tuesdays, Friday live music, football at Anchor Bar) carry a
+  `routine` tag: the towns section's `deprioritize` ranks them last and `towns_select` returns
+  them as `routine`, which `top_picks` skips. Christopher's rule, 2026-10-06: list them, but the
+  Monster Mash is what deserves attention.
 - **Historic Manassas** (WordPress + The Events Calendar): `?ical=1` works. Each performance of
   a show has its own UID, so the digest collapses by (title, calendar), not UID.
 - **One Loudoun** (Squarespace): `?format=json` works, `?format=ical` does not on their template.

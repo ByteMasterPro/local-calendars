@@ -1,0 +1,46 @@
+# Village at Leesburg events, read from villageatleesburg.com/events/.
+#
+# The site is Wix and renders entirely in JavaScript, so a plain fetch gets nothing and CI
+# cannot refresh it: these are curated. Re-read the page when Christopher asks or at the start
+# of a season.
+#
+# Their weekly tenant promotions (bargain movie Tuesdays, football at Anchor Bar, Friday live
+# music) are tagged `routine`, which ranks them last in the digest's Town Activities and keeps
+# them out of Top Picks. Real events carry their own tags.
+
+events:
+  - title: "Monster Mash 2026"
+    start: 2026-10-24 13:00
+    end: 2026-10-24 17:00
+    url: https://www.villageatleesburg.com/events/monster-mash-2026/
+    description: >-
+      Their annual Halloween afternoon: professional pumpkin carving, trick-or-treating, cookie
+      decorating, face painting, and a costume contest on the Main Stage from 3:30 to 4:30pm with
+      categories for kids 14 and under, family or group costumes, and pets. The Loudoun County
+      Sheriff's Office Child Safety Day runs alongside it.
+    tags: [halloween, festival, family, kids]
+    verified: 2026-10-06
+
+  - title: "$5 Bargain Tuesdays at Phoenix Theatres"
+    season: {start: 2026-10-06, end: 2026-12-29, days: [TU], time: "11:00-22:00"}
+    url: https://www.villageatleesburg.com/events/5-bargain-tuesdays-at-phoenix-theatres/
+    description: >-
+      Any movie for $5 every Tuesday, all seats, all shows, all day. A small fee is added for
+      premium formats.
+    tags: [routine, movie]
+    verified: 2026-10-06
+
+  - title: "Friday Night Live Music at Anchor Bar"
+    season: {start: 2026-10-09, end: 2026-12-25, days: [FR], time: "18:00-21:00"}
+    url: https://www.villageatleesburg.com/events/friday-night-live-music/
+    description: Live music from local artists at Anchor Bar every Friday at 6pm.
+    tags: [routine, live music]
+    verified: 2026-10-06
+
+  - title: "Football Season at Anchor Bar"
+    season: {start: 2026-10-11, end: 2027-01-03, days: [SU], time: "13:00-22:00"}
+    url: https://www.villageatleesburg.com/events/football-season-at-anchor-bar/
+    description: >-
+      College and professional games on multiple TVs at Anchor Bar, with wings and drinks.
+    tags: [routine, football]
+    verified: 2026-10-06

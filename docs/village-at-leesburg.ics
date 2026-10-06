@@ -1,0 +1,104 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//localcal 0.1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALDESC:Events at Village at Leesburg. Source: https://www.villageatl
+ eesburg.com/events/
+X-WR-CALNAME:Village at Leesburg
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+X-WR-TIMEZONE:America/New_York
+BEGIN:VTIMEZONE
+TZID:America/New_York
+COMMENT:This timezone only works from 2025-10-05 to 2029-10-26.
+BEGIN:DAYLIGHT
+DTSTART:20251005T000000
+TZNAME:EDT
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0400
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:20251102T020000
+RDATE:20261101T020000,20271107T020000,20281105T020000
+TZNAME:EST
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20260308T030000
+RDATE:20270314T030000,20280312T030000,20290311T030000
+TZNAME:EDT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:$5 Bargain Tuesdays at Phoenix Theatres
+DTSTART;TZID=America/New_York:20261006T110000
+DTEND;TZID=America/New_York:20261006T220000
+DTSTAMP:20261006T212658Z
+UID:5-bargain-tuesdays-at-phoenix-theatres-2026-10-06@village-at-leesburg
+RRULE:FREQ=WEEKLY;UNTIL=20261230T045900Z;BYDAY=TU
+CATEGORIES:routine,movie
+DESCRIPTION:Any movie for $5 every Tuesday\, all seats\, all shows\, all d
+ ay. A small fee is added for premium formats.\n\nMore info: https://www.vi
+ llageatleesburg.com/events/5-bargain-tuesdays-at-phoenix-theatres/
+LOCATION:Village at Leesburg\, 1602 Village Market Blvd SE\, Leesburg\, VA
+  20175
+TRANSP:TRANSPARENT
+URL:https://www.villageatleesburg.com/events/5-bargain-tuesdays-at-phoenix
+ -theatres/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Friday Night Live Music at Anchor Bar
+DTSTART;TZID=America/New_York:20261009T180000
+DTEND;TZID=America/New_York:20261009T210000
+DTSTAMP:20261006T212658Z
+UID:friday-night-live-music-at-anchor-bar-2026-10-09@village-at-leesburg
+RRULE:FREQ=WEEKLY;UNTIL=20261226T045900Z;BYDAY=FR
+CATEGORIES:routine,live music
+DESCRIPTION:Live music from local artists at Anchor Bar every Friday at 6p
+ m.\n\nMore info: https://www.villageatleesburg.com/events/friday-night-liv
+ e-music/
+LOCATION:Village at Leesburg\, 1602 Village Market Blvd SE\, Leesburg\, VA
+  20175
+TRANSP:TRANSPARENT
+URL:https://www.villageatleesburg.com/events/friday-night-live-music/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Football Season at Anchor Bar
+DTSTART;TZID=America/New_York:20261011T130000
+DTEND;TZID=America/New_York:20261011T220000
+DTSTAMP:20261006T212658Z
+UID:football-season-at-anchor-bar-2026-10-11@village-at-leesburg
+RRULE:FREQ=WEEKLY;UNTIL=20270104T045900Z;BYDAY=SU
+CATEGORIES:routine,football
+DESCRIPTION:College and professional games on multiple TVs at Anchor Bar\,
+  with wings and drinks.\n\nMore info: https://www.villageatleesburg.com/ev
+ ents/football-season-at-anchor-bar/
+LOCATION:Village at Leesburg\, 1602 Village Market Blvd SE\, Leesburg\, VA
+  20175
+TRANSP:TRANSPARENT
+URL:https://www.villageatleesburg.com/events/football-season-at-anchor-bar
+ /
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Monster Mash 2026
+DTSTART;TZID=America/New_York:20261024T130000
+DTEND;TZID=America/New_York:20261024T170000
+DTSTAMP:20261006T212658Z
+UID:monster-mash-2026-2026-10-24@village-at-leesburg
+CATEGORIES:halloween,festival,family,kids
+DESCRIPTION:Their annual Halloween afternoon: professional pumpkin carving
+ \, trick-or-treating\, cookie decorating\, face painting\, and a costume c
+ ontest on the Main Stage from 3:30 to 4:30pm with categories for kids 14 a
+ nd under\, family or group costumes\, and pets. The Loudoun County Sheriff
+ 's Office Child Safety Day runs alongside it.\n\nMore info: https://www.vi
+ llageatleesburg.com/events/monster-mash-2026/
+LOCATION:Village at Leesburg\, 1602 Village Market Blvd SE\, Leesburg\, VA
+  20175
+TRANSP:TRANSPARENT
+URL:https://www.villageatleesburg.com/events/monster-mash-2026/
+END:VEVENT
+END:VCALENDAR

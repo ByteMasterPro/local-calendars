@@ -155,6 +155,18 @@ calendars:
       type: squarespace
       url: https://www.downtownoneloudoun.com/events
 
+  - slug: village-at-leesburg
+    name: Village at Leesburg
+    kind: town
+    short_name: Village at Leesburg
+    town: Leesburg
+    url: https://www.villageatleesburg.com/events/
+    location: Village at Leesburg, 1602 Village Market Blvd SE, Leesburg, VA 20175
+    # Wix site, rendered entirely in JavaScript: a plain fetch gets nothing, so CI cannot read
+    # it and the events are curated from the page by hand.
+    source:
+      - {type: manual, file: config/events/village-at-leesburg.yaml}
+
   - slug: historic-manassas
     name: Historic Manassas Inc.
     kind: town
@@ -199,7 +211,7 @@ digest:
     # anything matching `pattern` (rank 1). Nothing pads a quiet week - one or two picks is fine,
     # and the ordinary stuff still appears in its own section.
     limit: 8
-    pattern: "fair\\b|festival|fest\\w*|carnival|jubilee|parade|fireworks|air ?show|hallowe\\w*|trunk.or.treat|trick.or.treat|pumpkin|harvest|hayride|corn maze|oktober|german|holiday|christmas|santa|tree lighting|thanksgiving|movie|petting zoo|anniversary|touch a truck|egg hunt|block party|craft fair|bazaar"
+    pattern: "fair\\b|festival|fest\\w*|carnival|jubilee|parade|fireworks|air ?show|hallowe\\w*|trunk.or.treat|trick.or.treat|pumpkin|harvest|hayride|corn maze|oktober|german|holiday|christmas|santa|tree lighting|thanksgiving|movie|petting zoo|anniversary|touch a truck|egg hunt|block party|craft fair|bazaar|monster mash"
     icons:                                 # first match wins, title first then description; no match = no icon
       - {match: "hallowe\\w*|haunt|spooky|ghost|zombie|fields of fear|trick.or.treat|trunk.or.treat|costume|fright|monster|witch|vampire|boo\\b", icon: "👻"}
       - {match: "fall ?fest\\w*|autumn fest\\w*|harvest fest\\w*|fallfest|\\bfall festival", icon: "🍁"}
@@ -251,6 +263,8 @@ digest:
       limit: 12
       exclude: "council|commission|board meeting|public hearing|zoning|work session|advisory|zumba|fitness|yoga|workout"
       prioritize: "fair|festival|carnival|parade|fireworks|movie|market|kids|family|child|story ?time|concert|music|hallowe\\w*|pumpkin|harvest|holiday|christmas|santa|tree lighting|airshow|air show|tour|craft|workshop|touch a truck|trunk.or.treat|egg hunt|fun run|block party"
+      # Weekly tenant promotions: listed, but last, and never a Top Pick.
+      deprioritize: "routine"
       farmers_markets:
         label: "Farmers Markets"
         pattern: "farmers'? market|farmer's market"

@@ -202,11 +202,18 @@ def towns_select(rows, c, w: Window) -> dict:
     fm = c.get("farmers_markets") or {}
     fm_rx = re.compile(fm["pattern"], re.I) if fm.get("pattern") else None
     prio = c.get("prioritize")
+    # Weekly tenant promotions (bargain movie Tuesdays, football at a bar): worth listing, but
+    # last, and never a highlight.
+    deprio = re.compile(c["deprioritize"], re.I) if c.get("deprioritize") else None
+
+    def tier(r) -> int:
+        if deprio and deprio.search(query.title_haystack(r)):
+            return 2
+        return 0 if (prio and query.matches(r, prio)) else 1
 
     def rank(pool, cap):
         pool = _collapse(pool)
-        if prio:
-            pool.sort(key=lambda r: (0 if query.matches(r, prio) else 1, r["_sort"]))
+        pool.sort(key=lambda r: (tier(r), r["_sort"]))
         return sorted(pool[:cap], key=lambda r: r["_sort"])
 
     pool = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
@@ -217,7 +224,8 @@ def towns_select(rows, c, w: Window) -> dict:
     shown = {r["summary"].lower() for r in main + running}
     nxt = _select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude"))
     nxt = rank([r for r in nxt if r["summary"].lower() not in shown and not (fm_rx and fm_rx.search(query.haystack(r)))], w.preview_limit)
-    return {"this": main, "markets": markets, "running": running, "next": nxt}
+    routine = {_key(r) for r in main if tier(r) == 2}
+    return {"this": main, "markets": markets, "running": running, "next": nxt, "routine": routine}
 
 
 def top_picks(F, B, T, c, w: Window) -> list[dict]:
@@ -243,8 +251,11 @@ def top_picks(F, B, T, c, w: Window) -> list[dict]:
         offer(r, 0)
     # Long-running town programmes ("Summer at the Museum") are not highlights; they stay in
     # their section's Running now line.
+    routine = (T or {}).get("routine") or set()
     for src in ((B or {}).get("this", []), (T or {}).get("this", [])):
         for r in src:
+            if _key(r) in routine:
+                continue                                    # weekly tenant promotions are never highlights
             if rx and query.matches(r, rx):
                 offer(r, 1)
 

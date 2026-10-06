@@ -16,6 +16,7 @@ up?" across all of them at once.
 | Town of Leesburg - Community Events | `https://bytemasterpro.github.io/local-calendars/leesburg.ics` | rebuilt daily from the Town's calendar RSS |
 | Historic Manassas Inc. | `https://historicmanassas.org/events/?ical=1` | their own iCal export (live) |
 | One Loudoun | `https://bytemasterpro.github.io/local-calendars/one-loudoun.ics` | rebuilt daily from their Squarespace events JSON |
+| Village at Leesburg | `https://bytemasterpro.github.io/local-calendars/village-at-leesburg.ics` | curated from their Wix events page |
 | White's Ferry Brewery & Winery | `https://bytemasterpro.github.io/local-calendars/whites-ferry.ics` | curated from their Instagram |
 | Route 7 Brewing | `https://bytemasterpro.github.io/local-calendars/route-7.ics` | live music from wheresthemusic.us + curated |
 | Fairs & Festivals near Leesburg | `https://bytemasterpro.github.io/local-calendars/fairs-festivals.ics` | hand-curated in `config/events/fairs-festivals.yaml` |

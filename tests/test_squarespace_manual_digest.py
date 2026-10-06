@@ -642,3 +642,43 @@ def test_title_haystack_ignores_the_description():
             desc="karaoke afterwards", cats=("Family",))
     assert query.title_haystack(r) == "Movie Night Family"
     assert "karaoke" in query.haystack(r)                          # still searchable elsewhere
+
+
+ROUTINE_CFG = {**CFG.digest["sections"]["towns"], "limit": 8,
+               "prioritize": "movie|music|festival|hallowe\\w*", "deprioritize": "routine"}
+
+
+def test_weekly_tenant_promotions_rank_last_and_never_reach_top_picks():
+    """Village at Leesburg's bargain-movie Tuesdays should not outrank its Monster Mash."""
+    bargain = row("$5 Bargain Tuesdays at Phoenix Theatres", "2026-09-22T11:00:00-04:00", "2026-09-22T22:00:00-04:00",
+                  calendar="village", kind="town", cats=("routine", "movie"), desc="Any movie for $5 every Tuesday.")
+    mash = row("Monster Mash 2026", "2026-09-26T13:00:00-04:00", "2026-09-26T17:00:00-04:00", calendar="village",
+               kind="town", cats=("halloween", "family"), desc="Pumpkin carving, trick-or-treating, costume contest.")
+    T = digest.towns_select([bargain, mash], ROUTINE_CFG, W_MON)
+    assert names(T["this"]) == ["$5 Bargain Tuesdays at Phoenix Theatres", "Monster Mash 2026"]   # both listed, by date
+    assert T["routine"] == {("$5 bargain tuesdays at phoenix theatres", "village")}
+    picks = digest.top_picks(None, None, T, {"pattern": "movie|monster mash|hallowe\\w*", "limit": 5}, W_MON)
+    assert names(picks) == ["Monster Mash 2026"]           # the promo matched "movie" but is routine
+
+
+def test_deprioritised_items_are_the_first_cut_when_a_week_overflows():
+    c = {**ROUTINE_CFG, "limit": 2}
+    routine = [row(f"Routine {i}", f"2026-09-2{i}T11:00:00-04:00", f"2026-09-2{i}T12:00:00-04:00",
+                   calendar="village", kind="town", cats=("routine",)) for i in (1, 2, 3)]
+    real = row("Fall Festival", "2026-09-26T13:00:00-04:00", "2026-09-26T17:00:00-04:00", calendar="village", kind="town")
+    kept = names(digest.towns_select(routine + [real], c, W_MON)["this"])
+    assert "Fall Festival" in kept and sum(k.startswith("Routine") for k in kept) == 1
+
+
+def test_repo_village_calendar_is_configured_and_parses():
+    from localcal.model import load_config
+    from localcal.sources import manual
+    root = Path(__file__).resolve().parent.parent
+    cfg = load_config(root / "config" / "calendars.yaml")
+    village = next(f for f in cfg.feeds if f.slug == "village-at-leesburg")
+    assert village.kind == "town"
+    events = manual.parse_events(manual.load(root / "config" / "events" / "village-at-leesburg.yaml"), village)
+    mash = next(e for e in events if "Monster Mash" in e.summary)
+    assert mash.start.isoformat() == "2026-10-24T13:00:00-04:00" and mash.end.hour == 17
+    assert "costume contest" in mash.description.lower()
+    assert all("routine" in e.categories for e in events if e.rrule)      # the weekly ones are tagged
