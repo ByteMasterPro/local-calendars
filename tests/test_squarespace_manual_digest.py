@@ -426,7 +426,8 @@ def test_icons_are_optional():
 def test_repo_icon_patterns_all_compile():
     import re
     from localcal.model import load_config
-    cfg = load_config(ROOT / "config" / "calendars.yaml")
+    root = Path(__file__).resolve().parent.parent
+    cfg = load_config(root / "config" / "calendars.yaml")
     for entry in cfg.digest["top_picks"]["icons"]:
         re.compile(entry["match"])
         assert entry["icon"].strip()
