@@ -439,3 +439,57 @@ def test_repo_icon_patterns_all_compile():
     for entry in cfg.digest["top_picks"]["icons"]:
         re.compile(entry["match"])
         assert entry["icon"].strip()
+
+
+def test_top_picks_rank_marquee_items_above_pattern_matches_before_capping():
+    """A Saturday festival must not be cut to make room for Tuesday's cruise-in."""
+    fest = row("Fall Festival", "2026-10-10T11:00:00-04:00", "2026-10-10T23:00:00-04:00", calendar="fairs", kind="festival")
+    seasonal = row("Oktoberfest Brunch", "2026-10-11T12:00:00-04:00", "2026-10-11T14:00:00-04:00", calendar="vanish")
+    early = [row(f"Movie Night {i}", f"2026-10-0{i}T19:00:00-04:00", f"2026-10-0{i}T21:00:00-04:00", calendar="chilly") for i in (6, 7, 8)]
+    B = {"this": early + [seasonal], "seasonal": [seasonal], "running": []}
+    picks = digest.top_picks({"this": [fest], "running": []}, B, None, {"pattern": "movie", "limit": 2}, W_MON)
+    assert names(picks) == ["Fall Festival", "Oktoberfest Brunch"]      # marquee first, then printed by date
+
+
+def test_top_picks_ignore_long_running_town_programmes():
+    museum = row("Summer at the Museum", "2026-08-20T08:00:00-04:00", "2026-10-22T17:00:00-04:00",
+                 calendar="town", kind="town", desc="movies and special programs")
+    T = {"this": [], "running": [museum], "markets": []}
+    assert digest.top_picks(None, None, T, {"pattern": "movie", "limit": 5}, W_MON) == []
+
+
+def test_blurb_prefers_a_poster_override_over_the_feed_text():
+    overrides = [{"match": "Fall ?Fest", "calendar": "Honor", "details": "20 vendors, axe throwing and a petting zoo."}]
+    r = row("3rd Annual Anniversary Fall Festival", "2026-10-10T11:00:00-04:00", "2026-10-10T23:00:00-04:00",
+            calendar="Honor Brewing", desc="Participating Vendors: BEARD BROS Fleurs de Rai Nichelle")
+    assert digest.blurb(r, overrides) == "20 vendors, axe throwing and a petting zoo."
+    assert digest.blurb(r, []) .startswith("Participating Vendors")
+    other = row("Fall Festival", "2026-10-10", "2026-10-11", calendar="Somewhere Else", all_day=True, desc="Feed text.")
+    assert digest.blurb(other, overrides) == "Feed text."              # calendar must match too
+
+
+def test_override_on_pins_a_single_occurrence():
+    overrides = [{"match": "Movie Night", "on": "2026-10-09", "details": "Shrek at 7pm."}]
+    shrek = row("Movie Night", "2026-10-09T19:00:00-04:00", "2026-10-09T21:00:00-04:00", calendar="honor", desc="Feed text.")
+    later = row("Movie Night", "2026-10-16T19:00:00-04:00", "2026-10-16T21:00:00-04:00", calendar="honor", desc="Feed text.")
+    assert digest.blurb(shrek, overrides) == "Shrek at 7pm."
+    assert digest.blurb(later, overrides) == "Feed text."
+
+
+def test_repo_overrides_file_is_valid():
+    from localcal import digest as d
+    root = Path(__file__).resolve().parent.parent
+    overrides = d.load_overrides(root)
+    assert overrides, "overrides.yaml should hold the details read off posters"
+    import re
+    for o in overrides:
+        re.compile(o["match"])
+        assert o.get("details") and o.get("source"), o
+
+
+def test_fall_festival_gets_the_leaf_icon_not_the_generic_one():
+    from localcal.model import load_config
+    icons = load_config(Path(__file__).resolve().parent.parent / "config" / "calendars.yaml").digest["top_picks"]["icons"]
+    r = row("3rd Annual Anniversary Fall Festival", "2026-10-10T11:00:00-04:00", "2026-10-10T23:00:00-04:00", calendar="honor")
+    assert digest._icon(r, icons) == "🍁 "
+    assert digest._icon(row("Manassas Fall Jubilee", "2026-10-03T10:00:00-04:00", "2026-10-03T17:00:00-04:00", calendar="town"), icons) == "🎡 "

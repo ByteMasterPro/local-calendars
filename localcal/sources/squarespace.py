@@ -84,6 +84,7 @@ def _parse_item(item: dict, feed: Feed, tz: ZoneInfo, base: str) -> Event:
         location=location,
         url=url,
         categories=list(item.get("categories") or []) + list(item.get("tags") or []),
+        image=str(item.get("assetUrl") or ""),
         rrule=rrule,
     )
 

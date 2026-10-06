@@ -90,6 +90,7 @@ def _parse_entry(e: dict, feed: Feed, tz: ZoneInfo) -> Event:
         location=str(e.get("location") or feed.location),
         url=str(e.get("url") or feed.url),
         categories=tags,
+        image=str(e.get("image") or ""),
         rrule=rrule,
         exdates=exdates,
     )

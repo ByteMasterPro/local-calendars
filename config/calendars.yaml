@@ -167,10 +167,11 @@ digest:
   top_picks:                               # first card: the week's best, with full excerpts.
     label: "Top Picks This Week"           # candidates = fair one-offs + seasonal brewery events +
     limit: 5                               # town items matching `pattern`; chronological
-    pattern: "fair\\b|festival|carnival|parade|fireworks|air ?show|hallowe\\w*|pumpkin|oktober|german|holiday|christmas|santa|tree lighting|movie night|petting zoo|anniversary"
+    pattern: "fair\\b|festival|fest\\w*|carnival|jubilee|parade|fireworks|air ?show|hallowe\\w*|trunk.or.treat|trick.or.treat|pumpkin|harvest|hayride|corn maze|oktober|german|holiday|christmas|santa|tree lighting|thanksgiving|movie|petting zoo|anniversary|touch a truck|egg hunt|block party|craft fair|bazaar"
     icons:                                 # first match wins, title first then description; no match = no icon
-      - {match: "hallowe\\w*|haunt|spooky|ghost|zombie|fields of fear|trick.or.treat|costume", icon: "👻"}
-      - {match: "pumpkin|jack.o.lantern|gourd", icon: "🎃"}
+      - {match: "hallowe\\w*|haunt|spooky|ghost|zombie|fields of fear|trick.or.treat|trunk.or.treat|costume|fright|monster|witch|vampire|boo\\b", icon: "👻"}
+      - {match: "fall ?fest\\w*|autumn fest\\w*|harvest fest\\w*|fallfest|\\bfall festival", icon: "🍁"}
+      - {match: "pumpkin|jack.o.lantern|gourd|patch\\b", icon: "🎃"}
       - {match: "thanksgiving|turkey|friendsgiving", icon: "🦃"}
       - {match: "christmas|tree lighting|gingerbread|nutcracker|wreath|caroling|hanukkah|menorah", icon: "🎄"}
       - {match: "santa|st\\.? nick|breakfast with santa", icon: "🎅"}
@@ -178,12 +179,12 @@ digest:
       - {match: "oktober|german|deutsch|stein|bavarian|lederhosen|polka|prost|beer release|brewfest", icon: "🍺"}
       - {match: "wine|cider|vineyard|meadery|mead\\b", icon: "🍷"}
       - {match: "pottery|ceramic|raku|clay", icon: "🏺"}
-      - {match: "paint|craft|knit|quilt|art show|exhibit|gallery", icon: "🎨"}
+      - {match: "paint|craft|knit|quilt|art show|exhibit|gallery|pottery|maker|diy|workshop", icon: "🎨"}
       - {match: "air ?show|aviation|airport", icon: "✈️"}
       - {match: "car show|cruise.?in|cars & coffee|classic car|motorcycle", icon: "🚗"}
-      - {match: "movie|film|cinema", icon: "🎬"}
+      - {match: "movie|film|cinema|screening", icon: "🎬"}
       - {match: "parade", icon: "🎊"}
-      - {match: "corn maze|hayride|harvest|farm days", icon: "🌽"}
+      - {match: "corn maze|hayride|harvest|farm days|apple|orchard|cider press", icon: "🌽"}
       - {match: "farmers'? market", icon: "🥕"}
       - {match: "5k|marathon|\\brace\\b|fun run", icon: "🏃"}
       - {match: "musical|theatre|theater|\\bopera\\b", icon: "🎭"}
@@ -202,22 +203,22 @@ digest:
       label: "Local Breweries"
       kinds: [brewery]
       limit: 20                            # a busy autumn week runs to ~20 events; show them all
-      exclude: "karaoke|trivia|bingo|singo|\\d+% off|% off|happy hour|appy hour|watch party|kids eat free|growler|taco tuesday|teacher tuesday|discount|football"
+      exclude: "karaoke|trivia night|\\btrivia\\b|bingo|singo|\\d+% off|% off|happy hour|appy hour|watch ?party|kids eat free|growler fill|taco tuesday|teacher tuesday|discount|football watch|service industry night"
       seasonal:                            # matched first, by the month the digest runs in
         - months: [9, 10]
-          pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|hallowe\\w*|haunt|spooky|costume|pumpkin|harvest|fest\\w*"
+          pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|hallowe\\w*|haunt|spooky|costume|pumpkin|harvest|fest\\w*|fall\\b|autumn|apple|cider|corn maze|hayride|scarecrow|trunk.or.treat|trick.or.treat|fright|monster|witch|vampire|boo\\b|spider|skeleton|graveyard"
         - months: [11, 12]
-          pattern: "christmas|holiday|santa|tree lighting|ugly sweater|gingerbread|nutcracker|hanukkah|menorah|new year|winter|caroling|wreath"
+          pattern: "christmas|holiday|santa|tree lighting|ugly sweater|gingerbread|nutcracker|hanukkah|menorah|kwanzaa|new year|winter|caroling|carol\\b|wreath|thanksgiving|friendsgiving|turkey|reindeer|elf\\b|sleigh|snow|cocoa|mistletoe|yule|noel|polar express|light show|toy drive|coat drive"
       # Kinds Christopher asked for by name: family outings and one-off happenings. These rank
       # above routine live music, which ranks above everything else, when a week overflows.
-      prioritize: "festival|fest\\w*|movie night|family|kids|petting zoo|axe throwing|vendor|market|anniversary|release|watch ?party|craft night|workshop|contest|parade|trivia night out"
+      prioritize: "festival|fest\\w*|movie|family|kids|child|petting zoo|animal|axe throwing|vendor|market|bazaar|anniversary|birthday|release|launch|tapping|craft night|workshop|class\\b|paint|contest|competition|parade|fundraiser|charity|benefit|pop.?up|takeover|brunch|dinner|tasting|food truck|story ?time|touch a truck|cruise.?in|car show|game night|yoga"
       fallback: "live music|concert|\\bband\\b|acoustic|bluegrass|\\bjam\\b|music"
     towns:
       label: "Town Activities"
       kinds: [town]
       limit: 12
       exclude: "council|commission|board meeting|public hearing|zoning|work session|advisory|zumba|fitness|yoga|workout"
-      prioritize: "fair|festival|carnival|parade|fireworks|movie|market|kids|family|concert|hallowe\\w*|pumpkin|holiday|airshow|air show|tour"
+      prioritize: "fair|festival|carnival|parade|fireworks|movie|market|kids|family|child|story ?time|concert|music|hallowe\\w*|pumpkin|harvest|holiday|christmas|santa|tree lighting|airshow|air show|tour|craft|workshop|touch a truck|trunk.or.treat|egg hunt|fun run|block party"
       farmers_markets:
         label: "Farmers Markets"
         pattern: "farmers'? market|farmer's market"

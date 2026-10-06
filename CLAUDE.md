@@ -92,6 +92,7 @@ subscriptions remain.
 
 ## What Christopher wants surfaced
 
+Patterns are deliberately LOOSE - he said "I'd rather see more than miss things" (2026-10-06).
 He has kids and asks for family outings by name: brewery festivals (Honor's Fall Fest), movie
 nights on the lawn, petting zoos, craft nights, fairs and markets. Those are `prioritize` in the
 breweries section and part of `top_picks.pattern`, so they rank above routine live music and can
@@ -103,6 +104,21 @@ events, both found by him on 2026-10-06 and worth not repeating:
 - The brewery section used to keep the chronologically FIRST `limit` events, so a busy week cut
   Friday and Saturday entirely. It now ranks (seasonal, named kinds, music, rest), truncates by
   rank, and prints in time order; `limit` is 20, about one autumn week.
+
+## Event artwork (where the real details hide)
+
+Venues put the good stuff in the poster, not the text: Honor's Fall Fest lists "20 vendors, axe
+throwing, petting zoo" only in the image. So:
+
+- `Event.image` carries a poster URL. Sources: Elfsight `coverImage` (Honor), iCal `ATTACH`
+  (Vanish, Flying Ace, Chilly Hollow, Historic Manassas), Squarespace `assetUrl` (One Loudoun).
+  Solace's Google Calendar has none. Published feeds re-emit it as `ATTACH`.
+- `uv run localcal posters [--days N] [--only SLUG] [--missing-only]` downloads them to
+  `data/posters/` (gitignored). **Read the images** and write what they add into
+  `config/events/overrides.yaml` (`match`, optional `calendar`/`on`, `details`, `source`).
+  `digest.blurb()` prefers an override over the feed's text.
+- Do this when he asks why an event looks thin, and when adding a venue. Re-check each season;
+  the override `match` is a title regex, so a repeating title needs `on:` to pin one date.
 
 ## Conventions
 

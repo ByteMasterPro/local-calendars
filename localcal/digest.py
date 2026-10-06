@@ -21,6 +21,7 @@ import re
 import time as _time
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import requests
@@ -85,6 +86,7 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
     w = week_window(start, now or datetime.now(tz), int(cfg_d.get("preview_limit", 5)))
     rows, errors = query.gather(feeds, w.start, w.next_end + timedelta(days=1))
     by_slug = {f.slug: f for f in feeds}
+    ov = load_overrides(Path(__file__).resolve().parent.parent)
 
     # Pass 1: what each section would show. Pass 2: pick the week's highlights across them for the
     # Top Picks card. Highlights also appear in full in their own section; repetition is intended.
@@ -97,7 +99,7 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
     if picks:
         c = cfg_d.get("top_picks") or {}
         sections.append(Section("picks", c.get("label", "Top Picks This Week"), "⭐", 0xE67E22,
-                                pick_lines(picks, w, by_slug, icons=c.get("icons"))))
+                                pick_lines(picks, w, by_slug, icons=c.get("icons"), overrides=ov)))
     if F:
         c = secs["fairs"]
         ongoing = []
@@ -107,12 +109,12 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
                 until = f" thru {_d(date.fromisoformat(r['series_until']))}" if r.get("series_until") else ""
                 ongoing.append(f"{_link(_short_title(r['summary']), r['url'])}{until}")
         sections.append(Section("fairs", c.get("label", "Fairs, Festivals and Carnivals"), "🎪", 0x2A8FBD,
-                                _blocks(_running_line(F["running"], by_slug), grouped_lines(F["this"], w, by_slug),
+                                _blocks(_running_line(F["running"], by_slug), grouped_lines(F["this"], w, by_slug, ov),
                                         ongoing, _preview(F["next"], w))))
     if B:
         c = secs["breweries"]
         sections.append(Section("breweries", c.get("label", "Local Breweries"), "🍺", 0xF39C12,
-                                _blocks(_running_line(B["running"], by_slug), grouped_lines(B["this"], w, by_slug),
+                                _blocks(_running_line(B["running"], by_slug), grouped_lines(B["this"], w, by_slug, ov),
                                         _preview(B["next"], w))))
     if T:
         c = secs["towns"]
@@ -121,7 +123,7 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
             markets = [f"🥕 **{(c.get('farmers_markets') or {}).get('label', 'Farmers Markets')}:**"]
             markets += [_market_line(occ, by_slug) for occ in _group(T["markets"]).values()]
         sections.append(Section("towns", c.get("label", "Town Activities"), "🏘️", 0x27AE60,
-                                _blocks(_running_line(T["running"], by_slug), grouped_lines(T["this"], w, by_slug),
+                                _blocks(_running_line(T["running"], by_slug), grouped_lines(T["this"], w, by_slug, ov),
                                         markets, _preview(T["next"], w))))
 
     return Digest(title=cfg_d.get("title", "This week"), start=w.start, end=w.end, next_start=w.next_start,
@@ -217,26 +219,38 @@ def towns_select(rows, c, w: Window) -> dict:
 
 
 def top_picks(F, B, T, c, w: Window) -> list[dict]:
-    """The week's highlights across sections: fair one-offs, seasonal brewery events, and any
-    brewery or town event matching the top-pick pattern (parades, airshows, movie nights,
-    festivals). Chronological, capped."""
+    """The week's highlights across sections.
+
+    Candidates are ranked before the cap, not just sorted by date: a Saturday festival must not
+    be cut to make room for Tuesday. Marquee items (fairs and festivals, seasonal brewery
+    events) come first, then anything matching the top-pick pattern. Printed in time order.
+    """
     rx = re.compile(c["pattern"], re.I) if c.get("pattern") else None
-    cands: dict[tuple, dict] = {}
-    for r in (F or {}).get("this", []) + (F or {}).get("running", []):
-        cands.setdefault(_key(r), r)
+    cands: dict[tuple, tuple[int, dict]] = {}
+
+    def offer(r, rank):
+        key = _key(r)
+        if key not in cands or rank < cands[key][0]:
+            cands[key] = (rank, r)
+
+    for r in (F or {}).get("this", []):
+        offer(r, 0)
     for r in (B or {}).get("seasonal", []):
-        cands.setdefault(_key(r), r)
-    for src in ((B or {}).get("this", []), (T or {}).get("this", []), (T or {}).get("running", [])):
+        offer(r, 0)
+    # Long-running town programmes ("Summer at the Museum") are not highlights; they stay in
+    # their section's Running now line.
+    for src in ((B or {}).get("this", []), (T or {}).get("this", [])):
         for r in src:
             if rx and query.matches(r, rx):
-                cands.setdefault(_key(r), r)
-    picks = sorted(cands.values(), key=lambda r: r["_sort"])
-    return picks[: int(c.get("limit", 5))]
+                offer(r, 1)
+
+    ranked = sorted(cands.values(), key=lambda pair: (pair[0], pair[1]["_sort"]))
+    return sorted((r for _, r in ranked[: int(c.get("limit", 8))]), key=lambda r: r["_sort"])
 
 
 # --------------------------------------------------------------- rendering
 
-def pick_lines(rows, w: Window, by_slug, icons=None) -> list[str]:
+def pick_lines(rows, w: Window, by_slug, icons=None, overrides=None) -> list[str]:
     """Top Picks card. Events sharing a day sit under one date header, and events sharing the
     same multi-day run sit under one range header:
 
@@ -284,7 +298,7 @@ def pick_lines(rows, w: Window, by_slug, icons=None) -> list[str]:
                 done.add(id(peer))
                 if i:
                     out.append("")
-                out.extend(_title_and_excerpt(peer, by_slug, icons))
+                out.extend(_title_and_excerpt(peer, by_slug, icons, overrides))
             cur_day = None                      # a later pick on this day re-prints its header
             continue
 
@@ -294,31 +308,39 @@ def pick_lines(rows, w: Window, by_slug, icons=None) -> list[str]:
             e_dt = datetime.fromisoformat(r["end"])
             when = f"**{_d(day)}**" + ("" if r["all_day"] else f", {_span(s_dt, e_dt)}")
             out.append(f"{when} — {_icon(r, icons)}**{_link(r['summary'], _url(r, by_slug))}** ({_where(r, by_slug)}){_rel(day, w)}")
-            _append_excerpt(out, r)
+            _append_excerpt(out, r, overrides)
             cur_day = None
         else:
             if day != cur_day:
                 out.append(f"**{_d(day)}**{_rel(day, w)}")
                 cur_day = day
-            out.extend(_title_and_excerpt(r, by_slug, icons))
+            out.extend(_title_and_excerpt(r, by_slug, icons, overrides))
     return out
 
 
-def _title_and_excerpt(r, by_slug, icons=None) -> list[str]:
+def _title_and_excerpt(r, by_slug, icons=None, overrides=None) -> list[str]:
     """`🎃 **Title** · time (Venue)` plus the excerpt, for an event under a date or range header."""
     when = ""
     if not r["all_day"]:
         s_dt, e_dt = datetime.fromisoformat(r["start"]), datetime.fromisoformat(r["end"])
         when = f" · from {_clock(s_dt)}" if _is_span(r) else f" · {_span(s_dt, e_dt)}"
     lines = [f"{_icon(r, icons)}**{_link(r['summary'], _url(r, by_slug))}**{when} ({_where(r, by_slug)})"]
-    _append_excerpt(lines, r)
+    _append_excerpt(lines, r, overrides)
     return lines
 
 
-def _append_excerpt(lines: list[str], r) -> None:
-    excerpt = _excerpt(r["description"])
+def _append_excerpt(lines: list[str], r, overrides=None) -> None:
+    excerpt = blurb(r, overrides)
     if excerpt:
         lines.append(f"> {excerpt}")
+
+
+def blurb(r, overrides=None) -> str:
+    """What we say about an event: a curated override (read off its poster) wins over the feed."""
+    o = override_for(r, overrides) if overrides else None
+    if o and o.get("details"):
+        return re.sub(r"\s+", " ", str(o["details"])).strip()
+    return _excerpt(r["description"])
 
 
 def _icon(r, icons) -> str:
@@ -359,7 +381,7 @@ def _rel(day: date, w: Window) -> str:
     return ""
 
 
-def grouped_lines(rows, w: Window, by_slug) -> list[str]:
+def grouped_lines(rows, w: Window, by_slug, overrides=None) -> list[str]:
     """Date header once, then the day's events as a list beneath it:
 
         **Sat Sep 26** · Tomorrow
@@ -373,11 +395,11 @@ def grouped_lines(rows, w: Window, by_slug) -> list[str]:
         if day != last:
             lines.append(("" if last is None else "\u200b\n") + f"**{_d(day)}**{_rel(day, w)}")   # zero-width line = spacing in Discord
             last = day
-        lines.append("- " + item_text(r, by_slug))
+        lines.append("- " + item_text(r, by_slug, overrides))
     return lines
 
 
-def item_text(r, by_slug) -> str:
+def item_text(r, by_slug, overrides=None) -> str:
     s = datetime.fromisoformat(r["start"]); e = datetime.fromisoformat(r["end"])
     last = e.date() - timedelta(days=1) if r["all_day"] else e.date()
     if last > s.date():
@@ -392,7 +414,7 @@ def item_text(r, by_slug) -> str:
     url = r["url"] or (feed.url if feed else "")
     title = _link(r["summary"], url)
     head = f"{title} · {when}" if when else title          # same shape as Top Picks: title, then time
-    excerpt = _excerpt(r["description"])
+    excerpt = blurb(r, overrides)
     return f"{head} ({_where(r, by_slug)})" + (f": {excerpt}" if excerpt else "") + also
 
 
@@ -518,6 +540,30 @@ def _where(r, by_slug) -> str:
 def _town_from(location: str) -> str:
     m = re.search(r",\s*([A-Za-z .'-]+?),?\s+VA\b", location)
     return m.group(1).strip() if m else ""
+
+
+def load_overrides(root) -> list[dict]:
+    """config/events/overrides.yaml: details read off event artwork, keyed by a title pattern."""
+    import yaml
+
+    path = Path(root) / "config" / "events" / "overrides.yaml"
+    if not path.exists():
+        return []
+    return list((yaml.safe_load(path.read_text()) or {}).get("events") or [])
+
+
+def override_for(row, overrides) -> dict | None:
+    """The first override whose `match` hits this event's title, and whose `calendar` (if given)
+    matches too. An `on` date pins it to one occurrence of a repeating title."""
+    for o in overrides or []:
+        if not re.search(o["match"], row["summary"], re.I):
+            continue
+        if o.get("calendar") and o["calendar"].lower() not in row["calendar"].lower():
+            continue
+        if o.get("on") and str(o["on"]) != row["start"][:10]:
+            continue
+        return o
+    return None
 
 
 def _excerpt(desc: str) -> str:

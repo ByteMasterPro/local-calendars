@@ -100,6 +100,7 @@ def _parse_one(raw, feed: Feed, types, locations, default_tz) -> Event:
         location=_location(raw, locations) or feed.location,
         url=links[0][1] if links else feed.url,
         categories=[types[t] for t in _as_list(raw.get("eventType")) if t in types],
+        image=_image(raw),
         rrule=_rrule(raw, tz),
         exdates=[_to_when({"date": d, "time": raw["start"].get("time")}, tz, all_day)
                  for d in raw.get("exceptions") or [] if isinstance(d, str)],
@@ -143,6 +144,16 @@ def _rrule(raw, tz: ZoneInfo) -> dict[str, Any] | None:
     elif "occurrence" in ends and raw.get("repeatEndsOccurrences"):
         rule["COUNT"] = int(raw["repeatEndsOccurrences"])
     return rule
+
+
+def _image(raw) -> str:
+    cover = raw.get("coverImage")
+    if isinstance(cover, dict) and cover.get("url"):
+        return str(cover["url"])
+    for img in _as_list(raw.get("images")):
+        if isinstance(img, dict) and img.get("url"):
+            return str(img["url"])
+    return ""
 
 
 def _as_list(value) -> list:

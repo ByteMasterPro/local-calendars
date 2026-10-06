@@ -118,11 +118,22 @@ def occurrences(feed: Feed, cal: Calendar, start: date, end: date) -> list[dict]
             "url": str(v.get("URL", "")),
             "description": str(v.get("DESCRIPTION", "")),
             "categories": [str(c) for c in cats.cats] if cats is not None else [],
+            "image": _first_attach(v),
             "series": str(v.get("UID", "")) in series_until,
             "series_until": (series_until.get(str(v.get("UID", ""))) or None) and series_until[str(v.get("UID", ""))].isoformat(),
             "_sort": s if isinstance(s, datetime) else datetime.combine(s, time.min, tzinfo=tz),
         })
     return rows
+
+
+def _first_attach(v) -> str:
+    """The event's poster, if the feed carries one (Elfsight cover art, iCal ATTACH, Squarespace)."""
+    att = v.get("ATTACH")
+    if not att:
+        return ""
+    first = att[0] if isinstance(att, list) else att
+    url = str(first)
+    return url if url.startswith("http") else ""
 
 
 def _localize(dt: datetime, tz: ZoneInfo, feed: Feed) -> datetime:

@@ -23,6 +23,7 @@ class Event:
     location: str = ""
     url: str = ""
     categories: list[str] = field(default_factory=list)
+    image: str = ""               # poster/flyer URL; venues put real details only in the artwork
     rrule: dict[str, Any] | None = None          # icalendar-style RRULE dict, e.g. {"FREQ": "WEEKLY"}
     exdates: list[datetime | date] = field(default_factory=list)
 

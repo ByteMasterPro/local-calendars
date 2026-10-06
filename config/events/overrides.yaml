@@ -1,0 +1,30 @@
+# Details read off event artwork (run `uv run localcal posters`, look at the images, write here).
+# Venues routinely put the good stuff only in the poster: Honor's Fall Fest lists "20 vendors,
+# axe throwing, petting zoo" in the image and nothing but a vendor list in the event text.
+#
+#   match:    regex against the event title (case-insensitive)
+#   calendar: optional, must appear in the calendar name
+#   on:       optional YYYY-MM-DD, pins this to one occurrence of a repeating title
+#   details:  replaces the feed's blurb in the digest
+#   source:   where it came from, so a later reader can re-check
+
+events:
+  - match: "Anniversary Fall Festival|Fall ?Fest"
+    calendar: Honor Brewing
+    details: >-
+      Honor Brewing's 3rd anniversary party: 20 vendors, axe throwing and a petting zoo,
+      plus live music from LeRoy Burks & The Voodoo Whiskey Band in the evening.
+    source: event poster, read 2026-10-06
+
+  - match: "Hallowee?[nm] Pop-?Up Bar"
+    calendar: Honor Brewing
+    details: >-
+      Halloween pop-up bar running all October: festive cocktails served in collectable
+      glassware, spooky decor throughout the taproom.
+    source: event poster, read 2026-10-06
+
+  - match: "Freaky Friday.*Shrek"
+    calendar: Honor Brewing
+    details: >-
+      Outdoor movie night on the lawn: Shrek at 7pm. Bring chairs and blankets.
+    source: event poster, read 2026-10-06

@@ -115,6 +115,18 @@ the bot only commits when a source actually changed something.
   Calendar, WordPress The Events Calendar `?ical=1`, CivicPlus `iCalendar.aspx`), we link to it
   instead of mirroring. `upcoming` still queries it.
 
+## Event artwork
+
+Most feeds carry a poster for each event (Elfsight cover art, iCal `ATTACH`, Squarespace asset),
+and venues often put details there that appear nowhere in the text. `localcal posters` downloads
+them so they can be read, and anything worth saying goes into `config/events/overrides.yaml`,
+which the digest prefers over the feed's blurb.
+
+```bash
+uv run localcal posters --days 30                  # into data/posters/ (gitignored)
+uv run localcal posters --days 30 --missing-only   # skip events that already have an override
+```
+
 ## Adding a calendar
 
 1. Look at the events page source and identify the platform (the comment block at the top of

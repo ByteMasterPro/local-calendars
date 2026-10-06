@@ -4,6 +4,7 @@
     localcal upcoming [--days N] [--grep REGEX] [--only SLUG,SLUG] [--json]
                                                              what's happening across ALL calendars (built + external)
     localcal digest   [--from DATE] [--post]                 weekly Discord digest (this week + next-week highlights)
+    localcal posters  [--days N] [--only SLUG] [--out DIR]   download event artwork for review
 """
 
 from __future__ import annotations
@@ -19,6 +20,8 @@ from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
+
+import requests
 
 from localcal import digest as digest_mod
 from localcal import ical, query
@@ -51,6 +54,13 @@ def main(argv: list[str] | None = None) -> int:
     u.add_argument("--only", help="comma-separated slugs")
     u.add_argument("--json", action="store_true")
 
+    ps = sub.add_parser("posters", help="download upcoming events' artwork so their details can be read")
+    ps.add_argument("--days", type=int, default=30)
+    ps.add_argument("--only", help="comma-separated slugs")
+    ps.add_argument("--out", type=Path, default=ROOT / "data" / "posters")
+    ps.add_argument("--missing-only", action="store_true", help="skip events that already have an override")
+    ps.add_argument("--from", dest="start", type=date.fromisoformat, default=None)
+
     dg = sub.add_parser("digest", help="build (and with --post, send) the weekly Discord digest")
     dg.add_argument("--from", dest="start", type=date.fromisoformat, default=None,
                     help="pretend it is this day (the window runs from here to Sunday)")
@@ -73,6 +83,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "build":
         return build(cfg, feeds, args.out, dry_run=args.dry_run)
     start = args.start or date.today()
+    if args.cmd == "posters":
+        return posters(cfg, feeds, start, start + timedelta(days=args.days), args.out, missing_only=args.missing_only)
     if args.cmd == "digest":
         return digest(cfg, feeds, start, post=args.post, skip_if_posted=args.skip_if_posted)
     return upcoming(cfg, feeds, start, start + timedelta(days=args.days), args.grep, as_json=args.json)
@@ -163,6 +175,42 @@ def upcoming(cfg: Config, feeds: list[Feed], start: date, end: date, pattern: st
 
 def _clock(dt: datetime) -> str:
     return dt.strftime("%-I:%M%p").lower().replace(":00", "")
+
+
+# --------------------------------------------------------------------------- posters
+
+def posters(cfg: Config, feeds: list[Feed], start: date, end: date, out: Path, *, missing_only: bool) -> int:
+    """Download upcoming events' artwork. Venues routinely put the real details only in the
+    poster (Honor's Fall Fest lists "20 vendors, axe throwing, petting zoo" nowhere else), so
+    these get read by eye and the findings go into config/events/overrides.yaml."""
+    rows, errors = query.gather(feeds, start, end)
+    overrides = digest_mod.load_overrides(ROOT) if missing_only else {}
+    out.mkdir(parents=True, exist_ok=True)
+    seen: set[str] = set()
+    saved = skipped = 0
+    for r in rows:
+        if not r["image"] or r["summary"].lower() in seen:
+            continue
+        seen.add(r["summary"].lower())
+        if missing_only and digest_mod.override_for(r, overrides):
+            continue
+        name = f"{r['start'][:10]}_{r['slug']}_{re.sub(r'[^a-z0-9]+', '-', r['summary'].lower()).strip('-')[:50]}"
+        ext = Path(r["image"].split("?")[0]).suffix.lower()
+        path = out / (name + (ext if ext in (".jpg", ".jpeg", ".png", ".webp", ".gif") else ".jpg"))
+        if path.exists():
+            skipped += 1
+            print(f"{path}  (have)  {r['summary']}")
+            continue
+        try:
+            resp = requests.get(r["image"], headers={"User-Agent": query.USER_AGENT}, timeout=60)
+            resp.raise_for_status()
+            path.write_bytes(resp.content)
+            saved += 1
+            print(f"{path}  {r['start'][:10]}  {r['summary']}  [{r['calendar']}]")
+        except Exception as exc:
+            log.warning("%s: could not fetch artwork (%s)", r["summary"][:40], str(exc)[:100])
+    log.info("%d new, %d already downloaded, into %s", saved, skipped, out)
+    return 1 if errors else 0
 
 
 # ---------------------------------------------------------------------------- digest

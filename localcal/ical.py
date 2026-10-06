@@ -52,6 +52,10 @@ def _vevent(ev: Event, now: datetime) -> VEvent:
         v.add("URL", vText(ev.url))
     if ev.categories:
         v.add("CATEGORIES", ev.categories)
+    if ev.image:
+        # Calendar apps show this as an attachment; we use it to read details that only exist
+        # in a venue's poster art.
+        v.add("ATTACH", vText(ev.image), parameters={"FMTTYPE": "image/jpeg"})
     if ev.rrule:
         rule = dict(ev.rrule)
         until = rule.get("UNTIL")
@@ -100,6 +104,7 @@ def parse(ics: bytes, slug_hint: str = "") -> list[Event]:
             location=str(v.get("LOCATION", "")),
             url=str(v.get("URL", "")),
             categories=[str(c) for c in cats.cats] if cats is not None else [],
+            image=str(_as_list(v.get("ATTACH"))[0]) if v.get("ATTACH") else "",
             rrule=dict(v["RRULE"]) if "RRULE" in v else None,
             exdates=[d.dt for ex in _as_list(v.get("EXDATE")) for d in ex.dts],
         ))
