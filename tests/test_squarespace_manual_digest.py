@@ -323,7 +323,7 @@ def test_build_with_picks_puts_top_picks_first(monkeypatch):
     monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: (BREW, 0))
     cfg = Config(site={}, feeds=list(FEEDS.values()), digest={**CFG.digest, "top_picks": {"limit": 5, "pattern": "parade"}})
     d = digest.build(cfg, list(FEEDS.values()), MON, now=datetime(2026, 9, 21, 11, tzinfo=timezone.utc))
-    assert d.sections[0].label == "Top picks this week"
+    assert d.sections[0].label == "Top Picks This Week"
     assert d.sections[0].lines[0].startswith("**Thu Sep 24** — **[Beer Release: Oktoberfest]")
     assert any("Honorfest" in l for l in d.sections[0].lines) and any("Honorfest" in l for l in d.sections[2].lines)   # repeated on purpose
 

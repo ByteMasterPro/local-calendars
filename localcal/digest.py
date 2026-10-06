@@ -96,7 +96,7 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
     sections = []
     if picks:
         c = cfg_d.get("top_picks") or {}
-        sections.append(Section("picks", c.get("label", "Top picks this week"), "⭐", 0xE67E22, pick_lines(picks, w, by_slug)))
+        sections.append(Section("picks", c.get("label", "Top Picks This Week"), "⭐", 0xE67E22, pick_lines(picks, w, by_slug)))
     if F:
         c = secs["fairs"]
         ongoing = []
