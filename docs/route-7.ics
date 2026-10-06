@@ -10,11 +10,18 @@ X-PUBLISHED-TTL:P1D
 X-WR-TIMEZONE:America/New_York
 BEGIN:VTIMEZONE
 TZID:America/New_York
-COMMENT:This timezone only works from 2025-12-04 to 2029-12-15.
+COMMENT:This timezone only works from 2025-10-17 to 2029-12-15.
+BEGIN:DAYLIGHT
+DTSTART:20251017T000000
+TZNAME:EDT
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0400
+END:DAYLIGHT
 BEGIN:STANDARD
-DTSTART:20251204T000000
+DTSTART:20251102T020000
+RDATE:20261101T020000,20271107T020000,20281105T020000,20291104T020000
 TZNAME:EST
-TZOFFSETFROM:-0500
+TZOFFSETFROM:-0400
 TZOFFSETTO:-0500
 END:STANDARD
 BEGIN:DAYLIGHT
@@ -24,19 +31,51 @@ TZNAME:EDT
 TZOFFSETFROM:-0500
 TZOFFSETTO:-0400
 END:DAYLIGHT
-BEGIN:STANDARD
-DTSTART:20261101T020000
-RDATE:20271107T020000,20281105T020000,20291104T020000
-TZNAME:EST
-TZOFFSETFROM:-0400
-TZOFFSETTO:-0500
-END:STANDARD
 END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:Sunday Night Karaoke
+DTSTART;TZID=America/New_York:20261018T190000
+DTEND;TZID=America/New_York:20261018T220000
+DTSTAMP:20261006T211810Z
+UID:sunday-night-karaoke-2026-10-18@route-7
+CATEGORIES:karaoke
+DESCRIPTION:Sunday night karaoke with Songbirds & Sunshine Entertainment.
+ \n\nMore info: https://www.instagram.com/rt7brewing/
+LOCATION:Route 7 Brewing\, 20051 Riverside Commons Plaza
+TRANSP:TRANSPARENT
+URL:https://www.instagram.com/rt7brewing/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Sunday Night Karaoke
+DTSTART;TZID=America/New_York:20261101T190000
+DTEND;TZID=America/New_York:20261101T220000
+DTSTAMP:20261006T211810Z
+UID:sunday-night-karaoke-2026-11-01@route-7
+CATEGORIES:karaoke
+DESCRIPTION:Sunday night karaoke with Songbirds & Sunshine Entertainment.
+ \n\nMore info: https://www.instagram.com/rt7brewing/
+LOCATION:Route 7 Brewing\, 20051 Riverside Commons Plaza
+TRANSP:TRANSPARENT
+URL:https://www.instagram.com/rt7brewing/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Sunday Night Karaoke
+DTSTART;TZID=America/New_York:20261115T190000
+DTEND;TZID=America/New_York:20261115T220000
+DTSTAMP:20261006T211810Z
+UID:sunday-night-karaoke-2026-11-15@route-7
+CATEGORIES:karaoke
+DESCRIPTION:Sunday night karaoke with Songbirds & Sunshine Entertainment.
+ \n\nMore info: https://www.instagram.com/rt7brewing/
+LOCATION:Route 7 Brewing\, 20051 Riverside Commons Plaza
+TRANSP:TRANSPARENT
+URL:https://www.instagram.com/rt7brewing/
+END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Live Music: Felix Pickles
 DTSTART;TZID=America/New_York:20261205T180000
 DTEND;TZID=America/New_York:20261205T200000
-DTSTAMP:20261006T205841Z
+DTSTAMP:20261006T211810Z
 UID:wtm-felix-pickles-2026-12-05@route-7
 CATEGORIES:Live Music
 DESCRIPTION:Blues\, Country\, Pop\, Rock\n\nListing: https://wheresthemusi
@@ -49,7 +88,7 @@ BEGIN:VEVENT
 SUMMARY:Live Music: Laurie Blue Music
 DTSTART;TZID=America/New_York:20261212T180000
 DTEND;TZID=America/New_York:20261212T200000
-DTSTAMP:20261006T205841Z
+DTSTAMP:20261006T211810Z
 UID:wtm-laurie-blue-music-2026-12-12@route-7
 CATEGORIES:Live Music
 DESCRIPTION:Classic Rock\, Rock\n\nListing: https://wheresthemusic.us/venu
