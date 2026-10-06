@@ -103,8 +103,8 @@ CFG = Config(site={"base_url": "https://idx"}, feeds=list(FEEDS.values()), diges
     "title": "T", "preview_limit": 5,
     "sections": {
         "fairs": {"kinds": ["festival"], "limit": 8},
-        "breweries": {"kinds": ["brewery"], "limit": 8, "fill_below": 3,
-                      "exclude": "karaoke|trivia|% off",
+        "breweries": {"kinds": ["brewery"], "limit": 8,
+                      "exclude": "karaoke|trivia|% off", "prioritize": "movie night|festival",
                       "seasonal": [{"months": [9, 10], "pattern": "oktober|german|prost|hallowe\\w*|fest\\b"},
                                    {"months": [11, 12], "pattern": "christmas|holiday|santa"}],
                       "fallback": "live music|music"},
@@ -244,25 +244,33 @@ def names(rows):
     return [r["summary"] for r in rows]
 
 
-def test_breweries_select_seasonal_then_seasonal_only_preview():
+def test_breweries_select_shows_the_whole_week_in_time_order():
     B = digest.breweries_select(BREW, CFG.digest["sections"]["breweries"], W_MON)
-    assert names(B["this"]) == ["Beer Release: Oktoberfest", "Honorfest", "Oktoberfest Brunch"]   # 3 seasonal -> no music fill
-    assert names(B["seasonal"]) == names(B["this"])
-    assert names(B["next"]) == ["Chillyfest"]                                                     # seasonal only in preview
+    assert names(B["this"]) == ["Beer Release: Oktoberfest", "Live Music: Someone", "Honorfest", "Oktoberfest Brunch"]
+    assert names(B["seasonal"]) == ["Beer Release: Oktoberfest", "Honorfest", "Oktoberfest Brunch"]
+    assert names(B["next"]) == ["Chillyfest"]                                   # preview skips routine music
 
 
-def test_breweries_music_fills_when_season_is_thin():
-    thin = [r for r in BREW if r["summary"] not in ("Honorfest", "Oktoberfest Brunch")]
-    B = digest.breweries_select(thin, CFG.digest["sections"]["breweries"], W_MON)
-    assert names(B["this"]) == ["Beer Release: Oktoberfest", "Live Music: Someone"]
-    assert names(B["seasonal"]) == ["Beer Release: Oktoberfest"]                                 # music is not a top-pick candidate
+def test_breweries_keep_seasonal_and_named_kinds_when_a_week_overflows():
+    """A long week must not cut Saturday's festival to make room for Tuesday's cover band."""
+    c = {**CFG.digest["sections"]["breweries"], "limit": 4}   # room for the 3 seasonal + 1 more
+    extra = [row(f"Live Music: Filler {i}", f"2026-09-2{i}T17:00:00-04:00", f"2026-09-2{i}T20:00:00-04:00", calendar="chilly")
+             for i in (1, 2, 3)]
+    movie = row("Movie Night on the Lawn", "2026-09-25T19:00:00-04:00", "2026-09-25T21:00:00-04:00", calendar="honor", slug="honor")
+    B = digest.breweries_select(extra + [movie] + BREW, c, W_MON)
+    kept = names(B["this"])
+    assert "Movie Night on the Lawn" in kept and "Honorfest" in kept           # named kinds and seasonal survive
+    assert not any(k.startswith("Live Music: Filler") for k in kept)           # routine music is what gets cut
+    assert kept == sorted(kept, key=lambda n: [r["_sort"] for r in B["this"] if r["summary"] == n][0].isoformat())
 
 
 def test_breweries_holiday_pattern_in_december():
     rows = [row("Ugly Sweater Christmas Party", "2026-12-05T18:00:00-05:00", "2026-12-05T21:00:00-05:00", calendar="vanish"),
             row("Oktoberfest Leftovers", "2026-12-06T18:00:00-05:00", "2026-12-06T21:00:00-05:00", calendar="vanish")]
     w = digest.week_window(date(2026, 11, 30), datetime(2026, 11, 30, 11, tzinfo=timezone.utc))
-    assert names(digest.breweries_select(rows, CFG.digest["sections"]["breweries"], w)["this"]) == ["Ugly Sweater Christmas Party"]
+    B = digest.breweries_select(rows, CFG.digest["sections"]["breweries"], w)
+    assert names(B["seasonal"]) == ["Ugly Sweater Christmas Party"]            # in December, Oktoberfest is not seasonal
+    assert names(B["this"]) == ["Ugly Sweater Christmas Party", "Oktoberfest Leftovers"]
 
 
 def test_saturday_run_drops_finished_events_and_keeps_sunday():

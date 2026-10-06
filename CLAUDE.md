@@ -90,6 +90,20 @@ Nothing is authored there. Adding or renaming a published feed here means adding
 too (the mirror only refreshes names it already has). It can be deleted once no old
 subscriptions remain.
 
+## What Christopher wants surfaced
+
+He has kids and asks for family outings by name: brewery festivals (Honor's Fall Fest), movie
+nights on the lawn, petting zoos, craft nights, fairs and markets. Those are `prioritize` in the
+breweries section and part of `top_picks.pattern`, so they rank above routine live music and can
+reach Top Picks. Live music is the filler, never the headline. Two bugs that hid exactly these
+events, both found by him on 2026-10-06 and worth not repeating:
+
+- `fest\b` does not match "Festival" (the boundary fails before "ival"), so Honor's "3rd Annual
+  Anniversary Fall Festival" and the "Raku Pottery Festival" were never seasonal. Use `fest\w*`.
+- The brewery section used to keep the chronologically FIRST `limit` events, so a busy week cut
+  Friday and Saturday entirely. It now ranks (seasonal, named kinds, music, rest), truncates by
+  rank, and prints in time order; `limit` is 20, about one autumn week.
+
 ## Conventions
 
 - **Config-first.** A new calendar on a known platform is a `config/calendars.yaml` entry.

@@ -167,7 +167,7 @@ digest:
   top_picks:                               # first card: the week's best, with full excerpts.
     label: "Top Picks This Week"           # candidates = fair one-offs + seasonal brewery events +
     limit: 5                               # town items matching `pattern`; chronological
-    pattern: "fair\\b|festival|carnival|parade|fireworks|air ?show|hallowe\\w*|pumpkin|oktober|german|holiday|christmas|santa|tree lighting"
+    pattern: "fair\\b|festival|carnival|parade|fireworks|air ?show|hallowe\\w*|pumpkin|oktober|german|holiday|christmas|santa|tree lighting|movie night|petting zoo|anniversary"
     icons:                                 # first match wins, title first then description; no match = no icon
       - {match: "hallowe\\w*|haunt|spooky|ghost|zombie|fields of fear|trick.or.treat|costume", icon: "👻"}
       - {match: "pumpkin|jack.o.lantern|gourd", icon: "🎃"}
@@ -201,19 +201,21 @@ digest:
     breweries:
       label: "Local Breweries"
       kinds: [brewery]
-      limit: 8
+      limit: 20                            # a busy autumn week runs to ~20 events; show them all
       exclude: "karaoke|trivia|bingo|singo|\\d+% off|% off|happy hour|appy hour|watch party|kids eat free|growler|taco tuesday|teacher tuesday|discount|football"
       seasonal:                            # matched first, by the month the digest runs in
         - months: [9, 10]
-          pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|hallowe\\w*|haunt|spooky|costume|pumpkin|harvest|fest\\b"
+          pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|hallowe\\w*|haunt|spooky|costume|pumpkin|harvest|fest\\w*"
         - months: [11, 12]
           pattern: "christmas|holiday|santa|tree lighting|ugly sweater|gingerbread|nutcracker|hanukkah|menorah|new year|winter|caroling|wreath"
-      fill_below: 3                        # fewer seasonal picks than this -> top up with...
-      fallback: "live music|concert|\\bband\\b|acoustic|bluegrass|\\bjam\\b|music"   # ...music, up to `limit`
+      # Kinds Christopher asked for by name: family outings and one-off happenings. These rank
+      # above routine live music, which ranks above everything else, when a week overflows.
+      prioritize: "festival|fest\\w*|movie night|family|kids|petting zoo|axe throwing|vendor|market|anniversary|release|watch ?party|craft night|workshop|contest|parade|trivia night out"
+      fallback: "live music|concert|\\bband\\b|acoustic|bluegrass|\\bjam\\b|music"
     towns:
       label: "Town Activities"
       kinds: [town]
-      limit: 8
+      limit: 12
       exclude: "council|commission|board meeting|public hearing|zoning|work session|advisory|zumba|fitness|yoga|workout"
       prioritize: "fair|festival|carnival|parade|fireworks|movie|market|kids|family|concert|hallowe\\w*|pumpkin|holiday|airshow|air show|tour"
       farmers_markets:

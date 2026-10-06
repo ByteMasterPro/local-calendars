@@ -151,31 +151,45 @@ def fairs_select(rows, c, w: Window) -> dict:
 
 
 def breweries_select(rows, c, w: Window) -> dict:
+    """This week's brewery events, ranked so the good stuff survives a long week.
+
+    Everything that passes the exclude list is shown, up to `limit`. Order of survival when a
+    week overflows: seasonal (Oktoberfest, Halloween, holiday), then the kinds Christopher asks
+    for by name (festivals, movie nights, anniversaries, releases), then live music, then the
+    rest. The list itself is always printed in time order.
+    """
     kinds = c.get("kinds", ["brewery"])
     seasonal_rx = _season_pattern(c.get("seasonal") or [], w.start)
-    limit, fill_below = int(c.get("limit", 8)), int(c.get("fill_below", 3))
+    special_rx = re.compile(c["prioritize"], re.I) if c.get("prioritize") else None
+    music_rx = re.compile(c["fallback"], re.I) if c.get("fallback") else None
+    limit = int(c.get("limit", 20))
 
-    def pick(pool, cap, fill_below):
-        seasonal = _collapse([r for r in pool if query.matches(r, seasonal_rx)]) if seasonal_rx else []
-        chosen = list(seasonal)
-        # Music is the fallback when the season isn't giving us much, not a permanent top-up.
-        if len(chosen) < fill_below and c.get("fallback"):
-            seen = {_key(r) for r in chosen}
-            fill = [r for r in _collapse([r for r in pool if query.matches(r, c["fallback"])]) if _key(r) not in seen]
-            chosen = sorted(chosen + fill[: cap - len(chosen)], key=lambda r: r["_sort"])
-        return chosen[:cap], seasonal
+    def rank(r) -> int:
+        if seasonal_rx and query.matches(r, seasonal_rx):
+            return 0
+        if special_rx and query.matches(r, special_rx):
+            return 1
+        if music_rx and query.matches(r, music_rx):
+            return 2
+        return 3
+
+    def pick(pool, cap):
+        collapsed = _collapse(pool)
+        kept = sorted(sorted(collapsed, key=lambda r: r["_sort"]), key=rank)[:cap]
+        return sorted(kept, key=lambda r: r["_sort"]), [r for r in collapsed if rank(r) == 0]
 
     pool = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
     running = _collapse([r for r in pool if r.get("_ongoing")])
-    this, seasonal = pick([r for r in pool if not r.get("_ongoing")], limit, fill_below)
+    this, seasonal = pick([r for r in pool if not r.get("_ongoing")], limit)
     # A month-long seasonal thing is still a highlight every week it runs, even though the
     # section mentions it in one line rather than listing it again.
     if seasonal_rx:
         seasonal = seasonal + [r for r in running if query.matches(r, seasonal_rx)]
     shown = {r["summary"].lower() for r in this + running}
-    # highlights: seasonal only; music only if the following week has nothing seasonal at all
-    nxt, _ = pick(_select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude")), w.preview_limit, 1)
-    nxt = [r for r in nxt if r["summary"].lower() not in shown]
+    # highlights: seasonal and the named-favourite kinds, never routine music
+    nxt_pool = _select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude"))
+    nxt = [r for r in _collapse(nxt_pool) if rank(r) <= 1 and r["summary"].lower() not in shown]
+    nxt = sorted(nxt, key=lambda r: r["_sort"])[: w.preview_limit]
     return {"this": this, "seasonal": seasonal, "running": running, "next": nxt}
 
 
@@ -203,17 +217,19 @@ def towns_select(rows, c, w: Window) -> dict:
 
 
 def top_picks(F, B, T, c, w: Window) -> list[dict]:
-    """The week's highlights across sections: fair one-offs, seasonal brewery events, and town
-    items matching the top-pick pattern (parades, airshows, festivals). Chronological, capped."""
+    """The week's highlights across sections: fair one-offs, seasonal brewery events, and any
+    brewery or town event matching the top-pick pattern (parades, airshows, movie nights,
+    festivals). Chronological, capped."""
     rx = re.compile(c["pattern"], re.I) if c.get("pattern") else None
     cands: dict[tuple, dict] = {}
     for r in (F or {}).get("this", []) + (F or {}).get("running", []):
         cands.setdefault(_key(r), r)
     for r in (B or {}).get("seasonal", []):
         cands.setdefault(_key(r), r)
-    for r in (T or {}).get("this", []) + (T or {}).get("running", []):
-        if rx and query.matches(r, rx):
-            cands.setdefault(_key(r), r)
+    for src in ((B or {}).get("this", []), (T or {}).get("this", []), (T or {}).get("running", [])):
+        for r in src:
+            if rx and query.matches(r, rx):
+                cands.setdefault(_key(r), r)
     picks = sorted(cands.values(), key=lambda r: r["_sort"])
     return picks[: int(c.get("limit", 5))]
 
