@@ -92,6 +92,16 @@ subscriptions remain.
 
 ## What Christopher wants surfaced
 
+Top Picks ranks before it caps: rank 0 marquee (fair/festival one-offs, seasonal brewery
+events), rank 1 `pattern` matches (movie nights, petting zoos), rank 2 `filler`
+(car cruise-ins, bike nights, fitness classes) which only earns a slot when the week has fewer
+than `fill_below` real picks - his 2026-10-06 rule: "fine to add ... but only if it was a very
+minimal week". A filler match is demoted even if it would otherwise rank 0.
+
+Loose patterns have a cost to watch: `fall\b` once matched "September and October this fall" in
+a car-meet blurb and promoted it over the movie night. Keep prose-common words out of the
+seasonal lists; prefer `fall ?fest\w*` over `fall`.
+
 Patterns are deliberately LOOSE - he said "I'd rather see more than miss things" (2026-10-06).
 He has kids and asks for family outings by name: brewery festivals (Honor's Fall Fest), movie
 nights on the lawn, petting zoos, craft nights, fairs and markets. Those are `prioritize` in the

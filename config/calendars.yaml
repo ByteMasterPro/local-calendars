@@ -165,8 +165,12 @@ digest:
   title: This week around Leesburg
   preview_limit: 5                         # highlights per "Next week:" line
   top_picks:                               # first card: the week's best, with full excerpts.
-    label: "Top Picks This Week"           # candidates = fair one-offs + seasonal brewery events +
-    limit: 5                               # town items matching `pattern`; chronological
+    label: "Top Picks This Week"
+    # Candidates: fair/festival one-offs and seasonal brewery events (rank 0), anything matching
+    # `pattern` (rank 1), then `filler` (rank 2) which only earns a slot in a quiet week.
+    limit: 8
+    filler: "cruise.?in|car show|cars & coffee|motorcycle|bike night|yoga|fitness|run club|book club|game night"
+    fill_below: 4                          # fewer real picks than this -> let the filler in
     pattern: "fair\\b|festival|fest\\w*|carnival|jubilee|parade|fireworks|air ?show|hallowe\\w*|trunk.or.treat|trick.or.treat|pumpkin|harvest|hayride|corn maze|oktober|german|holiday|christmas|santa|tree lighting|thanksgiving|movie|petting zoo|anniversary|touch a truck|egg hunt|block party|craft fair|bazaar"
     icons:                                 # first match wins, title first then description; no match = no icon
       - {match: "hallowe\\w*|haunt|spooky|ghost|zombie|fields of fear|trick.or.treat|trunk.or.treat|costume|fright|monster|witch|vampire|boo\\b", icon: "👻"}
@@ -206,7 +210,7 @@ digest:
       exclude: "karaoke|trivia night|\\btrivia\\b|bingo|singo|\\d+% off|% off|happy hour|appy hour|watch ?party|kids eat free|growler fill|taco tuesday|teacher tuesday|discount|football watch|service industry night"
       seasonal:                            # matched first, by the month the digest runs in
         - months: [9, 10]
-          pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|hallowe\\w*|haunt|spooky|costume|pumpkin|harvest|fest\\w*|fall\\b|autumn|apple|cider|corn maze|hayride|scarecrow|trunk.or.treat|trick.or.treat|fright|monster|witch|vampire|boo\\b|spider|skeleton|graveyard"
+          pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|hallowe\\w*|haunt|spooky|costume|pumpkin|harvest|fest\\w*|fall ?fest\\w*|autumn fest\\w*|apple|cider|corn maze|hayride|scarecrow|trunk.or.treat|trick.or.treat|fright|monster|witch|vampire|boo\\b|spider|skeleton|graveyard"
         - months: [11, 12]
           pattern: "christmas|holiday|santa|tree lighting|ugly sweater|gingerbread|nutcracker|hanukkah|menorah|kwanzaa|new year|winter|caroling|carol\\b|wreath|thanksgiving|friendsgiving|turkey|reindeer|elf\\b|sleigh|snow|cocoa|mistletoe|yule|noel|polar express|light show|toy drive|coat drive"
       # Kinds Christopher asked for by name: family outings and one-off happenings. These rank
