@@ -88,6 +88,49 @@ DTSTART:20271107T050000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261010T150000
+DTEND;TZID=America/New_York:20261010T180000
+DTSTAMP:20261007T164812Z
+CREATED:20261007T151541Z
+LAST-MODIFIED:20261007T164812Z
+UID:13341-1791644400-1791655200@flyingacefarm.com
+SUMMARY:Live Music featuring Wayne Snow at Flying Ace Farm
+DESCRIPTION:LIVE MUSIC FEATURING WAYNE SNOW AT FLYING ACE FARM\nJoin us for live music on Saturday\, October 10th\, from 3-6pm\, featuring Wayne Snow at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Saturday\, October 10th\, from 3-6PM\, featuring Northern Virginia musician Wayne Snow. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nAbout Wayne Snow\nWayne’s Bio: Howling at the Earth is an alternative prog pop band driven by heavy guitar riffs\, dynamic rhythms\, and emotional lyrics. Blending technical musicianship with memorable melodies\, they explore themes of mental health\, relationships\, and personal growth. Tied together by a loose concept\, their music creates an immersive experience that’s as powerful as it is vulnerable—inviting listeners into something deeper with every song.\n\nTo learn more about Wayne\, visit his official website \nBe sure to check out our full Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n  \n \n \n 
+URL:https://flyingacefarm.com/calendar/live-music-wayne-snow/
+LOCATION:Flying Ace Farm
+CATEGORIES:Family,Free Event,Live Music
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2025/05/Wayne-Snow-photo.jpg
+ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261011T140000
+DTEND;TZID=America/New_York:20261011T170000
+DTSTAMP:20261007T170042Z
+CREATED:20261007T162758Z
+LAST-MODIFIED:20261007T170042Z
+UID:13420-1791727200-1791738000@flyingacefarm.com
+SUMMARY:Live Music featuring Lenny Burridge at Flying Ace Farm
+DESCRIPTION:LIVE MUSIC FEATURING LENNY BURRIDGE AT FLYING ACE FARM\nJoin us for live music on Sunday\, October 11th\, from 2-5pm\, featuring Lenny Burridge at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Sunday\, October 11th\, from 2–5 PM\, featuring Northern Virginia musician Lenny Burridge. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nAbout Lenny Burridge:\nI am a musician from Charleston SC and the Washington\, DC area and have been playing upwards of 300 gigs a year for more than 18 years. I play a wide variety of musical styles\, ranging from blues and jazz standards to current radio hits and alternative. I pride myself on connecting with an audience and customizing my show to hold their interest. For the last 18 years I have played up and down the east coast. I have played wineries and weddings\, breweries and bars\, festivals and corporate events! I am at home playing Irish music in a pub\, romantic music by the fire at a winery or formal restaurant\, or blues at a festival opening for national acts. \nTo learn more about Lenny Burridge\, visit his official website \nBe sure to check out our full Live Music Schedule to see all upcoming performances at Flying Ace Farm. \n \n \n 
+URL:https://flyingacefarm.com/calendar/live-music-lenny-burridge/
+LOCATION:Flying Ace Farm
+CATEGORIES:Family,Free Event,Live Music
+ATTACH;FMTTYPE=image/webp:https://flyingacefarm.com/wp-content/uploads/2026/10/lenny-burridge.webp
+ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+DTSTAMP:20261007T155945Z
+CREATED:20261007T154031Z
+LAST-MODIFIED:20261007T155945Z
+UID:13414-1792195200-1792281599@flyingacefarm.com
+SUMMARY:BUSINESS CLOSED TO THE PUBLIC
+DESCRIPTION:CLOSED for a Private Event — Saturday\, October 17\, 2026\nFlying Ace Farm will be CLOSED TO THE PUBLIC on Saturday\, October 17th\, for a private event. We will reopen on Sunday\, October 18th\, for our regular business hours. We apologize for any inconvenience and appreciate your understanding and continued support. We look forward to welcoming you back to the farm on Sunday!\n 
+URL:https://flyingacefarm.com/calendar/business-closed-to-the-general-public/
+LOCATION:Flying Ace Farm
+ATTACH;FMTTYPE=image/png:https://flyingacefarm.com/wp-content/uploads/2026/10/FLYING-ACE-FARM-CLOSED-INSTA-POST.png
+END:VEVENT
+BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261017T150000
 DTEND;TZID=America/New_York:20261017T180000
 DTSTAMP:20260628T225646Z
@@ -104,16 +147,31 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261018T140000
 DTEND;TZID=America/New_York:20261018T170000
-DTSTAMP:20260730T165026Z
+DTSTAMP:20261007T174613Z
 CREATED:20260730T165026Z
-LAST-MODIFIED:20260730T165026Z
+LAST-MODIFIED:20261007T174613Z
 UID:13161-1792332000-1792342800@flyingacefarm.com
-SUMMARY:Live Music featuring America's Got Talent contestant Drew Stevyns at Flying Ace Farm
-DESCRIPTION:Live Music featuring Drew Stevyns at Flying Ace Farm\nJoin us on Sunday\, October 18th\, from 2-5PM for live music featuring America’s Got Talent contestant\, Drew Stevyns\, at Flying Ace Farm. \nDrew’s Bio: \nPerforming since the age of two\, Drew Stevyns started his career singing in church choirs while growing up in England. After returning to the U.S.\, Drew continued his musical development by taking piano lessons\, writing songs and teaching himself how to play guitar.\nDrew believes in the purity of music. There is a palpable sadness to his voice that makes his songs impossible to shake\, and the music surges; hard-edged yet beautiful and melodic. He has released three albums: ‘Waiting’ in 2009\, ‘Please Excuse the Machine’ in 2011 and ‘Somewhere in Between’ in 2015. \nDrew’s voice is hypnotic in nature and pulls the listeners close in a unique way that allows the audience to feel what he feels. Listeners are able to connect with his music in a very personal and emotional way that few artists’ are able to achieve. “Every experience you have in life only adds to your repertoire as a musician.” In 2009\, Drew touched the hearts of millions as a TOP 10 finalist on the NBC show ‘America’s Got Talent’. While on the show\, he was fortunate enough to work with top music producers Nigel Wright and Shane Keister. \nShortly after the conclusion of ‘America’s Got Talent’\, Drew was asked to endorse a new brand of Paul Reed Smith (PRS) guitars which resulted in a showcase performance with his band at the famous ‘Whisky A Go-Go’. \nDrew has shared the stage with Grammy-winning singer-songwriter\, Thelma Houston\, The Charlie Daniels Band\, Josh Doyle\, Shelly Rann and Sarah Lou Richards. His song ‘Waiting’ placed 3rd in the International Songwriting Competition. \nIn 2010\, Drew was asked to perform at the Lyric Opera House in Baltimore raising money for the Artists for Amy Foundation. Additionally\, he was invited by ‘Artist to the Stars’ Corey Frizzell to perform at the ‘Lyrics for Lyric’ Benefit in Nashville to support Childhood Cancer Research. Drew has been the headlining artist for the veteran’s organization\, United Soldiers and Sailors of America (USASOA) and has performed at their Washington DC gala since 2013. \nDrew’s talent has not gone unnoticed; he has graced the stages of such notable venues and events as The National Cherry Blossom Festival\, The Towsontowne Festival\, The Rehoboth Beach Concert Series\, 12th and Porter\, Margaritaville\, The Hollywood Casino\, The Hard Rock Café\, The Chico and Bman Show\, Baltimore’s famous New Year’s Eve Celebration\, ‘Charm City Countdown’ and more. His music has been featured on a variety of radio stations throughout the country. \nRecently\, Drew was asked by Emmy award winning and Grammy nominated songwriter\, Greg Barnhill\, to join him in Nashville where they co-wrote several songs. Drew teamed up with Steve Silverman who commissioned him to record and perform the theme song for the internet show\, ‘Pretty\, The Series’ and in 2015 his music was featured on the hit television series\, ‘Rizzoli and Isles’. In 2016\, the ‘Song of the Year’ Songwriting Contest awarded Drew a Semi-Finalist placement for his song ‘Demands’. The ‘Song of the Year’ Contest receives entries from all over the world and only the top songwriters receive this honor. \nFor the past eleven years Drew has worked with legendary producer and engineer\, Scott Ensign of Obscura Sound in Baltimore. Drew credits Scott’s talents to the success of all three of his albums and continues to trust his skills on a variety of other musical collaborations. Drew and Scott were honored to be chosen by songwriter\, Ron Ryan to record and produce both the Carolina Panthers cheer songs\, ‘We Won’t Be Stopped’ and ‘Panther Fever’ which played in the stadium during their 2015-16 season. \nDrew Stevyns has made a name for himself regionally\, nationally\, and internationally and his popularity continues to grow through a wide range of fans worldwide. “I am extremely flattered and humbled. I really couldn’t ask for anything more.” \nTo learn more about Drew Stevyns\, visit his official website. You can also check him out on official YouTube page. \nBe sure to check out our full Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n 
+SUMMARY:Live Music featuring "America's Got Talent" contestant Drew Stevyns at Flying Ace Farm
+DESCRIPTION:LIVE MUSIC FEATURING FORMER “AMERICA’S GOT TALENT” CONTESTANT\, DREW STEVYNS\, AT FLYING ACE FARM\nJoin us for live music on Sunday\, October 18th\, from 2-5pm\, featuring former “America’s Got Talent” contestant\, Drew Stevyns\, at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Sunday\, October 18th\, from 2–5 PM\, featuring Drew Stevyns. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nDrew’s Bio: \nPerforming since the age of two\, Drew Stevyns started his career singing in church choirs while growing up in England. After returning to the U.S.\, Drew continued his musical development by taking piano lessons\, writing songs and teaching himself how to play guitar. Drew believes in the purity of music. There is a palpable sadness to his voice that makes his songs impossible to shake\, and the music surges; hard-edged yet beautiful and melodic. He has released three albums: ‘Waiting’ in 2009\, ‘Please Excuse the Machine’ in 2011 and ‘Somewhere in Between’ in 2015. \nDrew’s voice is hypnotic in nature and pulls the listeners close in a unique way that allows the audience to feel what he feels. Listeners are able to connect with his music in a very personal and emotional way that few artists’ are able to achieve. “Every experience you have in life only adds to your repertoire as a musician.” In 2009\, Drew touched the hearts of millions as a TOP 10 finalist on the NBC show ‘America’s Got Talent’. While on the show\, he was fortunate enough to work with top music producers Nigel Wright and Shane Keister. Shortly after the conclusion of ‘America’s Got Talent’\, Drew was asked to endorse a new brand of Paul Reed Smith (PRS) guitars which resulted in a showcase performance with his band at the famous ‘Whisky A Go-Go’. Drew has shared the stage with Grammy-winning singer-songwriter\, Thelma Houston\, The Charlie Daniels Band\, Josh Doyle\, Shelly Rann and Sarah Lou Richards. His song ‘Waiting’ placed 3rd in the International Songwriting Competition. \nIn 2010\, Drew was asked to perform at the Lyric Opera House in Baltimore raising money for the Artists for Amy Foundation. Additionally\, he was invited by ‘Artist to the Stars’ Corey Frizzell to perform at the ‘Lyrics for Lyric’ Benefit in Nashville to support Childhood Cancer Research. Drew has been the headlining artist for the veteran’s organization\, United Soldiers and Sailors of America (USASOA) and has performed at their Washington DC gala since 2013. \nDrew’s talent has not gone unnoticed; he has graced the stages of such notable venues and events as The National Cherry Blossom Festival\, The Towsontowne Festival\, The Rehoboth Beach Concert Series\, 12th and Porter\, Margaritaville\, The Hollywood Casino\, The Hard Rock Café\, The Chico and Bman Show\, Baltimore’s famous New Year’s Eve Celebration\, ‘Charm City Countdown’ and more. His music has been featured on a variety of radio stations throughout the country. \nRecently\, Drew was asked by Emmy award winning and Grammy nominated songwriter\, Greg Barnhill\, to join him in Nashville where they co-wrote several songs. Drew teamed up with Steve Silverman who commissioned him to record and perform the theme song for the internet show\, ‘Pretty\, The Series’ and in 2015 his music was featured on the hit television series\, ‘Rizzoli and Isles’. In 2016\, the ‘Song of the Year’ Songwriting Contest awarded Drew a Semi-Finalist placement for his song ‘Demands’. The ‘Song of the Year’ Contest receives entries from all over the world and only the top songwriters receive this honor. \nFor the past eleven years Drew has worked with legendary producer and engineer\, Scott Ensign of Obscura Sound in Baltimore. Drew credits Scott’s talents to the success of all three of his albums and continues to trust his skills on a variety of other musical collaborations. Drew and Scott were honored to be chosen by songwriter\, Ron Ryan to record and produce both the Carolina Panthers cheer songs\, ‘We Won’t Be Stopped’ and ‘Panther Fever’ which played in the stadium during their 2015-16 season. \nDrew Stevyns has made a name for himself regionally\, nationally\, and internationally and his popularity continues to grow through a wide range of fans worldwide. “I am extremely flattered and humbled. I really couldn’t ask for anything more.” \nTo learn more about Drew Stevyns\, visit his official website. You can also check him out on official YouTube page. \nBe sure to check out our full Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n 
 URL:https://flyingacefarm.com/calendar/live-music-stevyns/
 LOCATION:Flying Ace Farm
 CATEGORIES:Family,Free Event,Live Music
 ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2024/10/IMG_0972.jpg
+ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261025T140000
+DTEND;TZID=America/New_York:20261025T170000
+DTSTAMP:20261007T173819Z
+CREATED:20260628T224729Z
+LAST-MODIFIED:20261007T173819Z
+UID:13041-1792936800-1792947600@flyingacefarm.com
+SUMMARY:Live Music featuring Mike Leverone at Flying Ace Farm
+DESCRIPTION:LIVE MUSIC FEATURING MIKE LEVERONE AT FLYING ACE FARM\nJoin us for live music on Sunday\, October 25th\, from 2-5pm\, featuring Mike Leverone at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Sunday\, October 25th\, from 2–5 PM\, featuring Northern Virginia musician Mike Leverone. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nAbout Mike Leverone\nMike is a veteran of the solo acoustic circuit\, playing a mix of popular songs going back 40 years. He creates and mixes loops from his guitar\, drums and vocals to create a full band sound with energy and a healthy dose of sarcasm and self-effacing. Make a request\, tell him your life story\, Mike is here for it all. \nTo learn more about Britton James\, visit his YouTube page \nBe sure to check out our full Live Music Schedule to see all upcoming performances at Flying Ace Farm. \n \n \n 
+URL:https://flyingacefarm.com/calendar/live-music-mike-leverone/
+LOCATION:Flying Ace Farm
+CATEGORIES:Family,Free Event,Live Music
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2025/05/Mike-leverone.jpg
 ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
 END:VEVENT
 BEGIN:VEVENT
@@ -159,6 +217,21 @@ URL:https://flyingacefarm.com/calendar/live-music-laura-cashman/
 LOCATION:Flying Ace Farm
 CATEGORIES:Live Music
 ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2024/08/IMG_0982-scaled.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261115T140000
+DTEND;TZID=America/New_York:20261115T170000
+DTSTAMP:20261007T170913Z
+CREATED:20261007T170913Z
+LAST-MODIFIED:20261007T170913Z
+UID:13418-1794751200-1794762000@flyingacefarm.com
+SUMMARY:Live Music featuring John "JP" Jones at Flying Ace Farm
+DESCRIPTION:LIVE MUSIC FEATURING JOHN “JP” JONES AT FLYING ACE FARM\nJoin us for live music on Saturday\, October 10th\, from 3-6pm\, featuring John “JP” Jones at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Sunday November 15th\, from 2-5PM\, featuring Northern Virginia musician John “JP” Jones. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nAbout John “JP” Jones\n\nI grew up in Lucketts\, Va. I still call Loudoun County home. Began teaching myself guitar around age 10 using chord books and listening to records. Since then\, music has been a major part of my life- playing at family gatherings\, at church\, weddings and local wineries and breweries. My wife Lori and I have been married 41 years\, We have three grown children and three grandchildren. I am a dedicated husband\, father grandfather\, veteran and a lifelong artist. \nTo learn more about John\, visit his official website \nYou can also view his Instagram page \n\n\nBe sure to check out our full Live Music Schedule at Flying Ace Farm to see all upcoming performances.\n  \n \n \n 
+URL:https://flyingacefarm.com/calendar/live-music-john-jp-jones/
+LOCATION:Flying Ace Farm
+CATEGORIES:Family,Free Event,Live Music
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2023/10/john-jp-jones-pic.jpg
+ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
 END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261121T150000
@@ -262,21 +335,6 @@ URL:https://flyingacefarm.com/calendar/live-music-morgan-gonce-2/
 LOCATION:Flying Ace Farm
 CATEGORIES:Live Music
 ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2026/06/Morgan-Gonce-musician.jpeg
-ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261227T140000
-DTEND;TZID=America/New_York:20261227T170000
-DTSTAMP:20260828T210806Z
-CREATED:20260628T224729Z
-LAST-MODIFIED:20260828T210806Z
-UID:13041-1798380000-1798390800@flyingacefarm.com
-SUMMARY:Live Music featuring Britton James at Flying Ace Farm
-DESCRIPTION:LIVE MUSIC FEATURING BRITTON JAMES AT FLYING ACE FARM\nJoin us for live music on Sunday\, December 27th\, from 2-5pm\, featuring Britton James at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Sunday\, December 27th\, from 2–5 PM\, featuring Northern Virginia musician Britton James. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nAbout Britton James\nA Northern Virginia native\, Britton James is a talented singer-songwriter\, producer\, and multi-instrumentalist who writes\, records\, and performs original alternative music. His energetic one-man show is anything but ordinary\, combining live vocals with percussion\, bass\, guitar\, and looping techniques to create the sound of a full band—all performed live on stage. \nWith a diverse musical style\, Britton seamlessly blends his original songs with crowd-favorite covers spanning decades\, from timeless classics to today’s biggest hits. His dynamic performances and engaging stage presence make every show a unique experience for music lovers of all ages. \nTo learn more about Britton James\, visit his official website \nBe sure to check out our full Live Music Schedule to see all upcoming performances at Flying Ace Farm. \n \n \n 
-URL:https://flyingacefarm.com/calendar/live-music-britton-james/
-LOCATION:Flying Ace Farm
-CATEGORIES:Family,Free Event,Live Music
-ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2021/08/1402_image_231792481_355649302847367_7673593667556548300_n.jpg
 ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
 END:VEVENT
 END:VCALENDAR
