@@ -65,16 +65,16 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261010T130000
 DTEND;TZID=America/New_York:20261010T160000
-DTSTAMP:20260603T111044Z
-CREATED:20220315T134101Z
-LAST-MODIFIED:20260603T111044Z
-UID:10001099-1791637200-1791648000@vanishbeer.com
-SUMMARY:Jumptown
-DESCRIPTION:Jumptown is a high-energy dance band\, based in Northern Virginia. We specialize in classic funk\, contemporary Blues\, R&B\, and Soul music. This horn-powered ensemble delivers high-energy performances that keep their audiences on their feet.
-URL:https://vanishbeer.com/event/jumptown/2026-10-10/
+DTSTAMP:20261008T221657Z
+CREATED:20261008T221657Z
+LAST-MODIFIED:20261008T221657Z
+UID:10001246-1791637200-1791648000@vanishbeer.com
+SUMMARY:ALLSK8
+DESCRIPTION:ALLSK8 is a Northern VA-based trio delivering high-energy pop & rock hits from across the decades\, featuring Amy Bobchek (Keyboards & Vocals)\, Michael Gauvreau (Drums & Vocals)\, and Shye Gilad (Guitar\, Bass\, & Vocals).
+URL:https://vanishbeer.com/event/allsk8/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2022/03/1000019831.jpg
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/10/653826309_122168172680852586_2225526948757186870_n.jpg
 END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261010T170000
