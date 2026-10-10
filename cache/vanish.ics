@@ -49,20 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261009T170000
-DTEND;TZID=America/New_York:20261009T200000
-DTSTAMP:20260603T113349Z
-CREATED:20260603T113349Z
-LAST-MODIFIED:20260603T113349Z
-UID:10001194-1791565200-1791576000@vanishbeer.com
-SUMMARY:Ray Castro
-DESCRIPTION:Solo acoustic cover artist who plays popular\, upbeat 80s/90s/2000s hits.
-URL:https://vanishbeer.com/event/ray-castro/2026-10-09/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/06/673482290_5204538546438582_2413663943201557526_n-1.jpg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261010T130000
 DTEND;TZID=America/New_York:20261010T160000
 DTSTAMP:20261008T221657Z
@@ -466,5 +452,19 @@ URL:https://vanishbeer.com/event/felix-pickles/2026-11-28/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/06/490985605_1361630905001914_4304601391605944177_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261129T130000
+DTEND;TZID=America/New_York:20261129T160000
+DTSTAMP:20260901T184854Z
+CREATED:20240910T153114Z
+LAST-MODIFIED:20260901T184854Z
+UID:10001224-1795957200-1795968000@vanishbeer.com
+SUMMARY:Two For the Road
+DESCRIPTION:Two for the Road features Leesburg locals Jeff Godbold & Ken Logerwell\, with Jeff on rhythm guitar and vocals and Ken on lead guitar. Their music spans a range of genres including Americana\, folk\, yacht rock\, classic rock\, and country. Their influences include Sting\, Eagles\, Doobie Brothers\, Atlanta Rhythm Section\, John Mellencamp\, Allman Brothers\, Hall & Oates\, Bob Seger\, America\, and Willie Nelson. Two for the Road can be found around town playing at open mic nights that encourage audience participation with their music.
+URL:https://vanishbeer.com/event/two-for-the-road/2026-11-29/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2024/09/two.jpeg
 END:VEVENT
 END:VCALENDAR

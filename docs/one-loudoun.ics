@@ -11,9 +11,9 @@ X-PUBLISHED-TTL:P1D
 X-WR-TIMEZONE:America/New_York
 BEGIN:VTIMEZONE
 TZID:America/New_York
-COMMENT:This timezone only works from 2025-08-09 to 2029-11-03.
+COMMENT:This timezone only works from 2025-08-11 to 2029-11-03.
 BEGIN:DAYLIGHT
-DTSTART:20250809T000000
+DTSTART:20250811T000000
 TZNAME:EDT
 TZOFFSETFROM:-0400
 TZOFFSETTO:-0400
@@ -34,28 +34,10 @@ TZOFFSETTO:-0400
 END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
-SUMMARY:Kids Concert Series - August 10
-DTSTART;TZID=America/New_York:20260810T110000
-DTEND;TZID=America/New_York:20260810T120000
-DTSTAMP:20261009T115914Z
-UID:69fb92547119c5710d1afab6@one-loudoun
-ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
- 20e57f899c2f47944d9e68/1778094352883-FFX220CWB1VX2DBQK2VZ/Kids+Concert+Ser
- ies_Event+Thumbnail.jpg
-DESCRIPTION:Rocknoceros\, a popular kid’s band plays original hits\, eve
- ry Monday on the Plaza\, from June 1 through August 31.\n\nDetails: https:
- //www.downtownoneloudoun.com/events/kids-concert-series-2026-ax3pg-ch6wp-2
- srs8-akpjw-rdcrd-23xba-t92bn-3dkn9-a996a-9zyyn
-LOCATION:One Loudoun\, 20626 Easthampton Plaza\, Ashburn\, VA\, 20147
-TRANSP:TRANSPARENT
-URL:https://www.downtownoneloudoun.com/events/kids-concert-series-2026-ax3
- pg-ch6wp-2srs8-akpjw-rdcrd-23xba-t92bn-3dkn9-a996a-9zyyn
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:One Loudoun Carnival at Uptown August 12-23
 DTSTART;TZID=America/New_York:20260812T170000
 DTEND;TZID=America/New_York:20260823T180000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:69fa50516be6312422f60be6@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778012093824-QXZN70BLPGOGUXPFSU4G/Carnival_Website
@@ -73,7 +55,7 @@ BEGIN:VEVENT
 SUMMARY:Moonlight Market at One Loudoun
 DTSTART;TZID=America/New_York:20260814T170000
 DTEND;TZID=America/New_York:20260814T210000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6a57ddc635b58375d4fa997f@one-loudoun
 RRULE:FREQ=WEEKLY;UNTIL=20261031T010000Z;BYDAY=FR
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
@@ -89,7 +71,7 @@ BEGIN:VEVENT
 SUMMARY:Summer Strings Series August 14\, Justin Trawick Duo
 DTSTART;TZID=America/New_York:20260814T180000
 DTEND;TZID=America/New_York:20260814T210000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6a049a7905bed401c8463ffb@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778686595178-46UB2KO6150O1KL54V7D/08.14_SCS.jpg
@@ -106,7 +88,7 @@ BEGIN:VEVENT
 SUMMARY:Kids Concert Series - August 17
 DTSTART;TZID=America/New_York:20260817T110000
 DTEND;TZID=America/New_York:20260817T120000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:69fb9261f038fb42c5d5194e@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778094352883-FFX220CWB1VX2DBQK2VZ/Kids+Concert+Ser
@@ -124,7 +106,7 @@ BEGIN:VEVENT
 SUMMARY:Summer Strings Series August 21\, Daniel Mensh
 DTSTART;TZID=America/New_York:20260821T180000
 DTEND;TZID=America/New_York:20260821T210000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6a049aa9198eec00793d024f@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778686645413-L36BC0G64KVK4PSCT7PJ/08.21_SCS.jpg
@@ -141,7 +123,7 @@ BEGIN:VEVENT
 SUMMARY:Summer Concert Series August 22\, Jovon Newman
 DTSTART;TZID=America/New_York:20260822T190000
 DTEND;TZID=America/New_York:20260822T210000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:69fa52e4b0e50150bac993ea@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778012420245-M7LI5YSPMZUO7QZB19AG/SCS_Website+Even
@@ -163,7 +145,7 @@ BEGIN:VEVENT
 SUMMARY:Kids Concert Series - August 24
 DTSTART;TZID=America/New_York:20260824T110000
 DTEND;TZID=America/New_York:20260824T120000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:69fb926ead84fc6bc7e58de9@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778094352883-FFX220CWB1VX2DBQK2VZ/Kids+Concert+Ser
@@ -181,7 +163,7 @@ BEGIN:VEVENT
 SUMMARY:Movie Nights at One Loudoun - August 27 Hoppers [CANCELED]
 DTSTART;TZID=America/New_York:20260827T200000
 DTEND;TZID=America/New_York:20260827T220000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6a0e003ead0230261286cc83@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1787860140698-QRA4FTWDWDWPW4X1MZXU/Artboard+1.jpg
@@ -199,7 +181,7 @@ BEGIN:VEVENT
 SUMMARY:Summer Strings Series August 28\, Dave Goodrum
 DTSTART;TZID=America/New_York:20260828T180000
 DTEND;TZID=America/New_York:20260828T210000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6a049ad425c23328b4b66682@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778686687713-YOO9B8IH8VDPEN4GOVKG/08.28_SCS.jpg
@@ -216,7 +198,7 @@ BEGIN:VEVENT
 SUMMARY:Kids Concert Series - August 31
 DTSTART;TZID=America/New_York:20260831T110000
 DTEND;TZID=America/New_York:20260831T120000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:69fb927ce7ea6f0f68d5320b@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778094352883-FFX220CWB1VX2DBQK2VZ/Kids+Concert+Ser
@@ -234,7 +216,7 @@ BEGIN:VEVENT
 SUMMARY:Summer Strings Series September 4\, Richard Walton
 DTSTART;TZID=America/New_York:20260904T180000
 DTEND;TZID=America/New_York:20260904T210000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6a049b0036e4b47d9004de69@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778686772901-QU48D4E36HNX095O7HV9/09.04_SCS.jpg
@@ -251,7 +233,7 @@ BEGIN:VEVENT
 SUMMARY:Sunrise Sweat with Lululemon - September 13
 DTSTART;TZID=America/New_York:20260913T090000
 DTEND;TZID=America/New_York:20260913T103000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6a62529eba803118f372a022@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1781632997121-79BJ9SQDMDD1BIUFYSHU/Sunrise+Sweat_We
@@ -269,7 +251,7 @@ BEGIN:VEVENT
 SUMMARY:Movie Nights at One Loudoun - September 24 Paddington in Peru
 DTSTART;TZID=America/New_York:20260924T200000
 DTEND;TZID=America/New_York:20260924T220000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6a0e00a4d037a21f375094d5@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1779302580482-FBQNRQTWFY1EKHVBZYJ6/09.24_Movie+Nigh
@@ -288,7 +270,7 @@ BEGIN:VEVENT
 SUMMARY:Summer Concert Series September 26\, Keeton
 DTSTART;TZID=America/New_York:20260926T190000
 DTEND;TZID=America/New_York:20260926T210000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:69fa5373ddde245f9011c1a9@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778012420245-M7LI5YSPMZUO7QZB19AG/SCS_Website+Even
@@ -306,7 +288,7 @@ BEGIN:VEVENT
 SUMMARY:Sunrise Sweat with Lululemon - October 11
 DTSTART;TZID=America/New_York:20261011T090000
 DTEND;TZID=America/New_York:20261011T103000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6a625325b4a7503dedf81daf@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1781632997121-79BJ9SQDMDD1BIUFYSHU/Sunrise+Sweat_We
@@ -321,10 +303,28 @@ URL:https://www.downtownoneloudoun.com/events/sunrise-sweat-lululemon-h6hf
  d-3szh8-jnkz3
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Monkee's of Loudoun: Grand Opening
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261018
+DTSTAMP:20261010T111553Z
+UID:6ac90fb8c8257a50f8eca4de@one-loudoun
+ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
+ 20e57f899c2f47944d9e68/1791561781986-6ET0KTVLSD1HLNMV65YW/Screenshot+2026-
+ 10-09+115755.png
+DESCRIPTION:Join us October 15–18 for Monkee’s of Loudoun’s Grand Op
+ ening.  Shop our curated fall edit and Le Feme Chateau trunk show\, enjoy
+  bubbles and treats\, and discover effortless style close to home. 20366 E
+ xchange Street\n\nDetails: https://www.downtownoneloudoun.com/events/monke
+ es-of-loudoun
+LOCATION:One Loudoun\, 20626 Easthampton Plaza\, Ashburn\, VA\, 20147
+TRANSP:TRANSPARENT
+URL:https://www.downtownoneloudoun.com/events/monkees-of-loudoun
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:8th Annual Halloween Bark Bash
 DTSTART;TZID=America/New_York:20261024T120000
 DTEND;TZID=America/New_York:20261024T150000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:6aaad848f6d7067e4ce57ab0@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1789581930288-CBT1FJKHEX1OQJOPE5N0/Web+Teaser_Bark+
@@ -343,7 +343,7 @@ BEGIN:VEVENT
 SUMMARY:Asia In a Bite - One Loudoun
 DTSTART;TZID=America/New_York:20261031T110000
 DTEND;TZID=America/New_York:20261101T120000
-DTSTAMP:20261009T115914Z
+DTSTAMP:20261010T111553Z
 UID:69c2d2d8e78af4666fb890cf@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1774368828275-R8YNWLUDU10EETR9T4FW/ABFF_VA26_Websit
