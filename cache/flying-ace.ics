@@ -88,21 +88,6 @@ DTSTART:20271107T050000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261010T150000
-DTEND;TZID=America/New_York:20261010T180000
-DTSTAMP:20261007T164812Z
-CREATED:20261007T151541Z
-LAST-MODIFIED:20261007T164812Z
-UID:13341-1791644400-1791655200@flyingacefarm.com
-SUMMARY:Live Music featuring Wayne Snow at Flying Ace Farm
-DESCRIPTION:LIVE MUSIC FEATURING WAYNE SNOW AT FLYING ACE FARM\nJoin us for live music on Saturday\, October 10th\, from 3-6pm\, featuring Wayne Snow at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Saturday\, October 10th\, from 3-6PM\, featuring Northern Virginia musician Wayne Snow. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nAbout Wayne Snow\nWayne’s Bio: Howling at the Earth is an alternative prog pop band driven by heavy guitar riffs\, dynamic rhythms\, and emotional lyrics. Blending technical musicianship with memorable melodies\, they explore themes of mental health\, relationships\, and personal growth. Tied together by a loose concept\, their music creates an immersive experience that’s as powerful as it is vulnerable—inviting listeners into something deeper with every song.\n\nTo learn more about Wayne\, visit his official website \nBe sure to check out our full Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n  \n \n \n 
-URL:https://flyingacefarm.com/calendar/live-music-wayne-snow/
-LOCATION:Flying Ace Farm
-CATEGORIES:Family,Free Event,Live Music
-ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2025/05/Wayne-Snow-photo.jpg
-ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261011T140000
 DTEND;TZID=America/New_York:20261011T170000
 DTSTAMP:20261007T170042Z

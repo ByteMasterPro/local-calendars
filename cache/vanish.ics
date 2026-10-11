@@ -49,34 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261010T130000
-DTEND;TZID=America/New_York:20261010T160000
-DTSTAMP:20261008T221657Z
-CREATED:20261008T221657Z
-LAST-MODIFIED:20261008T221657Z
-UID:10001246-1791637200-1791648000@vanishbeer.com
-SUMMARY:ALLSK8
-DESCRIPTION:ALLSK8 is a Northern VA-based trio delivering high-energy pop & rock hits from across the decades\, featuring Amy Bobchek (Keyboards & Vocals)\, Michael Gauvreau (Drums & Vocals)\, and Shye Gilad (Guitar\, Bass\, & Vocals).
-URL:https://vanishbeer.com/event/allsk8/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/10/653826309_122168172680852586_2225526948757186870_n.jpg
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261010T170000
-DTEND;TZID=America/New_York:20261010T200000
-DTSTAMP:20260329T104513Z
-CREATED:20221217T135813Z
-LAST-MODIFIED:20260329T104513Z
-UID:10001147-1791651600-1791662400@vanishbeer.com
-SUMMARY:Coldstream
-DESCRIPTION:Coldstream is a Classic Rock\, Country\, and Blues band from New Market\, Maryland.  The band brings their flare and style to the classics you know and love\, plus some pop tunes you will surely recognize. The band brings a love for entertainment that shows in every performance. Come check out Coldstream you will not be disappointed. Rich – lead vocals\, guitar\, Derek – guitar and background vocals\, Pete – bass guitar\, Melissa – lead vocals\, Cisco – drums\, background vocals
-URL:https://vanishbeer.com/event/coldstream/2026-10-10/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2022/12/image.png
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261011T130000
 DTEND;TZID=America/New_York:20261011T160000
 DTSTAMP:20260604T003106Z
@@ -466,5 +438,33 @@ URL:https://vanishbeer.com/event/two-for-the-road/2026-11-29/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2024/09/two.jpeg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261205T130000
+DTEND;TZID=America/New_York:20261205T160000
+DTSTAMP:20260902T111113Z
+CREATED:20260429T112123Z
+LAST-MODIFIED:20260902T111113Z
+UID:10001232-1796475600-1796486400@vanishbeer.com
+SUMMARY:Virginia Hipnecks
+DESCRIPTION:We’re a five-piece band of experienced musicians playing classic rock and roots-oriented music primarily from the late ’60s and ’70s\, along with a few later songs that share the same spirit.
+URL:https://vanishbeer.com/event/virginia-hipnecks/2026-12-05/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/04/vah.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261205T170000
+DTEND;TZID=America/New_York:20261205T200000
+DTSTAMP:20260902T111256Z
+CREATED:20251104T124218Z
+LAST-MODIFIED:20260902T111256Z
+UID:10001233-1796490000-1796500800@vanishbeer.com
+SUMMARY:340 West Band- Christmas Show
+DESCRIPTION:Stephen Hebert is the lead singer and founder of The 340 West band. The band was first formed in 2007 with various musicians and different styles of country music. Stephen worked for years to get the right blend of like-minded musicians together to play the traditional country music that he loves so much.
+URL:https://vanishbeer.com/event/340-west-band/2026-12-05/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2025/11/34west-scaled.jpg
 END:VEVENT
 END:VCALENDAR
