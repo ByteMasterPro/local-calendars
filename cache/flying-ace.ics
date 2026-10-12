@@ -88,21 +88,6 @@ DTSTART:20271107T050000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261011T140000
-DTEND;TZID=America/New_York:20261011T170000
-DTSTAMP:20261007T170042Z
-CREATED:20261007T162758Z
-LAST-MODIFIED:20261007T170042Z
-UID:13420-1791727200-1791738000@flyingacefarm.com
-SUMMARY:Live Music featuring Lenny Burridge at Flying Ace Farm
-DESCRIPTION:LIVE MUSIC FEATURING LENNY BURRIDGE AT FLYING ACE FARM\nJoin us for live music on Sunday\, October 11th\, from 2-5pm\, featuring Lenny Burridge at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Sunday\, October 11th\, from 2–5 PM\, featuring Northern Virginia musician Lenny Burridge. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nAbout Lenny Burridge:\nI am a musician from Charleston SC and the Washington\, DC area and have been playing upwards of 300 gigs a year for more than 18 years. I play a wide variety of musical styles\, ranging from blues and jazz standards to current radio hits and alternative. I pride myself on connecting with an audience and customizing my show to hold their interest. For the last 18 years I have played up and down the east coast. I have played wineries and weddings\, breweries and bars\, festivals and corporate events! I am at home playing Irish music in a pub\, romantic music by the fire at a winery or formal restaurant\, or blues at a festival opening for national acts. \nTo learn more about Lenny Burridge\, visit his official website \nBe sure to check out our full Live Music Schedule to see all upcoming performances at Flying Ace Farm. \n \n \n 
-URL:https://flyingacefarm.com/calendar/live-music-lenny-burridge/
-LOCATION:Flying Ace Farm
-CATEGORIES:Family,Free Event,Live Music
-ATTACH;FMTTYPE=image/webp:https://flyingacefarm.com/wp-content/uploads/2026/10/lenny-burridge.webp
-ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 DTSTAMP:20261007T155945Z
