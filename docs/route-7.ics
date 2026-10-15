@@ -36,7 +36,7 @@ BEGIN:VEVENT
 SUMMARY:Sunday Night Karaoke
 DTSTART;TZID=America/New_York:20261018T190000
 DTEND;TZID=America/New_York:20261018T220000
-DTSTAMP:20261006T211810Z
+DTSTAMP:20261015T100734Z
 UID:sunday-night-karaoke-2026-10-18@route-7
 CATEGORIES:karaoke
 DESCRIPTION:Sunday night karaoke with Songbirds & Sunshine Entertainment.
@@ -49,7 +49,7 @@ BEGIN:VEVENT
 SUMMARY:Sunday Night Karaoke
 DTSTART;TZID=America/New_York:20261101T190000
 DTEND;TZID=America/New_York:20261101T220000
-DTSTAMP:20261006T211810Z
+DTSTAMP:20261015T100734Z
 UID:sunday-night-karaoke-2026-11-01@route-7
 CATEGORIES:karaoke
 DESCRIPTION:Sunday night karaoke with Songbirds & Sunshine Entertainment.
@@ -62,7 +62,7 @@ BEGIN:VEVENT
 SUMMARY:Sunday Night Karaoke
 DTSTART;TZID=America/New_York:20261115T190000
 DTEND;TZID=America/New_York:20261115T220000
-DTSTAMP:20261006T211810Z
+DTSTAMP:20261015T100734Z
 UID:sunday-night-karaoke-2026-11-15@route-7
 CATEGORIES:karaoke
 DESCRIPTION:Sunday night karaoke with Songbirds & Sunshine Entertainment.
@@ -75,7 +75,7 @@ BEGIN:VEVENT
 SUMMARY:Live Music: Felix Pickles
 DTSTART;TZID=America/New_York:20261205T180000
 DTEND;TZID=America/New_York:20261205T200000
-DTSTAMP:20261006T211810Z
+DTSTAMP:20261015T100734Z
 UID:wtm-felix-pickles-2026-12-05@route-7
 CATEGORIES:Live Music
 DESCRIPTION:Blues\, Country\, Pop\, Rock\n\nListing: https://wheresthemusi
@@ -88,11 +88,24 @@ BEGIN:VEVENT
 SUMMARY:Live Music: Laurie Blue Music
 DTSTART;TZID=America/New_York:20261212T180000
 DTEND;TZID=America/New_York:20261212T200000
-DTSTAMP:20261006T211810Z
+DTSTAMP:20261015T100734Z
 UID:wtm-laurie-blue-music-2026-12-12@route-7
 CATEGORIES:Live Music
 DESCRIPTION:Classic Rock\, Rock\n\nListing: https://wheresthemusic.us/venu
  e/route-7-brewing/
+LOCATION:Route 7 Brewing\, 20051 Riverside Commons Plaza
+TRANSP:TRANSPARENT
+URL:https://route7brewing.com/
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Live Music: Dark Blue Moon
+DTSTART;TZID=America/New_York:20261212T180000
+DTEND;TZID=America/New_York:20261212T200000
+DTSTAMP:20261015T100734Z
+UID:wtm-dark-blue-moon-2026-12-12@route-7
+CATEGORIES:Live Music
+DESCRIPTION:Acoustic\, Blues\, Classic Rock\, Originals\, Rock\n\nListing:
+  https://wheresthemusic.us/venue/route-7-brewing/
 LOCATION:Route 7 Brewing\, 20051 Riverside Commons Plaza
 TRANSP:TRANSPARENT
 URL:https://route7brewing.com/
