@@ -49,34 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261017T130000
-DTEND;TZID=America/New_York:20261017T160000
-DTSTAMP:20260423T124216Z
-CREATED:20211206T174910Z
-LAST-MODIFIED:20260423T124216Z
-UID:10001115-1792242000-1792252800@vanishbeer.com
-SUMMARY:Melissa Quinn Fox
-DESCRIPTION:MELISSA QUINN FOX IS A COUNTRY/AMERICANA ARTIST FROM PITTSBURGH\, PA. KNOWN BEST FOR HER STORY-DRIVEN SONGS\, UNIQUE VOCAL TONE\, AND CAPTIVATING LIVE PERFORMANCES.
-URL:https://vanishbeer.com/event/melissa-quinn-fox/2026-10-17/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2021/12/194227936_10159380627901703_3023085066668462784_n.jpg
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261017T170000
-DTEND;TZID=America/New_York:20261017T200000
-DTSTAMP:20260424T111106Z
-CREATED:20250427T120514Z
-LAST-MODIFIED:20260424T111106Z
-UID:10001172-1792256400-1792267200@vanishbeer.com
-SUMMARY:Favorite Child
-DESCRIPTION:Favorite Child blends soulful indie rock with rich three-part harmonies\, soaring guitar\, and keys. Influenced by The Decemberists and Fleetwood Mac\, plus original tunes. \nAmericana Highways Magazine: “Favorite Child’s tight\, energetic performance kept the audience riveted to the action on stage…” 
-URL:https://vanishbeer.com/event/favorite-child/2026-10-17/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2025/04/FavChildBand-0503-scaled.jpg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261018T130000
 DTEND;TZID=America/New_York:20261018T160000
 DTSTAMP:20251203T152901Z
@@ -466,5 +438,33 @@ URL:https://vanishbeer.com/event/curtis-tyler/2026-12-11/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/24974.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261212T130000
+DTEND;TZID=America/New_York:20261212T160000
+DTSTAMP:20260902T111918Z
+CREATED:20260902T111918Z
+LAST-MODIFIED:20260902T111918Z
+UID:10001236-1797080400-1797091200@vanishbeer.com
+SUMMARY:The Vandelays
+DESCRIPTION:Based in the DMV area\, Since October 2010\, The Vandelays have consistently performed live shows that push funk and roll from music of the 60’s —> 00’s —> current hits\, including Latin rock.
+URL:https://vanishbeer.com/event/the-vandelays/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/van.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261212T170000
+DTEND;TZID=America/New_York:20261212T200000
+DTSTAMP:20260902T111521Z
+CREATED:20231214T113104Z
+LAST-MODIFIED:20260902T111521Z
+UID:10001235-1797094800-1797105600@vanishbeer.com
+SUMMARY:As U Wish
+DESCRIPTION:Americana Folk Rock Band you don’t want to miss. Combining harmonies of traditional folk and country music with the energy rhythms of rock music.
+URL:https://vanishbeer.com/event/as-u-wish/2026-12-12/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2023/12/IMG_9933.jpeg
 END:VEVENT
 END:VCALENDAR

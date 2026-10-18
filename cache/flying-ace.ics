@@ -88,33 +88,6 @@ DTSTART:20271107T050000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261018
-DTSTAMP:20261007T155945Z
-CREATED:20261007T154031Z
-LAST-MODIFIED:20261007T155945Z
-UID:13414-1792195200-1792281599@flyingacefarm.com
-SUMMARY:BUSINESS CLOSED TO THE PUBLIC
-DESCRIPTION:CLOSED for a Private Event — Saturday\, October 17\, 2026\nFlying Ace Farm will be CLOSED TO THE PUBLIC on Saturday\, October 17th\, for a private event. We will reopen on Sunday\, October 18th\, for our regular business hours. We apologize for any inconvenience and appreciate your understanding and continued support. We look forward to welcoming you back to the farm on Sunday!\n 
-URL:https://flyingacefarm.com/calendar/business-closed-to-the-general-public/
-LOCATION:Flying Ace Farm
-ATTACH;FMTTYPE=image/png:https://flyingacefarm.com/wp-content/uploads/2026/10/FLYING-ACE-FARM-CLOSED-INSTA-POST.png
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261017T150000
-DTEND;TZID=America/New_York:20261017T180000
-DTSTAMP:20260628T225646Z
-CREATED:20260628T225646Z
-LAST-MODIFIED:20260628T225646Z
-UID:13045-1792249200-1792260000@flyingacefarm.com
-SUMMARY:Live Music w/ John "JP" Jones at Flying Ace Farm
-DESCRIPTION:Live Music featuring John (JP) Jones at Flying Ace Farm\nJoin us on Saturday\, October 17th\, from 3-6PM for live music featuring John “JP” Jones. \nBio:\nI grew up in Lucketts\, Va. I still call Loudoun County home. Began teaching myself guitar around age 10 using chord books and listening to records. Since then\, music has been a major part of my life- playing at family gatherings\, at church\, weddings and local wineries and breweries. My wife Lori and I have been married 41 years\, We have three grown children and three grandchildren. I am a dedicated husband\, father grandfather\, veteran and a lifelong artist. \nTo learn more about John\, visit his official website \nYou can also view his Instagram page \nTo view our full music line-up\, click on our Calendar of Events \n 
-URL:https://flyingacefarm.com/calendar/live-music-w-john-jp-jones-at-flying-ace-farm-10/
-LOCATION:Flying Ace Farm
-CATEGORIES:Live Music
-ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2023/10/john-jp-jones-pic.jpg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261018T140000
 DTEND;TZID=America/New_York:20261018T170000
 DTSTAMP:20261007T174613Z
