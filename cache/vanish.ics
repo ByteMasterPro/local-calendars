@@ -49,20 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261018T130000
-DTEND;TZID=America/New_York:20261018T160000
-DTSTAMP:20251203T152901Z
-CREATED:20240910T150411Z
-LAST-MODIFIED:20251203T152901Z
-UID:10001089-1792328400-1792339200@vanishbeer.com
-SUMMARY:Eric Zatz
-DESCRIPTION:Local NOVA musician plaing a variety of classic rock\, 80s\, 90s\, and current hits.
-URL:https://vanishbeer.com/event/eric-zatz/2026-10-18/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2024/09/zatz.png
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261023T170000
 DTEND;TZID=America/New_York:20261023T200000
 DTSTAMP:20260901T183108Z
@@ -466,5 +452,19 @@ URL:https://vanishbeer.com/event/as-u-wish/2026-12-12/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2023/12/IMG_9933.jpeg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261213T130000
+DTEND;TZID=America/New_York:20261213T160000
+DTSTAMP:20260902T112100Z
+CREATED:20260603T115634Z
+LAST-MODIFIED:20260902T112100Z
+UID:10001237-1797166800-1797177600@vanishbeer.com
+SUMMARY:Felix Pickles
+DESCRIPTION:Felix Pickles is a popular band from Loudoun County with mandolin and guitar\, playing contemporary rock n roll covers from every genre throughout the Northern Virginia/DMV area. This band is great for all ages and families with an eclectic playlist that has something for everyone and a myriad of musical instruments that keeps audiences hanging around to the very last song.
+URL:https://vanishbeer.com/event/felix-pickles/2026-12-13/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/06/490985605_1361630905001914_4304601391605944177_n.jpg
 END:VEVENT
 END:VCALENDAR

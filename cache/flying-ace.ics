@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Flying Ace Farm - ECPv6.18.1//NONSGML v1.0//EN
+PRODID:-//Flying Ace Farm - ECPv6.18.2//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Flying Ace Farm
@@ -87,21 +87,6 @@ TZNAME:AST
 DTSTART:20271107T050000
 END:STANDARD
 END:VTIMEZONE
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261018T140000
-DTEND;TZID=America/New_York:20261018T170000
-DTSTAMP:20261007T174613Z
-CREATED:20260730T165026Z
-LAST-MODIFIED:20261007T174613Z
-UID:13161-1792332000-1792342800@flyingacefarm.com
-SUMMARY:Live Music featuring "America's Got Talent" contestant Drew Stevyns at Flying Ace Farm
-DESCRIPTION:LIVE MUSIC FEATURING FORMER “AMERICA’S GOT TALENT” CONTESTANT\, DREW STEVYNS\, AT FLYING ACE FARM\nJoin us for live music on Sunday\, October 18th\, from 2-5pm\, featuring former “America’s Got Talent” contestant\, Drew Stevyns\, at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Sunday\, October 18th\, from 2–5 PM\, featuring Drew Stevyns. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nDrew’s Bio: \nPerforming since the age of two\, Drew Stevyns started his career singing in church choirs while growing up in England. After returning to the U.S.\, Drew continued his musical development by taking piano lessons\, writing songs and teaching himself how to play guitar. Drew believes in the purity of music. There is a palpable sadness to his voice that makes his songs impossible to shake\, and the music surges; hard-edged yet beautiful and melodic. He has released three albums: ‘Waiting’ in 2009\, ‘Please Excuse the Machine’ in 2011 and ‘Somewhere in Between’ in 2015. \nDrew’s voice is hypnotic in nature and pulls the listeners close in a unique way that allows the audience to feel what he feels. Listeners are able to connect with his music in a very personal and emotional way that few artists’ are able to achieve. “Every experience you have in life only adds to your repertoire as a musician.” In 2009\, Drew touched the hearts of millions as a TOP 10 finalist on the NBC show ‘America’s Got Talent’. While on the show\, he was fortunate enough to work with top music producers Nigel Wright and Shane Keister. Shortly after the conclusion of ‘America’s Got Talent’\, Drew was asked to endorse a new brand of Paul Reed Smith (PRS) guitars which resulted in a showcase performance with his band at the famous ‘Whisky A Go-Go’. Drew has shared the stage with Grammy-winning singer-songwriter\, Thelma Houston\, The Charlie Daniels Band\, Josh Doyle\, Shelly Rann and Sarah Lou Richards. His song ‘Waiting’ placed 3rd in the International Songwriting Competition. \nIn 2010\, Drew was asked to perform at the Lyric Opera House in Baltimore raising money for the Artists for Amy Foundation. Additionally\, he was invited by ‘Artist to the Stars’ Corey Frizzell to perform at the ‘Lyrics for Lyric’ Benefit in Nashville to support Childhood Cancer Research. Drew has been the headlining artist for the veteran’s organization\, United Soldiers and Sailors of America (USASOA) and has performed at their Washington DC gala since 2013. \nDrew’s talent has not gone unnoticed; he has graced the stages of such notable venues and events as The National Cherry Blossom Festival\, The Towsontowne Festival\, The Rehoboth Beach Concert Series\, 12th and Porter\, Margaritaville\, The Hollywood Casino\, The Hard Rock Café\, The Chico and Bman Show\, Baltimore’s famous New Year’s Eve Celebration\, ‘Charm City Countdown’ and more. His music has been featured on a variety of radio stations throughout the country. \nRecently\, Drew was asked by Emmy award winning and Grammy nominated songwriter\, Greg Barnhill\, to join him in Nashville where they co-wrote several songs. Drew teamed up with Steve Silverman who commissioned him to record and perform the theme song for the internet show\, ‘Pretty\, The Series’ and in 2015 his music was featured on the hit television series\, ‘Rizzoli and Isles’. In 2016\, the ‘Song of the Year’ Songwriting Contest awarded Drew a Semi-Finalist placement for his song ‘Demands’. The ‘Song of the Year’ Contest receives entries from all over the world and only the top songwriters receive this honor. \nFor the past eleven years Drew has worked with legendary producer and engineer\, Scott Ensign of Obscura Sound in Baltimore. Drew credits Scott’s talents to the success of all three of his albums and continues to trust his skills on a variety of other musical collaborations. Drew and Scott were honored to be chosen by songwriter\, Ron Ryan to record and produce both the Carolina Panthers cheer songs\, ‘We Won’t Be Stopped’ and ‘Panther Fever’ which played in the stadium during their 2015-16 season. \nDrew Stevyns has made a name for himself regionally\, nationally\, and internationally and his popularity continues to grow through a wide range of fans worldwide. “I am extremely flattered and humbled. I really couldn’t ask for anything more.” \nTo learn more about Drew Stevyns\, visit his official website. You can also check him out on official YouTube page. \nBe sure to check out our full Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n 
-URL:https://flyingacefarm.com/calendar/live-music-stevyns/
-LOCATION:Flying Ace Farm
-CATEGORIES:Family,Free Event,Live Music
-ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2024/10/IMG_0972.jpg
-ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
-END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261025T140000
 DTEND;TZID=America/New_York:20261025T170000
