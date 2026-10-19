@@ -211,7 +211,7 @@ digest:
     # anything matching `pattern` (rank 1). Nothing pads a quiet week - one or two picks is fine,
     # and the ordinary stuff still appears in its own section.
     limit: 8
-    pattern: "fair\\b|festival|fest\\w*|carnival|jubilee|parade|fireworks|air ?show|hallowe\\w*|trunk.or.treat|trick.or.treat|pumpkin|harvest|hayride|corn maze|oktober|german|holiday|christmas|santa|tree lighting|thanksgiving|movie|petting zoo|anniversary|touch a truck|egg hunt|block party|craft fair|bazaar|monster mash"
+    pattern: "fair\\b|festival|fest\\w*|carnival|jubilee|parade|fireworks|air ?show|hallowe\\w*|trunk.or.treat|trick.or.treat|pumpkin|harvest|hayride|corn maze|oktober|german|holiday|christmas|santa|tree lighting|thanksgiving|movie|screening|on screen|petting zoo|anniversary|touch a truck|egg hunt|block party|craft fair|bazaar|monster mash|monster|haunt|spooky|costume|trunk or treat|bark bash"
     icons:                                 # first match wins, title first then description; no match = no icon
       - {match: "hallowe\\w*|haunt|spooky|ghost|zombie|fields of fear|trick.or.treat|trunk.or.treat|costume|fright|monster|witch|vampire|boo\\b", icon: "👻"}
       - {match: "fall ?fest\\w*|autumn fest\\w*|harvest fest\\w*|fallfest|\\bfall festival", icon: "🍁"}

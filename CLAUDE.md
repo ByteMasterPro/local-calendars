@@ -98,6 +98,11 @@ Nothing is promoted to pad a quiet week - he removed a "filler" tier on 2026-10-
 card should stay focused on his preferences "even if only 1 or 2 things show up"; mundane events
 belong in Local Breweries and the other sections, which list them anyway.
 
+**Qualifying for Top Picks matches the TITLE only**, as does seasonal rank 0: a blurb-only
+match ranks lower instead. Vanish's "Frayed Knots" bio says they are "a local favourite at
+festivals", which `fest\w*` read as a festival and which pushed the Monster Mash out of a
+Halloween-week card (found 2026-10-19). A blurb match is not lost, just not marquee.
+
 **Exclusions match the TITLE only** (`query.title_haystack`), not the blurb. Matching the
 description cost a whole event: White's Ferry's Leesburg Fall Festival mentions "20% off wine
 flights", which the `\d+% off` rule read as a discount night and dropped from the week. An event

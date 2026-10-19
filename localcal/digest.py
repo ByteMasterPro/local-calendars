@@ -168,11 +168,19 @@ def breweries_select(rows, c, w: Window) -> dict:
     music_rx = re.compile(c["fallback"], re.I) if c.get("fallback") else None
     limit = int(c.get("limit", 20))
 
+    def is_seasonal(r) -> bool:
+        """Seasonal enough to be a highlight: the TITLE says so. A band whose bio mentions
+        playing "festivals" is not a festival, and matching blurbs made one outrank a Monster
+        Mash. A blurb-only match still counts as a special below, so nothing is lost."""
+        return bool(seasonal_rx and seasonal_rx.search(query.title_haystack(r)))
+
     def rank(r) -> int:
-        if seasonal_rx and query.matches(r, seasonal_rx):
+        if is_seasonal(r):
             return 0
         if special_rx and query.matches(r, special_rx):
             return 1
+        if seasonal_rx and query.matches(r, seasonal_rx):
+            return 1                                    # seasonal only in the blurb
         if music_rx and query.matches(r, music_rx):
             return 2
         return 3
@@ -180,7 +188,7 @@ def breweries_select(rows, c, w: Window) -> dict:
     def pick(pool, cap):
         collapsed = _collapse(pool)
         kept = sorted(sorted(collapsed, key=lambda r: r["_sort"]), key=rank)[:cap]
-        return sorted(kept, key=lambda r: r["_sort"]), [r for r in collapsed if rank(r) == 0]
+        return sorted(kept, key=lambda r: r["_sort"]), [r for r in collapsed if is_seasonal(r)]
 
     pool = _select(rows, kinds=kinds, start=w.start, end=w.end, now=w.now, exclude=c.get("exclude"))
     running = _collapse([r for r in pool if r.get("_ongoing")])
@@ -188,7 +196,7 @@ def breweries_select(rows, c, w: Window) -> dict:
     # A month-long seasonal thing is still a highlight every week it runs, even though the
     # section mentions it in one line rather than listing it again.
     if seasonal_rx:
-        seasonal = seasonal + [r for r in running if query.matches(r, seasonal_rx)]
+        seasonal = seasonal + [r for r in running if seasonal_rx.search(query.title_haystack(r))]
     shown = {r["summary"].lower() for r in this + running}
     # highlights: seasonal and the named-favourite kinds, never routine music
     nxt_pool = _select(rows, kinds=kinds, start=w.next_start, end=w.next_end, now=None, exclude=c.get("exclude"))
@@ -256,7 +264,7 @@ def top_picks(F, B, T, c, w: Window) -> list[dict]:
         for r in src:
             if _key(r) in routine:
                 continue                                    # weekly tenant promotions are never highlights
-            if rx and query.matches(r, rx):
+            if rx and rx.search(query.title_haystack(r)):
                 offer(r, 1)
 
     ranked = sorted(cands.values(), key=lambda pair: (pair[0], pair[1]["_sort"]))

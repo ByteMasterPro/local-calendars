@@ -682,3 +682,39 @@ def test_repo_village_calendar_is_configured_and_parses():
     assert mash.start.isoformat() == "2026-10-24T13:00:00-04:00" and mash.end.hour == 17
     assert "costume contest" in mash.description.lower()
     assert all("routine" in e.categories for e in events if e.rrule)      # the weekly ones are tagged
+
+
+def test_a_band_whose_bio_mentions_festivals_is_not_a_festival():
+    """Frayed Knots' blurb says they are "a local favourite at festivals"; that matched fest\\w*
+    and ranked a cover band above the Monster Mash in Top Picks."""
+    band = row("Frayed Knots", "2026-10-24T13:00:00-04:00", "2026-10-24T16:00:00-04:00", calendar="vanish",
+               desc="They've become a local favorite at festivals, bars, and private events across Northern Virginia.")
+    honorfest = row("Honorfest", "2026-10-24T11:00:00-04:00", "2026-10-24T23:00:00-04:00", calendar="chilly")
+    w = digest.week_window(date(2026, 10, 19), datetime(2026, 10, 19, 9, tzinfo=timezone.utc))   # holds Oct 24
+    B = digest.breweries_select([band, honorfest], CFG.digest["sections"]["breweries"], w)
+    assert names(B["seasonal"]) == ["Honorfest"]               # the title decides
+    assert "Frayed Knots" in names(B["this"])                  # still listed in its section
+
+
+def test_top_picks_qualify_on_the_title_not_the_blurb():
+    band = row("Frayed Knots", "2026-10-24T13:00:00-04:00", "2026-10-24T16:00:00-04:00", calendar="vanish",
+               desc="A local favorite at festivals and private events.")
+    mash = row("Monster Mash 2026", "2026-10-24T13:00:00-04:00", "2026-10-24T17:00:00-04:00", calendar="village",
+               kind="town", desc="Pumpkin carving and trick-or-treating.")
+    B = {"this": [band], "seasonal": [], "running": []}
+    T = {"this": [mash], "running": [], "routine": set()}
+    picks = digest.top_picks(None, B, T, {"pattern": "festival|monster mash", "limit": 8}, W_MON)
+    assert names(picks) == ["Monster Mash 2026"]
+
+
+def test_repo_top_pick_pattern_catches_this_seasons_titles():
+    import re
+    from localcal.model import load_config
+    cfg = load_config(Path(__file__).resolve().parent.parent / "config" / "calendars.yaml")
+    rx = re.compile(cfg.digest["top_picks"]["pattern"], re.I)
+    for title in ("Monster Mash 2026", "Haunted Happenings", "8th Annual Halloween Bark Bash",
+                  "Revolution on Screen: Sleepy Hollow (1999)", "Downtown Trick or Treating",
+                  "Freaky Friday, Movie Night on the Lawn"):
+        assert rx.search(title), title
+    for title in ("Frayed Knots", "Live Music: Mack Berry", "Car Cruise-In"):
+        assert not rx.search(title), title
