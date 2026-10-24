@@ -49,20 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261023T170000
-DTEND;TZID=America/New_York:20261023T200000
-DTSTAMP:20260901T183108Z
-CREATED:20260901T183108Z
-LAST-MODIFIED:20260901T183108Z
-UID:10001218-1792774800-1792785600@vanishbeer.com
-SUMMARY:Tony Wilkins
-DESCRIPTION:Local DMV musician Tony Wilkins of the band Undertone puts his own unique spin on a mixed genre of some of your favorite acoustic covers along with some of his own original songs.
-URL:https://vanishbeer.com/event/tony-wilkins/2026-10-23/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/att.KbG9kgHOwRCNGQxU3F6nCANDKJdO6MVgF7l1DzseR4I.jpeg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261024T130000
 DTEND;TZID=America/New_York:20261024T160000
 DTSTAMP:20260328T130934Z
@@ -466,5 +452,19 @@ URL:https://vanishbeer.com/event/felix-pickles/2026-12-13/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/06/490985605_1361630905001914_4304601391605944177_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261218T170000
+DTEND;TZID=America/New_York:20261218T200000
+DTSTAMP:20260902T105312Z
+CREATED:20260901T184150Z
+LAST-MODIFIED:20260902T105312Z
+UID:10001231-1797613200-1797624000@vanishbeer.com
+SUMMARY:Jeremy Fox
+DESCRIPTION:A local country and classic rock musician who has been playing all over NOVA since 2021. Come and support local\, live music tonight.
+URL:https://vanishbeer.com/event/jeremy-fox-2/2026-12-18/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/274675129_5004718322904471_9186554901387402027_n.jpg
 END:VEVENT
 END:VCALENDAR
