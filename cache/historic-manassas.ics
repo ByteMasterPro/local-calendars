@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Historic Manassas, Inc - ECPv6.18.1//NONSGML v1.0//EN
+PRODID:-//Historic Manassas, Inc - ECPv6.18.2//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Historic Manassas, Inc
@@ -77,220 +77,6 @@ DESCRIPTION:Stay active and connected this fall with a variety of programs for t
 URL:https://historicmanassas.org/event/city-of-manassas-community-center-fall-programs/
 LOCATION:City of Manassas Community Center\, 8750 Sudley Road\, Manassas\, VA\, 20110\, United States
 ORGANIZER;CN="City of Manassas Parks%2C Culture &amp%3Bamp%3B Recreation":MAILTO:pcr@manassasva.gov
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261015T080000
-DTEND;TZID=America/New_York:20261015T130000
-DTSTAMP:20260406T224519Z
-CREATED:20260406T224519Z
-LAST-MODIFIED:20260406T224519Z
-UID:10006310-1792051200-1792069200@historicmanassas.org
-SUMMARY:Historic Manassas Farmers Market (Thursdays)
-DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA
-URL:https://historicmanassas.org/event/historic-manassas-farmers-market-thursdays/2026-10-15/
-LOCATION:Harris Pavilion @ 9201 Center St\, Manassas\, VA 20110\, USA\, Manassas\, VA\, United States
-CATEGORIES:Family Friendly,Farmers' Market
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
-GEO:38.7509488;-77.4752667
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261015T180000
-DTEND;TZID=America/New_York:20261015T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006568-1792087200-1792094400@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-15/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261015T190000
-DTEND;TZID=America/New_York:20261015T210000
-DTSTAMP:20260812T163314Z
-CREATED:20260812T163314Z
-LAST-MODIFIED:20260812T163314Z
-UID:10006526-1792090800-1792098000@historicmanassas.org
-SUMMARY:Factory of Fear - Outbreak
-DESCRIPTION:A deadly outbreak has consumed the once-thriving ARTfactory\, transforming its four floors into a nightmare of infection\, chaos\, and survival. As emergency systems fail and the virus spreads unchecked\, visitors must navigate dark corridors\, abandoned laboratories\, and quarantined work spaces overrun by grotesque mutations and desperate survivors. Every level reveals a new stage of the catastrophe\, drawing guests deeper into the heart of the outbreak. The only question is whether you’ll escape the Factory of Fear—or become part of it.\n\nPatrons can receive $3 off admission on Thursday\, October 15 and 22. Enter code THURSDAYSCARIES at checkout. All proceeds benefit ARTfactory.
-URL:https://historicmanassas.org/event/factory-of-fear-outbreak/2026-10-15/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Halloween
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/07/Factory-2026-TICKET-GRAPHIC.png
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261016T180000
-DTEND;TZID=America/New_York:20261016T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006569-1792173600-1792180800@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-16/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261016T190000
-DTEND;TZID=America/New_York:20261016T223000
-DTSTAMP:20260812T163314Z
-CREATED:20260812T163314Z
-LAST-MODIFIED:20260812T163314Z
-UID:10006527-1792177200-1792189800@historicmanassas.org
-SUMMARY:Factory of Fear - Outbreak
-DESCRIPTION:A deadly outbreak has consumed the once-thriving ARTfactory\, transforming its four floors into a nightmare of infection\, chaos\, and survival. As emergency systems fail and the virus spreads unchecked\, visitors must navigate dark corridors\, abandoned laboratories\, and quarantined work spaces overrun by grotesque mutations and desperate survivors. Every level reveals a new stage of the catastrophe\, drawing guests deeper into the heart of the outbreak. The only question is whether you’ll escape the Factory of Fear—or become part of it.\n\nPatrons can receive $3 off admission on Thursday\, October 15 and 22. Enter code THURSDAYSCARIES at checkout. All proceeds benefit ARTfactory.
-URL:https://historicmanassas.org/event/factory-of-fear-outbreak/2026-10-16/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Halloween
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/07/Factory-2026-TICKET-GRAPHIC.png
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261016T200000
-DTEND;TZID=America/New_York:20261016T220000
-DTSTAMP:20260824T224656Z
-CREATED:20260824T224656Z
-LAST-MODIFIED:20260824T224656Z
-UID:10006536-1792180800-1792188000@historicmanassas.org
-SUMMARY:Man of La Mancha - Manassas
-DESCRIPTION:Join us for a captivating evening at the "Man of La Mancha - Manassas\," where the enchanting tale of Don Quixote comes to life on stage! Set in the intimate atmosphere of the Gregory Family Theater At Hylton Performing Arts Center\, this musical promises to transport you to a world of adventure\, dreams\, and the timeless quest for chivalry. With its stunning performances and heartfelt melodies\, you'll find yourself swept away by the magic of this classic story. \nDon't miss your chance to experience this unforgettable production in the charming city of Manassas\, Virginia. Gather your friends and family for a night filled with laughter\, inspiration\, and a little bit of whimsy. Book your tickets now and be part of this extraordinary theatrical journey!
-URL:https://historicmanassas.org/event/man-of-la-mancha-manassas-5/
-LOCATION:Gregory Family Theater At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Theater
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/08/Man-Of-La-Mancha-3.jpg
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261017T080000
-DTEND;TZID=America/New_York:20261017T130000
-DTSTAMP:20260630T205410Z
-CREATED:20260406T225222Z
-LAST-MODIFIED:20260630T205410Z
-UID:10006370-1792224000-1792242000@historicmanassas.org
-SUMMARY:Historic Manassas Farmers Market (Saturdays)
-DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
-URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2026-10-17/
-LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
-CATEGORIES:Family Friendly,Farmers' Market
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261017T140000
-DTEND;TZID=America/New_York:20261017T160000
-DTSTAMP:20260824T224408Z
-CREATED:20260824T224408Z
-LAST-MODIFIED:20260824T224408Z
-UID:10006537-1792245600-1792252800@historicmanassas.org
-SUMMARY:Man of La Mancha - Manassas
-DESCRIPTION:Join us for a magical evening at the Gregory Family Theater At Hylton Performing Arts Center as we present "Man of La Mancha - Manassas." This beloved musical transports you to a world of dreams and chivalry\, where the noble Don Quixote embarks on a quest to revive the age of knights. The intimate atmosphere of the theater enhances the emotional depth of the story\, making it a perfect setting for this timeless tale of hope and adventure. \nDon't miss your chance to experience the captivating performances and stirring melodies that have enchanted audiences for decades. Gather your friends and family for a night filled with laughter\, inspiration\, and unforgettable moments. Secure your seats now for "Man of La Mancha - Manassas" and be part of this extraordinary theatrical journey!
-URL:https://historicmanassas.org/event/man-of-la-mancha-manassas/
-LOCATION:Gregory Family Theater At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Theater
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/08/Man-Of-La-Mancha-4.jpg
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261017T180000
-DTEND;TZID=America/New_York:20261017T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006570-1792260000-1792267200@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-17/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261017T190000
-DTEND;TZID=America/New_York:20261017T210000
-DTSTAMP:20260824T224651Z
-CREATED:20260824T224651Z
-LAST-MODIFIED:20260824T224651Z
-UID:10006540-1792263600-1792270800@historicmanassas.org
-SUMMARY:Man of La Mancha - Manassas
-DESCRIPTION:Join us for an unforgettable evening as "Man of La Mancha - Manassas" takes the stage at the Gregory Family Theater At Hylton Performing Arts Center! This beloved musical brings to life the timeless tale of Don Quixote\, blending humor\, heart\, and a touch of whimsy in a vibrant atmosphere that will leave you inspired. The intimate setting of the theater enhances the emotional depth of the performance\, making it a perfect outing for friends\, family\, or a romantic night out. \nExperience the magic of live theater in Manassas\, Virginia\, where the passion of the performers will transport you to a world of dreams and adventure. Don't miss your chance to witness this classic story unfold right before your eyes! Grab your tickets now and be part of a night filled with music\, laughter\, and unforgettable memories.
-URL:https://historicmanassas.org/event/man-of-la-mancha-manassas-4/
-LOCATION:Gregory Family Theater At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Theater
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/08/Man-Of-La-Mancha-5.jpg
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261017T190000
-DTEND;TZID=America/New_York:20261017T223000
-DTSTAMP:20260812T163314Z
-CREATED:20260812T163314Z
-LAST-MODIFIED:20260812T163314Z
-UID:10006528-1792263600-1792276200@historicmanassas.org
-SUMMARY:Factory of Fear - Outbreak
-DESCRIPTION:A deadly outbreak has consumed the once-thriving ARTfactory\, transforming its four floors into a nightmare of infection\, chaos\, and survival. As emergency systems fail and the virus spreads unchecked\, visitors must navigate dark corridors\, abandoned laboratories\, and quarantined work spaces overrun by grotesque mutations and desperate survivors. Every level reveals a new stage of the catastrophe\, drawing guests deeper into the heart of the outbreak. The only question is whether you’ll escape the Factory of Fear—or become part of it.\n\nPatrons can receive $3 off admission on Thursday\, October 15 and 22. Enter code THURSDAYSCARIES at checkout. All proceeds benefit ARTfactory.
-URL:https://historicmanassas.org/event/factory-of-fear-outbreak/2026-10-17/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Halloween
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/07/Factory-2026-TICKET-GRAPHIC.png
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261018T140000
-DTEND;TZID=America/New_York:20261018T160000
-DTSTAMP:20260916T145353Z
-CREATED:20260916T145353Z
-LAST-MODIFIED:20260916T145353Z
-UID:10006546-1792332000-1792339200@historicmanassas.org
-SUMMARY:Man of La Mancha - Manassas
-DESCRIPTION:Join us for an unforgettable evening as the enchanting "Man of La Mancha - Manassas" takes the stage at the Gregory Family Theater At Hylton Performing Arts Center! Set against the backdrop of the charming city of Manassas\, Virginia\, this beloved musical invites you to journey alongside the dreamer Don Quixote as he battles the mundane with his vivid imagination. The intimate atmosphere of the theater enhances the emotional depth of the story\, making it a perfect setting for this timeless tale of hope and adventure. \nPrepare to be swept away by the powerful performances and stirring music that have captivated audiences for generations. Whether you're a longtime fan or new to the world of musical theatre\, this production promises to inspire and entertain. Don’t miss your chance to experience "Man of La Mancha - Manassas" live—book your tickets now and be part of this magical evening!
-URL:https://historicmanassas.org/event/man-of-la-mancha-manassas-7/
-LOCATION:Gregory Family Theater At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Theater
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/Man-Of-La-Mancha.jpg
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261018T180000
-DTEND;TZID=America/New_York:20261018T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006571-1792346400-1792353600@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-18/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261019T180000
-DTEND;TZID=America/New_York:20261019T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006572-1792432800-1792440000@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-19/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261020T180000
-DTEND;TZID=America/New_York:20261020T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006573-1792519200-1792526400@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-20/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
 END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261021T180000
@@ -479,6 +265,223 @@ DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Satu
 URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-27/
 LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
 ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261028T180000
+DTEND;TZID=America/New_York:20261028T200000
+DTSTAMP:20260924T173245Z
+CREATED:20260924T173245Z
+LAST-MODIFIED:20260924T173245Z
+UID:10006581-1793210400-1793217600@historicmanassas.org
+SUMMARY:Patient Zero: An Exhibition
+DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
+URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-28/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261029T080000
+DTEND;TZID=America/New_York:20261029T130000
+DTSTAMP:20260406T224519Z
+CREATED:20260406T224519Z
+LAST-MODIFIED:20260406T224519Z
+UID:10006312-1793260800-1793278800@historicmanassas.org
+SUMMARY:Historic Manassas Farmers Market (Thursdays)
+DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA
+URL:https://historicmanassas.org/event/historic-manassas-farmers-market-thursdays/2026-10-29/
+LOCATION:Harris Pavilion @ 9201 Center St\, Manassas\, VA 20110\, USA\, Manassas\, VA\, United States
+CATEGORIES:Family Friendly,Farmers' Market
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+GEO:38.7509488;-77.4752667
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261029T180000
+DTEND;TZID=America/New_York:20261029T200000
+DTSTAMP:20260924T173245Z
+CREATED:20260924T173245Z
+LAST-MODIFIED:20260924T173245Z
+UID:10006582-1793296800-1793304000@historicmanassas.org
+SUMMARY:Patient Zero: An Exhibition
+DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
+URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-29/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261030T180000
+DTEND;TZID=America/New_York:20261030T200000
+DTSTAMP:20261009T170408Z
+CREATED:20260924T173245Z
+LAST-MODIFIED:20261009T170408Z
+UID:10006583-1793383200-1793390400@historicmanassas.org
+SUMMARY:Patient Zero: An Exhibition
+DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
+URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-30/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261031T080000
+DTEND;TZID=America/New_York:20261031T130000
+DTSTAMP:20260630T205410Z
+CREATED:20260406T225222Z
+LAST-MODIFIED:20260630T205410Z
+UID:10006372-1793433600-1793451600@historicmanassas.org
+SUMMARY:Historic Manassas Farmers Market (Saturdays)
+DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
+URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2026-10-31/
+LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
+CATEGORIES:Family Friendly,Farmers' Market
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261031T180000
+DTEND;TZID=America/New_York:20261031T200000
+DTSTAMP:20261009T170408Z
+CREATED:20260924T173245Z
+LAST-MODIFIED:20261009T170408Z
+UID:10006584-1793469600-1793476800@historicmanassas.org
+SUMMARY:Patient Zero: An Exhibition
+DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
+URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-31/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261101T180000
+DTEND;TZID=America/New_York:20261101T200000
+DTSTAMP:20261009T170408Z
+CREATED:20260924T173245Z
+LAST-MODIFIED:20261009T170408Z
+UID:10006585-1793556000-1793563200@historicmanassas.org
+SUMMARY:Patient Zero: An Exhibition
+DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
+URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-11-01/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261107T080000
+DTEND;TZID=America/New_York:20261107T130000
+DTSTAMP:20260630T205410Z
+CREATED:20260406T225222Z
+LAST-MODIFIED:20260630T205410Z
+UID:10006373-1794038400-1794056400@historicmanassas.org
+SUMMARY:Historic Manassas Farmers Market (Saturdays)
+DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
+URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2026-11-07/
+LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
+CATEGORIES:Family Friendly,Farmers' Market
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261107T100000
+DTEND;TZID=America/New_York:20261206T170000
+DTSTAMP:20261009T172252Z
+CREATED:20261009T172252Z
+LAST-MODIFIED:20261009T172252Z
+UID:10006959-1794045600-1796576400@historicmanassas.org
+SUMMARY:Solo Art Exhibit\, "3rd Culture: Unseen Threads" by Kwaku Ofori-Yirenyki
+DESCRIPTION:ARTfactory Presents “3rd Culture: Unseen Threads”\, a Solo Exhibition by Kwaku Ofori-Yirenkyi Exploring Family\, Migration\, Memory\, and Identity\n\nOn display: November 7 – December 6\, 2026\nOpening Reception: Saturday\, November 7 | 6:00–8:00 PM\nExhibition programming sponsored by Micron. \nMeet the Artist: Print\, Create & Connect: Saturday\, November 14 | 12:00-5:00 PM \nExhibit Summary\nARTfactory is proud to present “3rd Culture: Unseen Threads” a solo exhibition by artist Kwaku Ofori- Yirenkyi (ABSKU) exploring the intersections of family\, migration\, memory\, and cultural inheritance. \nThrough painting\, fabric\, photography\, relief\, pattern\, and abstraction\, Ofori-Yirenkyi traces the unseen connections between Ghanaian heritage and contemporary American cultural influences\, revealing how identity evolves across generations. \nThe faceless black figures in his compositions shift attention away from individual likeness and toward presence—gesture\, relationships\, clothing\, symbols\, and the ways people carry one another. Kente and Ankara textiles\, Adinkra symbols\, family imagery\, and Ghanaian cultural references exist alongside contemporary abstraction and Western influences. \nAcross the exhibition\, abstract fields of pattern and symbol gradually give way to more specific relationships\, places\, and family histories. This evolution reflects the artist’s understanding of 3rd Culture: traditional Ghanaian and contemporary Western cultures do not simply exist side by side. Through migration\, assimilation\, inheritance\, and lived experience\, they become interwoven into something new. \nThe unseen threads are what remain connected through that transformation—family\, ancestry\, memory\, values\, culture\, and belonging. The work asks not only what we inherit\, but what we change\, what we carry forward\, and what we ultimately make our own.\n\nAbout the Artist\nKwaku Ofori-Yirenkyi\, also known as ABSKU\, is a Ghanaian American visual artist based in Virginia whose work explores migration\, cultural memory\, identity\, and belonging through the lens of the African diaspora. Born in Ghana and raised in the United States\, he draws on Ghanaian textiles\, Adinkra symbolism\, family narratives\, and personal and collective memory. Working primarily in painting and mixed media\, ABSKU combines acrylic\, oil pastel\, fabric\, collage\, and sculptural materials to create layered works that examine how culture and identity are inherited\, carried\, and transformed across generations. \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery | 9419 Battle St\, Manassas\, VA 20110\n703.330.2787 | jexum@virginiaARTfactory.org | https://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
+URL:https://historicmanassas.org/event/solo-art-exhibit-3rd-culture-unseen-threads-by-kwaku-ofori-yirenyki/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/10/Where-Faith-Took-Root_Year-2026_KwakuOforiYirenkyi_Size-40x34-2-scaled.jpg
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261107T180000
+DTEND;TZID=America/New_York:20261107T200000
+DTSTAMP:20261009T163134Z
+CREATED:20261009T163134Z
+LAST-MODIFIED:20261009T163134Z
+UID:10006957-1794074400-1794081600@historicmanassas.org
+SUMMARY:Opening Reception\, “3rd Culture: Unseen Threads” by Kwaku Ofori-Yirenkyi
+DESCRIPTION:ARTfactory Presents “3rd Culture: Unseen Threads”\, a Solo Exhibition by Kwaku Ofori-Yirenkyi Exploring Family\, Migration\, Memory\, and Identity\n\nOn display: November 7 – December 6\, 2026\nOpening Reception: Saturday\, November 7 | 6:00–8:00 PM\nExhibition programming sponsored by Micron. \nMeet the Artist: Print\, Create & Connect: Saturday\, November 14 | 12:00-5:00 PM \nExhibit Summary\nARTfactory is proud to present “3rd Culture: Unseen Threads” a solo exhibition by artist Kwaku Ofori- Yirenkyi (ABSKU) exploring the intersections of family\, migration\, memory\, and cultural inheritance. \nThrough painting\, fabric\, photography\, relief\, pattern\, and abstraction\, Ofori-Yirenkyi traces the unseen connections between Ghanaian heritage and contemporary American cultural influences\, revealing how identity evolves across generations. \nThe faceless black figures in his compositions shift attention away from individual likeness and toward presence—gesture\, relationships\, clothing\, symbols\, and the ways people carry one another. Kente and Ankara textiles\, Adinkra symbols\, family imagery\, and Ghanaian cultural references exist alongside contemporary abstraction and Western influences. \nAcross the exhibition\, abstract fields of pattern and symbol gradually give way to more specific relationships\, places\, and family histories. This evolution reflects the artist’s understanding of 3rd Culture: traditional Ghanaian and contemporary Western cultures do not simply exist side by side. Through migration\, assimilation\, inheritance\, and lived experience\, they become interwoven into something new. \nThe unseen threads are what remain connected through that transformation—family\, ancestry\, memory\, values\, culture\, and belonging. The work asks not only what we inherit\, but what we change\, what we carry forward\, and what we ultimately make our own.\n\nAbout the Artist\nKwaku Ofori-Yirenkyi\, also known as ABSKU\, is a Ghanaian American visual artist based in Virginia whose work explores migration\, cultural memory\, identity\, and belonging through the lens of the African diaspora. Born in Ghana and raised in the United States\, he draws on Ghanaian textiles\, Adinkra symbolism\, family narratives\, and personal and collective memory. Working primarily in painting and mixed media\, ABSKU combines acrylic\, oil pastel\, fabric\, collage\, and sculptural materials to create layered works that examine how culture and identity are inherited\, carried\, and transformed across generations. \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery | 9419 Battle St\, Manassas\, VA 20110\n703.330.2787 | jexum@virginiaARTfactory.org | https://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
+URL:https://historicmanassas.org/event/opening-reception-3rd-culture-unseen-threads-by-kwaku-ofori-yirenkyi/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+CATEGORIES:Arts,Featured
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/10/Where-Faith-Took-Root_Year-2026_KwakuOforiYirenkyi_Size-40x34-1-scaled.jpg
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261113T180000
+DTEND;TZID=America/New_York:20261113T200000
+DTSTAMP:20240227T145619Z
+CREATED:20230127T213050Z
+LAST-MODIFIED:20240227T145619Z
+UID:10002645-1794592800-1794600000@historicmanassas.org
+SUMMARY:Sip & Paint
+DESCRIPTION:Bring your friends\, sip some wine\, and enjoy step-by-step instructions to paint your own masterpiece. The first glass of wine or draft beer is included. If you are under 21 a nonalcoholic cafe drink is included.
+URL:https://historicmanassas.org/event/sip-paint/2026-11-13/
+LOCATION:Grounds Central Station\, 9360 Main Street\, Manassas\, VA\, 20110\, United States
+CATEGORIES:Arts,Date Night,Featured
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2023/01/10-1-27-23.jpg
+ORGANIZER;CN="Grounds Central Station":MAILTO:browermt@live.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261114T070000
+DTEND;TZID=America/New_York:20261114T140000
+DTSTAMP:20260831T040024Z
+CREATED:20260831T040024Z
+LAST-MODIFIED:20260831T040024Z
+UID:10006541-1794639600-1794664800@historicmanassas.org
+SUMMARY:ARTfactory 5K and Fun Run: A Frozen Experience
+DESCRIPTION:The ARTfactory 5K: A Frozen Experience is a fun-filled winter-themed race that brings the community together in support of ARTfactory's mission to inspire creativity\, arts education\, and cultural engagement throughout the region. Participants of all ages are invited to run\, walk\, or jog through a festive course featuring icy surprises\, frosty-themed decorations\, and plenty of family-friendly entertainment. We invite you to dress up as your favorite characters and participate in our costume contest!\nWhat makes this event unique is its combination of fitness\, community spirit\, and the arts\, creating a one-of-a-kind experience that celebrates both healthy living and creative expression. Whether you're chasing a personal best or enjoying the fun atmosphere\, the ARTfactory 5K offers an unforgettable frozen adventure for a great cause.\nFee: 5K $40\, Fun Run $15 now through September 30th. Fee increases starting October 1st. Registration open until morning of the race.\nTo register\, visit our website at www.virginiaartfactory.org/5k
+URL:https://historicmanassas.org/event/artfactory-5k-and-fun-run-a-frozen-experience/
+LOCATION:Evergreen Community Club\, 15900 Berkeley Dr\, Haymarket\, VA\, 20169\, United States
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/08/5K-FLYER.png
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261114T080000
+DTEND;TZID=America/New_York:20261114T130000
+DTSTAMP:20260630T205410Z
+CREATED:20260406T225222Z
+LAST-MODIFIED:20260630T205410Z
+UID:10006374-1794643200-1794661200@historicmanassas.org
+SUMMARY:Historic Manassas Farmers Market (Saturdays)
+DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
+URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2026-11-14/
+LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
+CATEGORIES:Family Friendly,Farmers' Market
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261114T120000
+DTEND;TZID=America/New_York:20261114T170000
+DTSTAMP:20260927T203307Z
+CREATED:20260927T203307Z
+LAST-MODIFIED:20260927T203307Z
+UID:10006954-1794657600-1794675600@historicmanassas.org
+SUMMARY:Fall Gallery Walk 2026
+DESCRIPTION:Spend an art-filled afternoon in Old Town Manassas! The streets come alive as downtown businesses host talented artists from various disciplines\, showcasing captivating works of visual art\, including paintings and sculptures.
+URL:https://historicmanassas.org/event/fall-gallery-walk-2026/
+LOCATION:Historic Downtown Manassas\, 9431 West Street\, Manassas\, VA\, 20110\, United States
+CATEGORIES:Arts,Family Friendly
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2025/08/Image-for-gallery-walk.png
+ORGANIZER;CN="Historic Manassas Inc.":MAILTO:info@historicmanassasinc.org
+GEO:38.751032;-77.472527
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Historic Downtown Manassas 9431 West Street Manassas VA 20110 United States;X-APPLE-RADIUS=500;X-TITLE=9431 West Street:geo:-77.472527,38.751032
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261114T120000
+DTEND;TZID=America/New_York:20261114T170000
+DTSTAMP:20261009T163150Z
+CREATED:20261009T163150Z
+LAST-MODIFIED:20261009T163150Z
+UID:10006958-1794657600-1794675600@historicmanassas.org
+SUMMARY:Meet the Artist: Print\, Create & Connect
+DESCRIPTION:“3rd Culture: Unseen Threads”\, a Solo Exhibition by Kwaku Ofori-Yirenkyi Exploring Family\, Migration\, Memory\, and Identity\n\nOn display: November 7 – December 6\, 2026\n\nMeet the Artist: Print\, Create & Connect: Saturday\, November 14 | 12:00-5:00 PM\nJoin artist Kwaku Ofori-Yirenkyi (ABSKU) at ARTfactory for an informal\, hands-on printmaking experience inspired by his exhibition\, 3rd Culture: Unseen Threads. \n\nWatch the artist in action\, try your hand at printmaking\, and connect with Kwaku while exploring the creative process behind his work. \n\n Saturday\, November 14\, 2026 12:00–5:00 PM ARTfactory\nDon't miss this opportunity to print\, create\, and connect with the artist and his work.\n\nExhibit Summary\nARTfactory is proud to present “3rd Culture: Unseen Threads” a solo exhibition by artist Kwaku Ofori- Yirenkyi (ABSKU) exploring the intersections of family\, migration\, memory\, and cultural inheritance.\nThrough painting\, fabric\, photography\, relief\, pattern\, and abstraction\, Ofori-Yirenkyi traces the unseen connections between Ghanaian heritage and contemporary American cultural influences\, revealing how identity evolves across generations. \nThe faceless black figures in his compositions shift attention away from individual likeness and toward presence—gesture\, relationships\, clothing\, symbols\, and the ways people carry one another. Kente and Ankara textiles\, Adinkra symbols\, family imagery\, and Ghanaian cultural references exist alongside contemporary abstraction and Western influences. \nAcross the exhibition\, abstract fields of pattern and symbol gradually give way to more specific relationships\, places\, and family histories. This evolution reflects the artist’s understanding of 3rd Culture: traditional Ghanaian and contemporary Western cultures do not simply exist side by side. Through migration\, assimilation\, inheritance\, and lived experience\, they become interwoven into something new. \nThe unseen threads are what remain connected through that transformation—family\, ancestry\, memory\, values\, culture\, and belonging. The work asks not only what we inherit\, but what we change\, what we carry forward\, and what we ultimately make our own.\n\nAbout the Artist\nKwaku Ofori-Yirenkyi\, also known as ABSKU\, is a Ghanaian American visual artist based in Virginia whose work explores migration\, cultural memory\, identity\, and belonging through the lens of the African diaspora. Born in Ghana and raised in the United States\, he draws on Ghanaian textiles\, Adinkra symbolism\, family narratives\, and personal and collective memory. Working primarily in painting and mixed media\, ABSKU combines acrylic\, oil pastel\, fabric\, collage\, and sculptural materials to create layered works that examine how culture and identity are inherited\, carried\, and transformed across generations. \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery | 9419 Battle St\, Manassas\, VA 20110\n703.330.2787 | jexum@virginiaARTfactory.org | https://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
+URL:https://historicmanassas.org/event/meet-the-artist-print-create-connect/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+CATEGORIES:Arts,Educational
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/10/2.png
 ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
 END:VEVENT
 END:VCALENDAR
