@@ -49,20 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261025T130000
-DTEND;TZID=America/New_York:20261025T160000
-DTSTAMP:20260402T132748Z
-CREATED:20230811T164636Z
-LAST-MODIFIED:20260402T132748Z
-UID:10001163-1792933200-1792944000@vanishbeer.com
-SUMMARY:Hume Frye Duo
-DESCRIPTION:The Hume-Frye Duo features classic rock\, country\, blues\, and eclectic tunes for all ages.
-URL:https://vanishbeer.com/event/hume-frye-duo/2026-10-25/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2023/08/hume.jpeg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261030T170000
 DTEND;TZID=America/New_York:20261030T200000
 DTSTAMP:20260901T184711Z
@@ -466,5 +452,19 @@ URL:https://vanishbeer.com/event/hand-painted-swingers/2026-12-19/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2024/03/18740298_10154463970546456_4137928739083480247_n.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261220T130000
+DTEND;TZID=America/New_York:20261220T160000
+DTSTAMP:20260901T185202Z
+CREATED:20260901T185202Z
+LAST-MODIFIED:20260901T185202Z
+UID:10001226-1797771600-1797782400@vanishbeer.com
+SUMMARY:R&R
+DESCRIPTION:Described as an acoustic jukebox\, R&R are a saxophone and guitar duo who perform unique covers of songs from the 70’s to today. REQUESTS ARE ENCOURAGED! Bring your friends\, drink something delicious\, and tell us your favorite tunes\, because you deserve some R&R!
+URL:https://vanishbeer.com/event/rr/2026-12-20/
+LOCATION:VA
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2026/09/Lake-Photo-2.png
 END:VEVENT
 END:VCALENDAR

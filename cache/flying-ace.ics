@@ -88,21 +88,6 @@ DTSTART:20271107T050000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261025T140000
-DTEND;TZID=America/New_York:20261025T170000
-DTSTAMP:20261007T173819Z
-CREATED:20260628T224729Z
-LAST-MODIFIED:20261007T173819Z
-UID:13041-1792936800-1792947600@flyingacefarm.com
-SUMMARY:Live Music featuring Mike Leverone at Flying Ace Farm
-DESCRIPTION:LIVE MUSIC FEATURING MIKE LEVERONE AT FLYING ACE FARM\nJoin us for live music on Sunday\, October 25th\, from 2-5pm\, featuring Mike Leverone at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Sunday\, October 25th\, from 2–5 PM\, featuring Northern Virginia musician Mike Leverone. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nAbout Mike Leverone\nMike is a veteran of the solo acoustic circuit\, playing a mix of popular songs going back 40 years. He creates and mixes loops from his guitar\, drums and vocals to create a full band sound with energy and a healthy dose of sarcasm and self-effacing. Make a request\, tell him your life story\, Mike is here for it all. \nTo learn more about Britton James\, visit his YouTube page \nBe sure to check out our full Live Music Schedule to see all upcoming performances at Flying Ace Farm. \n \n \n 
-URL:https://flyingacefarm.com/calendar/live-music-mike-leverone/
-LOCATION:Flying Ace Farm
-CATEGORIES:Family,Free Event,Live Music
-ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2025/05/Mike-leverone.jpg
-ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261101T140000
 DTEND;TZID=America/New_York:20261101T170000
 DTSTAMP:20260730T144422Z

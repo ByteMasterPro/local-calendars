@@ -49,23 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20260820T080000
-DTEND;TZID=America/New_York:20261022T130000
-DTSTAMP:20260612T182005Z
-CREATED:20260612T182005Z
-LAST-MODIFIED:20260612T182005Z
-UID:10006498-1787212800-1792674000@historicmanassas.org
-SUMMARY:Summer at the Manassas Museum
-DESCRIPTION:Make history part of your summer! Join the Manassas Museum for open houses\, Hands-on activities\, movies and special programs for all ages. We hope to see you this summer!
-URL:https://historicmanassas.org/event/summer-at-the-manassas-museum/2026-08-20/
-LOCATION:Manassas Museum @ 9101 Prince William St\, Manassas\, VA 20110\, USA\, 9101 Prince William St\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Educational
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/06/English.jpg
-ORGANIZER;CN="City of Manassas Parks%2C Culture &amp%3Bamp%3B Recreation":MAILTO:pcr@manassasva.gov
-GEO:38.732513;-77.473975
-X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Manassas Museum @ 9101 Prince William St Manassas VA 20110 USA 9101 Prince William St Manassas VA 20110 United States;X-APPLE-RADIUS=500;X-TITLE=9101 Prince William St:geo:-77.473975,38.732513
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20260913T000000
 DTEND;TZID=America/New_York:20261114T235959
 DTSTAMP:20260916T145516Z
@@ -77,93 +60,6 @@ DESCRIPTION:Stay active and connected this fall with a variety of programs for t
 URL:https://historicmanassas.org/event/city-of-manassas-community-center-fall-programs/
 LOCATION:City of Manassas Community Center\, 8750 Sudley Road\, Manassas\, VA\, 20110\, United States
 ORGANIZER;CN="City of Manassas Parks%2C Culture &amp%3Bamp%3B Recreation":MAILTO:pcr@manassasva.gov
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261021T180000
-DTEND;TZID=America/New_York:20261021T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006574-1792605600-1792612800@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-21/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261022T080000
-DTEND;TZID=America/New_York:20261022T130000
-DTSTAMP:20260406T224519Z
-CREATED:20260406T224519Z
-LAST-MODIFIED:20260406T224519Z
-UID:10006311-1792656000-1792674000@historicmanassas.org
-SUMMARY:Historic Manassas Farmers Market (Thursdays)
-DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA
-URL:https://historicmanassas.org/event/historic-manassas-farmers-market-thursdays/2026-10-22/
-LOCATION:Harris Pavilion @ 9201 Center St\, Manassas\, VA 20110\, USA\, Manassas\, VA\, United States
-CATEGORIES:Family Friendly,Farmers' Market
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
-GEO:38.7509488;-77.4752667
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261022T180000
-DTEND;TZID=America/New_York:20261022T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006575-1792692000-1792699200@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-22/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261022T190000
-DTEND;TZID=America/New_York:20261022T210000
-DTSTAMP:20260812T163314Z
-CREATED:20260812T163314Z
-LAST-MODIFIED:20260812T163314Z
-UID:10006529-1792695600-1792702800@historicmanassas.org
-SUMMARY:Factory of Fear - Outbreak
-DESCRIPTION:A deadly outbreak has consumed the once-thriving ARTfactory\, transforming its four floors into a nightmare of infection\, chaos\, and survival. As emergency systems fail and the virus spreads unchecked\, visitors must navigate dark corridors\, abandoned laboratories\, and quarantined work spaces overrun by grotesque mutations and desperate survivors. Every level reveals a new stage of the catastrophe\, drawing guests deeper into the heart of the outbreak. The only question is whether you’ll escape the Factory of Fear—or become part of it.\n\nPatrons can receive $3 off admission on Thursday\, October 15 and 22. Enter code THURSDAYSCARIES at checkout. All proceeds benefit ARTfactory.
-URL:https://historicmanassas.org/event/factory-of-fear-outbreak/2026-10-22/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Halloween
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/07/Factory-2026-TICKET-GRAPHIC.png
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261023T180000
-DTEND;TZID=America/New_York:20261023T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006576-1792778400-1792785600@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-23/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261023T190000
-DTEND;TZID=America/New_York:20261023T223000
-DTSTAMP:20260812T163314Z
-CREATED:20260812T163314Z
-LAST-MODIFIED:20260812T163314Z
-UID:10006530-1792782000-1792794600@historicmanassas.org
-SUMMARY:Factory of Fear - Outbreak
-DESCRIPTION:A deadly outbreak has consumed the once-thriving ARTfactory\, transforming its four floors into a nightmare of infection\, chaos\, and survival. As emergency systems fail and the virus spreads unchecked\, visitors must navigate dark corridors\, abandoned laboratories\, and quarantined work spaces overrun by grotesque mutations and desperate survivors. Every level reveals a new stage of the catastrophe\, drawing guests deeper into the heart of the outbreak. The only question is whether you’ll escape the Factory of Fear—or become part of it.\n\nPatrons can receive $3 off admission on Thursday\, October 15 and 22. Enter code THURSDAYSCARIES at checkout. All proceeds benefit ARTfactory.
-URL:https://historicmanassas.org/event/factory-of-fear-outbreak/2026-10-23/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Halloween
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/07/Factory-2026-TICKET-GRAPHIC.png
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
 END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261024T080000
@@ -483,5 +379,105 @@ LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street
 CATEGORIES:Arts,Educational
 ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/10/2.png
 ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261121T080000
+DTEND;TZID=America/New_York:20261121T130000
+DTSTAMP:20260630T205410Z
+CREATED:20260406T225222Z
+LAST-MODIFIED:20260630T205410Z
+UID:10006375-1795248000-1795266000@historicmanassas.org
+SUMMARY:Historic Manassas Farmers Market (Saturdays)
+DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
+URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2026-11-21/
+LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
+CATEGORIES:Family Friendly,Farmers' Market
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261128T080000
+DTEND;TZID=America/New_York:20261128T130000
+DTSTAMP:20260630T205410Z
+CREATED:20260406T225222Z
+LAST-MODIFIED:20260630T205410Z
+UID:10006376-1795852800-1795870800@historicmanassas.org
+SUMMARY:Historic Manassas Farmers Market (Saturdays)
+DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
+URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2026-11-28/
+LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
+CATEGORIES:Family Friendly,Farmers' Market
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261204T170000
+DTEND;TZID=America/New_York:20261204T210000
+DTSTAMP:20260924T173010Z
+CREATED:20260924T173010Z
+LAST-MODIFIED:20260924T173010Z
+UID:10006554-1796403600-1796418000@historicmanassas.org
+SUMMARY:ARTfactory's Holiday Market
+DESCRIPTION:ARTfactory's Holiday Market\n\nJoin us at our Holiday Market for a festive day of shopping\, community\, and holiday cheer! Browse a variety of unique gifts\, seasonal décor\, handmade crafts\, and treats from local vendors while enjoying the warm spirit of the season.\n\nGuests will also have the opportunity to participate in a special raffle giveaway featuring beautifully assembled gift baskets filled with generous donations from local businesses\, organizations\, and community members. Each basket offers an exciting collection of items\, making the raffle a fun way to support the event while having a chance to win wonderful prizes.\nCome celebrate the season with family and friends and help make this holiday gathering a memorable occasion for all.\n\nCurrently Accepting Donations & Vendor Applications\n\nWe are currently accepting donations for our raffle baskets and welcome contributions from local businesses\, organizations\, and community members. Donations may include individual items to be added to a themed basket or an entire completed basket for the raffle. We are also seeking vendors interested in participating in the Holiday Market. If you would like to showcase your products\, crafts\, or services\, vendor applications are now available. Your support and participation help create a festive community event while promoting local businesses and organizations. For more information on donating raffle items or becoming a vendor\, visit https://virginiaartfactory.org/holiday-market/
+URL:https://historicmanassas.org/event/artfactorys-holiday-market/2026-12-04/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/09/Holiday-Market-2026-Tablet-Graphic.png
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261205T080000
+DTEND;TZID=America/New_York:20261205T130000
+DTSTAMP:20260630T205410Z
+CREATED:20260406T225222Z
+LAST-MODIFIED:20260630T205410Z
+UID:10006377-1796457600-1796475600@historicmanassas.org
+SUMMARY:Historic Manassas Farmers Market (Saturdays)
+DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
+URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2026-12-05/
+LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
+CATEGORIES:Family Friendly,Farmers' Market
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261205T100000
+DTEND;TZID=America/New_York:20261205T160000
+DTSTAMP:20260924T173010Z
+CREATED:20260924T173010Z
+LAST-MODIFIED:20260924T173010Z
+UID:10006555-1796464800-1796486400@historicmanassas.org
+SUMMARY:ARTfactory's Holiday Market
+DESCRIPTION:ARTfactory's Holiday Market\n\nJoin us at our Holiday Market for a festive day of shopping\, community\, and holiday cheer! Browse a variety of unique gifts\, seasonal décor\, handmade crafts\, and treats from local vendors while enjoying the warm spirit of the season.\n\nGuests will also have the opportunity to participate in a special raffle giveaway featuring beautifully assembled gift baskets filled with generous donations from local businesses\, organizations\, and community members. Each basket offers an exciting collection of items\, making the raffle a fun way to support the event while having a chance to win wonderful prizes.\nCome celebrate the season with family and friends and help make this holiday gathering a memorable occasion for all.\n\nCurrently Accepting Donations & Vendor Applications\n\nWe are currently accepting donations for our raffle baskets and welcome contributions from local businesses\, organizations\, and community members. Donations may include individual items to be added to a themed basket or an entire completed basket for the raffle. We are also seeking vendors interested in participating in the Holiday Market. If you would like to showcase your products\, crafts\, or services\, vendor applications are now available. Your support and participation help create a festive community event while promoting local businesses and organizations. For more information on donating raffle items or becoming a vendor\, visit https://virginiaartfactory.org/holiday-market/
+URL:https://historicmanassas.org/event/artfactorys-holiday-market/2026-12-05/
+LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/09/Holiday-Market-2026-Tablet-Graphic.png
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261205T110000
+DTEND;TZID=America/New_York:20261205T170000
+DTSTAMP:20261005T204707Z
+CREATED:20261005T204346Z
+LAST-MODIFIED:20261005T204707Z
+UID:10006955-1796468400-1796490000@historicmanassas.org
+SUMMARY:EVENCI Fashion Resale Pop-Up
+DESCRIPTION:Fashion Resale Pop-Up event by Evenci featuring new luxury fashion items. This will be held in the art gallery located in the USPS building on Church St. \nLuxury fashion resale | Curating better options for people who value craftsmanship over trends. \nApparel • Shoes • Handbags • Accessories • Vintage \nDelivering style and luxury beyond the label.
+URL:https://historicmanassas.org/event/evenci-fashion-resale-pop-up/
+LOCATION:9108 Church St\, Manassas\, VA 20110\, 9108 Church St\, Manassas\, VA\, 20110\, United States
+CATEGORIES:Arts
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/10/752150917_122183976224939885_3612478567711498930_n.jpg
+ORGANIZER;CN="Evenci":MAILTO:hello@shopevenci.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261211T180000
+DTEND;TZID=America/New_York:20261211T200000
+DTSTAMP:20240227T145619Z
+CREATED:20230127T213050Z
+LAST-MODIFIED:20240227T145619Z
+UID:10002646-1797012000-1797019200@historicmanassas.org
+SUMMARY:Sip & Paint
+DESCRIPTION:Bring your friends\, sip some wine\, and enjoy step-by-step instructions to paint your own masterpiece. The first glass of wine or draft beer is included. If you are under 21 a nonalcoholic cafe drink is included.
+URL:https://historicmanassas.org/event/sip-paint/2026-12-11/
+LOCATION:Grounds Central Station\, 9360 Main Street\, Manassas\, VA\, 20110\, United States
+CATEGORIES:Arts,Date Night,Featured
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2023/01/10-1-27-23.jpg
+ORGANIZER;CN="Grounds Central Station":MAILTO:browermt@live.com
 END:VEVENT
 END:VCALENDAR
