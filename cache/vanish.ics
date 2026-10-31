@@ -49,20 +49,6 @@ DTSTART:20271107T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261030T170000
-DTEND;TZID=America/New_York:20261030T200000
-DTSTAMP:20260901T184711Z
-CREATED:20260901T184711Z
-LAST-MODIFIED:20260901T184711Z
-UID:10001221-1793379600-1793390400@vanishbeer.com
-SUMMARY:Curtis Tyler
-DESCRIPTION:Curtis Tyler is a local musician bringing your favorite songs to the stage. Playing solo acoustic versions of country\, pop\, and rock hits spanning the decades—something for everyone to sing along to.
-URL:https://vanishbeer.com/event/curtis-tyler/2026-10-30/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/24974.jpg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261031T130000
 DTEND;TZID=America/New_York:20261031T160000
 DTSTAMP:20260328T124119Z
@@ -466,5 +452,19 @@ URL:https://vanishbeer.com/event/rr/2026-12-20/
 LOCATION:VA
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/png:https://vanishbeer.com/wp-content/uploads/2026/09/Lake-Photo-2.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261231T180000
+DTEND;TZID=America/New_York:20261231T220000
+DTSTAMP:20260902T113232Z
+CREATED:20260902T113232Z
+LAST-MODIFIED:20260902T113232Z
+UID:10001240-1798740000-1798754400@vanishbeer.com
+SUMMARY:Berlin Calling - 2026 NYE PARTY
+DESCRIPTION:Ring in the new year with your favorite 80s band. Berlin Calling is your connection to the 80’s bringing you hits from artists such as Madonna\, Eurythmics\, Cyndi Lauper\, Blondie\, Go-Go’s\, and many more! TICKETED SHOW
+URL:https://vanishbeer.com/event/berlin-calling-2026-nye-party/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/berlin.jpg
 END:VEVENT
 END:VCALENDAR

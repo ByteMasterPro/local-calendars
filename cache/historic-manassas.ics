@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Historic Manassas, Inc - ECPv6.18.2//NONSGML v1.0//EN
+PRODID:-//Historic Manassas, Inc - ECPv6.18.3//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Historic Manassas, Inc
@@ -72,77 +72,6 @@ DESCRIPTION:Stay active and connected this fall with a variety of programs for t
 URL:https://historicmanassas.org/event/city-of-manassas-community-center-fall-programs/
 LOCATION:City of Manassas Community Center\, 8750 Sudley Road\, Manassas\, VA\, 20110\, United States
 ORGANIZER;CN="City of Manassas Parks%2C Culture &amp%3Bamp%3B Recreation":MAILTO:pcr@manassasva.gov
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261027T180000
-DTEND;TZID=America/New_York:20261027T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006580-1793124000-1793131200@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-27/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261028T180000
-DTEND;TZID=America/New_York:20261028T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006581-1793210400-1793217600@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-28/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261029T080000
-DTEND;TZID=America/New_York:20261029T130000
-DTSTAMP:20260406T224519Z
-CREATED:20260406T224519Z
-LAST-MODIFIED:20260406T224519Z
-UID:10006312-1793260800-1793278800@historicmanassas.org
-SUMMARY:Historic Manassas Farmers Market (Thursdays)
-DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA
-URL:https://historicmanassas.org/event/historic-manassas-farmers-market-thursdays/2026-10-29/
-LOCATION:Harris Pavilion @ 9201 Center St\, Manassas\, VA 20110\, USA\, Manassas\, VA\, United States
-CATEGORIES:Family Friendly,Farmers' Market
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
-GEO:38.7509488;-77.4752667
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261029T180000
-DTEND;TZID=America/New_York:20261029T200000
-DTSTAMP:20260924T173245Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20260924T173245Z
-UID:10006582-1793296800-1793304000@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-29/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261030T180000
-DTEND;TZID=America/New_York:20261030T200000
-DTSTAMP:20261009T170408Z
-CREATED:20260924T173245Z
-LAST-MODIFIED:20261009T170408Z
-UID:10006583-1793383200-1793390400@historicmanassas.org
-SUMMARY:Patient Zero: An Exhibition
-DESCRIPTION:On display: October 3 – November 1\, 2026\nOpening Reception: Saturday\, October 3 | 6:00–8:00 PM\nMeet the artists\, explore the collection\, enjoy refreshments and live music\, and soak in the eerie atmosphere\, with scare actors from Factory of Fear: Outbreak haunted house adding to the experience. \nExhibit Summary\nIn conjunction with ARTfactory’s annual Factory of Fear event and fundraiser\, the Caton Merchant Gallery is proud to announce the opening of Patient Zero: An Exhibition\, a juried group exhibition featuring over 70 compelling works of art by 54 talented artists from across the DMV region. \nRunning from October 3 through November 1\, 2026\, Patient Zero blurs the line between fine art and immersive storytelling. Inspired by this year’s terrifying Factory of Fear theme\, Outbreak\, the exhibition transforms the gallery into a chilling archive of mysterious events\, unsettling discoveries\, and the unknown. \nThe exhibit embraces the eerie\, the haunting\, and the beautifully macabre. While artwork inspired directly by the zombie-themed haunted house is encouraged\, artists have also explored broader interpretations of darkness and mystery. Visitors can expect anatomical studies and scientific curiosities\, supernatural figures\, ghostly portraits\, dystopian visions\, folklore\, decay\, the ethereal\, and the undead. From psychological and gothic imagery to surreal and horror-inspired works\, the exhibition offers an unsettling variety of artistic perspectives. \nThe exhibition features a diverse range of mediums\, including photography\, sculpture\, painting\, digital art\, fiber art\, printmaking\, and more. \nRather than existing solely as a traditional gallery exhibition\, Patient Zero will become part of the immersive environment of ARTfactory’s annual Factory of Fear haunted house. During the haunted house run\, original works of art will be incorporated into the attraction\, allowing thousands of visitors to encounter the artists’ creations as part of the larger Outbreak experience. \nPatient Zero: An Exhibition opens with a free Artist Reception on Saturday\, October 3\, from 6–8 PM at the ARTfactory (9419 Battle St\, Manassas\, VA). \nThe exhibition will be open for regular public gallery viewing from October 3–10. During the Factory of Fear haunted house run from October 11–24\, the exhibition will be incorporated into the attraction and will not be available for standard gallery visitation. The exhibition will reopen for regular public viewing beginning Sunday\, October 25\, and remain on display through November 1. \nFeatured artists: Rockeats Alcoreza\, Mia Alvarenga\, Carter Austin\, Zee Berrios\, Andria Bielski\, Meghan Bogue\, Amanda Bohn\, Christopher Bradford\, Cher Carr\, AC Chen\, Margaret Connors\, Vicarrieous Creations\, Lauren Cunningham\, Katie Keller Dugan\, Heather Felt\, Amanda Fletchersmith\, Michele Frantz\, Mandi Fultz\, Whitney Fuss\, Denise Erin Gerhardt\, Shannon Gilbert\, Amber Goerner\, Elizabeth Hall\, Sara Humphries\, Amelia Irausquin\, Ginnefine Jalloh\, Jortt\, Rebekah Keener\, Jonathan Kincade\, Kirk Knoll\, Katie Kuntz\, Laura Lavarnway\, Maxwell Leitch\, Lenni Lemon\, Janet Hansen Martinet\, Moira Montgomery\, Tim Montgomery\, Meredith Moss\, Ketchup Jon Mustard\, Brad Nance\, Kym Nguyen\, Nancy M Patrick\, Jose (Pepe) Piedra\, Anna Polanco\, Jen Poteet\, Mandy Powell\, Sarah Richardson\, Maryann Segovia\, Xexilia Shadows\, Kelly Snyder\, Spades\, Richard Tyler\, Rebecca Visger\, Leah Watson \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery\n703.330.2787 | jexum@virginiaARTfactory.org\nhttps://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/patient-zero-an-exhibition/2026-10-30/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/09/patient-zero-1080-x-1080-px.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
 END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261031T080000
@@ -488,5 +417,75 @@ URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturday
 LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
 CATEGORIES:Family Friendly,Farmers' Market
 ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270115T190000
+DTEND;TZID=America/New_York:20270115T210000
+DTSTAMP:20261030T195455Z
+CREATED:20261030T195455Z
+LAST-MODIFIED:20261030T195455Z
+UID:10006961-1800039600-1800046800@historicmanassas.org
+SUMMARY:Finding Neverland
+DESCRIPTION:Pied Piper Theatre\, ARTfactory’s youth theater company\, proudly presents Finding Neverland. \nBased on the beloved story behind Peter Pan\, Finding Neverland follows playwright J.M. Barrie as he discovers the inspiration to create one of the world’s most magical tales. When Barrie meets a spirited widow and her four imaginative sons\, he is reminded of the wonder\, courage\, and possibility that live inside childhood. Filled with heart humor and soaring music\, this enchanting musical celebrates the power of imagination\, the importance of family\, and the bravery it takes to believe in something extraordinary.  \nPerformances will be held in the Gregory Family Theater at Hylton Performing Arts Center in Manassas on January 15 at 7PM\, January 16 at 2 & 7PM\, and January 17 at 2PM.  \nFINDING NEVERLAND is presented through special arrangement with Music Theatre International (MTI). All authorized performance materials are also supplied by MTI. www.mtishows.com \nThis production is supported in part by Iron Horse Foundation.
+URL:https://historicmanassas.org/event/finding-neverland/
+LOCATION:Gregory Family Theater At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/10/Finding-Neverland-TICKET-GRAPHIC.png
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270116T080000
+DTEND;TZID=America/New_York:20270116T130000
+DTSTAMP:20260630T205410Z
+CREATED:20260406T225222Z
+LAST-MODIFIED:20260630T205410Z
+UID:10006383-1800086400-1800104400@historicmanassas.org
+SUMMARY:Historic Manassas Farmers Market (Saturdays)
+DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
+URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2027-01-16/
+LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
+CATEGORIES:Family Friendly,Farmers' Market
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270116T140000
+DTEND;TZID=America/New_York:20270116T160000
+DTSTAMP:20261030T195707Z
+CREATED:20261030T195707Z
+LAST-MODIFIED:20261030T195707Z
+UID:10006962-1800108000-1800115200@historicmanassas.org
+SUMMARY:Finding Neverland
+DESCRIPTION:Pied Piper Theatre\, ARTfactory’s youth theater company\, proudly presents Finding Neverland. \nBased on the beloved story behind Peter Pan\, Finding Neverland follows playwright J.M. Barrie as he discovers the inspiration to create one of the world’s most magical tales. When Barrie meets a spirited widow and her four imaginative sons\, he is reminded of the wonder\, courage\, and possibility that live inside childhood. Filled with heart humor and soaring music\, this enchanting musical celebrates the power of imagination\, the importance of family\, and the bravery it takes to believe in something extraordinary.  \nPerformances will be held in the Gregory Family Theater at Hylton Performing Arts Center in Manassas on January 15 at 7PM\, January 16 at 2 & 7PM\, and January 17 at 2PM.  \nFINDING NEVERLAND is presented through special arrangement with Music Theatre International (MTI). All authorized performance materials are also supplied by MTI. www.mtishows.com \nThis production is supported in part by Iron Horse Foundation.
+URL:https://historicmanassas.org/event/finding-neverland-2/2027-01-16/1/
+LOCATION:Gregory Family Theater At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/10/Finding-Neverland-TICKET-GRAPHIC.png
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270116T190000
+DTEND;TZID=America/New_York:20270116T210000
+DTSTAMP:20261030T195707Z
+CREATED:20261030T195707Z
+LAST-MODIFIED:20261030T195707Z
+UID:10006963-1800126000-1800133200@historicmanassas.org
+SUMMARY:Finding Neverland
+DESCRIPTION:Pied Piper Theatre\, ARTfactory’s youth theater company\, proudly presents Finding Neverland. \nBased on the beloved story behind Peter Pan\, Finding Neverland follows playwright J.M. Barrie as he discovers the inspiration to create one of the world’s most magical tales. When Barrie meets a spirited widow and her four imaginative sons\, he is reminded of the wonder\, courage\, and possibility that live inside childhood. Filled with heart humor and soaring music\, this enchanting musical celebrates the power of imagination\, the importance of family\, and the bravery it takes to believe in something extraordinary.  \nPerformances will be held in the Gregory Family Theater at Hylton Performing Arts Center in Manassas on January 15 at 7PM\, January 16 at 2 & 7PM\, and January 17 at 2PM.  \nFINDING NEVERLAND is presented through special arrangement with Music Theatre International (MTI). All authorized performance materials are also supplied by MTI. www.mtishows.com \nThis production is supported in part by Iron Horse Foundation.
+URL:https://historicmanassas.org/event/finding-neverland-2/2027-01-16/2/
+LOCATION:Gregory Family Theater At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/10/Finding-Neverland-TICKET-GRAPHIC.png
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270117T140000
+DTEND;TZID=America/New_York:20270117T160000
+DTSTAMP:20261030T195707Z
+CREATED:20261030T195707Z
+LAST-MODIFIED:20261030T195707Z
+UID:10006964-1800194400-1800201600@historicmanassas.org
+SUMMARY:Finding Neverland
+DESCRIPTION:Pied Piper Theatre\, ARTfactory’s youth theater company\, proudly presents Finding Neverland. \nBased on the beloved story behind Peter Pan\, Finding Neverland follows playwright J.M. Barrie as he discovers the inspiration to create one of the world’s most magical tales. When Barrie meets a spirited widow and her four imaginative sons\, he is reminded of the wonder\, courage\, and possibility that live inside childhood. Filled with heart humor and soaring music\, this enchanting musical celebrates the power of imagination\, the importance of family\, and the bravery it takes to believe in something extraordinary.  \nPerformances will be held in the Gregory Family Theater at Hylton Performing Arts Center in Manassas on January 15 at 7PM\, January 16 at 2 & 7PM\, and January 17 at 2PM.  \nFINDING NEVERLAND is presented through special arrangement with Music Theatre International (MTI). All authorized performance materials are also supplied by MTI. www.mtishows.com \nThis production is supported in part by Iron Horse Foundation.
+URL:https://historicmanassas.org/event/finding-neverland-2/2027-01-17/
+LOCATION:Gregory Family Theater At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/10/Finding-Neverland-TICKET-GRAPHIC.png
+ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
 END:VEVENT
 END:VCALENDAR
