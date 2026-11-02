@@ -8,7 +8,7 @@ up?" across all of them at once.
 
 | Calendar | Subscribe URL | Kind |
 |---|---|---|
-| Honor Brewing - Loudoun | `https://bytemasterpro.github.io/local-calendars/honor-brewing-loudoun.ics` | rebuilt daily from their Elfsight widget |
+| Honor Brewing - Loudoun | `https://bytemasterpro.github.io/local-calendars/honor-brewing-loudoun.ics` | daily from their Elfsight widget + curated from their monthly Instagram poster |
 | Chilly Hollow Brewing Co. | `https://calendar.google.com/calendar/ical/7a36777b804e9b9d04d70c58670135065f60a7e350d7b860f9e9c7686a9a7131%40group.calendar.google.com/public/basic.ics` | their own public Google Calendar (live) |
 | Solace Brewing Co. in Sterling | `https://calendar.google.com/calendar/ical/c_81872c01230a1e2a19950379cffece76cfb4c99e93bfa5a74ef2c3c26715c165%40group.calendar.google.com/public/basic.ics` | their own public Google Calendar (live) |
 | Vanish Farmwoods Brewery (music) | `https://vanishbeer.com/calendar/category/music/?post_type=tribe_events&ical=1&eventDisplay=list` | their own iCal export (live) |
@@ -80,6 +80,19 @@ History* on the channel, and two more secrets: `DISCORD_BOT_TOKEN` and `DISCORD_
 (Discord: right-click the channel > Copy Channel ID, with Developer Mode on). Without them the
 digest still posts, just without the purge. Pin anything you want to survive.
 
+## What runs when
+
+| When | What | Where |
+|---|---|---|
+| Daily, 05:23 UTC | `localcal build` - rebuild every fetched feed, refresh the external-feed cache, commit `docs/` | GitHub Actions (`build.yml`) |
+| Daily, 10:30 UTC | copy the published `.ics` files to the old `brewery-calendars` paths | GitHub Actions, [mirror repo](https://github.com/ByteMasterPro/brewery-calendars) |
+| **Mondays**, 06:17 / 10:17 / 14:17 / 18:17 UTC | `localcal digest --post --skip-if-posted` - purge the channel and post the week. The first run posts; the rest see it and stand down | GitHub Actions (`digest.yml`) |
+| **Mon & Thu, 07:40 local** | `localcal instagram` - pull each venue's public grid, write the review queue | Christopher's Mac (launchd, installed 2026-11-02) |
+| **1st of each month, by hand** | read Honor's month-at-a-glance poster out of the review queue and update the curated file and overrides | a session with Claude |
+
+GitHub's cron queue runs hours late and occasionally drops a run, which is why the digest has
+four triggers and the build runs early.
+
 ## How it works
 
 ```
@@ -87,12 +100,14 @@ config/calendars.yaml        one entry per calendar: slug, name, kind, address, 
 localcal/sources/            adapters that turn a site's event data into Event objects
 localcal/ical.py             Event -> RFC 5545 .ics (TZID + bounded VTIMEZONE, RRULE, EXDATE); parse + merge
 localcal/query.py            live fetch + recurrence expansion shared by `upcoming` and the digest
-localcal/digest.py           Discord digest sections, formatting and webhook posting
+localcal/digest.py           Discord digest sections, formatting, webhook posting and channel purge
+localcal/instagram.py        pulls venues' public Instagram grids (local only, never CI)
+scripts/*.plist              launchd job that runs the Instagram pull Mon/Thu 07:40
 localcal/cli.py              `localcal build` / `upcoming` / `digest`
 config/events/               curated event lists used by the `manual` adapter
-.github/workflows/digest.yml Monday 11:00 UTC Discord post (needs the DISCORD_WEBHOOK_URL secret)
+.github/workflows/digest.yml Monday Discord post, four triggers (needs DISCORD_WEBHOOK_URL, DISCORD_BOT_TOKEN, DISCORD_CHANNEL_ID)
 docs/                        the published site (GitHub Pages serves this folder)
-.github/workflows/build.yml  daily cron (10:00 UTC) + on push to config/localcal; commits docs/
+.github/workflows/build.yml  daily cron (05:23 UTC) + on push to config/localcal; commits docs/
 ```
 
 Only files whose event content changed are rewritten (DTSTAMP is ignored when comparing), so
@@ -141,14 +156,35 @@ configured handle's public profile in headless Chromium, downloads new grid imag
 read; when a date or promo code is caption-only, a `notices:` entry in
 `config/events/overrides.yaml` makes the digest say so and link the profile.
 
+Handles watched: `honorbrewingcompany`, `rt7brewing`, `whitesferrybrew` (the `instagram:` key on
+a calendar).
+
 ```bash
-uv run localcal instagram               # all configured handles
-cp scripts/com.kyberstorm.localcal-instagram.plist ~/Library/LaunchAgents/   # Mon/Thu 07:40
+uv run localcal instagram                       # all configured handles, on demand
+launchctl start com.kyberstorm.localcal-instagram   # run the scheduled job now
+tail -20 /tmp/localcal-instagram.log            # what it did
+```
+
+**The schedule.** `scripts/com.kyberstorm.localcal-instagram.plist` runs it **Mondays and
+Thursdays at 07:40 local**, before Monday's digest. It was installed and verified on 2026-11-02:
+
+```bash
+cp scripts/com.kyberstorm.localcal-instagram.plist ~/Library/LaunchAgents/
 launchctl load ~/Library/LaunchAgents/com.kyberstorm.localcal-instagram.plist
 ```
 
+`RunAtLoad` is false, so loading it does not fire a run; the first one is the next Mon/Thu.
+Logs go to `/tmp/localcal-instagram.log`. Check it is registered with
+`launchctl list | grep localcal`.
+
 This is local-only by necessity: the grid is JavaScript-rendered and Instagram blocks datacenter
-IPs, so it cannot run in GitHub Actions.
+IPs, so it cannot run in GitHub Actions, and nothing ever logs in.
+
+**The half that is not automated.** Pulling images is scheduled; *reading* them is not. Honor
+publishes a month-at-a-glance schedule on the 1st and it routinely carries events their widget
+never gets, so at the start of each month ask Claude to read the queue
+(`data/instagram/review.md`) and update `config/events/honor-brewing.yaml` and
+`config/events/overrides.yaml`.
 
 ## Adding a calendar
 

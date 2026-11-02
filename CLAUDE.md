@@ -6,9 +6,31 @@ GitHub repo `ByteMasterPro/local-calendars` via GitHub Pages.
 
 ## What it does
 
-Daily GitHub Actions cron -> `uv run localcal build` -> fetch each source -> `docs/<slug>.ics` ->
-commit -> GitHub Pages serves it. Christopher subscribes to the URLs in Apple Calendar / Google
-Calendar. Venues that already publish a feed are linked, not mirrored.
+GitHub Actions rebuilds the feeds and posts a weekly Discord digest; a launchd job on
+Christopher's Mac pulls venues' Instagram grids. He subscribes to the published `.ics` URLs in
+Apple Calendar. Venues that already publish a feed are linked, not mirrored.
+
+### What runs when (the one place to check)
+
+| When | What | Where |
+|---|---|---|
+| Daily 05:23 UTC | `localcal build`: rebuild fetched feeds, refresh the external-feed cache, commit `docs/` | Actions, `build.yml` |
+| Daily 10:30 UTC | copy published `.ics` to the old `brewery-calendars` paths | Actions in the mirror repo |
+| Mondays 06:17 / 10:17 / 14:17 / 18:17 UTC | `localcal digest --post --skip-if-posted`: purge the channel, post the week; later triggers stand down | Actions, `digest.yml` |
+| **Mon & Thu 07:40 local** | `localcal instagram`: pull each `instagram:` handle's public grid, write `data/instagram/review.md` | **His Mac, launchd** (`scripts/com.kyberstorm.localcal-instagram.plist`, installed + verified 2026-11-02, `RunAtLoad` false, logs to `/tmp/localcal-instagram.log`) |
+| **1st of each month, by hand** | read Honor's month-at-a-glance poster from the review queue, update `config/events/honor-brewing.yaml` and `overrides.yaml` | a session |
+
+Cron times are deliberately off the hour and early: GitHub's queue runs hours late and has
+dropped runs outright. The Instagram pull cannot move to Actions (JS-rendered grid, datacenter
+IPs blocked) and never logs in.
+
+### Calendars (13)
+
+Breweries: Honor Brewing - Loudoun (elfsight + curated), Route 7 (wheresthemusic + curated),
+White's Ferry (curated), Chilly Hollow, Solace Sterling, Vanish, Flying Ace (all external feeds).
+Towns & community: Town of Leesburg (vision_rss), One Loudoun (squarespace), Village at Leesburg
+(curated), Historic Manassas (external), Farmers Markets (curated).
+Fairs & Festivals (curated).
 
 ## Answering "what's coming up?" questions
 
