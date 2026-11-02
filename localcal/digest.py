@@ -633,8 +633,14 @@ def notice_lines(notices, today: date, kind: str) -> list[str]:
             continue
         text = re.sub(r"\s+", " ", str(n["text"])).strip()
         where = f"**{n['venue']}:** " if n.get("venue") else ""
-        handle = f" ({_link('@' + n['instagram'], 'https://www.instagram.com/' + n['instagram'] + '/')})" if n.get("instagram") else ""
-        live.append(f"{where}{text}{handle}")
+        # Prefer an action link (ordering page, ticket page) over the venue's Instagram.
+        if n.get("url"):
+            link = f" {_link(n.get('link_text') or 'Order or read more', n['url'])}"
+        elif n.get("instagram"):
+            link = f" ({_link('@' + n['instagram'], 'https://www.instagram.com/' + n['instagram'] + '/')})"
+        else:
+            link = ""
+        live.append(f"{where}{text}{link}")
     return ["📣 **Heads up:**"] + live if live else []
 
 

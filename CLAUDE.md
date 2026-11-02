@@ -189,6 +189,12 @@ Some venues announce only on Instagram. What works and what does not, establishe
   This exists because Honor's **Thanksgiving Dinner To Go** poster (pre-orders, $225 whole dinner)
   was pulled on 2026-10-31 and sat unread for two days while the queue re-listed all 63 posts
   every run: Christopher found it on Instagram himself and asked why it was not in the digest.
+- **Check the venue's own website too, not only Instagram.** Honor's homepage ran a modal for the
+  Thanksgiving package with a direct Toast ordering link
+  (`order.toasttab.com/online/honor-brewing-2-42604-dulles-trade-west-drive`) and the detail that
+  online ordering is Loudoun-pickup only - none of which was on the poster. Christopher found it,
+  2026-11-02. A notice's `url:`/`link_text:` carry an action link and are preferred over the
+  Instagram handle in both the section and the promoted Top Picks line.
 - **Read every image in the queue, not just the starred ones.** A star only means Instagram's alt
   text happened to carry an OCR hit; absence proves nothing. Venues also split one event across
   posts: White's Ferry announced the Leesburg Fall Festival on 2026-10-01 with the date and hours,

@@ -806,3 +806,22 @@ def test_a_promoted_notice_alone_counts_as_a_non_quiet_week(monkeypatch):
     d = digest.build(cfg, list(FEEDS.values()), date(2026, 11, 2), now=datetime(2026, 11, 2, 9, tzinfo=timezone.utc))
     lines = next(s for s in d.sections if s.key == "picks").lines
     assert any("Thanksgiving" in l for l in lines) and "_Quiet week._" not in lines
+
+
+def test_a_notice_prefers_an_action_link_over_instagram():
+    """Honor's own site carried a Toast ordering link; sending him to Instagram instead is worse."""
+    n = [{"venue": "Honor Brewing", "kind": "brewery", "instagram": "honorbrewingcompany",
+          "url": "https://order.toasttab.com/online/honor-brewing-2", "link_text": "Pre-order on Toast",
+          "text": "Thanksgiving Dinner To Go."}]
+    line = digest.notice_lines(n, date(2026, 11, 2), "brewery")[1]
+    assert line.endswith("[Pre-order on Toast](https://order.toasttab.com/online/honor-brewing-2)")
+    assert "instagram.com" not in line
+    # and the promoted Top Picks line uses it too
+    n[0]["pick"] = "Thanksgiving Dinner To Go"
+    assert "order.toasttab.com" in digest.notice_pick_lines(n, date(2026, 11, 2))[0]
+
+
+def test_a_notice_falls_back_to_instagram_when_there_is_no_action_link():
+    n = [{"venue": "X", "kind": "brewery", "instagram": "handle", "text": "Something."}]
+    assert digest.notice_lines(n, date(2026, 11, 2), "brewery")[1].endswith(
+        "([@handle](https://www.instagram.com/handle/))")

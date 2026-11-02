@@ -77,6 +77,8 @@ events:
 #   kind:      brewery (default) | town | festival - which section it appears under
 #   until:     last day to show it; leave out for "until someone removes it"
 #   instagram: handle, rendered as a link
+#   url:       an action link (ordering page, tickets) - preferred over the Instagram handle
+#   link_text: wording for that link, default "Order or read more"
 #   pick:      short wording that also puts this in Top Picks (the section keeps the full text)
 #   pick_icon: emoji for that Top Picks line
 #
@@ -111,6 +113,8 @@ notices:
     kind: brewery
     until: 2026-11-21
     instagram: honorbrewingcompany
+    url: https://order.toasttab.com/online/honor-brewing-2-42604-dulles-trade-west-drive
+    link_text: "Pre-order on Toast"
     pick: "Thanksgiving Dinner To Go - pre-order by Sat Nov 21, pickup Nov 24-25"
     pick_icon: "🦃"
     text: >-
@@ -119,5 +123,7 @@ notices:
       of cornbread with honey butter, artisan salad, and four sides by the quart from cornbread
       stuffing, mac and cheese, green beans, collard greens, mashed potatoes, or sweet potatoes
       with candied pecans and marshmallows). Smoked turkey alone $95, house-made pecan or pumpkin
-      pie $25. Their monthly schedule says the 20th is the last day to order while this poster
-      says the 21st, so order by Friday the 20th to be safe.
+      pie $25, extra sides $10-$15. Online ordering is for Honor Brewing - Loudoun pickup only,
+      and all packages are ready 24-25 November. Their monthly schedule says the 20th is the last
+      day to order while the poster says the 21st and the ordering page states no cutoff, so order
+      by Friday the 20th to be safe.
