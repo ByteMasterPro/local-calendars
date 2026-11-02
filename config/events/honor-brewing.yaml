@@ -1,0 +1,46 @@
+# Honor Brewing events that their Elfsight calendar leaves out, read off the month-at-a-glance
+# poster they publish on Instagram (@honorbrewingcompany) on the 1st of each month.
+#
+# Only events MISSING from the feed belong here; detail for events the feed already has goes in
+# overrides.yaml. Re-read at the start of each month. Watch parties are deliberately absent:
+# the digest filters them out and Christopher does not want them.
+
+events:
+  - title: "Super Smash Brothers Tournament"
+    start: 2026-11-03 19:30
+    end: 2026-11-03 22:00
+    url: https://honorbrewing.com/honor-brewing-loudoun
+    description: >-
+      Bracket tournament in the taproom. Sign-ups at start.gg/tournament/turn-it-down-a-notch-1.
+    tags: [tournament, game night]
+    verified: 2026-11-02
+    source: Instagram November 2026 schedule poster
+
+  - title: "US Marines Anniversary"
+    start: 2026-11-10
+    end: 2026-11-10
+    url: https://honorbrewing.com/honor-brewing-loudoun
+    description: Marking the Marine Corps birthday at a veteran-owned brewery.
+    tags: [veteran]
+    verified: 2026-11-02
+    source: Instagram November 2026 schedule poster
+
+  - title: "Holiday Pop-Up Bar Begins"
+    start: 2026-11-23
+    end: 2026-11-23
+    url: https://honorbrewing.com/honor-brewing-loudoun
+    description: >-
+      Their holiday pop-up bar opens, the winter counterpart to October's Halloween pop-up. No
+      end date announced; check their Instagram for how long it runs.
+    tags: [holiday, christmas]
+    verified: 2026-11-02
+    source: Instagram November 2026 schedule poster
+
+  - title: "Closed for Thanksgiving"
+    start: 2026-11-26
+    end: 2026-11-26
+    url: https://honorbrewing.com/honor-brewing-loudoun
+    description: The taproom is closed for Thanksgiving.
+    tags: [closed, thanksgiving]
+    verified: 2026-11-02
+    source: Instagram November 2026 schedule poster

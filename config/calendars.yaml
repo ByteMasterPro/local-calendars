@@ -34,9 +34,11 @@ calendars:
     url: https://honorbrewing.com/honor-brewing-loudoun
     location: Honor Brewing - Loudoun, 42604 Trade West Dr, Sterling, VA 20166
     instagram: honorbrewingcompany        # posts a month-at-a-glance schedule on the 1st
+    # Their calendar widget, plus a curated file for what the monthly poster carries and the
+    # widget does not (a Smash tournament, the holiday pop-up opening, the Thanksgiving closure).
     source:
-      type: elfsight
-      widget_id: 5cfe5396-d62a-432e-8a83-f53cb73bb713
+      - {type: elfsight, widget_id: 5cfe5396-d62a-432e-8a83-f53cb73bb713}
+      - {type: manual, file: config/events/honor-brewing.yaml}
 
   - slug: route-7
     name: Route 7 Brewing
@@ -207,13 +209,14 @@ digest:
   preview_limit: 5                         # highlights per "Next week:" line
   top_picks:                               # first card: the week's best, with full excerpts.
     label: "Top Picks This Week"
+    skip: "closed|cancell?ed|postponed"    # a closure is not an outing
     # Shown when nothing qualifies, so a quiet week does not look like a broken post.
     empty_note: "_Quiet week: nothing marquee on the calendar. Everything that is on is in the sections below._"
     # Deliberately narrow: fair/festival one-offs and seasonal brewery events (rank 0), plus
     # anything matching `pattern` (rank 1). Nothing pads a quiet week - one or two picks is fine,
     # and the ordinary stuff still appears in its own section.
     limit: 8
-    pattern: "fair\\b|festival|fest\\w*|carnival|jubilee|parade|fireworks|air ?show|hallowe\\w*|trunk.or.treat|trick.or.treat|pumpkin|harvest|hayride|corn maze|oktober|german|holiday|christmas|santa|tree lighting|thanksgiving|movie|screening|on screen|petting zoo|anniversary|touch a truck|egg hunt|block party|craft fair|bazaar|monster mash|monster|haunt|spooky|costume|trunk or treat|bark bash"
+    pattern: "fair\\b|festival|fest\\w*|carnival|jubilee|parade|fireworks|air ?show|hallowe\\w*|trunk.or.treat|trick.or.treat|pumpkin|harvest|hayride|corn maze|oktober|german|holiday|christmas|santa|tree lighting|thanksgiving|movie|screening|on screen|petting zoo|anniversary|touch a truck|egg hunt|block party|craft fair|bazaar|monster mash|monster|haunt|spooky|costume|trunk or treat|bark bash|tournament|veteran.?s? day|friendsgiving|tree lighting"
     icons:                                 # first match wins, title first then description; no match = no icon
       - {match: "hallowe\\w*|haunt|spooky|ghost|zombie|fields of fear|trick.or.treat|trunk.or.treat|costume|fright|monster|witch|vampire|boo\\b", icon: "👻"}
       - {match: "fall ?fest\\w*|autumn fest\\w*|harvest fest\\w*|fallfest|\\bfall festival", icon: "🍁"}
@@ -254,7 +257,7 @@ digest:
         - months: [9, 10]
           pattern: "oktober|octoberfest|german|deutsch|prost|stein|bavarian|lederhosen|polka|accordion|hallowe\\w*|haunt|spooky|costume|pumpkin|harvest|fest\\w*|fall ?fest\\w*|autumn fest\\w*|apple|cider|corn maze|hayride|scarecrow|trunk.or.treat|trick.or.treat|fright|monster|witch|vampire|boo\\b|spider|skeleton|graveyard"
         - months: [11, 12]
-          pattern: "christmas|holiday|santa|tree lighting|ugly sweater|gingerbread|nutcracker|hanukkah|menorah|kwanzaa|new year|winter|caroling|carol\\b|wreath|thanksgiving|friendsgiving|turkey|reindeer|elf\\b|sleigh|snow|cocoa|mistletoe|yule|noel|polar express|light show|toy drive|coat drive"
+          pattern: "christmas|holiday|santa|tree lighting|ugly sweater|gingerbread|nutcracker|hanukkah|menorah|kwanzaa|new year|winter|caroling|carol\\b|wreath|thanksgiving|friendsgiving|turkey|reindeer|elf\\b|sleigh|snow|cocoa|mistletoe|yule|noel|polar express|light show|toy drive|coat drive|veteran.?s? day|marines? anniversary"
       # Kinds Christopher asked for by name: family outings and one-off happenings. These rank
       # above routine live music, which ranks above everything else, when a week overflows.
       prioritize: "festival|fest\\w*|movie|family|kids|child|petting zoo|animal|axe throwing|vendor|market|bazaar|anniversary|birthday|release|launch|tapping|craft night|workshop|class\\b|paint|contest|competition|parade|fundraiser|charity|benefit|pop.?up|takeover|brunch|dinner|tasting|food truck|story ?time|touch a truck|cruise.?in|car show|game night|yoga"

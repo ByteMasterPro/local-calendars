@@ -730,3 +730,42 @@ def test_top_picks_card_still_renders_on_a_quiet_week(monkeypatch):
     picks = next(s for s in d.sections if s.key == "picks")
     assert picks.lines == ["_Quiet week._"]
     assert [p["embeds"][0]["title"] for p in digest.discord_payloads(d)[1:]][0] == "⭐ Top Picks This Week"
+
+
+def test_closures_never_become_top_picks():
+    """"Town Offices Closed for Veterans Day" and "Closed for Thanksgiving" match seasonal words
+    but are the opposite of somewhere to go."""
+    c = {"pattern": "veteran.?s? day|thanksgiving", "skip": "closed|cancell?ed", "limit": 8}
+    shut = row("Town Offices Closed for Veterans Day", "2026-11-11", "2026-11-12", calendar="town",
+               kind="town", all_day=True)
+    shut2 = row("Closed for Thanksgiving", "2026-11-26", "2026-11-27", calendar="honor", all_day=True)
+    real = row("Veteran's Day Celebration", "2026-11-11T12:00:00-05:00", "2026-11-11T22:00:00-05:00", calendar="honor")
+    w = digest.week_window(date(2026, 11, 9), datetime(2026, 11, 9, 7, tzinfo=timezone.utc))
+    picks = digest.top_picks(None, {"this": [real, shut2], "seasonal": [real, shut2], "running": []},
+                             {"this": [shut], "running": [], "routine": set()}, c, w)
+    assert names(picks) == ["Veteran's Day Celebration"]
+
+
+def test_november_patterns_match_the_apostrophe_spelling():
+    import re
+    from localcal.model import load_config
+    cfg = load_config(Path(__file__).resolve().parent.parent / "config" / "calendars.yaml")
+    seasonal = re.compile(next(p["pattern"] for p in cfg.digest["sections"]["breweries"]["seasonal"]
+                               if 11 in p["months"]), re.I)
+    picks = re.compile(cfg.digest["top_picks"]["pattern"], re.I)
+    for title in ("Veteran's Day Celebration", "Veterans Day Celebration at Dodona Manor"):
+        assert seasonal.search(title) and picks.search(title), title
+    assert seasonal.search("Friendsgiving") and seasonal.search("Holiday Pop-Up Bar Begins")
+
+
+def test_repo_honor_curated_file_only_holds_what_the_feed_lacks():
+    from localcal.model import load_config
+    from localcal.sources import manual
+    root = Path(__file__).resolve().parent.parent
+    cfg = load_config(root / "config" / "calendars.yaml")
+    honor = next(f for f in cfg.feeds if f.slug == "honor-brewing-loudoun")
+    assert [s["type"] for s in honor.sources] == ["elfsight", "manual"]
+    events = manual.parse_events(manual.load(root / "config" / "events" / "honor-brewing.yaml"), honor)
+    assert {e.summary for e in events} == {"Super Smash Brothers Tournament", "US Marines Anniversary",
+                                           "Holiday Pop-Up Bar Begins", "Closed for Thanksgiving"}
+    assert all("watch party" not in e.summary.lower() for e in events)     # filtered noise stays out

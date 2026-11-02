@@ -250,9 +250,14 @@ def top_picks(F, B, T, c, w: Window) -> list[dict]:
     printed in time order.
     """
     rx = re.compile(c["pattern"], re.I) if c.get("pattern") else None
+    # A closure is not an outing: "Town Offices Closed for Veterans Day" and "Closed for
+    # Thanksgiving" both match seasonal words but are the opposite of something to go to.
+    skip_rx = re.compile(c["skip"], re.I) if c.get("skip") else None
     cands: dict[tuple, tuple[int, dict]] = {}
 
     def offer(r, rank):
+        if skip_rx and skip_rx.search(query.title_haystack(r)):
+            return
         key = _key(r)
         if key not in cands or rank < cands[key][0]:
             cands[key] = (rank, r)

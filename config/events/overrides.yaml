@@ -90,4 +90,24 @@ events:
 #     text: >-
 #       20% off wine flights, fall beer and pretzels during the Fall Festival. The code is in
 #       their Instagram caption.
-notices: []
+  - match: "Veteran.?s Day Celebration"
+    calendar: Honor Brewing
+    details: >-
+      Live music from The Roadducks, 50% off veteran meals, the Buy a Vet a Beer redemption, and
+      Avalon Action Alliance on site with a raffle and giveaways.
+    source: Instagram November 2026 schedule poster, read 2026-11-02
+
+  - match: "Friendsgiving"
+    calendar: Honor Brewing
+    details: >-
+      Live music all day with Thanksgiving-themed meals, plus $5 Silly Goose, Let's Go Seltzers
+      and draft beer.
+    source: Instagram November 2026 schedule poster, read 2026-11-02
+
+notices:
+  - venue: Honor Brewing
+    kind: brewery
+    until: 2026-11-20
+    instagram: honorbrewingcompany
+    text: >-
+      Friday 20 November is the last day to order a Thanksgiving turkey package.

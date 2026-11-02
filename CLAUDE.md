@@ -199,7 +199,10 @@ throwing, petting zoo" only in the image. So:
 - **The Top Picks card always renders.** When nothing qualifies it prints `top_picks.empty_note`
   instead of being dropped; an absent card reads as a failed post (Christopher, 2026-11-02).
   Early November is the natural dead zone: Halloween is over and the Nov/Dec seasonal pattern
-  (christmas, santa, thanksgiving) has nothing to match yet.
+  (christmas, santa, thanksgiving, veterans day) has nothing to match yet. Closures are skipped
+  by `top_picks.skip`: "Town Offices Closed for Veterans Day" matches the words but is the
+  opposite of an outing. Mind apostrophes - Honor writes "Veteran's Day", so patterns use
+  `veteran.?s? day`.
 - **Local times with TZID** (not UTC) so recurring events survive DST. VTIMEZONE is bounded.
 - Prefer simple/direct; no over-engineering. Tests are fixture-based (`tests/fixtures/`).
 
@@ -213,6 +216,12 @@ uv run pytest
 
 ## Source notes and landmines
 
+- **Honor Brewing** posts a month-at-a-glance schedule on Instagram on the 1st, and it carries
+  events their widget never gets (a Smash tournament, the holiday pop-up opening, the Thanksgiving
+  closure) plus extra detail for ones it does. Its feed is therefore `elfsight` + a curated
+  `config/events/honor-brewing.yaml`. **Re-read that poster at the start of each month** - it is
+  the single highest-yield thing in this project. Only events MISSING from the widget go in the
+  curated file; detail for events it already has goes in `overrides.yaml`.
 - **Honor Brewing** (Elfsight widget `5cfe5396-...`): a "Commanders Watch Party" is entered as
   04:25-07:25 AM (their typo). We pass source data through as-is; do not "fix" upstream data.
   Fairfax location widget `620fc0b1-b6f5-4814-a54a-33d51c45bfe8` is commented out in config.
