@@ -137,15 +137,13 @@ def build(cfg: Config, feeds: list[Feed], out: Path, *, dry_run: bool) -> int:
         try:
             events = _fetch_with_retries(feed)
         except Exception as exc:
-            # Keep last run's feed rather than publishing an empty calendar. A third-party read
-            # timeout is not worth a red run and a notification email when subscribers still have
-            # yesterday's feed; a feed that has never built is a real failure.
-            if target.exists():
-                log.warning("%s: fetch failed, keeping the published feed: %s", feed.slug, str(exc)[:160])
-                print(f"::warning::{feed.slug}: fetch failed, kept the published feed ({str(exc)[:120]})")
-            else:
-                log.error("%s: fetch failed and there is no published feed yet: %s", feed.slug, exc)
-                failures += 1
+            # Keep last run's feed rather than publishing an empty calendar, and fail the run:
+            # Christopher wants the notification email when a source is genuinely down. The
+            # retries above are what stop a single hiccup raising a false alarm.
+            kept = "the published feed is intact" if target.exists() else "NO published feed exists yet"
+            log.error("%s: fetch failed after retries, %s: %s", feed.slug, kept, exc)
+            print(f"::error::{feed.slug}: fetch failed after retries ({kept}) - {str(exc)[:160]}")
+            failures += 1
             continue
         fetched = len(events)
         if feed.accumulate and target.exists():

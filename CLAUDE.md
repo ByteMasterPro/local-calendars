@@ -188,10 +188,12 @@ throwing, petting zoo" only in the image. So:
   RECURRENCE-ID overrides.
 - **Stable UIDs** (`<source id>@<slug>`) so subscribers see edits, not duplicates.
 - **Never publish an empty feed on a fetch failure.** `build` leaves the existing `.ics` alone.
-  Since 2026-11-02 it retries with `query.RETRY_BACKOFF` first and then, if a published feed
-  already exists, emits a `::warning::` and stays green: a third-party read timeout (Nov 1 was
-  wheresthemusic.us at 30s) is not worth a red run and a notification email when subscribers
-  still have yesterday's feed. A feed that has NEVER built is still a hard failure.
+  Since 2026-11-02 it retries with `query.RETRY_BACKOFF` first, and a source still down after
+  that fails the run - Christopher wants the GitHub notification email when something is
+  genuinely broken (he said so after I briefly made timeouts green). The retries are what make a
+  red run meaningful: Nov 1 died on a single 30s wheresthemusic.us read timeout that would
+  probably have passed on attempt two. The log and the `::error::` say whether the published feed
+  survived, so severity is clear from the email.
   `sources.fetch_events` likewise tolerates one dead source on a multi-source feed as long as
   another returns events, so Route 7's curated file survives the listings site timing out.
 - **The Top Picks card always renders.** When nothing qualifies it prints `top_picks.empty_note`

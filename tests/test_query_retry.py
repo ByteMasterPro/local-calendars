@@ -35,6 +35,27 @@ def test_load_calendar_gives_up_after_attempts(monkeypatch, tmp_path):
         query.load_calendar(feed, backoff=(1,), cache_dir=tmp_path)
 
 
+def test_retries_run_before_a_failure_is_reported(monkeypatch, tmp_path, capsys):
+    """A single hiccup must not raise a false alarm: the retries are what make a red run mean
+    something, so they have to happen before build gives up."""
+    from localcal import cli
+    from localcal.model import Config, Feed
+    feed = Feed(slug="route-7", name="R7", url="https://x", location="", timezone="America/New_York", kind="brewery",
+                source=[{"type": "wheresthemusic", "url": "u"}])
+    attempts = {"n": 0}
+
+    def flaky(f):
+        attempts["n"] += 1
+        if attempts["n"] < 3:
+            raise TimeoutError("Read timed out")
+        return []
+
+    monkeypatch.setattr(cli, "fetch_events", flaky)
+    monkeypatch.setattr(cli._time, "sleep", lambda s: None)
+    assert cli.build(Config(site={}, feeds=[feed]), [feed], tmp_path, dry_run=False) == 0
+    assert attempts["n"] == 3 and "::error::" not in capsys.readouterr().out
+
+
 def test_backoff_spans_at_least_a_minute():
     assert sum(query.RETRY_BACKOFF) >= 60          # long enough to outlast a host's bad-chain window
 
@@ -115,7 +136,7 @@ def test_all_sources_failing_still_raises(monkeypatch):
         sources.fetch_events(feed)
 
 
-def test_build_warns_instead_of_failing_when_a_published_feed_survives(monkeypatch, tmp_path, capsys):
+def test_build_fails_the_run_but_keeps_the_published_feed(monkeypatch, tmp_path, capsys):
     from datetime import date
     from localcal import cli
     from localcal.model import Config, Feed
@@ -124,12 +145,13 @@ def test_build_warns_instead_of_failing_when_a_published_feed_survives(monkeypat
     (tmp_path / "route-7.ics").write_bytes(b"BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n")
     monkeypatch.setattr(cli, "fetch_events", lambda f: (_ for _ in ()).throw(TimeoutError("Read timed out")))
     monkeypatch.setattr(cli._time, "sleep", lambda s: None)
-    assert cli.build(Config(site={}, feeds=[feed]), [feed], tmp_path, dry_run=False) == 0
-    assert "::warning::route-7" in capsys.readouterr().out
+    assert cli.build(Config(site={}, feeds=[feed]), [feed], tmp_path, dry_run=False) == 1   # red run -> email
+    out = capsys.readouterr().out
+    assert "::error::route-7" in out and "the published feed is intact" in out
     assert (tmp_path / "route-7.ics").read_bytes().startswith(b"BEGIN:VCALENDAR")   # untouched
 
 
-def test_build_still_fails_when_a_feed_has_never_been_published(monkeypatch, tmp_path):
+def test_build_says_so_when_a_feed_has_never_been_published(monkeypatch, tmp_path, capsys):
     from localcal import cli
     from localcal.model import Config, Feed
     feed = Feed(slug="brand-new", name="N", url="https://x", location="", timezone="America/New_York", kind="brewery",
@@ -137,3 +159,4 @@ def test_build_still_fails_when_a_feed_has_never_been_published(monkeypatch, tmp
     monkeypatch.setattr(cli, "fetch_events", lambda f: (_ for _ in ()).throw(TimeoutError("down")))
     monkeypatch.setattr(cli._time, "sleep", lambda s: None)
     assert cli.build(Config(site={}, feeds=[feed]), [feed], tmp_path, dry_run=False) == 1
+    assert "NO published feed exists yet" in capsys.readouterr().out
