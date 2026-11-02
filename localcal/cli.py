@@ -17,6 +17,7 @@ import json
 import logging
 import re
 import sys
+import time as _time          # `from datetime import time` below shadows the module
 from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
@@ -101,6 +102,23 @@ def main(argv: list[str] | None = None) -> int:
 
 # --------------------------------------------------------------------------- build
 
+def _fetch_with_retries(feed: Feed):
+    """Source fetch with the same widening backoff the digest uses, so a slow third party does
+    not fail a nightly build on its first hiccup."""
+    last: Exception | None = None
+    for attempt in range(len(query.RETRY_BACKOFF) + 1):
+        try:
+            return fetch_events(feed)
+        except Exception as exc:
+            last = exc
+            if attempt < len(query.RETRY_BACKOFF):
+                wait = query.RETRY_BACKOFF[attempt]
+                log.warning("%s: attempt %d failed (%s); retrying in %ds",
+                            feed.slug, attempt + 1, str(exc)[:120], wait)
+                _time.sleep(wait)
+    raise last  # type: ignore[misc]
+
+
 def build(cfg: Config, feeds: list[Feed], out: Path, *, dry_run: bool) -> int:
     failures = 0
     for feed in feeds:
@@ -117,11 +135,17 @@ def build(cfg: Config, feeds: list[Feed], out: Path, *, dry_run: bool) -> int:
             continue
         target = out / f"{feed.slug}.ics"
         try:
-            events = fetch_events(feed)
+            events = _fetch_with_retries(feed)
         except Exception as exc:
-            # Keep last run's feed rather than publishing an empty calendar.
-            log.error("%s: fetch failed, leaving existing feed untouched: %s", feed.slug, exc)
-            failures += 1
+            # Keep last run's feed rather than publishing an empty calendar. A third-party read
+            # timeout is not worth a red run and a notification email when subscribers still have
+            # yesterday's feed; a feed that has never built is a real failure.
+            if target.exists():
+                log.warning("%s: fetch failed, keeping the published feed: %s", feed.slug, str(exc)[:160])
+                print(f"::warning::{feed.slug}: fetch failed, kept the published feed ({str(exc)[:120]})")
+            else:
+                log.error("%s: fetch failed and there is no published feed yet: %s", feed.slug, exc)
+                failures += 1
             continue
         fetched = len(events)
         if feed.accumulate and target.exists():

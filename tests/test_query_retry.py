@@ -83,3 +83,57 @@ def test_no_cache_means_the_feed_still_raises(monkeypatch, tmp_path):
     import pytest
     with pytest.raises(Exception):
         query.load_calendar(ext_feed(), backoff=(1,), cache_dir=tmp_path)
+
+
+def test_one_dead_source_does_not_lose_a_feeds_other_events(monkeypatch, caplog):
+    from datetime import date
+    from localcal import sources
+    from localcal.model import Event
+
+    def dead(feed, src):
+        raise TimeoutError("Read timed out")
+
+    def alive(feed, src):
+        return [Event(uid="curated@r7", summary="Anniversary Party", start=date(2026, 12, 6), end=date(2026, 12, 7))]
+
+    monkeypatch.setitem(sources.REGISTRY, "wheresthemusic", dead)
+    monkeypatch.setitem(sources.REGISTRY, "manual", alive)
+    feed = Feed(slug="route-7", name="R7", url="https://x", location="", timezone="America/New_York", kind="brewery",
+                source=[{"type": "wheresthemusic", "url": "u"}, {"type": "manual", "file": "f"}])
+    assert [e.summary for e in sources.fetch_events(feed)] == ["Anniversary Party"]
+
+
+def test_all_sources_failing_still_raises(monkeypatch):
+    from localcal import sources
+    def dead(feed, src):
+        raise TimeoutError("Read timed out")
+    monkeypatch.setitem(sources.REGISTRY, "manual", dead)
+    feed = Feed(slug="x", name="X", url="https://x", location="", timezone="America/New_York", kind="brewery",
+                source=[{"type": "manual", "file": "f"}])
+    import pytest
+    with pytest.raises(TimeoutError):
+        sources.fetch_events(feed)
+
+
+def test_build_warns_instead_of_failing_when_a_published_feed_survives(monkeypatch, tmp_path, capsys):
+    from datetime import date
+    from localcal import cli
+    from localcal.model import Config, Feed
+    feed = Feed(slug="route-7", name="R7", url="https://x", location="", timezone="America/New_York", kind="brewery",
+                source=[{"type": "wheresthemusic", "url": "u"}])
+    (tmp_path / "route-7.ics").write_bytes(b"BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n")
+    monkeypatch.setattr(cli, "fetch_events", lambda f: (_ for _ in ()).throw(TimeoutError("Read timed out")))
+    monkeypatch.setattr(cli._time, "sleep", lambda s: None)
+    assert cli.build(Config(site={}, feeds=[feed]), [feed], tmp_path, dry_run=False) == 0
+    assert "::warning::route-7" in capsys.readouterr().out
+    assert (tmp_path / "route-7.ics").read_bytes().startswith(b"BEGIN:VCALENDAR")   # untouched
+
+
+def test_build_still_fails_when_a_feed_has_never_been_published(monkeypatch, tmp_path):
+    from localcal import cli
+    from localcal.model import Config, Feed
+    feed = Feed(slug="brand-new", name="N", url="https://x", location="", timezone="America/New_York", kind="brewery",
+                source=[{"type": "wheresthemusic", "url": "u"}])
+    monkeypatch.setattr(cli, "fetch_events", lambda f: (_ for _ in ()).throw(TimeoutError("down")))
+    monkeypatch.setattr(cli._time, "sleep", lambda s: None)
+    assert cli.build(Config(site={}, feeds=[feed]), [feed], tmp_path, dry_run=False) == 1

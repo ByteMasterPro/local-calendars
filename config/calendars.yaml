@@ -207,6 +207,8 @@ digest:
   preview_limit: 5                         # highlights per "Next week:" line
   top_picks:                               # first card: the week's best, with full excerpts.
     label: "Top Picks This Week"
+    # Shown when nothing qualifies, so a quiet week does not look like a broken post.
+    empty_note: "_Quiet week: nothing marquee on the calendar. Everything that is on is in the sections below._"
     # Deliberately narrow: fair/festival one-offs and seasonal brewery events (rank 0), plus
     # anything matching `pattern` (rank 1). Nothing pads a quiet week - one or two picks is fine,
     # and the ordinary stuff still appears in its own section.

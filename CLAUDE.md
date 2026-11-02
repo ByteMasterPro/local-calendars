@@ -187,8 +187,17 @@ throwing, petting zoo" only in the image. So:
 - **Link, don't mirror, feeds that already exist** (`feed_url`). Mirroring adds lag and loses
   RECURRENCE-ID overrides.
 - **Stable UIDs** (`<source id>@<slug>`) so subscribers see edits, not duplicates.
-- **Never publish an empty feed on a fetch failure.** `build` leaves the existing `.ics` alone
-  and exits non-zero so the Actions run shows red.
+- **Never publish an empty feed on a fetch failure.** `build` leaves the existing `.ics` alone.
+  Since 2026-11-02 it retries with `query.RETRY_BACKOFF` first and then, if a published feed
+  already exists, emits a `::warning::` and stays green: a third-party read timeout (Nov 1 was
+  wheresthemusic.us at 30s) is not worth a red run and a notification email when subscribers
+  still have yesterday's feed. A feed that has NEVER built is still a hard failure.
+  `sources.fetch_events` likewise tolerates one dead source on a multi-source feed as long as
+  another returns events, so Route 7's curated file survives the listings site timing out.
+- **The Top Picks card always renders.** When nothing qualifies it prints `top_picks.empty_note`
+  instead of being dropped; an absent card reads as a failed post (Christopher, 2026-11-02).
+  Early November is the natural dead zone: Halloween is over and the Nov/Dec seasonal pattern
+  (christmas, santa, thanksgiving) has nothing to match yet.
 - **Local times with TZID** (not UTC) so recurring events survive DST. VTIMEZONE is bounded.
 - Prefer simple/direct; no over-engineering. Tests are fixture-based (`tests/fixtures/`).
 

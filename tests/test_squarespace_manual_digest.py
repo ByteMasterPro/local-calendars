@@ -718,3 +718,15 @@ def test_repo_top_pick_pattern_catches_this_seasons_titles():
         assert rx.search(title), title
     for title in ("Frayed Knots", "Live Music: Mack Berry", "Car Cruise-In"):
         assert not rx.search(title), title
+
+
+def test_top_picks_card_still_renders_on_a_quiet_week(monkeypatch):
+    """An empty card used to be dropped, which read as a broken post (early November 2026)."""
+    cfg = Config(site={}, feeds=list(FEEDS.values()),
+                 digest={**CFG.digest, "top_picks": {"label": "Top Picks This Week", "pattern": "parade",
+                                                     "empty_note": "_Quiet week._"}})
+    monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
+    d = digest.build(cfg, list(FEEDS.values()), MON, now=datetime(2026, 11, 2, 9, tzinfo=timezone.utc))
+    picks = next(s for s in d.sections if s.key == "picks")
+    assert picks.lines == ["_Quiet week._"]
+    assert [p["embeds"][0]["title"] for p in digest.discord_payloads(d)[1:]][0] == "⭐ Top Picks This Week"

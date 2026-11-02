@@ -6,9 +6,12 @@ Each adapter exposes: fetch(feed) -> list[Event]
 
 from __future__ import annotations
 
+import logging
 from typing import Callable
 
 from localcal.model import Event, Feed
+
+log = logging.getLogger(__name__)
 
 
 def _elfsight(feed: Feed, src: dict) -> list[Event]:
@@ -54,19 +57,33 @@ REGISTRY: dict[str, Callable[[Feed, dict], list[Event]]] = {
 
 
 def fetch_events(feed: Feed) -> list[Event]:
-    """Every source on the feed, merged. A later source does not displace an earlier one's
-    event with the same uid."""
+    """Every source on the feed, merged. A later source does not displace an earlier one's event
+    with the same uid.
+
+    One source failing does not sink the others: Route 7 merges a listings site with a curated
+    file, and a read timeout on the site should not also lose the curated events. If every source
+    fails, the error is raised so the caller keeps the existing feed.
+    """
     seen: set[str] = set()
     out: list[Event] = []
+    failures: list[Exception] = []
     for src in feed.sources:
         kind = src.get("type")
         try:
             adapter = REGISTRY[kind]
         except KeyError:
             raise SystemExit(f"{feed.slug}: unknown source type {kind!r}; known: {sorted(REGISTRY)}")
-        for ev in adapter(feed, src):
+        try:
+            events = adapter(feed, src)
+        except Exception as exc:
+            log.warning("%s: source %s failed (%s)", feed.slug, kind, str(exc)[:160])
+            failures.append(exc)
+            continue
+        for ev in events:
             if ev.uid in seen:
                 continue
             seen.add(ev.uid)
             out.append(ev)
+    if failures and not out:
+        raise failures[0]
     return out

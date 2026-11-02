@@ -98,10 +98,14 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
     picks = top_picks(F, B, T, cfg_d.get("top_picks") or {}, w)
 
     sections = []
-    if picks:
-        c = cfg_d.get("top_picks") or {}
-        sections.append(Section("picks", c.get("label", "Top Picks This Week"), "⭐", 0xE67E22,
-                                pick_lines(picks, w, by_slug, icons=c.get("icons"), overrides=ov)))
+    if "top_picks" in cfg_d:
+        c = cfg_d["top_picks"]
+        # The card always renders. An empty one used to be dropped entirely, which looked like a
+        # failed run; some weeks genuinely have nothing marquee (early November, say).
+        lines = (pick_lines(picks, w, by_slug, icons=c.get("icons"), overrides=ov) if picks
+                 else [c.get("empty_note", "_A quiet week: nothing marquee on the calendar. "
+                                          "The sections below have everything that is on._")])
+        sections.append(Section("picks", c.get("label", "Top Picks This Week"), "⭐", 0xE67E22, lines))
     if F:
         c = secs["fairs"]
         ongoing = []
