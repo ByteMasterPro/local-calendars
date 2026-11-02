@@ -167,6 +167,10 @@ launchctl start com.kyberstorm.localcal-instagram   # run the scheduled job now
 tail -20 /tmp/localcal-instagram.log            # what it did
 ```
 
+Anything unusual that is not an event - a pre-order window, a seasonal menu, a pop-up - goes in
+`notices:` with a `pick:` short form, which spotlights it at the top of Top Picks while the
+section keeps the full detail.
+
 `data/instagram/review.md` lists only posts **not yet read**, as checkboxes with a count, so a
 new poster cannot hide among ones already seen.
 

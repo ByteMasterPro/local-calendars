@@ -114,6 +114,15 @@ subscriptions remain.
 
 ## What Christopher wants surfaced
 
+**Unusual things that match his preferences belong in Top Picks, even when they are not events.**
+His words, 2026-11-02. A pre-order window, a month-long pop-up, a seasonal menu, a one-off
+offer - if it is unusual AND seasonal/family-shaped, promote it: put the full detail in a
+`notices:` entry and add `pick:` (short wording) plus `pick_icon:`, which puts a one-line version
+at the top of the Top Picks card while the section keeps the long text. Honor's Thanksgiving
+Dinner To Go is the worked example. Do not promote routine things this way - weekly specials,
+happy hours and discount nights stay out, as always.
+
+
 Top Picks is deliberately NARROW and ranks before it caps: rank 0 marquee (fair/festival
 one-offs, seasonal brewery events), rank 1 `pattern` matches (movie nights, petting zoos).
 Nothing is promoted to pad a quiet week - he removed a "filler" tier on 2026-10-06 saying the

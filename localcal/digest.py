@@ -102,10 +102,13 @@ def build(cfg: Config, feeds: list[Feed], start: date, days: int | None = None, 
         c = cfg_d["top_picks"]
         # The card always renders. An empty one used to be dropped entirely, which looked like a
         # failed run; some weeks genuinely have nothing marquee (early November, say).
-        lines = (pick_lines(picks, w, by_slug, icons=c.get("icons"), overrides=ov) if picks
-                 else [c.get("empty_note", "_A quiet week: nothing marquee on the calendar. "
-                                          "The sections below have everything that is on._")])
-        sections.append(Section("picks", c.get("label", "Top Picks This Week"), "⭐", 0xE67E22, lines))
+        promoted = notice_pick_lines(notices, w.start)
+        dated = pick_lines(picks, w, by_slug, icons=c.get("icons"), overrides=ov) if picks else []
+        if not promoted and not dated:
+            dated = [c.get("empty_note", "_A quiet week: nothing marquee on the calendar. "
+                                         "The sections below have everything that is on._")]
+        sections.append(Section("picks", c.get("label", "Top Picks This Week"), "⭐", 0xE67E22,
+                                _blocks(promoted, dated)))
     if F:
         c = secs["fairs"]
         ongoing = []
@@ -594,6 +597,29 @@ def load_notices(root) -> list[dict]:
     if not path.exists():
         return []
     return list((yaml.safe_load(path.read_text()) or {}).get("notices") or [])
+
+
+def notice_pick_lines(notices, today: date) -> list[str]:
+    """Notices promoted into Top Picks as a one-line short form.
+
+    A standing offer is not an event, so it cannot rank through `top_picks` - but some deserve
+    the spotlight anyway (Honor's Thanksgiving Dinner To Go, whose pre-order deadline is weeks
+    out while the decision is this week). Set `pick:` on the notice for the short wording; the
+    section keeps the full detail.
+    """
+    out = []
+    for n in notices or []:
+        if not n.get("pick"):
+            continue
+        until = n.get("until")
+        if until and date.fromisoformat(str(until)[:10]) < today:
+            continue
+        text = re.sub(r"\s+", " ", str(n["pick"])).strip()
+        icon = f"{n['pick_icon']} " if n.get("pick_icon") else ""
+        url = n.get("url") or (f"https://www.instagram.com/{n['instagram']}/" if n.get("instagram") else "")
+        where = f" ({n['venue']})" if n.get("venue") else ""
+        out.append(f"{icon}**{_link(text, url)}**{where}")
+    return out
 
 
 def notice_lines(notices, today: date, kind: str) -> list[str]:

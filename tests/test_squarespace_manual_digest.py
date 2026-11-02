@@ -329,6 +329,7 @@ def test_build_and_payloads(monkeypatch):
 
 def test_build_with_picks_puts_top_picks_first(monkeypatch):
     monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: (BREW, 0))
+    monkeypatch.setattr(digest, "load_notices", lambda root: [])      # ignore the repo's live notices
     cfg = Config(site={}, feeds=list(FEEDS.values()), digest={**CFG.digest, "top_picks": {"limit": 5, "pattern": "parade"}})
     d = digest.build(cfg, list(FEEDS.values()), MON, now=datetime(2026, 9, 21, 11, tzinfo=timezone.utc))
     assert d.sections[0].label == "Top Picks This Week"
@@ -726,6 +727,7 @@ def test_top_picks_card_still_renders_on_a_quiet_week(monkeypatch):
                  digest={**CFG.digest, "top_picks": {"label": "Top Picks This Week", "pattern": "parade",
                                                      "empty_note": "_Quiet week._"}})
     monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
+    monkeypatch.setattr(digest, "load_notices", lambda root: [])      # ignore the repo's live notices
     d = digest.build(cfg, list(FEEDS.values()), MON, now=datetime(2026, 11, 2, 9, tzinfo=timezone.utc))
     picks = next(s for s in d.sections if s.key == "picks")
     assert picks.lines == ["_Quiet week._"]
@@ -769,3 +771,38 @@ def test_repo_honor_curated_file_only_holds_what_the_feed_lacks():
     assert {e.summary for e in events} == {"Super Smash Brothers Tournament", "US Marines Anniversary",
                                            "Holiday Pop-Up Bar Begins", "Closed for Thanksgiving"}
     assert all("watch party" not in e.summary.lower() for e in events)     # filtered noise stays out
+
+
+NOTICE_PICK = [{"venue": "Honor Brewing", "kind": "brewery", "until": "2026-11-21",
+                "instagram": "honorbrewingcompany", "pick_icon": "🦃",
+                "pick": "Thanksgiving Dinner To Go - pre-order by Sat Nov 21",
+                "text": "Thanksgiving Dinner To Go, pre-order by Sat 21 November. Whole dinner $225..."}]
+
+
+def test_a_notice_can_be_promoted_into_top_picks_in_short_form():
+    """A standing offer cannot rank as an event, but some deserve the spotlight anyway."""
+    lines = digest.notice_pick_lines(NOTICE_PICK, date(2026, 11, 2))
+    assert lines == ["🦃 **[Thanksgiving Dinner To Go - pre-order by Sat Nov 21]"
+                     "(https://www.instagram.com/honorbrewingcompany/)** (Honor Brewing)"]
+    # the section still carries the long version, unchanged
+    assert "Whole dinner $225" in digest.notice_lines(NOTICE_PICK, date(2026, 11, 2), "brewery")[1]
+
+
+def test_a_notice_without_pick_stays_out_of_top_picks():
+    plain = [{"venue": "X", "kind": "brewery", "text": "Something ordinary."}]
+    assert digest.notice_pick_lines(plain, date(2026, 11, 2)) == []
+
+
+def test_promoted_notices_expire_with_the_notice():
+    assert digest.notice_pick_lines(NOTICE_PICK, date(2026, 11, 22)) == []
+
+
+def test_a_promoted_notice_alone_counts_as_a_non_quiet_week(monkeypatch):
+    cfg = Config(site={}, feeds=list(FEEDS.values()),
+                 digest={**CFG.digest, "top_picks": {"label": "Top Picks This Week", "pattern": "parade",
+                                                     "empty_note": "_Quiet week._"}})
+    monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
+    monkeypatch.setattr(digest, "load_notices", lambda root: NOTICE_PICK)
+    d = digest.build(cfg, list(FEEDS.values()), date(2026, 11, 2), now=datetime(2026, 11, 2, 9, tzinfo=timezone.utc))
+    lines = next(s for s in d.sections if s.key == "picks").lines
+    assert any("Thanksgiving" in l for l in lines) and "_Quiet week._" not in lines

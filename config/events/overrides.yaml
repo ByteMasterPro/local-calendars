@@ -77,6 +77,8 @@ events:
 #   kind:      brewery (default) | town | festival - which section it appears under
 #   until:     last day to show it; leave out for "until someone removes it"
 #   instagram: handle, rendered as a link
+#   pick:      short wording that also puts this in Top Picks (the section keeps the full text)
+#   pick_icon: emoji for that Top Picks line
 #
 # A real example of the shape (expired, kept to show the pattern): White's Ferry announced the
 # Leesburg Fall Festival across two posts - the first carried the date, the follow-up added
@@ -109,6 +111,8 @@ notices:
     kind: brewery
     until: 2026-11-21
     instagram: honorbrewingcompany
+    pick: "Thanksgiving Dinner To Go - pre-order by Sat Nov 21, pickup Nov 24-25"
+    pick_icon: "🦃"
     text: >-
       Thanksgiving Dinner To Go, pre-order by Sat 21 November for pickup 24-25 November. Whole
       dinner $225 (smoked turkey, a quart of house gravy, a pint of cranberry sauce, six pieces
