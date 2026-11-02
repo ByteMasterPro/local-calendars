@@ -67,6 +67,9 @@ def main(argv: list[str] | None = None) -> int:
     ig = sub.add_parser("instagram", help="pull venues' public Instagram grids (needs a browser; never runs in CI)")
     ig.add_argument("--only", help="comma-separated slugs")
     ig.add_argument("--out", type=Path, default=ROOT / "data" / "instagram")
+    ig.add_argument("--mark-reviewed", action="store_true",
+                    help="mark everything on file as read, after the images have been looked at")
+    ig.add_argument("--pending", action="store_true", help="just list what is still unread")
 
     dg = sub.add_parser("digest", help="build (and with --post, send) the weekly Discord digest")
     dg.add_argument("--from", dest="start", type=date.fromisoformat, default=None,
@@ -91,7 +94,7 @@ def main(argv: list[str] | None = None) -> int:
         return build(cfg, feeds, args.out, dry_run=args.dry_run)
     start = getattr(args, "start", None) or date.today()
     if args.cmd == "instagram":
-        return instagram(feeds, args.out)
+        return instagram(feeds, args.out, mark_reviewed=args.mark_reviewed, pending_only=args.pending)
 
     if args.cmd == "posters":
         return posters(cfg, feeds, start, start + timedelta(days=args.days), args.out, missing_only=args.missing_only)
@@ -210,28 +213,51 @@ def _clock(dt: datetime) -> str:
 
 # ------------------------------------------------------------------------- instagram
 
-def instagram(feeds: list[Feed], out: Path) -> int:
+def instagram(feeds: list[Feed], out: Path, *, mark_reviewed: bool = False, pending_only: bool = False) -> int:
     """Pull each venue's public Instagram grid. Runs on Christopher's Mac under launchd, never
     in CI: the grid needs a real browser and Instagram blocks datacenter IPs. Nothing logs in,
-    so captions stay unread and anything caption-only is flagged for him to open himself."""
+    so captions stay unread and anything caption-only is flagged for him to open himself.
+
+    `--mark-reviewed` records that the images have been looked at, so the queue only ever shows
+    what is new; `--pending` reports what is still unread without touching the network.
+    """
     handles = [(f.slug, f.instagram) for f in feeds if f.instagram]
     if not handles:
         log.error("no calendar has an `instagram:` handle configured")
         return 2
     out.mkdir(parents=True, exist_ok=True)
+
+    if mark_reviewed:
+        total = sum(ig_mod.mark_reviewed(handle, out) for _, handle in handles)
+        everything = [p for _, handle in handles for p in ig_mod.load_posts(handle, out)]
+        ig_mod.write_review(out, everything)
+        log.info("marked %d post(s) as read", total)
+        return 0
+
+    if pending_only:
+        everything = [p for _, handle in handles for p in ig_mod.load_posts(handle, out)]
+        pending = [p for p in everything if not p.reviewed]
+        for p in sorted(pending, key=lambda p: p.posted, reverse=True):
+            print(f"{p.posted or 'undated':10}  @{p.handle:22}  data/instagram/{p.handle}/{p.file}")
+        log.info("%d post(s) still to read of %d on file", len(pending), len(everything))
+        return 0
+
     everything: list = []
     failures = 0
     for slug, handle in handles:
         try:
             posts = ig_mod.pull(handle, out)
             everything += posts
-            log.info("%s: @%s has %d post(s) on file, %d worth reading",
-                     slug, handle, len(posts), sum(1 for p in posts if p.flagged))
+            log.info("%s: @%s has %d post(s) on file, %d unread",
+                     slug, handle, len(posts), sum(1 for p in posts if not p.reviewed))
         except Exception as exc:
             log.error("%s: @%s pull failed: %s", slug, handle, str(exc)[:200])
             failures += 1
     if everything:
-        log.info("review queue: %s", ig_mod.write_review(out, everything))
+        pending = sum(1 for p in everything if not p.reviewed)
+        log.info("review queue: %s - %d post(s) to read", ig_mod.write_review(out, everything), pending)
+        if pending:
+            print(f"::warning::{pending} Instagram post(s) still to read - see data/instagram/review.md")
     return 1 if failures else 0
 
 

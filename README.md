@@ -161,9 +161,14 @@ a calendar).
 
 ```bash
 uv run localcal instagram                       # all configured handles, on demand
+uv run localcal instagram --pending             # what is still unread (no network)
+uv run localcal instagram --mark-reviewed       # after the images have been looked at
 launchctl start com.kyberstorm.localcal-instagram   # run the scheduled job now
 tail -20 /tmp/localcal-instagram.log            # what it did
 ```
+
+`data/instagram/review.md` lists only posts **not yet read**, as checkboxes with a count, so a
+new poster cannot hide among ones already seen.
 
 **The schedule.** `scripts/com.kyberstorm.localcal-instagram.plist` runs it **Mondays and
 Thursdays at 07:40 local**, before Monday's digest. It was installed and verified on 2026-11-02:

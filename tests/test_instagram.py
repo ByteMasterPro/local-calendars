@@ -66,3 +66,47 @@ def test_undated_posts_still_download(monkeypatch, tmp_path):
     monkeypatch.setattr(ig, "fetch_grid", lambda handle, **kw: [{"alt": "no date here", "url": "https://x.cdninstagram.com/v/zzz_n.jpg"}])
     [post] = ig.pull("h", tmp_path, session=Sess())
     assert post.posted == "" and post.file.startswith("undated_")
+
+
+def test_queue_lists_only_unread_posts(monkeypatch, tmp_path):
+    """Honor's Thanksgiving poster sat unread for two days because the queue repeated every post
+    every run, so nothing showed what was actually new."""
+    monkeypatch.setattr(ig, "fetch_grid", lambda handle, **kw: GRID)
+    posts = ig.pull("whitesferrybrew", tmp_path, session=Sess())
+    body = ig.write_review(tmp_path, posts).read_text()
+    assert "2 to read" in body and body.count("- [ ]") == 2
+
+    assert ig.mark_reviewed("whitesferrybrew", tmp_path) == 2
+    posts = ig.load_posts("whitesferrybrew", tmp_path)
+    assert all(p.reviewed for p in posts)
+    body = ig.write_review(tmp_path, posts).read_text()
+    assert "0 to read" in body and "_Nothing pending._" in body
+
+
+def test_a_new_post_after_a_review_pass_is_the_only_thing_queued(monkeypatch, tmp_path):
+    monkeypatch.setattr(ig, "fetch_grid", lambda handle, **kw: GRID)
+    ig.pull("whitesferrybrew", tmp_path, session=Sess())
+    ig.mark_reviewed("whitesferrybrew", tmp_path)
+    fresh = GRID + [{"alt": "Photo by Whites Ferry on November 01, 2026. Thanksgiving dinner to go.",
+                     "url": "https://scontent.cdninstagram.com/v/t51/ccc_n.jpg?oh=sig"}]
+    monkeypatch.setattr(ig, "fetch_grid", lambda handle, **kw: fresh)
+    posts = ig.pull("whitesferrybrew", tmp_path, session=Sess())
+    body = ig.write_review(tmp_path, posts).read_text()
+    assert "1 to read" in body and "2026-11-01" in body
+    assert "2026-10-03" not in body.split("- [ ]")[1]        # the read ones are not re-listed
+
+
+def test_marking_reviewed_is_idempotent_and_safe_without_a_manifest(tmp_path):
+    assert ig.mark_reviewed("never-pulled", tmp_path) == 0
+    assert ig.load_posts("never-pulled", tmp_path) == []
+
+
+def test_old_manifests_without_the_reviewed_field_still_load(tmp_path):
+    import json
+    d = tmp_path / "h"
+    d.mkdir()
+    (d / "manifest.json").write_text(json.dumps({"https://x/a.jpg": {
+        "handle": "h", "posted": "2026-10-31", "alt": "a", "file": "a.jpg", "url": "https://x/a.jpg",
+        "flagged": True}}))
+    [post] = ig.load_posts("h", tmp_path)
+    assert post.reviewed is False                            # defaults to unread, so it gets looked at

@@ -13,9 +13,14 @@ without an account. Two hard limits, both deliberate:
 
 Output per handle, under `data/instagram/<handle>/`: the images, plus `manifest.json` recording
 each post's date, alt text (Instagram's own OCR of the poster, when it has one) and local path.
-`review.md` lists every post newest-first as a queue to look at with real eyes. Instagram's alt
-text is only sometimes an OCR of the poster, so a keyword hit earns a star but its absence proves
-nothing: White's Ferry's "Leesburg Fall Festival" poster carries alt text of just "image of text".
+`review.md` is a queue of posts NOT YET READ, newest first, and the manifest records which have
+been. Instagram's alt text is only sometimes an OCR of the poster, so a keyword hit earns a star
+but its absence proves nothing: White's Ferry's "Leesburg Fall Festival" poster carries alt text
+of just "image of text", and Honor's Thanksgiving-dinner poster was missed entirely because the
+queue listed everything every run with no way to see what was still unread (2026-11-02).
+
+After reading the images, run `localcal instagram --mark-reviewed` so the next queue shows only
+what is new.
 """
 
 from __future__ import annotations
@@ -70,6 +75,7 @@ class Post:
     file: str
     url: str
     flagged: bool
+    reviewed: bool = False      # set by `localcal instagram --mark-reviewed` once eyes have been on it
 
 
 def fetch_grid(handle: str, timeout_ms: int = 30000) -> list[dict]:
@@ -120,25 +126,61 @@ def pull(handle: str, out_root: Path, session: requests.Session | None = None) -
     return ordered
 
 
-def write_review(out_root: Path, all_posts: list[Post], limit: int = 40) -> Path:
-    """The queue of posts to look at, newest first. A star means the alt text already hints at
-    something; no star means Instagram gave no OCR, which is not evidence of nothing."""
-    lines = ["# Instagram review queue",
+def write_review(out_root: Path, all_posts: list[Post], limit: int = 200) -> Path:
+    """The queue of posts still to read, newest first.
+
+    Only unreviewed posts are listed: a queue that repeats everything every run hides what is
+    actually new, which is how Honor's Thanksgiving-dinner poster went unread for two days. A
+    star means the alt text already hints at something; no star proves nothing, because
+    Instagram's OCR is frequently absent. **Read every entry, starred or not.**
+    """
+    pending = sorted((p for p in all_posts if not p.reviewed), key=lambda p: (p.posted, p.handle), reverse=True)
+    done = sum(1 for p in all_posts if p.reviewed)
+    lines = [f"# Instagram review queue - {len(pending)} to read",
              "",
-             f"Updated {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}. Open the images, then put what they",
-             "add into `config/events/overrides.yaml` (detail for an event a feed already has), a curated",
-             "file such as `config/events/route-7.yaml` (an event no feed carries), or a `notices:` entry",
-             "(an offer or event whose date or promo code is in the caption, which needs an account).",
+             f"Updated {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}. {done} post(s) already read.",
+             "",
+             "Open EVERY image below, starred or not, then put what it adds into",
+             "`config/events/overrides.yaml` (detail for an event a feed already has), a curated file such",
+             "as `config/events/honor-brewing.yaml` (an event no feed carries), or a `notices:` entry (an",
+             "offer or event whose date or promo code is caption-only). Then run",
+             "`uv run localcal instagram --mark-reviewed` so this list shows only what is new next time.",
              ""]
-    for p in sorted(all_posts, key=lambda p: (p.posted, p.handle), reverse=True)[:limit]:
+    if not pending:
+        lines.append("_Nothing pending._")
+    for p in pending[:limit]:
         star = "⭐ " if p.flagged else ""
-        lines.append(f"- {star}**{p.posted or 'undated'}** @{p.handle} — `data/instagram/{p.handle}/{p.file}`")
+        lines.append(f"- [ ] {star}**{p.posted or 'undated'}** @{p.handle} — `data/instagram/{p.handle}/{p.file}`")
         alt = " ".join((p.alt or "").split())
         if alt:
-            lines.append(f"  - {alt[:300]}")
+            lines.append(f"      {alt[:300]}")
     path = out_root / "review.md"
     path.write_text("\n".join(lines) + "\n")
     return path
+
+
+def mark_reviewed(handle: str, out_root: Path) -> int:
+    """Mark everything currently on file for a handle as read. Returns how many changed."""
+    manifest = out_root / handle / "manifest.json"
+    if not manifest.exists():
+        return 0
+    data = json.loads(manifest.read_text())
+    changed = 0
+    for row in data.values():
+        if not row.get("reviewed"):
+            row["reviewed"] = True
+            changed += 1
+    manifest.write_text(json.dumps(data, indent=1))
+    return changed
+
+
+def load_posts(handle: str, out_root: Path) -> list[Post]:
+    """Everything on file for a handle, newest first."""
+    manifest = out_root / handle / "manifest.json"
+    if not manifest.exists():
+        return []
+    rows = json.loads(manifest.read_text()).values()
+    return sorted((Post(**r) for r in rows), key=lambda p: p.posted, reverse=True)
 
 
 def _posted_on(alt: str) -> str:

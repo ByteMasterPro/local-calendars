@@ -173,6 +173,13 @@ Some venues announce only on Instagram. What works and what does not, establishe
   (gitignored) and writes `data/instagram/review.md`, a newest-first queue. `scripts/
   com.kyberstorm.localcal-instagram.plist` runs it on his Mac Mon/Thu 07:40 (install notes are in
   the file). It never runs in CI.
+- **`data/instagram/review.md` lists only UNREAD posts**, as checkboxes, with a count in its
+  heading; the manifest carries a `reviewed` flag per post. After looking at the images run
+  `uv run localcal instagram --mark-reviewed`, and use `--pending` to see what is outstanding
+  without touching the network. A pull that leaves anything unread also prints a `::warning::`.
+  This exists because Honor's **Thanksgiving Dinner To Go** poster (pre-orders, $225 whole dinner)
+  was pulled on 2026-10-31 and sat unread for two days while the queue re-listed all 63 posts
+  every run: Christopher found it on Instagram himself and asked why it was not in the digest.
 - **Read every image in the queue, not just the starred ones.** A star only means Instagram's alt
   text happened to carry an OCR hit; absence proves nothing. Venues also split one event across
   posts: White's Ferry announced the Leesburg Fall Festival on 2026-10-01 with the date and hours,
