@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Flying Ace Farm - ECPv6.18.2//NONSGML v1.0//EN
+PRODID:-//Flying Ace Farm - ECPv6.18.3//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Flying Ace Farm
@@ -87,21 +87,6 @@ TZNAME:AST
 DTSTART:20271107T050000
 END:STANDARD
 END:VTIMEZONE
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261101T140000
-DTEND;TZID=America/New_York:20261101T170000
-DTSTAMP:20260730T144422Z
-CREATED:20260730T144422Z
-LAST-MODIFIED:20260730T144422Z
-UID:13128-1793541600-1793552400@flyingacefarm.com
-SUMMARY:Live Music at Flying Ace Farm featuring Alex Kerns
-DESCRIPTION:Live Music at Flying Ace Farm featuring Alex Kerns\nJoin us on Sunday\, November 1st\, from 2-5pm for live music by Alex Kerns. \nBio:Known to genre bend\, Alex Kerns covers a wide range of artists and songs. From the classic sounds of the Beatles to Tyler Childers to the Americana vibe of his own originals. Hailing from Berryville\, Virginia\, Alex Kerns is the cofounder and bass player of the Low Water Bridge band. Alex Kerns is regionally well known and always leaves a smile on the faces of the fans and patrons that attend his shows.\n\nBorn and raised in Clarke County\, Virginia\, Alex Kern’s has been playing up and down the Shenandoah Valley for the past 15 years. He is currently the bass player for Low Water Bridge Band\, but also pursues a busy acoustic solo career. He’s played everywhere from small amphitheaters to small back yard private parties and always a perfect fit for just about any occasion.\nTo learn more about Alex Kerns and upcoming performances\, visit his official Facebook page. \nBe sure to check out our full Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n \n \n  \n 
-URL:https://flyingacefarm.com/calendar/live-music-featuring-alex-kerns-2/
-LOCATION:Flying Ace Farm
-CATEGORIES:Live Music
-ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2025/12/Alex-Kerns-band-photo.jpg
-ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
-END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261107T150000
 DTEND;TZID=America/New_York:20261107T180000
