@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Vanish Farmwoods Brewery - ECPv6.18.3//NONSGML v1.0//EN
+PRODID:-//Vanish Farmwoods Brewery - ECPv6.18.3.1//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Vanish Farmwoods Brewery
@@ -65,16 +65,16 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261107T130000
 DTEND;TZID=America/New_York:20261107T160000
-DTSTAMP:20260603T115050Z
-CREATED:20220328T133146Z
-LAST-MODIFIED:20260603T115050Z
+DTSTAMP:20261106T123203Z
+CREATED:20261106T123202Z
+LAST-MODIFIED:20261106T123203Z
 UID:10001198-1794056400-1794067200@vanishbeer.com
 SUMMARY:Climb On
 DESCRIPTION:Climb On is an alternative rock band based out of Alexandria\, Virginia that offers a unique sound that blends the cutting edge with a blast from the past. The band plays your favorite rock music from the 90s/2000s\, classic rock\, and pop music with some saxophone spiced in. Get ready for a energetic and fun show!
-URL:https://vanishbeer.com/event/climb-on/2026-11-07/
+URL:https://vanishbeer.com/event/climb-on-2/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
-ATTACH;FMTTYPE=image/webp:https://vanishbeer.com/wp-content/uploads/2022/03/climb.webp
+ATTACH;FMTTYPE=image/webp:https://vanishbeer.com/wp-content/uploads/2022/03/4015.webp
 END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261107T170000
