@@ -103,6 +103,20 @@ ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2023/08/7
 ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
 END:VEVENT
 BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261108T140000
+DTEND;TZID=America/New_York:20261108T170000
+DTSTAMP:20261106T223922Z
+CREATED:20261106T223922Z
+LAST-MODIFIED:20261106T223922Z
+UID:13490-1794146400-1794157200@flyingacefarm.com
+SUMMARY:Live Music featuring Robert Mabe
+DESCRIPTION:Live Music at Flying Ace Farm featuring Robert Mabe\nJoin us on Sunday\, November 8th\, from 2-5pm for live music featuring Robert Mabe.\nMusician Bio:\nAs a kid growing up in North Carolina\, Robert was surrounded by many great bluegrass musicians. In fact\, his grandfather was a guitar/bass player who also performed at The Grand Ole Opry. \nWhen his parents gave him a banjo at age 12\, he began taking lessons and attending local bluegrass jams and he was soon hooked. \nListening to Earl Scruggs\, Bela Fleck\, and all things bluegrass\, he also became interested in other styles of music including Jazz\, Irish\, and Blues. While taking banjo lessons he would also seek out piano\, guitar\, and sax teachers to translate their styles to banjo. \nThis was not just for the love of the banjo but also for the love of live performance. Over the years Robert has performed thousands of live shows across the USA and abroad; in 2013 he was honored to perform at Carnegie Hall. \nRobert has recorded with many great musicians including Larry Keel\, Clay Jones\, and Patrick McAvinue. Roberts solo studio release\, “Somewhere in the Middle”\, was written and produced by Robert\, showcasing his versitile songwriting skills and includes an all star cast of musicians. \n“Somewhere in the Middle” also caught the attention of Bluegrass Today and Bluegrass Unlimited who both published rave reviews and high praise of the project. Currently Robert is touring the US full time with around 100 dates a year on the calendar. In addition to festivals and music venues\, he performs dozens of private events each year. \n*To learn more about Robert Mabe and upcoming shows\, visit his official website. \n**Be sure to check out our Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n \n  \n 
+URL:https://flyingacefarm.com/calendar/live-music-robert-mabe/
+LOCATION:Flying Ace Farm
+CATEGORIES:Live Music
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2025/12/Robert-Mabe-photo-scaled.jpg
+END:VEVENT
+BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261114T150000
 DTEND;TZID=America/New_York:20261114T180000
 DTSTAMP:20260707T192533Z
@@ -147,6 +161,35 @@ ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2023/08/7
 ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
 END:VEVENT
 BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261122T140000
+DTEND;TZID=America/New_York:20261122T170000
+DTSTAMP:20261106T225247Z
+CREATED:20261106T225247Z
+LAST-MODIFIED:20261106T225247Z
+UID:13494-1795356000-1795366800@flyingacefarm.com
+SUMMARY:Live Music featuring Will Shepard at Flying Ace Farm
+DESCRIPTION:Live Music featuring Veteran Will Shepard at Flying Ace Farm\nJoin us on Sunday\, September 6th\, from 2-5pm for live music featuring Will Shepard.\nMusician Bio:\nWill is a Veteran\, Loudoun County teacher\, proud father and husband\, and lives for music. He puts his twist on Americana sound and soulful melodies. He plays a large variety of songs and has been known to bring a solid energy to the people he plays for. C’mon out and hang! \n*To learn more about Will Shepard and upcoming performances\, visit his Facebook page or Instagram page.\n**Be sure to check out our Live Music Schedule at Flying Ace Farm to see all upcoming performances.\n \n \n  \n 
+URL:https://flyingacefarm.com/calendar/live-music-featuring-will-shepard/
+LOCATION:Flying Ace Farm
+CATEGORIES:Family,Free Event,Live Music,local
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2026/01/will-shepard-musician-scaled.jpeg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261128T150000
+DTEND;TZID=America/New_York:20261128T180000
+DTSTAMP:20261106T223037Z
+CREATED:20261106T222954Z
+LAST-MODIFIED:20261106T223037Z
+UID:13486-1795878000-1795888800@flyingacefarm.com
+SUMMARY:Live Music at Flying Ace Farm featuring Matt Burridge
+DESCRIPTION:Live Music at Flying Ace Farm featuring Matt Burridge\nJoin us on Saturday\, December 26th\, from 3-6pm for live music featuring Matt Burridge.\nMusician Bio: \nMatt Burridge is a musician local to the DMV/RVA area. Currently based in Richmond\, he plays bars\, winery’s\, and private events from Maryland all the way down to the Richmond ar. In addition to playing solo cover gigs\, he writes original music\, produces under the name BD LCK\, and plays in a progressive post hardcore band called pulses. \n*To learn more about Matt Burridge and upcoming performances\, visit his website. \n**Be sure to check out our Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n \n \n  \n 
+URL:https://flyingacefarm.com/calendar/live-music-matt-burridge-2/
+LOCATION:Flying Ace Farm
+CATEGORIES:Family,Free Event,Live Music
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2024/10/IMG_0975-scaled.jpg
+ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
+END:VEVENT
+BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261129T140000
 DTEND;TZID=America/New_York:20261129T170000
 DTSTAMP:20260730T220049Z
@@ -159,6 +202,51 @@ URL:https://flyingacefarm.com/calendar/live-music-melanie-pearl/
 LOCATION:Flying Ace Farm
 CATEGORIES:Family,Kids,Live Music,local
 ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2024/01/Melanie-Pearl-musician.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261205T120000
+DTEND;TZID=America/New_York:20261205T150000
+DTSTAMP:20261106T203002Z
+CREATED:20261106T195149Z
+LAST-MODIFIED:20261106T203002Z
+UID:13459-1796472000-1796482800@flyingacefarm.com
+SUMMARY:6th Annual Brunch w/ Santa Event
+DESCRIPTION:6TH ANNUAL BRUNCH W/ SANTA ~ TICKETS ON SALE NOW!\nDecember 5th from 12-3PM\nMark your calendars for Saturday\, December 5th from 12-3PM as we host our 5th Annual Brunch w/ Santa event at the farm! Our ALL YOU CAN EAT Brunch includes a digital photo with the Big Guy\, cookie decorating for the kids\, coloring station and a craft bag for the kiddos. We will also have cocktails and beer available for an additional charge. Tickets on sale now! This is one of our most popular events\, make sure to grab your tickets today! \nTickets will be broken down into 1 hour time slots (12-1pm\, 1-2pm\, 2-3pm). Once you click on the link\, please choose the appropriate day and time slot. Brunch and photos with Santa will be taken during that specific time slot.\nCocktails will be available for purchase\, menu includes:\n*Poinsettia\n*Mimosa\n*Homemade Eggnog\n*Tipsy Cocoa\n*Sangria\n*Beer/Seltzer on tap\n*Wine\nCLICK HERE to purchase your tickets today!\n \n  \n  \n* Adult Ticket: $49.99 each \n* Child Ticket (ages 12 and under): $24.99; all children attending event will require a ticket. \n*Tickets are non-refundable 7 days prior to event (11/28/26) \nPrice of ticket covers cost of event\, staffing\, Santa\,  All-You-Can-Eat brunch\, digital photo with Santa\, craft bags\, coloring station and cookie decorating table. Tickets are required for every attendee. Children two and under do not require a ticket. We appreciate your honesty and look forward to having you!
+URL:https://flyingacefarm.com/calendar/brunch-w-santa-event/
+LOCATION:Flying Ace Farm
+CATEGORIES:All You Can Eat,Brunch,Brunch w/ Santa,Family
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2026/11/IMG_3782-scaled-e1793994539359.jpg
+ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261205T150000
+DTEND;TZID=America/New_York:20261205T180000
+DTSTAMP:20261106T215009Z
+CREATED:20261106T215009Z
+LAST-MODIFIED:20261106T215009Z
+UID:13478-1796482800-1796493600@flyingacefarm.com
+SUMMARY:Live Music at Flying Ace Farm featuring Noah "Red" Hawes
+DESCRIPTION:Live Music at Flying Ace Farm featuring Noah “Red” Hawes\nJoin us on Saturday\, December 5th\, from 3-6pm for live music featuring Noah “Red” Hawes.\nNoah’s Bio: \nMy name is Noah “Red” Hawes and I’m a local performer in the Frederick area. I play acoustic arrangements of covers as well as my own originals. The covers range from singer/songwriters from the 60s and 70s like Simon and Garfunkel and James Taylor\, current pop hits from One Direction and The Chainsmokers\, and everything in between. \nI have a bachelor’s degree in classical guitar and have played lead guitar and sang vocals in classic rock\, indie\, pop punk\, and metal bands. I utilize the classical guitar training to create my acoustic arrangements of covers\, combining the elements of bass\, guitar\, and driving percussive energy all on a single guitar. \nI have a YouTube channel (Red Hawes) with original and cover videos. I have an additional channel (Drew Hawes – Noah’s Gigs with Friends) that has videos from performances with the bands I have been in\, past and present\, as well as solo performances. \n*To learn more about Noah Hawes and upcoming performances\, visit his Instagram page. \n**Be sure to check out our Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n \n \n  \n 
+URL:https://flyingacefarm.com/calendar/live-music-at-flying-ace-farm-featuring-noah-red-hawes/
+LOCATION:Flying Ace Farm
+CATEGORIES:Live Music
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2023/12/noah-hawes.jpg
+ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261206T120000
+DTEND;TZID=America/New_York:20261206T150000
+DTSTAMP:20261106T202803Z
+CREATED:20261106T202803Z
+LAST-MODIFIED:20261106T202803Z
+UID:13468-1796558400-1796569200@flyingacefarm.com
+SUMMARY:6th Annual Brunch w/ Santa Event
+DESCRIPTION:6TH ANNUAL BRUNCH W/ SANTA ~ TICKETS ON SALE NOW!\nDecember 6th from 12-3PM\nMark your calendars for Saturday\, December 6th from 12-3PM as we host our 5th Annual Brunch w/ Santa event at the farm! Our ALL YOU CAN EAT Brunch includes a digital photo with the Big Guy\, cookie decorating for the kids\, coloring station and a craft bag for the kiddos. We will also have cocktails and beer available for an additional charge. Tickets on sale now! This is one of our most popular events\, make sure to grab your tickets today! \nTickets will be broken down into 1 hour time slots (12-1pm\, 1-2pm\, 2-3pm). Once you click on the link\, please choose the appropriate day and time slot. Brunch and photos with Santa will be taken during that specific time slot.\nCocktails will be available for purchase\, menu includes:\n*Poinsettia\n*Mimosa\n*Homemade Eggnog\n*Tipsy Cocoa\n*Sangria\n*Beer/Seltzer on tap\n*Wine\nCLICK HERE to purchase your tickets today!\n \n  \n  \n* Adult Ticket: $49.99 each \n* Child Ticket (ages 12 and under): $24.99; all children attending event will require a ticket. \n*Tickets are non-refundable 7 days prior to event (11/29/26) \nPrice of ticket covers cost of event\, staffing\, Santa\,  All-You-Can-Eat brunch\, digital photo with Santa\, craft bags\, coloring station and cookie decorating table. Tickets are required for every attendee. Children two and under do not require a ticket. We appreciate your honesty and look forward to having you!
+URL:https://flyingacefarm.com/calendar/brunch-w-santa-event-2/
+LOCATION:Flying Ace Farm
+CATEGORIES:All You Can Eat,Brunch,Brunch w/ Santa,Family
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2026/11/IMG_3782-scaled-e1793994539359.jpg
+ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
 END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/Halifax:20261206T140000
@@ -174,6 +262,20 @@ LOCATION:Flying Ace Farm
 CATEGORIES:Family,Free Event,Live Music
 ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2025/05/Dylan-Woelfel-2.jpg
 ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261212T150000
+DTEND;TZID=America/New_York:20261212T180000
+DTSTAMP:20261106T213126Z
+CREATED:20261106T213126Z
+LAST-MODIFIED:20261106T213126Z
+UID:13473-1797087600-1797098400@flyingacefarm.com
+SUMMARY:Live Music at Flying Ace Farm featuring Twofer
+DESCRIPTION:Live Music at Flying Ace Farm featuring Twofer\nJoin us on Saturday\, December 12th\, from 3-6pm for live music featuring Twofer. \nMusician Bio:\nA veteran Marine Corps pilot\, Jonathan “Twofer” Noftsier is an acoustic musician known for blending country\, rock\, and pop favorites. From Tyler Childers to Avril Lavigne and Britney Spears\, his performances combine modern classics\, eclectic covers\, and nostalgic singalongs. \n*To learn more about Twofer and upcoming performances\, visit his Instagram page. \n**Be sure to check out our Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n  \n 
+URL:https://flyingacefarm.com/calendar/live-music-twofer/
+LOCATION:Flying Ace Farm
+CATEGORIES:Live Music
+ATTACH;FMTTYPE=image/png:https://flyingacefarm.com/wp-content/uploads/2026/06/twofer-band-photo.png
 END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261213T140000
@@ -234,5 +336,19 @@ LOCATION:Flying Ace Farm
 CATEGORIES:Live Music
 ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2026/06/Morgan-Gonce-musician.jpeg
 ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261227T140000
+DTEND;TZID=America/New_York:20261227T170000
+DTSTAMP:20261106T220911Z
+CREATED:20261106T220911Z
+LAST-MODIFIED:20261106T220911Z
+UID:13481-1798380000-1798390800@flyingacefarm.com
+SUMMARY:Live Music featuring Britton James at Flying Ace Farm
+DESCRIPTION:LIVE MUSIC FEATURING BRITTON JAMES AT FLYING ACE FARM\nJoin us for live music on Sunday\, December 27th\, from 2-5pm\, featuring Britton James at Flying Ace Farm in Lovettsville\, Virginia.\nJoin us for live music at Flying Ace Farm on Sunday\, September 13th\, from 2–5 PM\, featuring Northern Virginia musician Britton James. Relax with handcrafted American Ace Spirits\, fresh BBQ\, locally brewed beer\, and beautiful mountain views while enjoying an afternoon of live entertainment. Admission is free\, and seating is available on a first-come\, first-served basis. \nAbout Britton James\nA Northern Virginia native\, Britton James is a talented singer-songwriter\, producer\, and multi-instrumentalist who writes\, records\, and performs original alternative music. His energetic one-man show is anything but ordinary\, combining live vocals with percussion\, bass\, guitar\, and looping techniques to create the sound of a full band—all performed live on stage. \nWith a diverse musical style\, Britton seamlessly blends his original songs with crowd-favorite covers spanning decades\, from timeless classics to today’s biggest hits. His dynamic performances and engaging stage presence make every show a unique experience for music lovers of all ages. \nTo learn more about Britton James\, visit his official website \nBe sure to check out our full Live Music Schedule to see all upcoming performances at Flying Ace Farm. \n \n \n 
+URL:https://flyingacefarm.com/calendar/live-music-featuring-britton-james-at-flying-ace-farm-2/
+LOCATION:Flying Ace Farm
+CATEGORIES:Live Music
+ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2021/08/1402_image_231792481_355649302847367_7673593667556548300_n.jpg
 END:VEVENT
 END:VCALENDAR
