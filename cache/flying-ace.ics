@@ -88,21 +88,6 @@ DTSTART:20271107T050000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261107T150000
-DTEND;TZID=America/New_York:20261107T180000
-DTSTAMP:20260707T210216Z
-CREATED:20260707T210216Z
-LAST-MODIFIED:20260707T210216Z
-UID:13098-1794063600-1794074400@flyingacefarm.com
-SUMMARY:Live Music featuring Jake Phillips at Flying Ace Farm
-DESCRIPTION:Live Music featuring Jake Phillips at Flying Ace Farm\nJoin us on Saturday\, November 7th\, from 3-6PM for live music by Jake Phillips. \nJake Phillips is a singer/songwriter who has traveled the world; from US and European tours to Singapore and Canada and points beyond. With a powerful voice and dynamic guitar skills\, Jake’s repertoire includes original music and an eclectic set of classic folk and alternative covers. \nRECENT NEWS: Jake’s song “Brother of Mine” debuted on SUITS LA (Season 1\, episode 10) on May 4th\, 2025. You can check out his music on Spotify\, “My Fragile Ego.” \nTo listen to more music by Jake Phillips\, check him out on Spotify  \nBe sure to check out our full Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n \n \n 
-URL:https://flyingacefarm.com/calendar/live-music-jake-phillips-3/
-LOCATION:Flying Ace Farm
-CATEGORIES:Live Music
-ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2023/08/7901_image_369974567_826714805823431_1726653859416587511_n.jpg
-ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261108T140000
 DTEND;TZID=America/New_York:20261108T170000
 DTSTAMP:20261106T223922Z

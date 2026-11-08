@@ -61,34 +61,6 @@ DTSTART:20281105T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261107T130000
-DTEND;TZID=America/New_York:20261107T160000
-DTSTAMP:20261106T123203Z
-CREATED:20261106T123202Z
-LAST-MODIFIED:20261106T123203Z
-UID:10001198-1794056400-1794067200@vanishbeer.com
-SUMMARY:Climb On
-DESCRIPTION:Climb On is an alternative rock band based out of Alexandria\, Virginia that offers a unique sound that blends the cutting edge with a blast from the past. The band plays your favorite rock music from the 90s/2000s\, classic rock\, and pop music with some saxophone spiced in. Get ready for a energetic and fun show!
-URL:https://vanishbeer.com/event/climb-on-2/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/webp:https://vanishbeer.com/wp-content/uploads/2022/03/4015.webp
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261107T170000
-DTEND;TZID=America/New_York:20261107T200000
-DTSTAMP:20260901T190158Z
-CREATED:20260901T190158Z
-LAST-MODIFIED:20260901T190158Z
-UID:10001229-1794070800-1794081600@vanishbeer.com
-SUMMARY:The Mission
-DESCRIPTION:The Mission is a rock cover band from Frederick\, Maryland with other 100 years of combined performing experience.  The band covers well known hits from the 1970s up to today.  Singing along and dancing are highly encouraged!
-URL:https://vanishbeer.com/event/the-mission/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/09/mission-scaled.jpg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261108T130000
 DTEND;TZID=America/New_York:20261108T160000
 DTSTAMP:20260604T003106Z
@@ -478,5 +450,33 @@ URL:https://vanishbeer.com/event/chris-ellis/2027-01-08/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2026/11/IMG_3473-scaled.jpeg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270110T130000
+DTEND;TZID=America/New_York:20270110T160000
+DTSTAMP:20261101T223739Z
+CREATED:20240122T135839Z
+LAST-MODIFIED:20261101T223739Z
+UID:10001277-1799586000-1799596800@vanishbeer.com
+SUMMARY:Herb & Hanson
+DESCRIPTION:American roots duo\, Herb & Hanson\, features two songwriters expressing themselves with little more than a guitar\, a mandolin\, and their respective voices. These restless ragamuffins have performed for audiences spanning the entire country covering 25\,000 miles of asphalt\, gravel\, and dirt every year since 2005. Their blue-collar work ethic is unsurprisingly conveyed through their deft instrumentation hammering along with sweet harmonies sung from an honest day’s labor to bring their modern folk songs alive to modern America. 
+URL:https://vanishbeer.com/event/herb-hanson/2027-01-10/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2024/01/201202_parkslope-003-scaled.jpeg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270123T130000
+DTEND;TZID=America/New_York:20270123T160000
+DTSTAMP:20261101T154256Z
+CREATED:20250427T143854Z
+LAST-MODIFIED:20261101T154256Z
+UID:10001262-1800709200-1800720000@vanishbeer.com
+SUMMARY:Michelle and Jason Hannan Duo
+DESCRIPTION:Michelle and Jason Hannan from the local favorite band Michelle & One Blue Night will bring their sweet classic country harmonies to Vanish.
+URL:https://vanishbeer.com/event/michelle-and-jason-hannan-duo-2/2027-01-23/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2025/04/55635122_2332538393475770_5948109876201783296_n-1.jpg
 END:VEVENT
 END:VCALENDAR
