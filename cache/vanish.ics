@@ -61,20 +61,6 @@ DTSTART:20281105T060000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261108T130000
-DTEND;TZID=America/New_York:20261108T160000
-DTSTAMP:20260604T003106Z
-CREATED:20230526T143419Z
-LAST-MODIFIED:20260604T003106Z
-UID:10001202-1794142800-1794153600@vanishbeer.com
-SUMMARY:Britton Niesslein
-DESCRIPTION:Based in NOVA\, singing tunes in the area that bring people together.
-URL:https://vanishbeer.com/event/britton-niesslein/2026-11-08/
-LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
-CATEGORIES:Music
-ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2023/05/335078302_157018117220680_6369298533247229269_n.jpg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261113T170000
 DTEND;TZID=America/New_York:20261113T200000
 DTSTAMP:20260901T185640Z
@@ -478,5 +464,19 @@ URL:https://vanishbeer.com/event/michelle-and-jason-hannan-duo-2/2027-01-23/
 LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
 CATEGORIES:Music
 ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2025/04/55635122_2332538393475770_5948109876201783296_n-1.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270124T130000
+DTEND;TZID=America/New_York:20270124T160000
+DTSTAMP:20261101T153747Z
+CREATED:20211209T115803Z
+LAST-MODIFIED:20261101T153747Z
+UID:10001259-1800795600-1800806400@vanishbeer.com
+SUMMARY:Scott Kurt
+DESCRIPTION:Country Music artist who splits his time between Virginia and Nashville
+URL:https://vanishbeer.com/event/scott-kurt-band/2027-01-24/
+LOCATION:Vanish\, 42245 Black Hops Lane\, Leesburg\, VA\, 20176\, United States
+CATEGORIES:Music
+ATTACH;FMTTYPE=image/jpeg:https://vanishbeer.com/wp-content/uploads/2021/12/123054066_2872835249661627_1045073759124453196_n.jpg
 END:VEVENT
 END:VCALENDAR

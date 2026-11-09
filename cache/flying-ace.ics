@@ -88,20 +88,6 @@ DTSTART:20271107T050000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261108T140000
-DTEND;TZID=America/New_York:20261108T170000
-DTSTAMP:20261106T223922Z
-CREATED:20261106T223922Z
-LAST-MODIFIED:20261106T223922Z
-UID:13490-1794146400-1794157200@flyingacefarm.com
-SUMMARY:Live Music featuring Robert Mabe
-DESCRIPTION:Live Music at Flying Ace Farm featuring Robert Mabe\nJoin us on Sunday\, November 8th\, from 2-5pm for live music featuring Robert Mabe.\nMusician Bio:\nAs a kid growing up in North Carolina\, Robert was surrounded by many great bluegrass musicians. In fact\, his grandfather was a guitar/bass player who also performed at The Grand Ole Opry. \nWhen his parents gave him a banjo at age 12\, he began taking lessons and attending local bluegrass jams and he was soon hooked. \nListening to Earl Scruggs\, Bela Fleck\, and all things bluegrass\, he also became interested in other styles of music including Jazz\, Irish\, and Blues. While taking banjo lessons he would also seek out piano\, guitar\, and sax teachers to translate their styles to banjo. \nThis was not just for the love of the banjo but also for the love of live performance. Over the years Robert has performed thousands of live shows across the USA and abroad; in 2013 he was honored to perform at Carnegie Hall. \nRobert has recorded with many great musicians including Larry Keel\, Clay Jones\, and Patrick McAvinue. Roberts solo studio release\, “Somewhere in the Middle”\, was written and produced by Robert\, showcasing his versitile songwriting skills and includes an all star cast of musicians. \n“Somewhere in the Middle” also caught the attention of Bluegrass Today and Bluegrass Unlimited who both published rave reviews and high praise of the project. Currently Robert is touring the US full time with around 100 dates a year on the calendar. In addition to festivals and music venues\, he performs dozens of private events each year. \n*To learn more about Robert Mabe and upcoming shows\, visit his official website. \n**Be sure to check out our Live Music Schedule at Flying Ace Farm to see all upcoming performances. \n \n  \n 
-URL:https://flyingacefarm.com/calendar/live-music-robert-mabe/
-LOCATION:Flying Ace Farm
-CATEGORIES:Live Music
-ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2025/12/Robert-Mabe-photo-scaled.jpg
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261114T150000
 DTEND;TZID=America/New_York:20261114T180000
 DTSTAMP:20260707T192533Z
