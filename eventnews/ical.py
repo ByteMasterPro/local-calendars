@@ -6,14 +6,14 @@ from datetime import date, datetime, timedelta, timezone
 
 from icalendar import Calendar, Event as VEvent, vDDDTypes, vRecur, vText
 
-from localcal import __version__
-from localcal.model import Event, Feed
+from eventnews import __version__
+from eventnews.model import Event, Feed
 
 
 def render(feed: Feed, events: list[Event], now: datetime | None = None) -> bytes:
     now = now or datetime.now(timezone.utc)
     cal = Calendar()
-    cal.add("PRODID", f"-//localcal {__version__}//EN")
+    cal.add("PRODID", f"-//eventnews {__version__}//EN")
     cal.add("VERSION", "2.0")
     cal.add("CALSCALE", "GREGORIAN")
     cal.add("METHOD", "PUBLISH")

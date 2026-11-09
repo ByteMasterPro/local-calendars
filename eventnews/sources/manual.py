@@ -33,8 +33,8 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from localcal.model import Event, Feed
-from localcal.text import slugify
+from eventnews.model import Event, Feed
+from eventnews.text import slugify
 
 _WEEKDAY_INDEX = {"MO": 0, "TU": 1, "WE": 2, "TH": 3, "FR": 4, "SA": 5, "SU": 6}
 

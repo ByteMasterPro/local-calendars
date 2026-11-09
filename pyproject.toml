@@ -1,5 +1,5 @@
 [project]
-name = "localcal"
+name = "eventnews"
 version = "0.1.0"
 description = "Turn brewery event pages into subscribable .ics calendar feeds"
 requires-python = ">=3.12"
@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-localcal = "localcal.cli:main"
+eventnews = "eventnews.cli:main"
 
 [dependency-groups]
 dev = [
@@ -24,4 +24,4 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["localcal"]
+packages = ["eventnews"]

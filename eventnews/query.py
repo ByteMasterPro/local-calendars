@@ -13,12 +13,12 @@ import recurring_ical_events
 import requests
 from icalendar import Calendar
 
-from localcal import ical
-from localcal.model import Feed
-from localcal.sources import fetch_events
+from eventnews import ical
+from eventnews.model import Feed
+from eventnews.sources import fetch_events
 
 log = logging.getLogger(__name__)
-USER_AGENT = "localcal/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
+USER_AGENT = "eventnews/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
 
 
 CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
@@ -56,7 +56,7 @@ def load_calendar(feed: Feed, backoff: tuple[int, ...] = RETRY_BACKOFF, cache_di
 
     Third-party hosts hiccup, so transient failures are retried over a widening backoff. If an
     external feed is still unreachable after that, the last good copy under `cache/` is used
-    rather than dropping the venue from the digest; `localcal build` refreshes those daily.
+    rather than dropping the venue from the digest; `eventnews build` refreshes those daily.
     """
     last: Exception | None = None
     for attempt in range(len(backoff) + 1):

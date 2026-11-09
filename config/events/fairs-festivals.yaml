@@ -1,5 +1,5 @@
 # Fairs, festivals, carnivals and seasonal farm events near Leesburg, VA that nobody publishes
-# a feed for. Hand-curated: add what you find (see localcal/sources/manual.py for the format).
+# a feed for. Hand-curated: add what you find (see eventnews/sources/manual.py for the format).
 # Every entry here was checked against the organizer's own site or a government listing on the
 # date in `verified`. Re-verify dates each season; organizers move them.
 #

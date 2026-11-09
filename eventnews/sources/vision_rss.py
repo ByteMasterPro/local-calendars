@@ -32,10 +32,10 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from localcal.model import Event, Feed
+from eventnews.model import Event, Feed
 
 log = logging.getLogger(__name__)
-USER_AGENT = "localcal/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
+USER_AGENT = "eventnews/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
 
 _DATE = r"(\d{1,2}/\d{1,2}/\d{4})"
 _TIME = r"(\d{1,2}:\d{2}\s*[AP]M)"

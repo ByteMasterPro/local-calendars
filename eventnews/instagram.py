@@ -19,7 +19,7 @@ but its absence proves nothing: White's Ferry's "Leesburg Fall Festival" poster 
 of just "image of text", and Honor's Thanksgiving-dinner poster was missed entirely because the
 queue listed everything every run with no way to see what was still unread (2026-11-02).
 
-After reading the images, run `localcal instagram --mark-reviewed` so the next queue shows only
+After reading the images, run `eventnews instagram --mark-reviewed` so the next queue shows only
 what is new.
 """
 
@@ -75,7 +75,7 @@ class Post:
     file: str
     url: str
     flagged: bool
-    reviewed: bool = False      # set by `localcal instagram --mark-reviewed` once eyes have been on it
+    reviewed: bool = False      # set by `eventnews instagram --mark-reviewed` once eyes have been on it
 
 
 def fetch_grid(handle: str, timeout_ms: int = 30000) -> list[dict]:
@@ -144,7 +144,7 @@ def write_review(out_root: Path, all_posts: list[Post], limit: int = 200) -> Pat
              "`config/events/overrides.yaml` (detail for an event a feed already has), a curated file such",
              "as `config/events/honor-brewing.yaml` (an event no feed carries), or a `notices:` entry (an",
              "offer or event whose date or promo code is caption-only). Then run",
-             "`uv run localcal instagram --mark-reviewed` so this list shows only what is new next time.",
+             "`uv run eventnews instagram --mark-reviewed` so this list shows only what is new next time.",
              ""]
     if not pending:
         lines.append("_Nothing pending._")

@@ -20,11 +20,11 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from localcal.model import Event, Feed
-from localcal.text import slugify
+from eventnews.model import Event, Feed
+from eventnews.text import slugify
 
 log = logging.getLogger(__name__)
-USER_AGENT = "Mozilla/5.0 (compatible; localcal/0.1; +https://github.com/ByteMasterPro/local-calendars)"
+USER_AGENT = "Mozilla/5.0 (compatible; eventnews/0.1; +https://github.com/ByteMasterPro/local-calendars)"
 
 # Each listing renders as a run of tag-separated cells: 05 | Dec 2026 | Felix Pickles |
 # Blues | Country | ... | 6:00 PM

@@ -1,9 +1,9 @@
 from datetime import date, datetime
 from pathlib import Path
 
-from localcal import ical
-from localcal.model import Event, Feed
-from localcal.sources import vision_rss
+from eventnews import ical
+from eventnews.model import Event, Feed
+from eventnews.sources import vision_rss
 
 XML = (Path(__file__).parent / "fixtures" / "leesburg_calendar_rss.xml").read_text()
 FEED = Feed(slug="lb", name="Leesburg", url="https://www.leesburgva.gov/residents/calendar", location="Leesburg, VA",

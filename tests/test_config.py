@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from localcal.cli import render_index
-from localcal.model import Config, Feed, load_config
+from eventnews.cli import render_index
+from eventnews.model import Config, Feed, load_config
 
 ROOT = Path(__file__).resolve().parent.parent
 

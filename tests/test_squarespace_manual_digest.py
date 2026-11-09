@@ -2,9 +2,9 @@ from datetime import date, datetime, timezone
 from zoneinfo import ZoneInfo
 from pathlib import Path
 
-from localcal import digest, ical
-from localcal.model import Config, Feed
-from localcal.sources import manual, squarespace
+from eventnews import digest, ical
+from eventnews.model import Config, Feed
+from eventnews.sources import manual, squarespace
 
 TZ = "America/New_York"
 
@@ -338,7 +338,7 @@ def test_build_with_picks_puts_top_picks_first(monkeypatch):
 
 
 def test_cli_digest_post_path_without_webhook_returns_2(monkeypatch, capsys):
-    from localcal import cli
+    from eventnews import cli
     monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
     monkeypatch.delenv("DISCORD_WEBHOOK_URL", raising=False)
     assert cli.digest(CFG, list(FEEDS.values()), MON, post=True) == 2
@@ -346,7 +346,7 @@ def test_cli_digest_post_path_without_webhook_returns_2(monkeypatch, capsys):
 
 
 def test_cli_digest_post_path_posts_each_payload(monkeypatch):
-    from localcal import cli
+    from eventnews import cli
     monkeypatch.setattr(digest.query, "gather", lambda feeds, s, e: ([], 0))
     monkeypatch.setenv("DISCORD_WEBHOOK_URL", "https://discord.test/hook")
     sent = []
@@ -434,7 +434,7 @@ def test_icons_are_optional():
 
 def test_repo_icon_patterns_all_compile():
     import re
-    from localcal.model import load_config
+    from eventnews.model import load_config
     root = Path(__file__).resolve().parent.parent
     cfg = load_config(root / "config" / "calendars.yaml")
     for entry in cfg.digest["top_picks"]["icons"]:
@@ -478,7 +478,7 @@ def test_override_on_pins_a_single_occurrence():
 
 
 def test_repo_overrides_file_is_valid():
-    from localcal import digest as d
+    from eventnews import digest as d
     root = Path(__file__).resolve().parent.parent
     overrides = d.load_overrides(root)
     assert overrides, "overrides.yaml should hold the details read off posters"
@@ -489,7 +489,7 @@ def test_repo_overrides_file_is_valid():
 
 
 def test_fall_festival_gets_the_leaf_icon_not_the_generic_one():
-    from localcal.model import load_config
+    from eventnews.model import load_config
     icons = load_config(Path(__file__).resolve().parent.parent / "config" / "calendars.yaml").digest["top_picks"]["icons"]
     r = row("3rd Annual Anniversary Fall Festival", "2026-10-10T11:00:00-04:00", "2026-10-10T23:00:00-04:00", calendar="honor")
     assert digest._icon(r, icons) == "🍁 "
@@ -524,7 +524,7 @@ def test_ordinary_events_never_reach_top_picks():
 
 def test_seasonal_pattern_does_not_fire_on_the_word_fall_in_prose():
     import re
-    from localcal.model import load_config
+    from eventnews.model import load_config
     cfg = load_config(Path(__file__).resolve().parent.parent / "config" / "calendars.yaml")
     rx = re.compile(next(p["pattern"] for p in cfg.digest["sections"]["breweries"]["seasonal"] if 10 in p["months"]), re.I)
     assert not rx.search("Join us with your hot rods on Fridays this fall (weather permitting)")
@@ -552,7 +552,7 @@ WTM_FEED = Feed(slug="route-7", name="Route 7 Brewing", url="https://route7brewi
 
 
 def test_wheresthemusic_parses_a_venues_upcoming_shows():
-    from localcal.sources import wheresthemusic
+    from eventnews.sources import wheresthemusic
     a, b = wheresthemusic.parse_events(WTM_PAGE, WTM_FEED)
     assert a.summary == "Live Music: Felix Pickles"
     assert a.start.isoformat() == "2026-12-05T18:00:00-05:00"
@@ -563,13 +563,13 @@ def test_wheresthemusic_parses_a_venues_upcoming_shows():
 
 
 def test_wheresthemusic_tolerates_a_page_without_listings():
-    from localcal.sources import wheresthemusic
+    from eventnews.sources import wheresthemusic
     assert wheresthemusic.parse_events("<p>nothing here</p>", WTM_FEED) == []
 
 
 def test_a_feed_can_merge_several_sources(monkeypatch):
-    from localcal import sources
-    from localcal.model import Event
+    from eventnews import sources
+    from eventnews.model import Event
     from datetime import date
     calls = []
 
@@ -592,7 +592,7 @@ def test_a_feed_can_merge_several_sources(monkeypatch):
 
 
 def test_repo_config_has_route_7_with_both_sources():
-    from localcal.model import load_config
+    from eventnews.model import load_config
     cfg = load_config(Path(__file__).resolve().parent.parent / "config" / "calendars.yaml")
     r7 = next(f for f in cfg.feeds if f.slug == "route-7")
     assert [s["type"] for s in r7.sources] == ["wheresthemusic", "manual"]
@@ -616,7 +616,7 @@ def test_notices_render_for_their_section_and_expire():
 
 
 def test_repo_notices_file_parses():
-    from localcal import digest as d
+    from eventnews import digest as d
     root = Path(__file__).resolve().parent.parent
     assert isinstance(d.load_notices(root), list)
 
@@ -638,7 +638,7 @@ def test_exclusions_match_the_title_not_the_blurb():
 
 
 def test_title_haystack_ignores_the_description():
-    from localcal import query
+    from eventnews import query
     r = row("Movie Night", "2026-10-09T19:00:00-04:00", "2026-10-09T21:00:00-04:00", calendar="honor",
             desc="karaoke afterwards", cats=("Family",))
     assert query.title_haystack(r) == "Movie Night Family"
@@ -672,8 +672,8 @@ def test_deprioritised_items_are_the_first_cut_when_a_week_overflows():
 
 
 def test_repo_village_calendar_is_configured_and_parses():
-    from localcal.model import load_config
-    from localcal.sources import manual
+    from eventnews.model import load_config
+    from eventnews.sources import manual
     root = Path(__file__).resolve().parent.parent
     cfg = load_config(root / "config" / "calendars.yaml")
     village = next(f for f in cfg.feeds if f.slug == "village-at-leesburg")
@@ -710,7 +710,7 @@ def test_top_picks_qualify_on_the_title_not_the_blurb():
 
 def test_repo_top_pick_pattern_catches_this_seasons_titles():
     import re
-    from localcal.model import load_config
+    from eventnews.model import load_config
     cfg = load_config(Path(__file__).resolve().parent.parent / "config" / "calendars.yaml")
     rx = re.compile(cfg.digest["top_picks"]["pattern"], re.I)
     for title in ("Monster Mash 2026", "Haunted Happenings", "8th Annual Halloween Bark Bash",
@@ -750,7 +750,7 @@ def test_closures_never_become_top_picks():
 
 def test_november_patterns_match_the_apostrophe_spelling():
     import re
-    from localcal.model import load_config
+    from eventnews.model import load_config
     cfg = load_config(Path(__file__).resolve().parent.parent / "config" / "calendars.yaml")
     seasonal = re.compile(next(p["pattern"] for p in cfg.digest["sections"]["breweries"]["seasonal"]
                                if 11 in p["months"]), re.I)
@@ -761,8 +761,8 @@ def test_november_patterns_match_the_apostrophe_spelling():
 
 
 def test_repo_honor_curated_file_only_holds_what_the_feed_lacks():
-    from localcal.model import load_config
-    from localcal.sources import manual
+    from eventnews.model import load_config
+    from eventnews.sources import manual
     root = Path(__file__).resolve().parent.parent
     cfg = load_config(root / "config" / "calendars.yaml")
     honor = next(f for f in cfg.feeds if f.slug == "honor-brewing-loudoun")

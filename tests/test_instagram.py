@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from localcal import instagram as ig
+from eventnews import instagram as ig
 
 
 class Resp:

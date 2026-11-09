@@ -37,13 +37,13 @@ jobs:
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
             echo "::warning::DISCORD_WEBHOOK_URL secret is not set; printing preview only"
-            uv run localcal digest
+            uv run eventnews digest
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.post }}" != "true" ]; then
-            uv run localcal digest
+            uv run eventnews digest
           elif [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.skip_if_posted }}" = "true" ]; then
             echo "branch: post with skip-if-posted guard"
-            uv run localcal digest --post --skip-if-posted
+            uv run eventnews digest --post --skip-if-posted
           else
             echo "branch: post unconditionally"
-            uv run localcal digest --post
+            uv run eventnews digest --post
           fi

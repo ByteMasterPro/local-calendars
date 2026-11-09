@@ -23,11 +23,11 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from localcal.model import Event, Feed
-from localcal.text import html_to_text
+from eventnews.model import Event, Feed
+from eventnews.text import html_to_text
 
 log = logging.getLogger(__name__)
-USER_AGENT = "Mozilla/5.0 (compatible; localcal/0.1; +https://github.com/ByteMasterPro/local-calendars)"
+USER_AGENT = "Mozilla/5.0 (compatible; eventnews/0.1; +https://github.com/ByteMasterPro/local-calendars)"
 
 
 def fetch(url: str, session: requests.Session | None = None) -> dict:

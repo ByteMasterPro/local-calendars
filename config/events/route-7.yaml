@@ -5,7 +5,7 @@
 # music is also listed on wheresthemusic.us, which this calendar reads automatically; this file
 # is for everything else (watch parties, karaoke nights, anniversary events, specials).
 #
-# To refresh: ask Claude to check @rt7brewing, or run `uv run localcal posters` after adding
+# To refresh: ask Claude to check @rt7brewing, or run `uv run eventnews posters` after adding
 # entries here. See CLAUDE.md, "Instagram as a source".
 
 events:

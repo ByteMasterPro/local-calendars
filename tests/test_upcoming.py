@@ -2,8 +2,8 @@ from datetime import date
 
 from icalendar import Calendar
 
-from localcal.cli import occurrences
-from localcal.model import Feed
+from eventnews.cli import occurrences
+from eventnews.model import Feed
 
 FEED = Feed(slug="x", name="X", url="https://x", location="", timezone="America/New_York", kind="other",
             feed_url="https://x/feed.ics")

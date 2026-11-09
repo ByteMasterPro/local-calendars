@@ -1,4 +1,4 @@
-# Local Calendars
+# Event Newsletter
 
 Subscribable `.ics` calendar feeds for breweries, towns and community groups around Loudoun
 County, VA that don't publish one of their own, plus a command line for asking "what's coming
@@ -33,10 +33,10 @@ up?" across all of them at once.
 ## Asking questions
 
 ```bash
-uv run localcal upcoming                                  # next 30 days, every calendar
-uv run localcal upcoming --days 14 --only leesburg,chilly-hollow
-uv run localcal upcoming --grep "oktober|german|stein"    # regex over title/description/categories
-uv run localcal upcoming --from 2026-12-01 --days 31 --json
+uv run eventnews upcoming                                  # next 30 days, every calendar
+uv run eventnews upcoming --days 14 --only leesburg,chilly-hollow
+uv run eventnews upcoming --grep "oktober|german|stein"    # regex over title/description/categories
+uv run eventnews upcoming --from 2026-12-01 --days 31 --json
 ```
 
 Everything is fetched live (external feeds are downloaded, built feeds are rebuilt from their
@@ -45,7 +45,7 @@ sorted by start time. `--json` is for piping into other tools.
 
 ## Weekly Discord digest
 
-`localcal digest` posts a **Top Picks This Week** card followed by three sections every Monday,
+`eventnews digest` posts a **Top Picks This Week** card followed by three sections every Monday,
 each grouped by date (one bold date header, the day's events under it). "This week" is Monday-Sunday; run it on a
 Saturday and it shows only what is left of the weekend (anything already over is dropped). Each
 section lists this week's events in full, then one **Next week:** line of highlights for the
@@ -63,9 +63,9 @@ Each line reads `**Sun Sep 20**, 1–4pm — Title (Venue, Town): excerpt. Tomor
 tunable under `digest:` in `config/calendars.yaml`.
 
 ```bash
-uv run localcal digest                     # preview from today through Sunday
-uv run localcal digest --from 2026-09-21   # preview as if run on that day
-DISCORD_WEBHOOK_URL=... uv run localcal digest --post
+uv run eventnews digest                     # preview from today through Sunday
+uv run eventnews digest --from 2026-09-21   # preview as if run on that day
+DISCORD_WEBHOOK_URL=... uv run eventnews digest --post
 ```
 
 `.github/workflows/digest.yml` posts on Mondays using the `DISCORD_WEBHOOK_URL` repository
@@ -84,10 +84,10 @@ digest still posts, just without the purge. Pin anything you want to survive.
 
 | When | What | Where |
 |---|---|---|
-| Daily, 05:23 UTC | `localcal build` - rebuild every fetched feed, refresh the external-feed cache, commit `docs/` | GitHub Actions (`build.yml`) |
+| Daily, 05:23 UTC | `eventnews build` - rebuild every fetched feed, refresh the external-feed cache, commit `docs/` | GitHub Actions (`build.yml`) |
 | Daily, 10:30 UTC | copy the published `.ics` files to the old `brewery-calendars` paths | GitHub Actions, [mirror repo](https://github.com/ByteMasterPro/brewery-calendars) |
-| **Mondays**, 06:17 / 10:17 / 14:17 / 18:17 UTC | `localcal digest --post --skip-if-posted` - purge the channel and post the week. The first run posts; the rest see it and stand down | GitHub Actions (`digest.yml`) |
-| **Mon & Thu, 07:40 local** | `localcal instagram` - pull each venue's public grid, write the review queue | Christopher's Mac (launchd, installed 2026-11-02) |
+| **Mondays**, 06:17 / 10:17 / 14:17 / 18:17 UTC | `eventnews digest --post --skip-if-posted` - purge the channel and post the week. The first run posts; the rest see it and stand down | GitHub Actions (`digest.yml`) |
+| **Mon & Thu, 07:40 local** | `eventnews instagram` - pull each venue's public grid, write the review queue | Christopher's Mac (launchd, installed 2026-11-02) |
 | **1st of each month, by hand** | read Honor's month-at-a-glance poster out of the review queue and update the curated file and overrides | a session with Claude |
 
 GitHub's cron queue runs hours late and occasionally drops a run, which is why the digest has
@@ -97,17 +97,17 @@ four triggers and the build runs early.
 
 ```
 config/calendars.yaml        one entry per calendar: slug, name, kind, address, source adapter or feed_url
-localcal/sources/            adapters that turn a site's event data into Event objects
-localcal/ical.py             Event -> RFC 5545 .ics (TZID + bounded VTIMEZONE, RRULE, EXDATE); parse + merge
-localcal/query.py            live fetch + recurrence expansion shared by `upcoming` and the digest
-localcal/digest.py           Discord digest sections, formatting, webhook posting and channel purge
-localcal/instagram.py        pulls venues' public Instagram grids (local only, never CI)
+eventnews/sources/            adapters that turn a site's event data into Event objects
+eventnews/ical.py             Event -> RFC 5545 .ics (TZID + bounded VTIMEZONE, RRULE, EXDATE); parse + merge
+eventnews/query.py            live fetch + recurrence expansion shared by `upcoming` and the digest
+eventnews/digest.py           Discord digest sections, formatting, webhook posting and channel purge
+eventnews/instagram.py        pulls venues' public Instagram grids (local only, never CI)
 scripts/*.plist              launchd job that runs the Instagram pull Mon/Thu 07:40
-localcal/cli.py              `localcal build` / `upcoming` / `digest`
+eventnews/cli.py              `eventnews build` / `upcoming` / `digest`
 config/events/               curated event lists used by the `manual` adapter
 .github/workflows/digest.yml Monday Discord post, four triggers (needs DISCORD_WEBHOOK_URL, DISCORD_BOT_TOKEN, DISCORD_CHANNEL_ID)
 docs/                        the published site (GitHub Pages serves this folder)
-.github/workflows/build.yml  daily cron (05:23 UTC) + on push to config/localcal; commits docs/
+.github/workflows/build.yml  daily cron (05:23 UTC) + on push to config/eventnews; commits docs/
 ```
 
 Only files whose event content changed are rewritten (DTSTAMP is ignored when comparing), so
@@ -139,18 +139,18 @@ the bot only commits when a source actually changed something.
 ## Event artwork
 
 Most feeds carry a poster for each event (Elfsight cover art, iCal `ATTACH`, Squarespace asset),
-and venues often put details there that appear nowhere in the text. `localcal posters` downloads
+and venues often put details there that appear nowhere in the text. `eventnews posters` downloads
 them so they can be read, and anything worth saying goes into `config/events/overrides.yaml`,
 which the digest prefers over the feed's blurb.
 
 ```bash
-uv run localcal posters --days 30                  # into data/posters/ (gitignored)
-uv run localcal posters --days 30 --missing-only   # skip events that already have an override
+uv run eventnews posters --days 30                  # into data/posters/ (gitignored)
+uv run eventnews posters --days 30 --missing-only   # skip events that already have an override
 ```
 
 ## Instagram
 
-Some venues (Route 7, White's Ferry) announce only on Instagram. `localcal instagram` loads each
+Some venues (Route 7, White's Ferry) announce only on Instagram. `eventnews instagram` loads each
 configured handle's public profile in headless Chromium, downloads new grid images to
 `data/instagram/<handle>/` and writes a `review.md` queue. Nothing logs in, so captions are never
 read; when a date or promo code is caption-only, a `notices:` entry in
@@ -160,11 +160,11 @@ Handles watched: `honorbrewingcompany`, `rt7brewing`, `whitesferrybrew` (the `in
 a calendar).
 
 ```bash
-uv run localcal instagram                       # all configured handles, on demand
-uv run localcal instagram --pending             # what is still unread (no network)
-uv run localcal instagram --mark-reviewed       # after the images have been looked at
-launchctl start com.kyberstorm.localcal-instagram   # run the scheduled job now
-tail -20 /tmp/localcal-instagram.log            # what it did
+uv run eventnews instagram                       # all configured handles, on demand
+uv run eventnews instagram --pending             # what is still unread (no network)
+uv run eventnews instagram --mark-reviewed       # after the images have been looked at
+launchctl start com.kyberstorm.eventnews-instagram   # run the scheduled job now
+tail -20 /tmp/eventnews-instagram.log            # what it did
 ```
 
 Anything unusual that is not an event - a pre-order window, a seasonal menu, a pop-up - goes in
@@ -174,17 +174,17 @@ section keeps the full detail.
 `data/instagram/review.md` lists only posts **not yet read**, as checkboxes with a count, so a
 new poster cannot hide among ones already seen.
 
-**The schedule.** `scripts/com.kyberstorm.localcal-instagram.plist` runs it **Mondays and
+**The schedule.** `scripts/com.kyberstorm.eventnews-instagram.plist` runs it **Mondays and
 Thursdays at 07:40 local**, before Monday's digest. It was installed and verified on 2026-11-02:
 
 ```bash
-cp scripts/com.kyberstorm.localcal-instagram.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.kyberstorm.localcal-instagram.plist
+cp scripts/com.kyberstorm.eventnews-instagram.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.kyberstorm.eventnews-instagram.plist
 ```
 
 `RunAtLoad` is false, so loading it does not fire a run; the first one is the next Mon/Thu.
-Logs go to `/tmp/localcal-instagram.log`. Check it is registered with
-`launchctl list | grep localcal`.
+Logs go to `/tmp/eventnews-instagram.log`. Check it is registered with
+`launchctl list | grep eventnews`.
 
 This is local-only by necessity: the grid is JavaScript-rendered and Instagram blocks datacenter
 IPs, so it cannot run in GitHub Actions, and nothing ever logs in.
@@ -199,10 +199,10 @@ never gets, so at the start of each month ask Claude to read the queue
 
 1. Look at the events page source and identify the platform (the comment block at the top of
    `config/calendars.yaml` lists the tell-tale signs and what to put in the config).
-2. Add an entry. `uv run localcal upcoming --only <slug>` to verify it parses.
+2. Add an entry. `uv run eventnews upcoming --only <slug>` to verify it parses.
 3. Commit and push. The workflow publishes the feed and the index page picks it up.
-4. New platform: write `localcal/sources/<name>.py` exposing `fetch(feed) -> list[Event]` and
-   register it in `localcal/sources/__init__.py`.
+4. New platform: write `eventnews/sources/<name>.py` exposing `fetch(feed) -> list[Event]` and
+   register it in `eventnews/sources/__init__.py`.
 
 ## Old subscription URLs
 

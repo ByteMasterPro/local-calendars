@@ -9,25 +9,25 @@ from __future__ import annotations
 import logging
 from typing import Callable
 
-from localcal.model import Event, Feed
+from eventnews.model import Event, Feed
 
 log = logging.getLogger(__name__)
 
 
 def _elfsight(feed: Feed, src: dict) -> list[Event]:
-    from localcal.sources import elfsight
+    from eventnews.sources import elfsight
 
     return elfsight.parse_events(elfsight.fetch_settings(src["widget_id"]), feed)
 
 
 def _vision_rss(feed: Feed, src: dict) -> list[Event]:
-    from localcal.sources import vision_rss
+    from eventnews.sources import vision_rss
 
     return vision_rss.parse_events(vision_rss.fetch(src["rss_url"]), feed)
 
 
 def _squarespace(feed: Feed, src: dict) -> list[Event]:
-    from localcal.sources import squarespace
+    from eventnews.sources import squarespace
 
     return squarespace.parse_events(squarespace.fetch(src["url"]), feed)
 
@@ -35,14 +35,14 @@ def _squarespace(feed: Feed, src: dict) -> list[Event]:
 def _manual(feed: Feed, src: dict) -> list[Event]:
     from pathlib import Path
 
-    from localcal.sources import manual
+    from eventnews.sources import manual
 
     root = Path(__file__).resolve().parent.parent.parent
     return manual.parse_events(manual.load(root / src["file"]), feed)
 
 
 def _wheresthemusic(feed: Feed, src: dict) -> list[Event]:
-    from localcal.sources import wheresthemusic
+    from eventnews.sources import wheresthemusic
 
     return wheresthemusic.parse_events(wheresthemusic.fetch(src["url"]), feed)
 

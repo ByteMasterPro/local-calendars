@@ -23,13 +23,13 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from localcal.model import Event, Feed
-from localcal.text import html_to_text as _html_to_text
+from eventnews.model import Event, Feed
+from eventnews.text import html_to_text as _html_to_text
 
 log = logging.getLogger(__name__)
 
 BOOT_URL = "https://core.service.elfsight.com/p/boot/"
-USER_AGENT = "localcal/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
+USER_AGENT = "eventnews/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
 
 # Elfsight repeat vocabulary -> RFC 5545 FREQ. Unknown values are logged and treated
 # as one-off events rather than guessed.

@@ -1,11 +1,11 @@
-"""localcal command line.
+"""eventnews command line.
 
-    localcal build    [--only SLUG] [--dry-run]              fetch sources, write docs/<slug>.ics + docs/index.html
-    localcal upcoming [--days N] [--grep REGEX] [--only SLUG,SLUG] [--json]
+    eventnews build    [--only SLUG] [--dry-run]              fetch sources, write docs/<slug>.ics + docs/index.html
+    eventnews upcoming [--days N] [--grep REGEX] [--only SLUG,SLUG] [--json]
                                                              what's happening across ALL calendars (built + external)
-    localcal digest   [--from DATE] [--post]                 weekly Discord digest (this week + next-week highlights)
-    localcal posters  [--days N] [--only SLUG] [--out DIR]   download event artwork for review
-    localcal instagram [--only SLUG]                         pull venues' public Instagram grids (local only)
+    eventnews digest   [--from DATE] [--post]                 weekly Discord digest (this week + next-week highlights)
+    eventnews posters  [--days N] [--only SLUG] [--out DIR]   download event artwork for review
+    eventnews instagram [--only SLUG]                         pull venues' public Instagram grids (local only)
 """
 
 from __future__ import annotations
@@ -25,22 +25,22 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from localcal import digest as digest_mod
-from localcal import instagram as ig_mod
-from localcal import ical, query
-from localcal.model import KINDS, Config, Feed, load_config
-from localcal.query import load_calendar, occurrences  # noqa: F401  (re-exported for tests)
-from localcal.sources import fetch_events
+from eventnews import digest as digest_mod
+from eventnews import instagram as ig_mod
+from eventnews import ical, query
+from eventnews.model import KINDS, Config, Feed, load_config
+from eventnews.query import load_calendar, occurrences  # noqa: F401  (re-exported for tests)
+from eventnews.sources import fetch_events
 
-log = logging.getLogger("localcal")
+log = logging.getLogger("eventnews")
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = ROOT / "config" / "calendars.yaml"
 DEFAULT_OUT = ROOT / "docs"
-USER_AGENT = "localcal/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
+USER_AGENT = "eventnews/0.1 (+https://github.com/ByteMasterPro/local-calendars)"
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(prog="localcal", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap = argparse.ArgumentParser(prog="eventnews", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     ap.add_argument("-v", "--verbose", action="store_true")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -351,7 +351,7 @@ def digest(cfg: Config, feeds: list[Feed], start: date, *, post: bool, skip_if_p
 # --------------------------------------------------------------------------- index
 
 def render_index(cfg: Config) -> str:
-    title = html.escape(cfg.site.get("title", "Local Calendars"))
+    title = html.escape(cfg.site.get("title", "Event Newsletter"))
     sections = []
     for kind, heading in KINDS.items():
         feeds = [f for f in cfg.feeds if f.kind == kind]

@@ -4,12 +4,12 @@
   Pulls the configured venues' public Instagram grids so their posters can be read.
 
   Install:
-    cp scripts/com.kyberstorm.localcal-instagram.plist ~/Library/LaunchAgents/
-    launchctl load ~/Library/LaunchAgents/com.kyberstorm.localcal-instagram.plist
+    cp scripts/com.kyberstorm.eventnews-instagram.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.kyberstorm.eventnews-instagram.plist
   Run once now:
-    launchctl start com.kyberstorm.localcal-instagram
+    launchctl start com.kyberstorm.eventnews-instagram
   Stop:
-    launchctl unload ~/Library/LaunchAgents/com.kyberstorm.localcal-instagram.plist
+    launchctl unload ~/Library/LaunchAgents/com.kyberstorm.eventnews-instagram.plist
 
   Runs on this Mac, from this IP, logged out. It cannot run in GitHub Actions: Instagram
   renders the grid with JavaScript and blocks datacenter IPs.
@@ -17,13 +17,13 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.kyberstorm.localcal-instagram</string>
+  <string>com.kyberstorm.eventnews-instagram</string>
 
   <key>ProgramArguments</key>
   <array>
     <string>/bin/zsh</string>
     <string>-lc</string>
-    <string>cd ~/Projects/LocalCalendars &amp;&amp; /opt/homebrew/bin/uv run localcal instagram</string>
+    <string>cd ~/Projects/EventNewsletter &amp;&amp; /opt/homebrew/bin/uv run eventnews instagram</string>
   </array>
 
   <!-- Mondays and Thursdays at 07:40: after venues post a month's schedule, before the digest. -->
@@ -38,8 +38,8 @@
   <false/>
 
   <key>StandardOutPath</key>
-  <string>/tmp/localcal-instagram.log</string>
+  <string>/tmp/eventnews-instagram.log</string>
   <key>StandardErrorPath</key>
-  <string>/tmp/localcal-instagram.log</string>
+  <string>/tmp/eventnews-instagram.log</string>
 </dict>
 </plist>

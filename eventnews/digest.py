@@ -26,9 +26,9 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from localcal import query
-from localcal.model import Config, Feed
-from localcal.text import html_to_text
+from eventnews import query
+from eventnews.model import Config, Feed
+from eventnews.text import html_to_text
 
 log = logging.getLogger(__name__)
 

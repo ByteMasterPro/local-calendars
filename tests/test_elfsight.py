@@ -4,9 +4,9 @@ from pathlib import Path
 
 from icalendar import Calendar
 
-from localcal import ical
-from localcal.model import Feed
-from localcal.sources import elfsight
+from eventnews import ical
+from eventnews.model import Feed
+from eventnews.sources import elfsight
 
 FIXTURE = json.loads((Path(__file__).parent / "fixtures" / "elfsight_boot.json").read_text())
 SETTINGS = FIXTURE["data"]["widgets"]["test-widget"]["data"]["settings"]

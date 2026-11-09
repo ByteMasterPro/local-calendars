@@ -12,11 +12,11 @@
 #      - Squarespace events page             -> source: {type: squarespace, url: https://site/events}
 #        (try feed_url: https://site/events?format=ical first; some templates support it)
 #      - no feed anywhere (fairs, carnivals) -> add to config/events/fairs-festivals.yaml
-#   2. `uv run localcal upcoming --only <slug>` to eyeball, then commit + push. The workflow publishes.
-#   3. New platform: write localcal/sources/<name>.py, register it in sources/__init__.py.
+#   2. `uv run eventnews upcoming --only <slug>` to eyeball, then commit + push. The workflow publishes.
+#   3. New platform: write eventnews/sources/<name>.py, register it in sources/__init__.py.
 
 site:
-  title: Local Calendars
+  title: Event Newsletter
   base_url: https://bytemasterpro.github.io/local-calendars
 
 defaults:
@@ -80,7 +80,7 @@ calendars:
     feed_url: https://calendar.google.com/calendar/ical/7a36777b804e9b9d04d70c58670135065f60a7e350d7b860f9e9c7686a9a7131%40group.calendar.google.com/public/basic.ics
     google_calendar_id: 7a36777b804e9b9d04d70c58670135065f60a7e350d7b860f9e9c7686a9a7131@group.calendar.google.com
 
-  # The three below already publish feeds; they are here so `localcal upcoming` covers them and
+  # The three below already publish feeds; they are here so `eventnews upcoming` covers them and
   # the index page is the one place to find every subscribe URL.
   - slug: solace-sterling
     name: Solace Brewing Co. in Sterling
@@ -200,7 +200,7 @@ calendars:
       type: manual
       file: config/events/fairs-festivals.yaml
 
-# Weekly Discord digest (`localcal digest`, Mondays). Three sections. Each shows ONLY this week
+# Weekly Discord digest (`eventnews digest`, Mondays). Three sections. Each shows ONLY this week
 # (run day through Sunday) in detail, then one "Next week:" line of highlights for the following
 # Mon-Sun. Regexes are case-insensitive, matched against title + description + tags + calendar.
 #   **Sun Sep 20**, 1–4pm — Title (Venue, Town): excerpt. Tomorrow.

@@ -1,5 +1,5 @@
-from localcal import query
-from localcal.model import Feed
+from eventnews import query
+from eventnews.model import Feed
 
 
 def test_load_calendar_retries_then_succeeds(monkeypatch, tmp_path):
@@ -38,8 +38,8 @@ def test_load_calendar_gives_up_after_attempts(monkeypatch, tmp_path):
 def test_retries_run_before_a_failure_is_reported(monkeypatch, tmp_path, capsys):
     """A single hiccup must not raise a false alarm: the retries are what make a red run mean
     something, so they have to happen before build gives up."""
-    from localcal import cli
-    from localcal.model import Config, Feed
+    from eventnews import cli
+    from eventnews.model import Config, Feed
     feed = Feed(slug="route-7", name="R7", url="https://x", location="", timezone="America/New_York", kind="brewery",
                 source=[{"type": "wheresthemusic", "url": "u"}])
     attempts = {"n": 0}
@@ -108,8 +108,8 @@ def test_no_cache_means_the_feed_still_raises(monkeypatch, tmp_path):
 
 def test_one_dead_source_does_not_lose_a_feeds_other_events(monkeypatch, caplog):
     from datetime import date
-    from localcal import sources
-    from localcal.model import Event
+    from eventnews import sources
+    from eventnews.model import Event
 
     def dead(feed, src):
         raise TimeoutError("Read timed out")
@@ -125,7 +125,7 @@ def test_one_dead_source_does_not_lose_a_feeds_other_events(monkeypatch, caplog)
 
 
 def test_all_sources_failing_still_raises(monkeypatch):
-    from localcal import sources
+    from eventnews import sources
     def dead(feed, src):
         raise TimeoutError("Read timed out")
     monkeypatch.setitem(sources.REGISTRY, "manual", dead)
@@ -138,8 +138,8 @@ def test_all_sources_failing_still_raises(monkeypatch):
 
 def test_build_fails_the_run_but_keeps_the_published_feed(monkeypatch, tmp_path, capsys):
     from datetime import date
-    from localcal import cli
-    from localcal.model import Config, Feed
+    from eventnews import cli
+    from eventnews.model import Config, Feed
     feed = Feed(slug="route-7", name="R7", url="https://x", location="", timezone="America/New_York", kind="brewery",
                 source=[{"type": "wheresthemusic", "url": "u"}])
     (tmp_path / "route-7.ics").write_bytes(b"BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n")
@@ -152,8 +152,8 @@ def test_build_fails_the_run_but_keeps_the_published_feed(monkeypatch, tmp_path,
 
 
 def test_build_says_so_when_a_feed_has_never_been_published(monkeypatch, tmp_path, capsys):
-    from localcal import cli
-    from localcal.model import Config, Feed
+    from eventnews import cli
+    from eventnews.model import Config, Feed
     feed = Feed(slug="brand-new", name="N", url="https://x", location="", timezone="America/New_York", kind="brewery",
                 source=[{"type": "wheresthemusic", "url": "u"}])
     monkeypatch.setattr(cli, "fetch_events", lambda f: (_ for _ in ()).throw(TimeoutError("down")))

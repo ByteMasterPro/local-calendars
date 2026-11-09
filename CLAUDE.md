@@ -1,7 +1,7 @@
-# CLAUDE.md - Local Calendars
+# CLAUDE.md - Event Newsletter
 
 Christopher's subscribable local event calendars (breweries, towns, community groups near
-Leesburg, VA 20176). Separate from JobHunt; lives at `~/Projects/LocalCalendars`, published from
+Leesburg, VA 20176). Separate from JobHunt; lives at `~/Projects/EventNewsletter`, published from
 GitHub repo `ByteMasterPro/local-calendars` via GitHub Pages.
 
 ## What it does
@@ -14,10 +14,10 @@ Apple Calendar. Venues that already publish a feed are linked, not mirrored.
 
 | When | What | Where |
 |---|---|---|
-| Daily 05:23 UTC | `localcal build`: rebuild fetched feeds, refresh the external-feed cache, commit `docs/` | Actions, `build.yml` |
+| Daily 05:23 UTC | `eventnews build`: rebuild fetched feeds, refresh the external-feed cache, commit `docs/` | Actions, `build.yml` |
 | Daily 10:30 UTC | copy published `.ics` to the old `brewery-calendars` paths | Actions in the mirror repo |
-| Mondays 06:17 / 10:17 / 14:17 / 18:17 UTC | `localcal digest --post --skip-if-posted`: purge the channel, post the week; later triggers stand down | Actions, `digest.yml` |
-| **Mon & Thu 07:40 local** | `localcal instagram`: pull each `instagram:` handle's public grid, write `data/instagram/review.md` | **His Mac, launchd** (`scripts/com.kyberstorm.localcal-instagram.plist`, installed + verified 2026-11-02, `RunAtLoad` false, logs to `/tmp/localcal-instagram.log`) |
+| Mondays 06:17 / 10:17 / 14:17 / 18:17 UTC | `eventnews digest --post --skip-if-posted`: purge the channel, post the week; later triggers stand down | Actions, `digest.yml` |
+| **Mon & Thu 07:40 local** | `eventnews instagram`: pull each `instagram:` handle's public grid, write `data/instagram/review.md` | **His Mac, launchd** (`scripts/com.kyberstorm.eventnews-instagram.plist`, installed + verified 2026-11-02, `RunAtLoad` false, logs to `/tmp/eventnews-instagram.log`) |
 | **1st of each month, by hand** | read Honor's month-at-a-glance poster from the review queue, update `config/events/honor-brewing.yaml` and `overrides.yaml` | a session |
 
 Cron times are deliberately off the hour and early: GitHub's queue runs hours late and has
@@ -38,10 +38,10 @@ Christopher asks things like "what October or German events are coming up in the
 right here in chat. The recipe:
 
 ```bash
-cd ~/Projects/LocalCalendars
-uv run localcal upcoming --days 30                          # everything
-uv run localcal upcoming --days 30 --grep "oktober|german|stein|fest|lager|bavarian"
-uv run localcal upcoming --days 30 --json                   # when you want to filter/summarise yourself
+cd ~/Projects/EventNewsletter
+uv run eventnews upcoming --days 30                          # everything
+uv run eventnews upcoming --days 30 --grep "oktober|german|stein|fest|lager|bavarian"
+uv run eventnews upcoming --days 30 --json                   # when you want to filter/summarise yourself
 ```
 
 Then summarise for him: group by date, name the venue, drop noise (weekly farmers markets,
@@ -57,7 +57,7 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   listing, then add it with a `verified:` date. Never add an event from memory alone.
   Multi-week attractions (pumpkin patches, Cox Farms) use `season:` so they show on weekends
   rather than as a two-month banner.
-- The weekly Discord post (`localcal digest`, Mondays via `.github/workflows/digest.yml`) has the
+- The weekly Discord post (`eventnews digest`, Mondays via `.github/workflows/digest.yml`) has the
   three sections Christopher specified on 2026-09-19: "Fairs, Festivals and Carnivals", "Local
   Breweries" (seasonal first: Oktoberfest/German/Halloween in Sep-Oct, Christmas/holiday in
   Nov-Dec; live music only as a fallback; never karaoke/trivia/discounts), "Town Activities"
@@ -78,7 +78,7 @@ descriptions and use judgement (e.g. "Chillyfest" is an Oktoberfest-style event 
   multi-day range likewise share one `**Fri Oct 2 – Sun Oct 4**` header. Since 2026-10-06 EVERY
   multi-day run gets that header, even when only one pick runs it. An all-day event on a day with
   no timed pick is the one remaining inline case: `**date** — Title (Venue)`. Top picks repeat in full inside their sections; he wants that repetition. Tune under `digest:` in
-  `config/calendars.yaml`; preview with `localcal digest --from <day>`. An event that began
+  `config/calendars.yaml`; preview with `eventnews digest --from <day>`. An event that began
   before this week and runs for weeks (Honor's month-long Halloween pop-up bar) is listed in full
   the week it starts, then collapses to one **Running now:** line per section rather than being
   dropped (it was, until 2026-10-02) or repeated in full every Monday. Venues misspell things, so
@@ -177,14 +177,14 @@ Some venues announce only on Instagram. What works and what does not, establishe
 
   `alt` often carries Instagram's own OCR of the poster, which is a useful index even before
   downloading. Then curl the urls (they are signed but work for a while) and Read the files.
-- **`uv run localcal instagram`** automates the pulling half: Playwright headless Chromium loads
+- **`uv run eventnews instagram`** automates the pulling half: Playwright headless Chromium loads
   each feed's `instagram:` handle logged out, downloads anything new to `data/instagram/<handle>/`
   (gitignored) and writes `data/instagram/review.md`, a newest-first queue. `scripts/
-  com.kyberstorm.localcal-instagram.plist` runs it on his Mac Mon/Thu 07:40 (install notes are in
+  com.kyberstorm.eventnews-instagram.plist` runs it on his Mac Mon/Thu 07:40 (install notes are in
   the file). It never runs in CI.
 - **`data/instagram/review.md` lists only UNREAD posts**, as checkboxes, with a count in its
   heading; the manifest carries a `reviewed` flag per post. After looking at the images run
-  `uv run localcal instagram --mark-reviewed`, and use `--pending` to see what is outstanding
+  `uv run eventnews instagram --mark-reviewed`, and use `--pending` to see what is outstanding
   without touching the network. A pull that leaves anything unread also prints a `::warning::`.
   This exists because Honor's **Thanksgiving Dinner To Go** poster (pre-orders, $225 whole dinner)
   was pulled on 2026-10-31 and sat unread for two days while the queue re-listed all 63 posts
@@ -213,7 +213,7 @@ throwing, petting zoo" only in the image. So:
 - `Event.image` carries a poster URL. Sources: Elfsight `coverImage` (Honor), iCal `ATTACH`
   (Vanish, Flying Ace, Chilly Hollow, Historic Manassas), Squarespace `assetUrl` (One Loudoun).
   Solace's Google Calendar has none. Published feeds re-emit it as `ATTACH`.
-- `uv run localcal posters [--days N] [--only SLUG] [--missing-only]` downloads them to
+- `uv run eventnews posters [--days N] [--only SLUG] [--missing-only]` downloads them to
   `data/posters/` (gitignored). **Read the images** and write what they add into
   `config/events/overrides.yaml` (`match`, optional `calendar`/`on`, `details`, `source`).
   `digest.blurb()` prefers an override over the feed's text.
@@ -223,7 +223,7 @@ throwing, petting zoo" only in the image. So:
 ## Conventions
 
 - **Config-first.** A new calendar on a known platform is a `config/calendars.yaml` entry.
-  New platforms get a small adapter in `localcal/sources/` registered in `sources/__init__.py`.
+  New platforms get a small adapter in `eventnews/sources/` registered in `sources/__init__.py`.
 - **Structured data over scraping.** Look for the widget/platform API first: Elfsight boot JSON,
   a public Google Calendar behind an Elfsight widget, Vision CMS RSS, The Events Calendar
   `?ical=1`, CivicPlus `iCalendar.aspx`, Squarespace `?format=json`. Every current source was
@@ -253,8 +253,8 @@ throwing, petting zoo" only in the image. So:
 ## Run
 
 ```bash
-uv run localcal upcoming [--days N] [--grep RX] [--only slug,slug] [--json]
-uv run localcal build [--only SLUG] [--dry-run]
+uv run eventnews upcoming [--days N] [--grep RX] [--only slug,slug] [--json]
+uv run eventnews build [--only SLUG] [--dry-run]
 uv run pytest
 ```
 
@@ -280,7 +280,7 @@ uv run pytest
   verifies fine minutes later; diagnosed 2026-09-24 from a runner (chain ok, 5/5 fetches ok).
   It has also answered a feed request with the parked-domain **lander page** (HTTP 200, HTML).
   Three failures in four runs, so since 2026-10-01: `fetch_external` rejects anything that is not
-  a parseable VCALENDAR, `localcal build` writes each external feed to `cache/<slug>.ics` daily,
+  a parseable VCALENDAR, `eventnews build` writes each external feed to `cache/<slug>.ics` daily,
   and `load_calendar` falls back to that copy after `query.RETRY_BACKOFF` (~75s) is exhausted, so
   the venue stays in the digest. **Flying Ace** has had the same HTML-instead-of-iCal problem.
 - **Route 7 Brewing** (Ashburn) publishes NO calendar: website is menu-and-hours, Facebook needs
