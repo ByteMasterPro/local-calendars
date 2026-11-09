@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//localcal 0.1.0//EN
+PRODID:-//eventnews 0.1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALDESC:Hand-curated fairs, festivals, carnivals and seasonal farm ev
@@ -37,7 +37,7 @@ BEGIN:VEVENT
 SUMMARY:Bluemont Fair
 DTSTART;VALUE=DATE:20260919
 DTEND;VALUE=DATE:20260921
-DTSTAMP:20260919T145512Z
+DTSTAMP:20261109T143243Z
 UID:bluemont-fair-2026-09-19@fairs-festivals
 CATEGORIES:fair,family
 DESCRIPTION:Village fair\, 10am to 5pm both days: local artisans\, live mu
@@ -52,7 +52,7 @@ BEGIN:VEVENT
 SUMMARY:Great Country Farms Fall Pumpkin Harvest Festival
 DTSTART;VALUE=DATE:20260919
 DTEND;VALUE=DATE:20260920
-DTSTAMP:20260919T145512Z
+DTSTAMP:20261109T143243Z
 UID:great-country-farms-fall-pumpkin-harvest-festival-2026-09-19@fairs-fes
  tivals
 RRULE:FREQ=WEEKLY;UNTIL=20261101T035900Z;BYDAY=SA,SU
@@ -71,7 +71,7 @@ BEGIN:VEVENT
 SUMMARY:Cox Farms Fall Festival
 DTSTART;VALUE=DATE:20260919
 DTEND;VALUE=DATE:20260920
-DTSTAMP:20260919T145512Z
+DTSTAMP:20261109T143243Z
 UID:cox-farms-fall-festival-2026-09-19@fairs-festivals
 RRULE:FREQ=WEEKLY;UNTIL=20261109T045900Z;BYDAY=SA,SU
 CATEGORIES:fall,pumpkin,festival,farm,family
@@ -87,7 +87,7 @@ BEGIN:VEVENT
 SUMMARY:State Fair of Virginia
 DTSTART;VALUE=DATE:20260925
 DTEND;VALUE=DATE:20261005
-DTSTAMP:20260919T145512Z
+DTSTAMP:20261109T143243Z
 UID:state-fair-of-virginia-2026-09-25@fairs-festivals
 CATEGORIES:fair,family
 DESCRIPTION:The state fair: 4-H and FFA agricultural exhibits\, rides and 
@@ -102,7 +102,7 @@ BEGIN:VEVENT
 SUMMARY:Fields of Fear at Cox Farms (haunted\, older kids/teens)
 DTSTART;VALUE=DATE:20260925
 DTEND;VALUE=DATE:20260926
-DTSTAMP:20260919T145512Z
+DTSTAMP:20261109T143243Z
 UID:fields-of-fear-at-cox-farms-haunted-older-kids-teens-2026-09-25@fairs-
  festivals
 RRULE:FREQ=WEEKLY;UNTIL=20261108T045900Z;BYDAY=FR,SA
@@ -119,7 +119,7 @@ BEGIN:VEVENT
 SUMMARY:Temple Hall Farm Fall Days (pumpkin patch & flower fields)
 DTSTART;VALUE=DATE:20260926
 DTEND;VALUE=DATE:20260927
-DTSTAMP:20260919T145512Z
+DTSTAMP:20261109T143243Z
 UID:temple-hall-farm-fall-days-pumpkin-patch-flower-fields-2026-09-26@fair
  s-festivals
 RRULE:FREQ=WEEKLY;UNTIL=20261104T045900Z;BYDAY=SA,SU
@@ -140,7 +140,7 @@ BEGIN:VEVENT
 SUMMARY:Lovettsville Oktoberfest (30th)
 DTSTART;TZID=America/New_York:20260926T100000
 DTEND;TZID=America/New_York:20260926T170000
-DTSTAMP:20260919T145512Z
+DTSTAMP:20261109T143243Z
 UID:lovettsville-oktoberfest-30th-2026-09-26@fairs-festivals
 CATEGORIES:german,oktoberfest,festival,family
 DESCRIPTION:The Town of Lovettsville's 30th Oktoberfest\, back around the 
@@ -157,7 +157,7 @@ BEGIN:VEVENT
 SUMMARY:Waterford Fair
 DTSTART;VALUE=DATE:20261002
 DTEND;VALUE=DATE:20261005
-DTSTAMP:20260919T145512Z
+DTSTAMP:20261109T143243Z
 UID:waterford-fair-2026-10-02@fairs-festivals
 CATEGORIES:fair,festival,family
 DESCRIPTION:Three-day fall festival in the historic village\, 10am to 5pm 

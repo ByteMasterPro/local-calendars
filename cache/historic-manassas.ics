@@ -74,20 +74,6 @@ LOCATION:City of Manassas Community Center\, 8750 Sudley Road\, Manassas\, VA\, 
 ORGANIZER;CN="City of Manassas Parks%2C Culture &amp%3Bamp%3B Recreation":MAILTO:pcr@manassasva.gov
 END:VEVENT
 BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261107T080000
-DTEND;TZID=America/New_York:20261107T130000
-DTSTAMP:20260630T205410Z
-CREATED:20260406T225222Z
-LAST-MODIFIED:20260630T205410Z
-UID:10006373-1794038400-1794056400@historicmanassas.org
-SUMMARY:Historic Manassas Farmers Market (Saturdays)
-DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
-URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2026-11-07/
-LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
-CATEGORIES:Family Friendly,Farmers' Market
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
-END:VEVENT
-BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261107T100000
 DTEND;TZID=America/New_York:20261206T170000
 DTSTAMP:20261009T172252Z
@@ -99,21 +85,6 @@ DESCRIPTION:ARTfactory Presents “3rd Culture: Unseen Threads”\, a Solo Exhib
 URL:https://historicmanassas.org/event/solo-art-exhibit-3rd-culture-unseen-threads-by-kwaku-ofori-yirenyki/
 LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
 ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/10/Where-Faith-Took-Root_Year-2026_KwakuOforiYirenkyi_Size-40x34-2-scaled.jpg
-ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20261107T180000
-DTEND;TZID=America/New_York:20261107T200000
-DTSTAMP:20261009T163134Z
-CREATED:20261009T163134Z
-LAST-MODIFIED:20261009T163134Z
-UID:10006957-1794074400-1794081600@historicmanassas.org
-SUMMARY:Opening Reception\, “3rd Culture: Unseen Threads” by Kwaku Ofori-Yirenkyi
-DESCRIPTION:ARTfactory Presents “3rd Culture: Unseen Threads”\, a Solo Exhibition by Kwaku Ofori-Yirenkyi Exploring Family\, Migration\, Memory\, and Identity\n\nOn display: November 7 – December 6\, 2026\nOpening Reception: Saturday\, November 7 | 6:00–8:00 PM\nExhibition programming sponsored by Micron. \nMeet the Artist: Print\, Create & Connect: Saturday\, November 14 | 12:00-5:00 PM \nExhibit Summary\nARTfactory is proud to present “3rd Culture: Unseen Threads” a solo exhibition by artist Kwaku Ofori- Yirenkyi (ABSKU) exploring the intersections of family\, migration\, memory\, and cultural inheritance. \nThrough painting\, fabric\, photography\, relief\, pattern\, and abstraction\, Ofori-Yirenkyi traces the unseen connections between Ghanaian heritage and contemporary American cultural influences\, revealing how identity evolves across generations. \nThe faceless black figures in his compositions shift attention away from individual likeness and toward presence—gesture\, relationships\, clothing\, symbols\, and the ways people carry one another. Kente and Ankara textiles\, Adinkra symbols\, family imagery\, and Ghanaian cultural references exist alongside contemporary abstraction and Western influences. \nAcross the exhibition\, abstract fields of pattern and symbol gradually give way to more specific relationships\, places\, and family histories. This evolution reflects the artist’s understanding of 3rd Culture: traditional Ghanaian and contemporary Western cultures do not simply exist side by side. Through migration\, assimilation\, inheritance\, and lived experience\, they become interwoven into something new. \nThe unseen threads are what remain connected through that transformation—family\, ancestry\, memory\, values\, culture\, and belonging. The work asks not only what we inherit\, but what we change\, what we carry forward\, and what we ultimately make our own.\n\nAbout the Artist\nKwaku Ofori-Yirenkyi\, also known as ABSKU\, is a Ghanaian American visual artist based in Virginia whose work explores migration\, cultural memory\, identity\, and belonging through the lens of the African diaspora. Born in Ghana and raised in the United States\, he draws on Ghanaian textiles\, Adinkra symbolism\, family narratives\, and personal and collective memory. Working primarily in painting and mixed media\, ABSKU combines acrylic\, oil pastel\, fabric\, collage\, and sculptural materials to create layered works that examine how culture and identity are inherited\, carried\, and transformed across generations. \nFor additional information\, please visit the ARTfactory or contact the gallery for exhibition details. \nPress Inquiries\nJordan Exum\, Gallery Director\nARTfactory | Caton Merchant Gallery | 9419 Battle St\, Manassas\, VA 20110\n703.330.2787 | jexum@virginiaARTfactory.org | https://virginiaartfactory.org/\nGallery hours: Tuesday-Saturday\, 10 am-5 pm\, Sunday\, 12-5 pm
-URL:https://historicmanassas.org/event/opening-reception-3rd-culture-unseen-threads-by-kwaku-ofori-yirenkyi/
-LOCATION:ARTfactory (9419 Battle St.\, Manassas\, VA 20110)\, 9419 Battle Street\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Arts,Featured
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/10/Where-Faith-Took-Root_Year-2026_KwakuOforiYirenkyi_Size-40x34-1-scaled.jpg
 ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
 END:VEVENT
 BEGIN:VEVENT
@@ -487,5 +458,33 @@ URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturday
 LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
 CATEGORIES:Family Friendly,Farmers' Market
 ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270207T130000
+DTEND;TZID=America/New_York:20270207T150000
+DTSTAMP:20261007T165646Z
+CREATED:20261007T165646Z
+LAST-MODIFIED:20261007T165646Z
+UID:10006956-1802005200-1802012400@historicmanassas.org
+SUMMARY:The Adventures Of Harold And The Purple Crayon - Manassas
+DESCRIPTION:Join us for a whimsical journey at "The Adventures Of Harold And The Purple Crayon - Manassas\," where imagination knows no bounds! This delightful performance will take place at the charming Merchant Hall At Hylton Performing Arts Center\, a venue known for its warm atmosphere and family-friendly vibe. Watch as Harold brings his colorful world to life\, inspiring creativity and laughter in audiences of all ages. \nGather your loved ones for an unforgettable experience filled with enchanting storytelling and vibrant visuals. This is the perfect opportunity to introduce your little ones to the magic of live theatre in a cozy setting. Don’t miss out on this captivating adventure—book your tickets today and let your imagination soar!
+URL:https://historicmanassas.org/event/the-adventures-of-harold-and-the-purple-crayon-manassas/
+LOCATION:Merchant Hall At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/10/The-Adventures-Of-Harold-And-The-Purple-Crayon.jpg
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20270212T180000
+DTEND;TZID=America/New_York:20270212T200000
+DTSTAMP:20240227T145619Z
+CREATED:20230127T213050Z
+LAST-MODIFIED:20240227T145619Z
+UID:10002648-1802455200-1802462400@historicmanassas.org
+SUMMARY:Sip & Paint
+DESCRIPTION:Bring your friends\, sip some wine\, and enjoy step-by-step instructions to paint your own masterpiece. The first glass of wine or draft beer is included. If you are under 21 a nonalcoholic cafe drink is included.
+URL:https://historicmanassas.org/event/sip-paint/2027-02-12/
+LOCATION:Grounds Central Station\, 9360 Main Street\, Manassas\, VA\, 20110\, United States
+CATEGORIES:Arts,Date Night,Featured
+ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2023/01/10-1-27-23.jpg
+ORGANIZER;CN="Grounds Central Station":MAILTO:browermt@live.com
 END:VEVENT
 END:VCALENDAR

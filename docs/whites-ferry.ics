@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//localcal 0.1.0//EN
+PRODID:-//eventnews 0.1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALDESC:Events at White's Ferry Brewery & Winery. Source: https://lee
@@ -37,7 +37,7 @@ BEGIN:VEVENT
 SUMMARY:Leesburg Fall Festival
 DTSTART;TZID=America/New_York:20261003T140000
 DTEND;TZID=America/New_York:20261003T180000
-DTSTAMP:20261006T211340Z
+DTSTAMP:20261109T143238Z
 UID:leesburg-fall-festival-2026-10-03@whites-ferry
 CATEGORIES:festival,family,fall
 DESCRIPTION:Free entry\, live DJ and 10+ vendors on the riverfront\, with 

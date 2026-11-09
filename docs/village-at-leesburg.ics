@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//localcal 0.1.0//EN
+PRODID:-//eventnews 0.1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALDESC:Events at Village at Leesburg. Source: https://www.villageatl
@@ -37,7 +37,7 @@ BEGIN:VEVENT
 SUMMARY:$5 Bargain Tuesdays at Phoenix Theatres
 DTSTART;TZID=America/New_York:20261006T110000
 DTEND;TZID=America/New_York:20261006T220000
-DTSTAMP:20261006T212658Z
+DTSTAMP:20261109T143242Z
 UID:5-bargain-tuesdays-at-phoenix-theatres-2026-10-06@village-at-leesburg
 RRULE:FREQ=WEEKLY;UNTIL=20261230T045900Z;BYDAY=TU
 CATEGORIES:routine,movie
@@ -54,7 +54,7 @@ BEGIN:VEVENT
 SUMMARY:Friday Night Live Music at Anchor Bar
 DTSTART;TZID=America/New_York:20261009T180000
 DTEND;TZID=America/New_York:20261009T210000
-DTSTAMP:20261006T212658Z
+DTSTAMP:20261109T143242Z
 UID:friday-night-live-music-at-anchor-bar-2026-10-09@village-at-leesburg
 RRULE:FREQ=WEEKLY;UNTIL=20261226T045900Z;BYDAY=FR
 CATEGORIES:routine,live music
@@ -70,7 +70,7 @@ BEGIN:VEVENT
 SUMMARY:Football Season at Anchor Bar
 DTSTART;TZID=America/New_York:20261011T130000
 DTEND;TZID=America/New_York:20261011T220000
-DTSTAMP:20261006T212658Z
+DTSTAMP:20261109T143242Z
 UID:football-season-at-anchor-bar-2026-10-11@village-at-leesburg
 RRULE:FREQ=WEEKLY;UNTIL=20270104T045900Z;BYDAY=SU
 CATEGORIES:routine,football
@@ -87,7 +87,7 @@ BEGIN:VEVENT
 SUMMARY:Monster Mash 2026
 DTSTART;TZID=America/New_York:20261024T130000
 DTEND;TZID=America/New_York:20261024T170000
-DTSTAMP:20261006T212658Z
+DTSTAMP:20261109T143242Z
 UID:monster-mash-2026-2026-10-24@village-at-leesburg
 CATEGORIES:halloween,festival,family,kids
 DESCRIPTION:Their annual Halloween afternoon: professional pumpkin carving
