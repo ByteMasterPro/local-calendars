@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Flying Ace Farm - ECPv6.18.3.1//NONSGML v1.0//EN
+PRODID:-//Flying Ace Farm - ECPv6.18.4//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Flying Ace Farm
@@ -177,15 +177,15 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261205T120000
 DTEND;TZID=America/New_York:20261205T150000
-DTSTAMP:20261106T203002Z
+DTSTAMP:20261112T160910Z
 CREATED:20261106T195149Z
-LAST-MODIFIED:20261106T203002Z
+LAST-MODIFIED:20261112T160910Z
 UID:13459-1796472000-1796482800@flyingacefarm.com
 SUMMARY:6th Annual Brunch w/ Santa Event
-DESCRIPTION:6TH ANNUAL BRUNCH W/ SANTA ~ TICKETS ON SALE NOW!\nDecember 5th from 12-3PM\nMark your calendars for Saturday\, December 5th from 12-3PM as we host our 5th Annual Brunch w/ Santa event at the farm! Our ALL YOU CAN EAT Brunch includes a digital photo with the Big Guy\, cookie decorating for the kids\, coloring station and a craft bag for the kiddos. We will also have cocktails and beer available for an additional charge. Tickets on sale now! This is one of our most popular events\, make sure to grab your tickets today! \nTickets will be broken down into 1 hour time slots (12-1pm\, 1-2pm\, 2-3pm). Once you click on the link\, please choose the appropriate day and time slot. Brunch and photos with Santa will be taken during that specific time slot.\nCocktails will be available for purchase\, menu includes:\n*Poinsettia\n*Mimosa\n*Homemade Eggnog\n*Tipsy Cocoa\n*Sangria\n*Beer/Seltzer on tap\n*Wine\nCLICK HERE to purchase your tickets today!\n \n  \n  \n* Adult Ticket: $49.99 each \n* Child Ticket (ages 12 and under): $24.99; all children attending event will require a ticket. \n*Tickets are non-refundable 7 days prior to event (11/28/26) \nPrice of ticket covers cost of event\, staffing\, Santa\,  All-You-Can-Eat brunch\, digital photo with Santa\, craft bags\, coloring station and cookie decorating table. Tickets are required for every attendee. Children two and under do not require a ticket. We appreciate your honesty and look forward to having you!
+DESCRIPTION:6TH ANNUAL BRUNCH W/ SANTA ~ TICKETS ON SALE NOW!\nDecember 5th from 12-3PM\nMark your calendars for Saturday\, December 5th from 12-3PM as we host our 5th Annual Brunch w/ Santa event at the farm! Our ALL YOU CAN EAT Brunch includes a digital photo with the Big Guy\, cookie decorating for the kids\, coloring station and a craft bag for the kiddos. We will also have cocktails and beer available for an additional charge. Tickets on sale now! This is one of our most popular events\, make sure to grab your tickets today! \nTickets will be broken down into 1 hour time slots (12-1pm\, 1-2pm\, 2-3pm). Once you click on the link\, please choose the appropriate day and time slot. Brunch and photos with Santa will be taken during that specific time slot.\nCocktails will be available for purchase\, menu includes:\n*Poinsettia Mimosa\n*Homemade Eggnog\n*Tipsy Cocoa\n*Sangria\n*Spiked Coffee\n*Beer/Seltzer on tap\n*Wine\n  \nCLICK HERE TO PURCHASE TICKETS\n  \n \n  \n  \n* Adult Ticket: $49.99 each \n* Child Ticket (ages 12 and under): $24.99; all children attending event will require a ticket. \n*Tickets are non-refundable 7 days prior to event (11/28/26) \nPrice of ticket covers cost of event\, staffing\, Santa\,  All-You-Can-Eat brunch\, digital photo with Santa\, craft bags\, coloring station and cookie decorating table. Tickets are required for every attendee. Children two and under do not require a ticket. We appreciate your honesty and look forward to having you! \nCLICK HERE FOR TICKETS
 URL:https://flyingacefarm.com/calendar/brunch-w-santa-event/
 LOCATION:Flying Ace Farm
-CATEGORIES:All You Can Eat,Brunch,Brunch w/ Santa,Family
+CATEGORIES:All You Can Eat,Brunch,Brunch w/ Santa,Family,Kids,local,Loudoun County VA
 ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2026/11/IMG_3782-scaled-e1793994539359.jpg
 ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
 END:VEVENT
@@ -207,15 +207,15 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261206T120000
 DTEND;TZID=America/New_York:20261206T150000
-DTSTAMP:20261106T202803Z
+DTSTAMP:20261112T155827Z
 CREATED:20261106T202803Z
-LAST-MODIFIED:20261106T202803Z
+LAST-MODIFIED:20261112T155827Z
 UID:13468-1796558400-1796569200@flyingacefarm.com
 SUMMARY:6th Annual Brunch w/ Santa Event
-DESCRIPTION:6TH ANNUAL BRUNCH W/ SANTA ~ TICKETS ON SALE NOW!\nDecember 6th from 12-3PM\nMark your calendars for Saturday\, December 6th from 12-3PM as we host our 5th Annual Brunch w/ Santa event at the farm! Our ALL YOU CAN EAT Brunch includes a digital photo with the Big Guy\, cookie decorating for the kids\, coloring station and a craft bag for the kiddos. We will also have cocktails and beer available for an additional charge. Tickets on sale now! This is one of our most popular events\, make sure to grab your tickets today! \nTickets will be broken down into 1 hour time slots (12-1pm\, 1-2pm\, 2-3pm). Once you click on the link\, please choose the appropriate day and time slot. Brunch and photos with Santa will be taken during that specific time slot.\nCocktails will be available for purchase\, menu includes:\n*Poinsettia\n*Mimosa\n*Homemade Eggnog\n*Tipsy Cocoa\n*Sangria\n*Beer/Seltzer on tap\n*Wine\nCLICK HERE to purchase your tickets today!\n \n  \n  \n* Adult Ticket: $49.99 each \n* Child Ticket (ages 12 and under): $24.99; all children attending event will require a ticket. \n*Tickets are non-refundable 7 days prior to event (11/29/26) \nPrice of ticket covers cost of event\, staffing\, Santa\,  All-You-Can-Eat brunch\, digital photo with Santa\, craft bags\, coloring station and cookie decorating table. Tickets are required for every attendee. Children two and under do not require a ticket. We appreciate your honesty and look forward to having you!
+DESCRIPTION:6TH ANNUAL BRUNCH W/ SANTA ~ TICKETS ON SALE NOW!\nDecember 6th from 12-3PM\nMark your calendars for Saturday\, December 6th from 12-3PM as we host our 5th Annual Brunch w/ Santa event at the farm! Our ALL YOU CAN EAT Brunch includes a digital photo with the Big Guy\, cookie decorating for the kids\, coloring station and a craft bag for the kiddos. We will also have cocktails and beer available for an additional charge. Tickets on sale now! This is one of our most popular events\, make sure to grab your tickets today! \nTickets will be broken down into 1 hour time slots (12-1pm\, 1-2pm\, 2-3pm). Once you click on the link\, please choose the appropriate day and time slot. Brunch and photos with Santa will be taken during that specific time slot.\nCocktails will be available for purchase\, menu includes:\n*Poinsettia Mimosa\n*Homemade Eggnog\n*Tipsy Cocoa\n*Sangria\n*Spiked Coffee\n*Beer/Seltzer on tap\n*Wine\n  \nCLICK HERE TO PURCHASE TICKETS\n  \n \n  \n  \n* Adult Ticket: $49.99 each \n* Child Ticket (ages 12 and under): $24.99; all children attending event will require a ticket. \n*Tickets are non-refundable 7 days prior to event (11/29/26) \nPrice of ticket covers cost of event\, staffing\, Santa\,  All-You-Can-Eat brunch\, digital photo with Santa\, craft bags\, coloring station and cookie decorating table. Tickets are required for every attendee. Children two and under do not require a ticket. We appreciate your honesty and look forward to having you! \nCLICK HERE FOR TICKETS
 URL:https://flyingacefarm.com/calendar/brunch-w-santa-event-2/
 LOCATION:Flying Ace Farm
-CATEGORIES:All You Can Eat,Brunch,Brunch w/ Santa,Family
+CATEGORIES:All You Can Eat,Brunch,Brunch w/ Santa,Family,Kids,local,Loudoun County VA
 ATTACH;FMTTYPE=image/jpeg:https://flyingacefarm.com/wp-content/uploads/2026/11/IMG_3782-scaled-e1793994539359.jpg
 ORGANIZER;CN="Flying Ace Farm":MAILTO:info@flyingacefarm.com
 END:VEVENT

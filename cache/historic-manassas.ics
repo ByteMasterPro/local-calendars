@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Historic Manassas, Inc - ECPv6.18.3.1//NONSGML v1.0//EN
+PRODID:-//Historic Manassas, Inc - ECPv6.18.4//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Historic Manassas, Inc
@@ -191,6 +191,22 @@ CATEGORIES:Family Friendly,Farmers' Market
 ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
 END:VEVENT
 BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261204T160000
+DTEND;TZID=America/New_York:20261204T200000
+DTSTAMP:20261112T204132Z
+CREATED:20261112T203414Z
+LAST-MODIFIED:20261112T204132Z
+UID:10006977-1796400000-1796414400@historicmanassas.org
+SUMMARY:Historic Manassas Holiday Market
+DESCRIPTION:  \n \nWelcome to our annual Holiday Market which takes place during our Merry Old Town event. Join our holiday vendors in the train depot lot as they bring you their artisan wares just in time for the holidays. These make for amazing gifts for all of your friends and loved ones!
+URL:https://historicmanassas.org/event/historic-manassas-holiday-market/
+LOCATION:Historic Downtown Manassas @ 9431 West St\, Manassas\, VA 20110\, USA\, Manassas\, VA\, United States
+CATEGORIES:Arts,Featured,Festival,Parade,Winter Holiday
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/11/Holiday-Market.png
+ORGANIZER;CN="Historic Manassas Inc.":MAILTO:info@historicmanassasinc.org
+GEO:38.792244;-77.511522
+END:VEVENT
+BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261204T170000
 DTEND;TZID=America/New_York:20261204T210000
 DTSTAMP:20260924T173010Z
@@ -205,6 +221,21 @@ ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/09
 ORGANIZER;CN="ARTfactory":MAILTO:jexum@VirginiaARTfactory.org
 END:VEVENT
 BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261204T173000
+DTEND;TZID=America/New_York:20261204T210000
+DTSTAMP:20261112T205722Z
+CREATED:20261112T205312Z
+LAST-MODIFIED:20261112T205722Z
+UID:10006978-1796405400-1796418000@historicmanassas.org
+SUMMARY:Santa Lights Manassas
+DESCRIPTION:Santa Lights Manassas\, also known as the Tree Lighting\, has been a fixture in the Manassas community for over 32 years! It takes place on the Friday night before the Christmas Parade beginning at 5:30p.m. This year’s event takes place on Friday\, December 4. \nThe magic of the evening begins with holiday musical performances and then Santa arrives in Manassas shortly after 6p.m. After the tree is lit\, Santa and Mrs. Claus greet all the children and listen to their holiday wishes at the TD Santa & Mrs. Claus Meet & Greet at the Train Depot. Families can enjoy free wagon rides to get into the holiday spirit. The Harris Pavilion Ice Rink will be open for business as well as the Manassas Museum\, downtown shops and restaurants.
+URL:https://historicmanassas.org/event/santa-lights-manassas-2/
+LOCATION:Historic Downtown Manassas @ 9431 West St\, Manassas\, VA 20110\, USA\, Manassas\, VA\, United States
+CATEGORIES:Arts,Winter Holiday
+ATTACH;FMTTYPE=image/webp:https://historicmanassas.org/wp-content/uploads/2026/11/santalights.webp
+GEO:38.792244;-77.511522
+END:VEVENT
+BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261205T080000
 DTEND;TZID=America/New_York:20261205T130000
 DTSTAMP:20260630T205410Z
@@ -217,6 +248,23 @@ URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturday
 LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
 CATEGORIES:Family Friendly,Farmers' Market
 ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20261205T100000
+DTEND;TZID=America/New_York:20261205T123000
+DTSTAMP:20261112T210305Z
+CREATED:20261112T210305Z
+LAST-MODIFIED:20261112T210305Z
+UID:10006979-1796464800-1796473800@historicmanassas.org
+SUMMARY:Greater Manassas Christmas Parade
+DESCRIPTION:80 years. Still Sleighin' \nSanta\, Mrs. Claus\, and the elves are excited for an amazing parade season and to see what everyone comes up with to go with this theme! More information about participation\, sponsorships\, volunteering\, etc can be found on our website \nHome
+URL:https://historicmanassas.org/event/greater-manassas-christmas-parade/
+LOCATION:Historic Downtown Manassas\, 9431 West Street\, Manassas\, VA\, 20110\, United States
+CATEGORIES:Winter Holiday
+ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/11/Screenshot-2026-11-12-at-3.57.11-PM.png
+ORGANIZER;CN="Greater Manassas Christmas Parade Committee":MAILTO:gmchristmasparade@gmail.com
+GEO:38.751032;-77.472527
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Historic Downtown Manassas 9431 West Street Manassas VA 20110 United States;X-APPLE-RADIUS=500;X-TITLE=9431 West Street:geo:-77.472527,38.751032
 END:VEVENT
 BEGIN:VEVENT
 DTSTART;TZID=America/New_York:20261205T100000
@@ -444,47 +492,5 @@ URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturday
 LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
 CATEGORIES:Family Friendly,Farmers' Market
 ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20270206T080000
-DTEND;TZID=America/New_York:20270206T130000
-DTSTAMP:20260630T205410Z
-CREATED:20260406T225222Z
-LAST-MODIFIED:20260630T205410Z
-UID:10006386-1801900800-1801918800@historicmanassas.org
-SUMMARY:Historic Manassas Farmers Market (Saturdays)
-DESCRIPTION:The Historic Manassas Farmers Market Has Returned!  \nJoin us rain or shine every Thursday and Saturday and stock up on farm-fresh produce\, local meats & cheeses\, baked goods\, artisan crafts\, and more! And even more good news! Use SNAP/EBT at the market and get FREE fruits & vegetables through our SNAP & Virginia Fresh Match program. \nVisit https://historicmanassas.org/farmers-market/ for vendor lineups\, programming\, and performers\, and follow Historic Manassas Farmers Market on Facebook and Instagram for updates. \n📅 Saturdays | April 11 – November 21⏰ 8 AM – 1 PM📍 Commuter Lot\, 9024 Prince William St.\, Manassas\, VA \n📅 Thursdays | April 9 – October 29⏰ 8 AM – 1 PM📍 Harris Pavilion\, 9201 Center St.\, Manassas\, VA
-URL:https://historicmanassas.org/event/historic-manassas-farmers-market-saturdays/2027-02-06/
-LOCATION:9024 Prince William St. Manassas\, VA. 20110\, 9024 Prince William St.\, Manassas\, Virginia\, 20110\, United States
-CATEGORIES:Family Friendly,Farmers' Market
-ATTACH;FMTTYPE=image/png:https://historicmanassas.org/wp-content/uploads/2026/01/HMI-FM-General-Info-Web.png
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20270207T130000
-DTEND;TZID=America/New_York:20270207T150000
-DTSTAMP:20261007T165646Z
-CREATED:20261007T165646Z
-LAST-MODIFIED:20261007T165646Z
-UID:10006956-1802005200-1802012400@historicmanassas.org
-SUMMARY:The Adventures Of Harold And The Purple Crayon - Manassas
-DESCRIPTION:Join us for a whimsical journey at "The Adventures Of Harold And The Purple Crayon - Manassas\," where imagination knows no bounds! This delightful performance will take place at the charming Merchant Hall At Hylton Performing Arts Center\, a venue known for its warm atmosphere and family-friendly vibe. Watch as Harold brings his colorful world to life\, inspiring creativity and laughter in audiences of all ages. \nGather your loved ones for an unforgettable experience filled with enchanting storytelling and vibrant visuals. This is the perfect opportunity to introduce your little ones to the magic of live theatre in a cozy setting. Don’t miss out on this captivating adventure—book your tickets today and let your imagination soar!
-URL:https://historicmanassas.org/event/the-adventures-of-harold-and-the-purple-crayon-manassas/
-LOCATION:Merchant Hall At Hylton Performing Arts Center\, 10960 GEORGE MASON CIR\, Manassas\, VA\, 20110\, United States
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2026/10/The-Adventures-Of-Harold-And-The-Purple-Crayon.jpg
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20270212T180000
-DTEND;TZID=America/New_York:20270212T200000
-DTSTAMP:20240227T145619Z
-CREATED:20230127T213050Z
-LAST-MODIFIED:20240227T145619Z
-UID:10002648-1802455200-1802462400@historicmanassas.org
-SUMMARY:Sip & Paint
-DESCRIPTION:Bring your friends\, sip some wine\, and enjoy step-by-step instructions to paint your own masterpiece. The first glass of wine or draft beer is included. If you are under 21 a nonalcoholic cafe drink is included.
-URL:https://historicmanassas.org/event/sip-paint/2027-02-12/
-LOCATION:Grounds Central Station\, 9360 Main Street\, Manassas\, VA\, 20110\, United States
-CATEGORIES:Arts,Date Night,Featured
-ATTACH;FMTTYPE=image/jpeg:https://historicmanassas.org/wp-content/uploads/2023/01/10-1-27-23.jpg
-ORGANIZER;CN="Grounds Central Station":MAILTO:browermt@live.com
 END:VEVENT
 END:VCALENDAR
