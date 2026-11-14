@@ -11,7 +11,7 @@ X-PUBLISHED-TTL:P1D
 X-WR-TIMEZONE:America/New_York
 BEGIN:VTIMEZONE
 TZID:America/New_York
-COMMENT:This timezone only works from 2025-08-13 to 2029-11-03.
+COMMENT:This timezone only works from 2025-08-13 to 2029-12-08.
 BEGIN:DAYLIGHT
 DTSTART:20250813T000000
 TZNAME:EDT
@@ -20,7 +20,7 @@ TZOFFSETTO:-0400
 END:DAYLIGHT
 BEGIN:STANDARD
 DTSTART:20251102T020000
-RDATE:20261101T020000,20271107T020000,20281105T020000
+RDATE:20261101T020000,20271107T020000,20281105T020000,20291104T020000
 TZNAME:EST
 TZOFFSETFROM:-0400
 TZOFFSETTO:-0500
@@ -37,7 +37,7 @@ BEGIN:VEVENT
 SUMMARY:Moonlight Market at One Loudoun
 DTSTART;TZID=America/New_York:20260814T170000
 DTEND;TZID=America/New_York:20260814T210000
-DTSTAMP:20261113T131605Z
+DTSTAMP:20261114T122006Z
 UID:6a57ddc635b58375d4fa997f@one-loudoun
 RRULE:FREQ=WEEKLY;UNTIL=20261031T010000Z;BYDAY=FR
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
@@ -53,7 +53,7 @@ BEGIN:VEVENT
 SUMMARY:Movie Nights at One Loudoun - September 24 Paddington in Peru
 DTSTART;TZID=America/New_York:20260924T200000
 DTEND;TZID=America/New_York:20260924T220000
-DTSTAMP:20261113T131605Z
+DTSTAMP:20261114T122006Z
 UID:6a0e00a4d037a21f375094d5@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1779302580482-FBQNRQTWFY1EKHVBZYJ6/09.24_Movie+Nigh
@@ -72,7 +72,7 @@ BEGIN:VEVENT
 SUMMARY:Summer Concert Series September 26\, Keeton
 DTSTART;TZID=America/New_York:20260926T190000
 DTEND;TZID=America/New_York:20260926T210000
-DTSTAMP:20261113T131605Z
+DTSTAMP:20261114T122006Z
 UID:69fa5373ddde245f9011c1a9@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1778012420245-M7LI5YSPMZUO7QZB19AG/SCS_Website+Even
@@ -90,7 +90,7 @@ BEGIN:VEVENT
 SUMMARY:Sunrise Sweat with Lululemon - October 11
 DTSTART;TZID=America/New_York:20261011T090000
 DTEND;TZID=America/New_York:20261011T103000
-DTSTAMP:20261113T131605Z
+DTSTAMP:20261114T122006Z
 UID:6a625325b4a7503dedf81daf@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1781632997121-79BJ9SQDMDD1BIUFYSHU/Sunrise+Sweat_We
@@ -108,7 +108,7 @@ BEGIN:VEVENT
 SUMMARY:Monkee's of Loudoun: Grand Opening
 DTSTART;VALUE=DATE:20261015
 DTEND;VALUE=DATE:20261018
-DTSTAMP:20261113T131605Z
+DTSTAMP:20261114T122006Z
 UID:6ac90fb8c8257a50f8eca4de@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1791561781986-6ET0KTVLSD1HLNMV65YW/Screenshot+2026-
@@ -126,7 +126,7 @@ BEGIN:VEVENT
 SUMMARY:8th Annual Halloween Bark Bash
 DTSTART;TZID=America/New_York:20261024T120000
 DTEND;TZID=America/New_York:20261024T150000
-DTSTAMP:20261113T131605Z
+DTSTAMP:20261114T122006Z
 UID:6aaad848f6d7067e4ce57ab0@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1789581930288-CBT1FJKHEX1OQJOPE5N0/Web+Teaser_Bark+
@@ -145,7 +145,7 @@ BEGIN:VEVENT
 SUMMARY:Asia In a Bite - One Loudoun
 DTSTART;TZID=America/New_York:20261031T110000
 DTEND;TZID=America/New_York:20261101T120000
-DTSTAMP:20261113T131605Z
+DTSTAMP:20261114T122006Z
 UID:69c2d2d8e78af4666fb890cf@one-loudoun
 ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
  20e57f899c2f47944d9e68/1774368828275-R8YNWLUDU10EETR9T4FW/ABFF_VA26_Websit
@@ -159,5 +159,24 @@ LOCATION:One Loudoun\, 20626 Easthampton Plaza\, Ashburn\, VA\, 20147
 TRANSP:TRANSPARENT
 URL:https://www.downtownoneloudoun.com/events/asia-in-a-bite-one-loudoun-o
  ctober-17-18
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:14th Annual Holiday Tree Lighting
+DTSTART;TZID=America/New_York:20261205T170000
+DTEND;TZID=America/New_York:20261205T190000
+DTSTAMP:20261114T122006Z
+UID:6acd0bc4deb3ca2aa9739fd8@one-loudoun
+ATTACH;FMTTYPE=image/jpeg:https://images.squarespace-cdn.com/content/v1/5e
+ 20e57f899c2f47944d9e68/1794593629060-7EYO6BL119410XTLWJAZ/59500_27_OL_Tree
+ Lighting_LandingPage_FNL.jpg
+DESCRIPTION:Join us at this year’s Holiday Tree Lighting at One Loudoun!
+  The event is designed to engage the broader community and to enjoy a nigh
+ t of holiday cheer. Attendance is free and open to the public.\n\nDetails:
+  https://www.downtownoneloudoun.com/events/2026-annual-holiday-tree-lighti
+ ng
+LOCATION:One Loudoun\, 20626 Easthampton Plaza\, Ashburn\, VA\, 20147
+TRANSP:TRANSPARENT
+URL:https://www.downtownoneloudoun.com/events/2026-annual-holiday-tree-lig
+ hting
 END:VEVENT
 END:VCALENDAR
